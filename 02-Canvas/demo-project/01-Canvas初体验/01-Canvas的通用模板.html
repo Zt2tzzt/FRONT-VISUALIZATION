@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		canvas {
+			background-color: rgba(255, 0, 0, 0.1);
+		}
+	</style>
+</head>
+<body>
+
+	<canvas id="tutorial" width="300" height="300">
+		您的浏览器不支持Canvas
+	</canvas>
+	
+	<script>
+		window.onload = function() {
+			// 1.查找 canvas 的元素对象
+			const canvasEl = document.getElementById('tutorial')
+			if (!canvasEl.getContext) return
+			// 2.拿到Canvas渲染的上下文
+      // ctx: CanvasRenderingContext2D
+      // ctx 是一个绘图的上下文: 提供了绘图的指令, 可以绘制各种图形( 圆形 直线 椭圆... )
+			const ctx = canvasEl.getContext('2d') // 2d | webgl
+			console.log('ctx:', ctx)
+		}
+	</script>
+</body>
+</html>
