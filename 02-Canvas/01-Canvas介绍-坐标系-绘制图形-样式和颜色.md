@@ -506,7 +506,7 @@ window.onload = function() {
 
 # 使用 Canvas 绘制图片
 
-绘制图片，可以使用 `drawImage` 方法将它渲染到 canvas 里。drawImage 方法有三种形态：
+绘制图片，可以使用 `drawImage` 方法将它1渲染到 canvas 里。drawImage 方法有三种形态：
 
 - `drawImage(image, x, y)`
 	- 其中 image 是 image 或者 canvas 对象，x 和 y 是其在目标 canvas 里的起始坐标。
