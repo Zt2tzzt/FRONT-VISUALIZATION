@@ -3,7 +3,7 @@
 什么是 Canvas？
 
 - Canvas 最初由 Apple 于 2004 年引入，用于 MacOS X WebKit 组件，为仪表板小部件和 Safari 浏览器等应用程序提供支持。后来，它被 Gecko 内核的浏览器（尤其是 Mozilla Firefox），Opera 和 Chrome 实现，并被网页超文本应用技术工作小组提议为下一代的网络技术的标准元素（HTML5新增元素）。
-- Canvas 提供了非常多的 JavaScript 绘图 API（比如：绘制路径、矩形、圆、文本和图像等方法），与 <canvas> 元素结合可以绘制各种 2D 图形。
+- Canvas 提供了非常多的 JavaScript 绘图 API（比如：绘制路径、矩形、圆、文本和图像等方法），与 `<canvas>` 元素结合可以绘制各种 2D 图形。
 - Canvas API 主要聚焦于 2D 图形。当然也可以使用 <canvas> 元素对象的 WebGL API 来绘制 2D 和 3D 图形。
 
 有哪些应用场景？兼容性如何？
@@ -62,7 +62,7 @@ Canvas 缺点：
 			if (!canvasEl.getContext) return
 			// 2.拿到 Canvas 渲染的上下文
       // ctx: CanvasRenderingContext2D
-      // ctx 是一个绘图的上下文: 提供了绘图的指令, 可以绘制各种图形( 圆形 直线 椭圆... )
+      // ctx 是一个绘图的上下文: 提供了绘图的指令, 可以绘制各种图形(圆形、直线、椭圆... )
 			const ctx = canvasEl.getContext('2d') // 2d | webgl
 			console.log('ctx:', ctx)
 		}
@@ -112,7 +112,7 @@ Canvas 缺点：
 
 # 什么是 Canvas 中的网格（Grid）
 
-Canvas 中的网格，也称为坐标系、坐标空间？
+Canvas 中的网格，也称为坐标系、坐标空间：
 
 - `<canvas>` 元素默认被网格所覆盖。
 - 通常来说网格中的一个单元相当于 canvas 元素中的一像素。
@@ -123,7 +123,7 @@ Canvas 中的网格，也称为坐标系、坐标空间？
 
 # Canvas 中绘制矩形的方式有哪些？
 
-Canvas 支持两种方式来绘制矩形：矩形方法和路径方法。
+Canvas 支持两种方式来绘制矩形：**矩形方法**和**路径方法**。
 
 - 路径是通过不同颜色和宽度的线段或曲线相连形成的不同形状的点的集合。
 - 除了矩形，其他的图形都是通过一条或者多条路径组合而成的。
@@ -157,8 +157,8 @@ window.onload = function() {
 方法参数：
 
 - 上面的方法都包含了相同的参数。
-- x 与 y 指定了在 canvas 画布上所绘制矩形的左上角（相对于原点）的坐标（不支持 undefined）。
-- width 和 height 设置矩形的尺寸。
+- `x` 与 `y` 指定了在 canvas 画布上所绘制矩形的左上角（相对于原点）的坐标（不支持 undefined）。
+- `width` 和 `height` 设置矩形的尺寸。
 
 # 认识路径
 
@@ -186,7 +186,7 @@ window.onload = function() {
 
 移动画笔 `moveTo` 方法：
 
-1. moveTo 方法是不能画出任何东西，但是它也是路径列表的一部分
+1. moveTo 方法是不能画出任何东西，但是它也是路径列表的一部分。
 2. moveTo 可以想象为在纸上作业，一支钢笔或者铅笔的笔尖从一个点到另一个点的移动过程。
 3. moveTo(x, y)：将笔移动到指定的坐标 x、y 上。
 4. 当 canvas 初始化或者 beginPath() 调用后，我们通常会使用 moveTo(x, y) 函数设置起点。
@@ -217,7 +217,6 @@ window.onload = function() {
 	ctx.closePath() // 不是必须
 	// 4.描边或填充
 	ctx.stroke()  // 绘制线条只能用 stroke 填充,不用 fill
-
 }
 ```
 
@@ -309,9 +308,10 @@ window.onload = function() {
 ```
 # 路径绘制矩形
 
-1. 调用 `rect()` 函数绘制，即将一个矩形路径增加到当前路径上。
-2. `rect(x, y, width, height)`
-	-	绘制一个左上角坐标为（x,y），宽高为 width 以及 height 的矩形。
+1. 调用 `rect()` 也可函数绘制，即将一个矩形路径增加到当前路径上。
+2. 调用 `stroke()` 或者 `fill()` 进行描边或填充。
+3. `rect(x, y, width, height)`
+  -	绘制一个左上角坐标为（x,y），宽高为 width 以及 height 的矩形。
 
 ```js
 window.onload = function() {
@@ -409,7 +409,7 @@ window.onload = function() {
 
 # 线型 line styles
 
-调用 lineTo() 函数绘制的线条，是可以通过一系列属性来设置线的样式。
+调用 lineTo() 函数绘制的线条，可以通过一系列属性来设置线的样式。
 
 - `lineWidth = value`：设置线条宽度。
 - `lineCap = type`：设置线条末端样式。
@@ -417,12 +417,12 @@ window.onload = function() {
 
 线宽的特点 `lineWidth`
 
-- 设置线条宽度的属性值必须为正数。默认值是 1.0px，不需单位。（ 零、负数、Infinity 和 NaN 值将被忽略）
+- 设置线条宽度的属性值必须为正数。默认值是 1.0px，不需单位。（零、负数、Infinity 和 NaN 值将被忽略）
 - 线宽是指给定路径的中心到两边的粗细。换句话说就是在路径的两边各绘制线宽的一半。
 - 如果你想要绘制一条从 (3,1) 到 (3,5)，宽度是 1.0 的线条，你会得到像第二幅图一样的结果。
 	-	路径的两边各延伸半个像素填充并渲染出1像素的线条（深蓝色部分）
 	-	两边剩下的半个像素又会以实际画笔颜色一半色调来填充（浅蓝部分）
-	-	实际画出线条的区域为（浅蓝和深蓝的部分），填充色大于1像素了，这就是为何宽度为 1.0 的线经常并不准确的原因。
+	-	实际画出线条的区域为（浅蓝和深蓝的部分），填充色大于1像素了，这就是为何宽度为 1.0 的线经常不准确的原因。
 - 要解决这个问题，必须对路径精确的控制。如，1px 的线条会在路径两边各延伸半像素，那么像第三幅图那样绘制从 (3.5 ,1) 到 (3.5,
 5) 的线条，其边缘正好落在像素边界，填充出来就是准确的宽为 1.0 的线条。
 
@@ -506,7 +506,7 @@ window.onload = function() {
 
 # 使用 Canvas 绘制图片
 
-绘制图片，可以使用 `drawImage` 方法将它1渲染到 canvas 里。drawImage 方法有三种形态：
+绘制图片，可以使用 `drawImage` 方法将它渲染到 canvas 里。drawImage 方法有三种形态：
 
 - `drawImage(image, x, y)`
 	- 其中 image 是 image 或者 canvas 对象，x 和 y 是其在目标 canvas 里的起始坐标。
@@ -538,7 +538,7 @@ window.onload = function() {
 	image.src = '../images/backdrop.png'
 
 	image.onload = function() {
-		// 2.开始用Canvas来绘制图片
+		// 2.开始用 Canvas 来绘制图片
 		ctx.drawImage(image, 0, 0, 180, 130)
 
 		// 3.绘制折线

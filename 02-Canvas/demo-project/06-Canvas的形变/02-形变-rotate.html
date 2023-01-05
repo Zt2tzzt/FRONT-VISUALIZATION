@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			background-image: url(../images/grid.png);
+		}
+		canvas {
+			background-color: rgba(255, 0, 0, .1);
+		}
+	</style>
+</head>
+<body>
+	
+	<canvas id="tutorial" width="300" height="300">
+		您的浏览器不兼容 Canvas，请升级您的浏览器。
+	</canvas>
+
+	<script>
+		window.onload = function() {
+			const canvasEl = document.getElementById('tutorial')
+			if (!canvasEl.getContext) return
+			const ctx = canvasEl.getContext('2d')
+
+			ctx.save()
+			ctx.translate(100, 100)
+			ctx.rotate(Math.PI / 180 * 45) // 旋转 45°
+			ctx.fillRect(0, 0, 50, 50)
+			ctx.restore()
+
+			ctx.save()
+			ctx.translate(150, 150)
+			ctx.fillStyle = 'red'
+			ctx.fillRect(0, 0, 50, 30)
+			ctx.restore()
+		}
+	</script>
+</body>
+</html>
