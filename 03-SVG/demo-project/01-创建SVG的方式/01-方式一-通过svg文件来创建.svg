@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" >
+<!-- 
+	version="1.0"
+	baseProfile="full" 正确渲染svg内容时所需要最小SVG语言概述(版本); full:正常的svg语言概述  basic:基本SVG语言概述  tiny: 轻量级SVG语言概述
+	xmlns: 指定svg元素  和 svg内的子元素都是属于 http://www.w3.org/2000/svg 这个命名空间下
+-->
+<svg
+	version="1.0"
+	baseProfile="full"
+	width="100"
+	height="100"
+	xmlns="http://www.w3.org/2000/svg"
+>
+	<rect x="0" y="0" width="100" height="100"></rect>
+	<title>我是 svg title</title>
+</svg>
