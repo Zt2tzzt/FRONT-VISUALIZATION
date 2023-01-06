@@ -219,7 +219,7 @@ SVG 的缺点：
     width="100"
     height="100"
     xmlns="http://www.w3.org/2000/svg"
-  > 
+  >
    <rect x="0" y="0" width="100" height="100"></rect>
   </svg>
 
@@ -228,16 +228,16 @@ SVG 的缺点：
     width="100"
     height="100"
     xmlns="http://www.w3.org/2000/svg"
-  > 
+  >
    <rect x="0" y="0" width="100" height="100"></rect>
   </svg>
 
     <!--
-      3.创建 svg 2.0 简写 
+      3.创建 svg 2.0 简写
         xmlns="http://www.w3.org/2000/svg" 这个命名空间浏览器的解析器会自动添加
         默认：w：300px；h：150px
     -->
-  <svg> 
+  <svg>
     <rect x="0" y="0" width="100" height="100"></rect>
   </svg>
 </body>
@@ -246,7 +246,107 @@ SVG 的缺点：
 
 ## 方式三：使用 JS 创建 svg
 
-* 在 HTML 中引入 svg 的6种方式。
+使用JS脚本来创建SVG时，创建的元素都是需要添加命名空间的。
+- 比如：创建 `<svg>` 或者 `<rect>` 元素都需要添加命名空间`http://www.w3.org/2000/svg`
+- 对于元素上的属性不带前缀的，命名空间就为 `null`。
+
+因为在 XML1.1 命名空间规范中建议，不带前缀的属性（带前缀如 xlink:href）命名空间的名称是没有值的，这时命名空间的值必须使用 null 值。
+
+创建 SVG 常用的 DOM2 API：
+- `createElementNS(ns, elname)`：创建SVG元素；
+- `setAttributeNS(ns, attrname, value)`：给SVG元素添加属性；
+- `getAttributeNS(ns, attrname)`：获取SVG元素上的属性；
+- `hasAttributeNS(ns, attrname)`： 判断SVG元素上是否存在某个属性；
+- `removeAttributeNS(ns, attname)`：删除SVG元素上的某个属性；
+- [更多的API](https://developer.mozilla.org/zh-CN/docs/Web/SVG/Namespaces_Crash_Course)
+
+03-SVG\demo-project\01-创建SVG的方式\05-方式三-通过JS来创建SVG.html
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script>
+		/**
+		 * 使用 js 操作 svg 的框架 Snap.svg，类似于 jQuery。
+		 */
+		window.onload = function() {
+			// 1.创建 svg 和 rect 元素
+			const xmlns = 'http://www.w3.org/2000/svg'
+			const svgEl = document.createElementNS(xmlns, 'svg')
+			const rectEl = document.createElementNS(xmlns, 'rect')
+
+			// 2.给 svg 和 rect 元素对象添加属性
+			svgEl.setAttributeNS(null, 'version', '1.0')
+			svgEl.setAttributeNS(null, 'width', 100)
+			svgEl.setAttributeNS(null, 'height', 100)
+
+			rectEl.setAttributeNS(null, 'width', 50)
+			rectEl.setAttributeNS(null, 'height', 50)
+
+			// 3.将 svg 添加到 body 上
+			svgEl.appendChild(rectEl)
+			document.body.appendChild(svgEl)
+			}
+	</script>
+</body>
+</html>
+```
+
+# 在 HTML 中引入 svg 的6种方式。
+
+方式一：img 元素 
+- 作为一张图片使用，不支持交互，只兼容 ie9 以上。
+
+```html
+<img src="./rect.svg" alt="">
+```
+
+方式二：CSS 背景 
+- 作为一张背景图片使用，不支持交互。
+
+```css
+.box{
+  width: 200px;
+  height: 200px;
+  background-image: url(./rect.svg);
+  background-repeat: no-repeat;
+}
+```
+
+方式三：直接在 HTML 文件引用源文件
+- 作为 HTML 的 DOM 元素，支持交互，只兼容 ie9 以上。
+- 见上方“在 HTML 中使用 svg 元素”。
+
+方式四：object 元素（了解）。 
+- 支持交互式 svg，能拿到 object 的引用，为 SVG 设置动画、更改其样式表等。
+
+```html
+<object data="./svg/rect.svg" type="image/svg+xml"></object>
+```
+
+方式五：iframe 元素（了解） 。 
+- 支持交互式 svg，能拿到 iframe 的引用，为 SVG 设置动画、更改其样式表等
+
+```html
+<iframe src="./svg/rect.svg"></iframe>
+```
+
+方式六：embed 元素（了解） 。
+- 支持交互式 svg，能拿到 embed 的引用，为 SVG 设置动画、更改其样式表等，对旧版浏览器有更好的支持。
+
+```html
+<embed src="./svg/rect.svg" type="image/svg+xml" />
+```
+
+
 * 什么是 SVG 中的坐标系（Grid）
 * SVG 坐标系单位有哪些？
 * SVG 中的视口有哪些？为什么会有2个坐标系？

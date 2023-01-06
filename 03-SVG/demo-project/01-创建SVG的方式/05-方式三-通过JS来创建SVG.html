@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script>
+		/**
+		 * 使用 js 操作 svg 的框架 Snap.svg，类似于 jQuery。
+		 */
+		window.onload = function() {
+			// 1.创建 svg 和 rect 元素
+			const xmlns = 'http://www.w3.org/2000/svg'
+			const svgEl = document.createElementNS(xmlns, 'svg')
+			const rectEl = document.createElementNS(xmlns, 'rect')
+
+			// 2.给 svg 和 rect 元素对象添加属性
+			svgEl.setAttributeNS(null, 'version', '1.0')
+			svgEl.setAttributeNS(null, 'width', 100)
+			svgEl.setAttributeNS(null, 'height', 100)
+
+			rectEl.setAttributeNS(null, 'width', 50)
+			rectEl.setAttributeNS(null, 'height', 50)
+
+			// 3.将 svg 添加到 body 上
+			svgEl.appendChild(rectEl)
+			document.body.appendChild(svgEl)
+			}
+	</script>
+</body>
+</html>
