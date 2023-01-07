@@ -272,7 +272,7 @@ SVG 的缺点：
 	<title>Document</title>
 </head>
 <body>
-	
+
 	<script>
 		/**
 		 * 使用 js 操作 svg 的框架 Snap.svg，类似于 jQuery。
@@ -302,14 +302,14 @@ SVG 的缺点：
 
 # 在 HTML 中引入 svg 的6种方式。
 
-方式一：img 元素 
+方式一：img 元素
 - 作为一张图片使用，不支持交互，只兼容 ie9 以上。
 
 ```html
 <img src="./rect.svg" alt="">
 ```
 
-方式二：CSS 背景 
+方式二：CSS 背景
 - 作为一张背景图片使用，不支持交互。
 
 ```css
@@ -325,14 +325,14 @@ SVG 的缺点：
 - 作为 HTML 的 DOM 元素，支持交互，只兼容 ie9 以上。
 - 见上方“在 HTML 中使用 svg 元素”。
 
-方式四：object 元素（了解）。 
+方式四：object 元素（了解）。
 - 支持交互式 svg，能拿到 object 的引用，为 SVG 设置动画、更改其样式表等。
 
 ```html
 <object data="./svg/rect.svg" type="image/svg+xml"></object>
 ```
 
-方式五：iframe 元素（了解） 。 
+方式五：iframe 元素（了解） 。
 - 支持交互式 svg，能拿到 iframe 的引用，为 SVG 设置动画、更改其样式表等
 
 ```html
@@ -347,12 +347,164 @@ SVG 的缺点：
 ```
 
 
-* 什么是 SVG 中的坐标系（Grid）
-* SVG 坐标系单位有哪些？
-* SVG 中的视口有哪些？为什么会有2个坐标系？
-* svg 上的 viewbox 属性有什么用？怎么用？
+# SVG 中的坐标系（Grid）
 
-	- 相同宽高比的情况。
-	- 不同宽高比的情况。
-* 使用 SVG 绘制矩形。
+SVG 使用的坐标系统（网格系统）和 Canvas 的差不多。坐标系是以左上角 (0,0) 为坐标原点，被称为初始**视口坐标系**，坐标以像素为单位，x 轴正方向向右，y 轴正方向向下。
+
+- `<svg>` 元素默认宽为 300px, 高为 150px。如下图所示，<svg> 元素默认被网格所覆盖。
+- 通常来说网格中的一个单元相当于 svg 元素中的一像素。
+- 基本上在 SVG 文档中的 1 个像素对应输出设备（比如显示屏）上的 1 个像素（除非缩放）。
+- `<svg>` 的 transform 属性可以用来移动、旋转、缩放 SVG 中的某个元素，
+  - 如 <svg> 中某个元素用了变形，**该元素内部会建立一个新的坐标系统，该元素默认后续所有变化都是基于新创建的坐标系统**。
+
+03-SVG\demo-project\03-SVG坐标系\01-坐标系统.html
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-image: url(../images/grid.png);
+    }
+    svg {
+      background-color: rgba(255, 0, 0, 0.1);
+    }
+  </style>
+</head>
+<body>
+
+  <svg width="300" height="300" xmlns="http://www.w3.org/2000/svg" >
+    <rect x="10" y="10" width="100" height="100"></rect>
+  </svg>
+
+</body>
+</html>
+```
+
+# SVG 坐标系单位
+
+SVG 坐标系统，在没有明确指定单位时，默认以像素为单位。
+
+```xml
+<!-- 定义一个矩形，即从左上角开始，向右延展 100px，向下延展 100px，形成一个 100*100 大的矩形 -->
+<rect x="0" y="0" width="100" height="100" />
+```
+
+当然我们也可以手动指明坐标系的单位，比如：
+
+```xml
+<svg width="15cm" height="300" xmlns="http://www.w3.org/2000/svg" >
+  <rect x="10" y="10" width="100px" height="5cm"></rect>
+</svg>
+```
+
+<img src="NodeAssets/可用于SVG元素的单位列表.jpg" style="zoom:80%;" />
+
+
+# SVG 中的视口 - viewport
+
+视口是 SVG 可见的区域（也可以说是 SVG 画布大小）。
+
+使用 `<svg>` 元素的 `width` 和 `height` 属性指定视口的大小。
+
+一旦设置了 svg 元素的宽度和高度，浏览器就会建立初**始视口坐标系**和初始**用户坐标系**。
+
+## 视口坐标系
+
+视口坐标系是在视口上建立的坐标系，原点在视口左上角的点(0, 0)，x轴正向向右，y轴正向下。
+
+初始视口坐标系中的一个单位等于视口中的一个像素，该坐标系类似于 HTML 元素的坐标系。
+
+## 用户坐标系
+
+用户坐标系是建立在 SVG 视口上的坐标系。该坐标系最初与视口坐标系相同，它的原点位于视口的左上角。
+
+使用 `viewBox` 属性，可以修改初始用户坐标系，使其不再与视口坐标系相同。
+
+用户坐标系，也称为当前坐标系或正在使用的用户空间，后面绘图都是参照该坐标系。
+
+> 为什么要有两个坐标系？
+>
+> - 因为SVG是矢量图，支持任意缩放。在用户坐标系统绘制的图形，最终会参照视口坐标系来进行等比例缩放。
+
+03-SVG\demo-project\04-viewport和viewBox\02-viewport和viewBox有相同的宽高比.html
+
+```xml
+<svg width="400" height="400" viewBox="0 0 100 100" >
+  <circle cx="50" cy="50" r="50"></circle>
+</svg>
+```
+
+# svg 上的 viewBox 属性
+
+`viewBox` 称为视图框，viewport 是 SVG 画布的大小，而 `viewBox` 是用来定义用户坐标系中的位置和尺寸的（该区域通常会被缩放来填充视口）。
+
+- SVG 的图形都是绘制在用户坐标系中。用户坐标系可以比视口坐标系更小或更大，也可以在视口内完全或部分可见。
+- 一旦创建了视口坐标系（即 `<svg>` 使用 `width` 和 `height`），浏览器就会创建一个与其相同的用户坐标系。
+- 我们可以使用 viewBox 属性指定用户坐标系的大小。
+  - 如果用户坐标系与视口坐标系具有**相同的高宽比**，它将 viewBox 区域拉伸以填充视口区域。
+  - 如果用户坐标系和视口坐标系**没有相同的宽高比**，可用 `preserveAspectRatio` 属性来指定整个用户坐标系统是否在视口内可见。
+
+`viewBox` 的语法：
+
+- viewBox = “<min-x> <min-y> <width> <height>”，比如：viewBox =“0 0 100 100”
+- <min-x> <min-y> 确定视图框的左上角坐标（即视图框可见的区域，不是修改用户坐标系的原点，绘图还是从原来的 (0, 0) 开始）.
+- <width> <height> 确定该视图框的宽度和高度。
+  - 宽度和高度负为 0 是禁用元素的显示。
+  - 宽度和高度负值无效，
+
+
+
+## 用户坐标系与视口坐标系相同宽高比的情况
+
+等比例缩放：
+
+```xml
+<svg width="400" height="400" viewBox="0 0 100 100" >
+  <circle cx="50" cy="50" r="50"></circle>
+</svg>
+```
+
+## 用户坐标系与视口坐标系不同宽高比的情况
+
+保留视图框 viewBox 的宽高比，但视图框 viewBox 不会拉伸以覆盖整个视口区域。 
+
+视图框 viewBox 在视口内垂直和水平居中。
+
+03-SVG\demo-project\04-viewport和viewBox\04-viewport和viewBox不同的宽高比.html
+
+```xml
+<svg width="400" height="400" 
+    viewBox="0 0 200 100" 
+  >
+  <circle cx="50" cy="50" r="50"></circle>
+</svg>
+```
+
+<img src="NodeAssets/用户坐标系与视口坐标系不同宽高比情况一.jpg" style="zoom:80%;" />
+
+想改变视口内的视框位置怎么办？给 `<svg>` 添加 `preserveAspectRatio` 属性，该属性允许强制统一缩放视图框 viewBox
+
+- preserveAspectRatio= "none", 强制拉伸图形以填充整个视口。
+- preserveAspectRatio= “xMinYMin”, 图形在视口的最小x和y轴上显示
+
+```xml
+<svg width="400" height="400" 
+    viewBox="0 0 200 100" 
+    preserveAspectRatio="xMinYMin"
+  >
+  <circle cx="50" cy="50" r="50"></circle>
+</svg>
+```
+
+<img src="NodeAssets/用户坐标系与视口坐标系不同宽高比情况二.jpg" style="zoom:80%;" />
+
+# 使用 SVG 绘制矩形
 
