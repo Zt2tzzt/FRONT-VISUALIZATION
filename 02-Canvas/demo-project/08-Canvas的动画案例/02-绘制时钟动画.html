@@ -39,8 +39,8 @@
 
 			function draw() {
 				ctx.clearRect(0, 0, 300, 300)
-				ctx.save()
 
+				ctx.save()
 				drawBg()
 				drawNumbers()
 				const time = new Date()
@@ -51,9 +51,8 @@
 				drawMinute(minute, second)
 				drawSecond(second)
 				drawCircle()
-
 				ctx.restore()
-				
+
 				requestAnimationFrame(draw)
 			}
 			requestAnimationFrame(draw)
@@ -155,8 +154,8 @@
 			}
 
 			function drawTick() {
-				// 7.绘制时钟刻度
 				ctx.save()
+				// 7.绘制时钟刻度
 				ctx.translate(150, 150)
 				for (let i = 0; i < 12; i++) {
 					ctx.rotate(Math.PI * 2 / 12)
@@ -166,7 +165,7 @@
 					ctx.lineTo(0, -122)
 					ctx.stroke()
 				}
-
+				// 绘制秒针刻度
 				for (let i = 0; i < 60; i++) {
 					ctx.rotate(Math.PI * 2 / 60)
 					ctx.lineWidth = 1
