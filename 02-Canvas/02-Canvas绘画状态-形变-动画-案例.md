@@ -365,6 +365,7 @@ window.onload = function() {
 		const time = new Date()
 		const second = time.getSeconds()
 		const milliseconds = time.getMilliseconds()
+    
 		ctx.save()
 		ctx.translate(150, 150)
 		ctx.rotate(
@@ -373,11 +374,8 @@ window.onload = function() {
     )
 		ctx.translate(105, 0)
 		ctx.drawImage(earth, -12, -12)
-
 		drawMoon(second, milliseconds)
-
 		drawEarthMask()
-
 		ctx.restore() // 地球 end
 	}
 
