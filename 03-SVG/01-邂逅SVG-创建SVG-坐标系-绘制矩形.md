@@ -303,7 +303,7 @@ SVG 的缺点：
 			// 3.将 svg 添加到 body 上
 			svgEl.appendChild(rectEl)
 			document.body.appendChild(svgEl)
-			}
+    }
 	</script>
 </body>
 </html>
