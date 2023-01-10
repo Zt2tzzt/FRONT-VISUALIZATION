@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>07-SVG的组合和复用</title>
+	<style>
+    body {
+      margin: 0;
+      padding: 0;
+			background-image: url(../images/grid.png);
+    }
+    svg {
+      background-color: rgba(255, 0, 0, 0.1);
+    }
+	</style>
+</head>
+<body>
+	<svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
+		<path d="M 80 0, L 20 50, L 80 100 Z"></path>
+	</svg>
+
+	<svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
+		<polygon points="20 0, 80 50, 20 100"></polygon>
+	</svg>
+</body>
+</html>

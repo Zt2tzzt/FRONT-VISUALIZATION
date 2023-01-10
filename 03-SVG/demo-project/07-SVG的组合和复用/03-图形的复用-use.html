@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>07-SVG的组合和复用</title>
+	<style>
+    body {
+      margin: 0;
+      padding: 0;
+			background-image: url(../images/grid.png);
+    }
+    svg {
+      background-color: rgba(255, 0, 0, 0.1);
+    }
+	</style>
+</head>
+<body>
+	<svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
+		<defs>
+			<!-- 定义样式 -->
+			<style>
+				rect {
+					fill: green;
+				}				
+			</style>
+			<!-- 定义一个矩形 -->
+			<rect id="rectangle" x="0" y="0" width="100" height="50"></rect>
+			<!-- 定义一个组合图形 -->
+			<g id="logo" fill="transparent" stroke="red">
+				<circle cx="50" cy="100" r="25"></circle>
+				<circle cx="80" cy="100" r="25"></circle>
+				<circle cx="110" cy="100" r="25"></circle>
+				<circle cx="140" cy="100" r="25"></circle>
+			</g>
+		</defs>
+
+		<!-- 在 svg 内部进行图片的复用 -->
+		<use href="#rectangle"></use>
+		<use x="100" y="100" href="#rectangle"></use>
+		<use href="#logo"></use>
+		<use x="100" y="100" href="#logo"></use>
+	</svg>
+
+	<!-- 在另一个 svg 中进行图片的复用 -->
+	<svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
+		<!-- widht 和 height 没有生效，因为只有当 use 引用 svg 或 symbol 时才会生效。 -->
+		<use href="#rectangle" width="200" height="100"></use>
+	</svg>
+	<svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
+		<use href="#logo"></use>
+	</svg>
+</body>
+</html>
