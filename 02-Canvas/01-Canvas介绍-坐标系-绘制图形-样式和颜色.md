@@ -2,7 +2,7 @@
 
 什么是 Canvas？
 
-- Canvas 最初由 Apple 于 2004 年引入，用于 MacOS X WebKit 组件，为仪表板小部件和 Safari 浏览器等应用程序提供支持。后来，它被 Gecko 内核的浏览器（尤其是 Mozilla Firefox），Opera 和 Chrome 实现，并被网页超文本应用技术工作小组提议为下一代的网络技术的标准元素（HTML5新增元素）。
+- Canvas 最初由 Apple 于 2004 年引入，用于 MacOS X WebKit 组件，为仪表板小部件和 Safari 浏览器等应用程序提供支持。后来，它被 Gecko 内核的浏览器（尤其是 Mozilla Firefox），Opera 和 Chrome 实现，并被网页超文本应用技术工作小组提议为下一代的网络技术的标准元素（HTML5 新增元素）。
 - Canvas 提供了非常多的 JavaScript 绘图 API（比如：绘制路径、矩形、圆、文本和图像等方法），与 `<canvas>` 元素结合可以绘制各种 2D 图形。
 - Canvas API 主要聚焦于 2D 图形。当然也可以使用 <canvas> 元素对象的 WebGL API 来绘制 2D 和 3D 图形。
 
@@ -30,7 +30,7 @@ Canvas 缺点：
 
 - `<canvas>` 和 `<img>` 元素很相像，唯一的不同就是它并没有 `src` 和 `alt` 属性。
 - `<canvas>` 标签只有两个属性 `width` 和 `height`（单位默认为 px）；当没有设置宽度和高度时，canvas 会初始化宽为 300px 和高为 150px。
-- 与 `<img>` 元素不同，`<canvas>` 元素必须有结束标签`</canvas>`。如结束标签不存在，则文档其余部分会被认为是替代内容，将不会显示出来。
+- 与 `<img>` 元素不同，`<canvas>` 元素必须有结束标签 `</canvas>`。如结束标签不存在，则文档其余部分会被认为是替代内容，将不会显示出来。
 - 测试 `canvas.getContext` 方法的存在，可以检查浏览器是否支持 Canvas。
 
 使用 Canvas 的通用模板：
@@ -187,9 +187,9 @@ window.onload = function() {
 移动画笔 `moveTo` 方法：
 
 1. moveTo 方法是不能画出任何东西，但是它也是路径列表的一部分。
-2. moveTo(x, y)：将画笔移动到指定的坐标 x、y 上。
-4. 当 canvas 初始化或者 beginPath() 调用后，我们通常会使用 moveTo(x, y) 函数设置起点。
-5. 使用 moveTo 函数能够绘制一些不连续的路径。
+2. `moveTo(x, y)`：将画笔移动到指定的坐标 x、y 上。
+4. 当 canvas 初始化或者 beginPath() 调用后，我们通常会使用 `moveTo(x, y)` 函数设置起点。
+5. 使用 `moveTo` 函数能够绘制一些不连续的路径。
 
 绘制直线 `lineTo` 方法：
 
@@ -207,7 +207,7 @@ window.onload = function() {
 	ctx.lineWidth = 10
 	// 1.创建一个新的路径
 	ctx.beginPath()
-	// 2.使用的绘图的命名(ctx对象中的 属性 和 API)
+	// 2.使用的绘图的命名(ctx 对象中的属性和 API)
 	ctx.moveTo(10, 10)
 	ctx.lineTo(100, 10)
 	// 3.闭合路径
@@ -288,11 +288,9 @@ window.onload = function() {
 	ctx.closePath()
 	ctx.stroke()
 
-
 	// 2.在一个路径中绘制多个图形
 	ctx.beginPath()
 	ctx.arc(50, 50, 25, 0, Math.PI * 2, false)
-
 	ctx.moveTo(175, 150)
 	ctx.arc(150, 150, 25, 0, Math.PI)
 	// ctx.closePath()
@@ -464,7 +462,7 @@ canvas 提供了两种方法来渲染文本：
 
 文本的样式（需在绘制文本前调用）
 
-- `font = value`： 当前绘制文本的样式。这个字符串使用和 CSS font 属性相同的语法。默认的字体是：10px sans-serif。
+- `font = value`：当前绘制文本的样式。这个字符串使用和 CSS font 属性相同的语法。默认的字体是：10px sans-serif。
 - `textAlign = value`：文本对齐选项。可选的值包括：start, end, left, right or center. 默认值是 start
 - `textBaseline = value`：基线对齐选项。可选的值包括：top, hanging, middle, alphabetic, ideographic, bottom。
 	- 默认值是 alphabetic。

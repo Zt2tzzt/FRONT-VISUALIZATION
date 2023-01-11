@@ -23,15 +23,15 @@ SVG 的兼容性：
 
 # SVG 的发展历史
 
-SVG1.x 版本
-- SVG 是 W3C SVG 工作组于1998年开始开发，而 SVG1.0 于2001年9月4日成为 W3C 推荐的标准。
-- SVG1.1 于 2003年1月14日成为 W3C 推荐的标准。该版本增加了模块化规范的内容。除此之外，1.1和1.0几乎没有区别。
-- SVG Tiny 1.2 于2008年12月22日成为 W3C 推荐标准，主要是为性能低的小设备生成图形，但是后来被 SVG2.0 所弃用了。
-- SVG1.1 第二版于2011年8月16日发布，这次只是更新了勘误表和说明，并没有增加新功能 。
+SVG 1.x 版本
+- SVG 是 W3C SVG 工作组于 1998 年开始开发，而 SVG1.0 于 2001 年 9 月 4 日 成为 W3C 推荐的标准。
+- SVG 1.1 于 2003 年 1 月 14 日成为 W3C 推荐的标准。该版本增加了模块化规范的内容。除此之外，1.1 和 1.0 几乎没有区别。
+- SVG Tiny 1.2 于 2008 年 12 月 22 日成为 W3C 推荐标准，主要是为性能低的小设备生成图形，但是后来被 SVG 2.0 所弃用了。
+- SVG 1.1 第二版于 2011 年 8 月 16 日发布，这次只是更新了勘误表和说明，并没有增加新功能 。
 
-SVG2.0 版本（推荐）
-- SVG2.0 于2016年9月15日成为 W3C 候选推荐标准，最新草案于2020年5月26日发布。
-- SVG2.x Change From SVG1.x (https://www.w3.org/TR/SVG/changes.html)，比如：
+SVG 2.0 版本（推荐）
+- SVG 2.0 于 2016 年 9 月 15 日成为 W3C 候选推荐标准，最新草案于 2020 年 5 月 26 日发布。
+- [SVG 2.x Change From SVG1.x](https://www.w3.org/TR/SVG/changes.html)，比如：
 	- Removed the `baseProfile` and `version` attributes from the `<svg>` element.
 	- Added the ability to use `auto` for the `width` and `height` attributes on `<image>`.
 	- Added `lang` attribute on `<desc>` and `<title>` elements.
@@ -46,7 +46,7 @@ SVG 的优点：
 - 【扩展好】：矢量图像在浏览器中放大缩小不会失真，可在许多设备和浏览器中使用。而光栅图像（PNG、JPG）放大缩小会失真。
   > 矢量图像是基于矢量的点、线、形状和数学公式来构建的图形，该图形是没有像素的，放大缩小是不会失真的。
   >
-  > 光栅图像是由像素点构建的图像——微小的彩色方块，大量像素点可以形成高清图像，比如照片。图像像素越多，质量越高。
+  > 光栅图像是由像素点（微小的彩色方块）构建的图像，大量像素点可以形成高清图像，比如照片。图像像素越多，质量越高。
 - 【灵活】：SVG 是 W3C 开发的标准，可结合其它的语言和技术一起使用，包括 CSS、JavaScript、HTML 和 SMIL 。SVG 图像可以直接使用 JS 和 CSS 进行操作，使用时非常方便和灵活，因为 SVG 也是可集成到 DOM 中的。
 - 【可以动画】：SVG 图像可以使用 JS、CSS 和 SMIL 进行动画处理。对于 Web 开发人员来说非常的友好。
 - 【轻量级】：与其它格式相比，SVG 图像的尺寸非常小。根据图像的不同，PNG 图像质量可能是 SVG 图像的 50 倍。
@@ -113,7 +113,7 @@ SVG 的缺点：
 4个步骤：
 
 1. 新建一个 svg 文件，在文件第一行编写 XML 文件声明；
-2. 编写一个 `<svg>` 元素，并给该元素添加如下属性：
+2. 编写一个 `<svg>` 元素，并给该元素添加下属性：
 
 	- `version`：指定使用 svg 的版本，值为 1.0 和 1.1，并没有 2.0。
 	- `baseProfile`：SVG2.0 之前，version 和 baseProfile 属性用来验证和识别 SVG 版本。而 **SVG2.0 后不推荐使用这两个属性了**。
@@ -151,7 +151,7 @@ SVG 的缺点：
    - XML 中外部 DTD 声明（可选）
 
       ```xml
-      <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">`
+      <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
       ```
 
 通过 svg 文件，创建 svg 矢量图
@@ -181,12 +181,12 @@ SVG 的缺点：
 
 ### SVG 文档解构
 
-[SVG1.1 文档结构](https://www.w3.org/TR/SVG11/struct.html)
+[SVG 1.1 文档结构](https://www.w3.org/TR/SVG11/struct.html)
 
 - 第一行：XML 声明。
 - 第二行：DTD 声明.
 
-[SVG2.0 文档结构](https://www.w3.org/TR/SVG2/struct.html#Namespace)
+[SVG 2.0 文档结构](https://www.w3.org/TR/SVG2/struct.html#Namespace)
 
 -  不推荐写 DTD 声明。
 -  `<svg>` 标签上 `version` 和 `baseProfile` 属性已删除；
@@ -194,7 +194,7 @@ SVG 的缺点：
 
 <img src="NodeAssets/SVG文档解构对比.jpg" style="zoom:150%;" />
 
-使用 SVG2.0 文档结构重构上面代码：
+使用 SVG 2.0 文档结构重构上面代码：
 
 ```xml
 <?xml version="1.1" standalone="no" ?>
@@ -463,9 +463,9 @@ SVG 坐标系统，在没有明确指定单位时，默认以像素为单位。
 
 `viewBox` 的语法：
 
-- viewBox = “<min-x> <min-y> <width> <height>”，比如：viewBox =“0 0 100 100”
+- viewBox = “<min-x> <min-y> <width> <height>”，比如：`viewBox = “0 0 100 100”`
 
-- <min-x> <min-y> 确定视图框的左上角坐标（即视图框可见的区域，不是修改用户坐标系的原点，绘图还是从原来的 (0, 0) 开始）.
+- <min-x> <min-y> 确定视图框的左上角坐标（即视图框的可见区域，不是修改用户坐标系的原点，绘图还是从原来的 (0, 0) 开始）.
 
   <img src="NodeAssets/确定视图框的左上角坐标.jpg" style="zoom:50%;" />
 

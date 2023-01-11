@@ -51,6 +51,7 @@
 				drawMinute(minute, second)
 				drawSecond(second)
 				drawCircle()
+				drawTick()
 				ctx.restore()
 
 				requestAnimationFrame(draw)
@@ -61,7 +62,7 @@
 			function drawBg() {
 				// 1.绘制背景（白色钟表盘）
 				ctx.save()
-				ctx.translate(150,  150)
+				ctx.translate(150, 150)
 				ctx.fillStyle = 'white'
 				ctx.beginPath()
 				ctx.arc(0, 0, 130, 0, Math.PI * 2)

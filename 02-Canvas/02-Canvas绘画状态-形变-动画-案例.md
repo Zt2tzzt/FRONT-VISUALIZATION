@@ -8,8 +8,8 @@
 
 Canvas 绘画状态要调用 `save` 和 `restore` 方法来保存和恢复，这两个方法都没有参数，并且它们是成对存在的。
 
-- `save()`：保存画布 (canvas) 的所有绘画状态
-- `restore()`：恢复画布 (canvas) 的所有绘画状态
+- `save()`：保存画布 (canvas) 的所有绘画状态。
+- `restore()`：恢复画布 (canvas) 的所有绘画状态。
 
 Canvas 绘画状态包括：
 
@@ -114,6 +114,8 @@ translate 方法可让我们任意放置图形，而不需要手工一个个调�
 2. 在绘制图形前 translate 移动画布；
 3. 开始绘制图形，并填充颜色。
 
+02-Canvas\demo-project\06-Canvas的形变\01-形变-translate.html
+
 ```js
 window.onload = function() {
 	const canvasEl = document.getElementById('tutorial')
@@ -146,6 +148,8 @@ rotate 方法，它用于以原点为中心旋转 canvas，即沿着 z 轴 旋�
 1. 先保存一下 Canvas 当前的状态，并确定旋转原点。
 2. 在绘制图形前旋转画布（坐标系会跟着旋转了）。
 3. 开始绘制图形，并填充颜色
+
+02-Canvas\demo-project\06-Canvas的形变\02-形变-rotate.html
 
 ```js
 window.onload = function() {
@@ -187,6 +191,8 @@ scale 方法可以缩放画布。可用它来增减图形在 canvas 中的像素
 2. 在绘制图形前缩放画布；
 3. 开始绘制图形，并填充颜色。
 
+02-Canvas\demo-project\06-Canvas的形变\02-形变-scale.html
+
 ```js
 window.onload = function() {
 	const canvasEl = document.getElementById('tutorial')
@@ -208,7 +214,7 @@ window.onload = function() {
 Canvas 绘图都是通过 JavaScript 去操控的，如要实现一些交互性动画是相当容易的。那 Canvas 是如何做一些基本动画的？
 - canvas 可能最大的限制就是图像一旦绘制出来，就不会改变。
 - 如需要执行动画，不得不对画布上所有图形进行一帧一帧的重绘（比如在1秒绘60帧就可绘出流畅的动画了）。
-- 为了实现动画，我们需要一些可以定时执行重绘的方法。然而在 Canvas 中有三种方法可以实现：分别为 `setInterval`、`setTimeout`和 `requestAnimationFrame`三种方法来定期执行指定函数进行重绘。
+- 为了实现动画，我们需要一些可以定时执行重绘的方法。然而在 Canvas 中有三种方法可以实现：分别为 `setInterval`、`setTimeout` 和 `requestAnimationFrame` 三种方法来定期执行指定函数进行重绘。
 
 Canvas 画出一帧动画的基本步骤（如要画出流畅动画，1s 需绘 60 帧）：
 1. 用 clearRect 方法清空 canvas ，除非接下来要画的内容会完全充满 canvas（例如背景图），否则你需要清空所有。
