@@ -28,10 +28,10 @@
 
 <ellipse> 元素4个基本属性。
 
-- `rx`：椭圆的 x 轴半径
-- `ry`：椭圆的 y 轴半径
 - `cx`：椭圆中心的 x 轴位置
 - `cy`：椭圆中心的 y 轴位置
+- `rx`：椭圆的 x 轴半径
+- `ry`：椭圆的 y 轴半径
 
 03-SVG\demo-project\05-SVG基本图形\03-绘制-椭圆.html
 
@@ -559,9 +559,9 @@ CSS 样式可写在 <defs> 中，也可写在 HTML 头部或外部等）。
 - 比如，`fill`，`stroke`，`stroke-dasharray` 等可以用 CSS 设置；
 - 比如，路径的命令则不能用 CSS 设置。
 
-> SVG规范中将属性区分成 `Presentation Attributes` 和 `Attributes` 属性。
+> SVG 规范中将属性区分成 `Presentation Attributes` 和 `Attributes` 属性。
 >
-> - [Presentation Attributes 属性（支持CSS和元素用）](https://developer.> mozilla.org/en-US/docs/Web/SVG/Attribute/Presentation)
+> - [Presentation Attributes 属性（支持 CSS 和元素用）](https://developer.> mozilla.org/en-US/docs/Web/SVG/Attribute/Presentation)
 > - [Attributes 属性（只能在元素用）](https://developer.mozilla.org/> en-US/docs/Web/SVG/Attribute)
 
 
