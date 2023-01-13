@@ -2,7 +2,7 @@
 
 SVG 支持在填充和描边上应用渐变色，使用 <linearGradient>。
 
-- 编写渐变时，必须给渐变内容指定一个 id 属性，用于 <use> 引用。
+- 编写渐变时，必须给渐变内容指定一个 `id` 属性，用于 <use> 引用。
 - 建议渐变内容定义在 <defs> 标签内部，因为渐变通常是可复用的。
 
 渐变有两种类型：**线性渐变**和**径向渐变**。
@@ -15,7 +15,7 @@ SVG 支持在填充和描边上应用渐变色，使用 <linearGradient>。
 2. 在 <linearGradient> 内编写几个 <stop> 结点。
 	- 给 <stop> 结点指定位置 `offset` 属性和颜色 `stop-color` 属性，用来指定渐变在特定的位置上应用什么颜色（这两个属性值，也可以通过 CSS 来指定）。
 	- 给 <stop> 结点指定某个位置的半透明度，通过 `stop-opacity` 属性。
-3. 在一个元素的 `fill` 属性或 `stroke` 属性中通过 `id` 来引用 <linearGradient> 节点。如 `fill=url(Gradient2)`。
+3. 在一个元素的 `fill` 属性或 `stroke` 属性中通过 `id` 来引用 <linearGradient> 节点。如 `fill=url(#Gradient2)`。
 4. 控制渐变方向，通过 `(x1, y1)` 和 `(x2, y2)` 两个点控制。
 	- `(0, 0) (0, 1)` 从上到下；`(0, 0) (1, 0)` 从左到右。
 	- 也可以通过 `gradientTransform` 属性设置渐变形变。比如：`gradientTransform=“rotate(90)`表示从上到下。
@@ -58,7 +58,7 @@ SVG 支持在填充和描边上应用渐变色，使用 <linearGradient>。
 - 方案一：使用 CSS 的 `backdrop-filter` 或 `filter` 属性：
 
 	- `backdrop-filter`：可以给一个元素后面区域添加模糊效果。适用于元素背后的所有元素。为了看到效果，必须使元素或其背景至少部分透明。
-	- `filter`：直接将模糊或颜色偏移等模糊效果应用于指定的元素。
+	- `filter`：直接将模糊效果应用于指定的元素。
 
 03-SVG\demo-project\10-渐变色和滤镜效果\02-CSS实现毛玻璃效果.html
 
@@ -97,10 +97,12 @@ SVG 支持在填充和描边上应用渐变色，使用 <linearGradient>。
 	</style>
 </head>
 <body>
+  <!-- backdrop-filter -->
 	<div class="box">
 		<img src="../images/avatar.jpeg" alt="">
 		<div class="bg-cover"></div>
 	</div>
+  <!-- filter -->
 	<div class="box">
 		<img class="image-filter" src="../images/avatar.jpeg" alt="">
 	</div>
@@ -110,10 +112,10 @@ SVG 支持在填充和描边上应用渐变色，使用 <linearGradient>。
 
 - 方案二：使用 SVG 的 `filter` 和 `feGaussianBlur` 元素（建议少用）：
 
-	- <filter>：元素作为滤镜操作的容器，该元素定义的滤镜效果需要在 SVG 元素上的 filter 属性引用。
-		- `x``，y``，width`，`height` 定义了在画布上应用此过滤器的矩形区域；`x`，`y` 默认值为 -10%（相对自身）；`width` ，`height` 默认 值为 120% （相对自身）。
-	- <feGaussianBlur>：该滤镜专门对输入图像进行高斯模糊，`stdDeviation` 属性指定模糊的程度；
-	- <feOffset>：该滤镜可以对输入图像指定它的偏移量。
+	- <filter>：元素是滤镜操作的容器，该元素定义的滤镜效果需要在 SVG 元素上的 `filter` 属性引用。
+		- `x`，`y`，`width`，`height` 定义了在画布上应用此过滤器的矩形区域；`x`，`y` 默认值为 -10%（相对自身）；`width` ，`height` 默认 值为 120% （相对自身）。
+	- <feGaussianBlur>：对图像进行高斯模糊，`stdDeviation` 属性指定模糊的程度；
+	- <feOffset>：指定输入图像的偏移量。
 
 03-SVG\demo-project\10-渐变色和滤镜效果\04-SVG的滤镜效果-模糊效果-区域.html
 
@@ -139,16 +141,17 @@ SVG 支持在填充和描边上应用渐变色，使用 <linearGradient>。
 
 `transform` 属性用来定义元素及其子元素的形变的列表。
 
-- 可以与任何一个 SVG 中的元素一起使用。会**在该元素内部建立了一个新的坐标系统**。
-- 从 SVG2 开始，`transform` 它是一个 **Presentation Attribute**，意味着它可以用作 CSS 属性。
-- transform 同时作为 CSS 属性，和元素属性之间的语法会存在一些差异。
-	- 比如作为元素属性时：仅支持 2D 变换，不需单位；rotate 可指定旋转原点。
+- 可以与任何一个 SVG 中的元素一起使用。会**在该元素内部建立一个新的坐标系统**。
+- 从 SVG2.0 开始，`transform` 它是一个 **Presentation Attribute**，意味着它可以用作 CSS 属性。
+- transform 同时作为 CSS 属性，和元素（attribute）属性，语法上会存在一些差异。
+	- 比如作为元素（attribute）属性时：仅支持 2D 变换，不需单位；
+	- 比如作为元素（attribute）属性时 `rotate()` 可指定旋转原点。
 
 `transform` 属性支持的函数：
 
 - `translate(x， y)`：平移。
 - `rotate(z)` / `rotate(z， cx，cy)`：旋转。
-- `scale(x, y)`：缩放
+- `scale(x, y)`：缩放。
 - `skew(x, y)`：倾斜。
 - `matrix(a, b, c, d, e)`：2*3 的形变矩阵
 
@@ -159,9 +162,9 @@ SVG 支持在填充和描边上应用渐变色，使用 <linearGradient>。
 ```xml
 <svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
 	<!-- 平移一个元素 -->
-	<rect x="0" y="0" width="100" height="50" transform="translate(200, 200)"></rect>
+	<rect transform="translate(200, 200)" x="0" y="0" width="100" height="50" ></rect>
 	<!--  平移一个元素，在元素内部创建一个新的坐标系-->
-	<rect x="10" y="10" width="100" height="50" transform="translate(100, 100)"></rect>
+	<rect transform="translate(100, 100)" x="10" y="10" width="100" height="50" ></rect>
 	<g transform="translate(100, 0)">
 		<rect x="10" y="10" width="100" height="50"></rect>
 	</g>
@@ -180,7 +183,7 @@ SVG 支持在填充和描边上应用渐变色，使用 <linearGradient>。
 ```xml
 <svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
 	<!-- 旋转一个元素 -->
-	<rect x="100" y="100" transform="translate(100, 0) rotate(45, 50, 25)" x="0" y="0" width="100" height="50"></rect>
+	<rect transform="translate(100, 0) rotate(45, 50, 25)" x="0" y="0" width="100" height="50"></rect>
 </svg>
 ```
 
@@ -188,8 +191,8 @@ SVG 支持在填充和描边上应用渐变色，使用 <linearGradient>。
 
 `scale(x, y)` 函数。仅支持 2D 变化。
 
-- 一个值时：第二个数字被忽略了，它默认等于第一个值。
-- 二个值时：它需要两个数字，作为比率计算如何缩放。0.5 表示收缩到 50%。
+- 一个值时：第二个值默认等于第一个值。
+- 二个值时：x，y 轴的缩放比例。
 
 03-SVG\demo-project\11-SVG的形变\03-缩放-scale.html
 
@@ -208,7 +211,7 @@ SVG 支持在填充和描边上应用渐变色，使用 <linearGradient>。
 
 # SVG 描边动画 stroke
 
-stroke 是描边属性，专门给图形描边。
+`stroke` 是描边属性，专门给图形描边。
 
 想给各种描边添加动画效果，需用到下面两个属性：
 
@@ -217,15 +220,14 @@ stroke 是描边属性，专门给图形描边。
 	- 第一个表示填色区域的长度为 3
 	- 第二个表示非填色区域的长度为 5
 
-- `stroke-dashoffset`：指定在 dasharray 模式下路径的偏移量。
-
-	- 值为 number 类型，除了可以正值，也可以取负值。
+- `stroke-dashoffset`：指定在 **dasharray 模式**下路径的偏移量。
+- 值为 number 类型，除了可以正值，也可以取负值。
 
 描边动画实现步骤：
 
 1. 先将描边设置为虚线。
 2. 接着将描边偏移到不可见处。
-3. 通过动画让描边慢慢变为可见，这样就产生了动画效果了，偏移量设置的大，则动画效果快。
+3. 通过动画改变偏移量，让描边慢慢变为可见，偏移量设置的大，则动画效果快。
 
 03-SVG\demo-project\12-SVG描边动画\04-stroke描边动画效果4.html
 
@@ -292,7 +294,7 @@ stroke 是描边属性，专门给图形描边。
 
 方式一：用 JS 脚本实现：给 SVG 创建动画和开发交互式的用户界面。
 
-方式二：用 CSS 样式实现：SVG 也是文档对象模型(DOM) 中的一部份，可应用 CSS。
+方式二：用 CSS 样式实现：SVG 也是文档对象模型（DOM）中的一部份，可应用 CSS。
 
 方式三：用 SMIL 语言实现：
 
@@ -334,7 +336,7 @@ SMIL 方式实现动画的优势：
 常用属性：
 
 - `attributeName`：指示将在动画期间更改的目标元素的 CSS 属性（property）或元素属性（attribute）的名称。
-- `attributeType`：（已过期，不推荐）指定定义目标属性的类型（值为：CSS | XML | auto）。
+- ~~attributeType~~：（已过期，不推荐）指定定义目标属性的类型（值为：CSS | XML | auto）。
 - `to`：定义在特定时间设置目标属性的值。该值必须与目标属性的要求相匹配。 值类型：anything；默认值：无
 - `begin`：定义何时开始动画或何时丢弃元素，默认是 0s (begin 支持多种类型的值)。
 
@@ -367,9 +369,9 @@ SMIL 方式实现动画的优势：
 
 	- `from`：动画期间属性的初始值。没有默认值。
 	- `to`：动画期间属性的最终值。没有默认值。
-	- `values`：该属性具有不同的含义，具体取决于使用它的上下文（没有默认值） 。
-		- 它定义了在动画过度中使用的一系列值，值需要用分号隔开，比如：values=“2; 3; 4; 5”。
-		- 当 values 属性定义时，from、to 会被忽略。
+	- `values`：该属性具有不同的含义，具体取决于使用它的上下文（没有默认值）。
+		- 它定义了在动画过度中使用的一系列值，值需要用分号隔开，比如：`values=“2; 3; 4; 5”`。
+		- 当 `values` 属性定义时，`from`、`to` 会被忽略。
 
 - 动画时间属性：
 
