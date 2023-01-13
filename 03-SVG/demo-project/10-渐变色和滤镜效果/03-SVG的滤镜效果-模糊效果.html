@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>SVG的滤镜效果-模糊效果</title>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+</head>
+<body>
+
+	<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg" >
+    <defs>
+      <!-- 高斯模糊的 效果 -->
+      <filter id="blurFilter">
+        <!--  ......  -->
+        <feGaussianBlur stdDeviation="8"></feGaussianBlur>
+      </filter>
+    </defs>
+    <image 
+      href="../images/avatar.jpeg"
+      width="200"
+      height="200"
+      filter="url(#blurFilter)"
+    >
+    </image>
+  </svg>
+
+</body>
+</html>

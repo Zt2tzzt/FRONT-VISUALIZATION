@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>渐变色和滤镜效果</title>
+	<style>
+		body {
+			padding: 0;
+			margin: 0;
+			background-image: url(../images/grid.png);
+		}
+		svg {
+			background-color: rgba(255, 0, 0, 0.1);
+		}
+
+		#line1 {
+			/* 指定为虚线 */
+			stroke-dasharray: 130;
+			/* 初始状态：完全可见 */
+			stroke-dashoffset: 130px;
+			animation: lineMove 2s linear forwards; /* 停留在最后一帧 */
+		}
+
+		@keyframes lineMove {
+			to {
+				stroke-dashoffset: 0;
+			}
+		}
+	</style>
+</head>
+<body>
+
+	<svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
+		<path
+			id="line1"
+			d="M 100 70, L 200 70, L 200 100"
+			stroke="red"
+			stroke-width="10"
+			fill="transparent"
+		>
+		</path>
+	</svg>
+	
+</body>
+</html>
