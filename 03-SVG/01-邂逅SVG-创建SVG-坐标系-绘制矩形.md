@@ -116,43 +116,49 @@ SVG 的缺点：
 2. 编写一个 `<svg>` 元素，并给该元素添加下属性：
 
 	- `version`：指定使用 svg 的版本，值为 1.0 和 1.1，并没有 2.0。
-	- `baseProfile`：SVG2.0 之前，version 和 baseProfile 属性用来验证和识别 SVG 版本。而 **SVG2.0 后不推荐使用这两个属性了**。
+	- `baseProfile`：SVG 渲染时的语言描述。
+	
+	> SVG2.0 之前，`version` 和 `baseProfile` 属性用来验证和识别 SVG 版本。而 **SVG2.0 后不推荐使用这两个属性了**。
+	
 	- `width / height`：指定 svg 画布（视口）的宽和高，默认值分别为 300 和 150，默认使用 px 单位。
 	- `xmlns`：给 svg 元素绑定一个命名空间（http://www.w3.org/2000/svg） 意味着这个 `<svg>` 标签和它的子元素都属于该命名空间下。
 3. 在 `<svg>` 元素中添加图形（比如：`<rect>`）元素
 4. 在浏览器直接预览或嵌入到 HTML 中预览。
+   
    - 嵌入 HTML 有6种方案。
 
-### svg 文件中的 XML 声明和 DTD 声明：
+### svg 文件中的 XML 声明：
 
-- 由于 SVG 文件是一个 XML 文件格式，在编写 XML 文档时，通常是推荐编写 XML 声明的。
+由于 SVG 文件是一个 XML 文件格式，在编写 XML 文档时，通常是推荐编写 XML 声明的。
 
-   - 在 XML1.0 中，XML 声明是可选的，推荐写但不强制。
-   - 在 XML1.1 中，声明是强制性的，如果没有声明，则自动暗示该文档是 XML1.0 文档。所以建议在编写 SVG 文件时也编写一个 XML 声明。
+- 在 XML1.0 中，XML 声明是可选的，推荐写但不强制。
+- 在 XML1.1 中，声明是强制性的，如果没有声明，则自动暗示该文档是 XML1.0 文档。所以建议在编写 SVG 文件时也编写一个 XML 声明。
 
-- SVG 的 XML 声明格式：
-  
-  ```xml
-  <?xml version="1.1" encoding="UTF-8" standalone="no" ?>
-  ```
-  
-  - `version` 指定版本（必填）；
-  - `encoding` 指定 XML 文档的编码（可选，默认是 UTF-8）；
-  - `standalone`：指定当前 XML 文档是否依赖于外部标记声明（可选，和 DTD 声明一起用才有意义）。
-     - 默认为 `no`：代表依赖外部标记声明；
-     - `yes`：代表依赖内部默认的标记声明。
-  
-- SVG 的文档类型声明 DTD（Document Type Declare），用于解析器验证 XML 文件是否符合该规范，与 HTML5 文件的 DTD 声明类似。
+SVG 的 XML 声明格式：
 
-   - XML 中内部 DTD 声明（可选）；
+```xml
+<?xml version="1.1" encoding="UTF-8" standalone="no" ?>
+```
 
-      <img src="NodeAssets/xml内部DTD声明.jpg" style="zoom:50%;" />
+- `version` 指定版本（必填）；
+- `encoding` 指定 XML 文档的编码（可选，默认是 UTF-8）；
+- `standalone`：指定当前 XML 文档是否依赖于外部标记声明（可选，和 DTD 声明一起用才有意义）。
+   - 默认为 `no`：代表依赖外部标记声明；
+   - `yes`：代表依赖内部默认的标记声明。
 
-   - XML 中外部 DTD 声明（可选）
+### svg 文件中 DTD 声明：
 
-      ```xml
-      <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-      ```
+SVG 的文档类型声明 DTD（Document Type Declare），用于解析器验证 XML 文件是否符合该规范，与 HTML5 文件的 DTD 声明类似。
+
+- XML 中内部 DTD 声明（可选）；
+
+   <img src="NodeAssets/xml内部DTD声明.jpg" style="zoom:50%;" />
+
+- XML 中外部 DTD 声明（可选）
+
+   ```xml
+   <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+   ```
 
 通过 svg 文件，创建 svg 矢量图
 
@@ -361,8 +367,7 @@ SVG 的缺点：
 SVG 使用的坐标系统（网格系统）和 Canvas 的差不多。坐标系是以左上角 (0,0) 为坐标原点，被称为初始**视口坐标系**，坐标以像素为单位，x 轴正方向向右，y 轴正方向向下。
 
 - `<svg>` 元素默认宽为 300px, 高为 150px。`<svg>` 元素默认被网格所覆盖。
-- 通常来说网格中的一个单元相当于 svg 元素中的一像素。
-- 基本上在 SVG 文档中的 1 个像素对应输出设备（比如显示屏）上的 1 个像素（除非缩放）。
+- 通常来说网格中的一个单元相当于 svg 元素中的一像素；基本上在 SVG 文档中的 1 个像素对应输出设备（比如显示屏）上的 1 个像素（除非缩放）。
 - `<svg>` 的 transform 属性可以用来移动、旋转、缩放 SVG 中的某个元素，
   - 如 <svg> 中某个元素用了变形，**该元素内部会建立一个新的坐标系统，该元素默认后续所有变化都是基于新创建的坐标系统**。
 
@@ -406,7 +411,7 @@ SVG 坐标系统，在没有明确指定单位时，默认以像素为单位。
 <rect x="0" y="0" width="100" height="100" />
 ```
 
-当然我们也可以手动指明坐标系的单位，比如：
+也可以手动指明坐标系的单位，比如：
 
 ```xml
 <svg width="15cm" height="300" xmlns="http://www.w3.org/2000/svg" >
@@ -487,9 +492,7 @@ SVG 坐标系统，在没有明确指定单位时，默认以像素为单位。
 
 ## 用户坐标系与视口坐标系不同宽高比的情况
 
-保留视图框 viewBox 的宽高比，但视图框 viewBox 不会拉伸以覆盖整个视口区域。
-
-视图框 viewBox 在视口内垂直和水平居中。
+保留视图框 viewBox 的宽高比，但视图框 viewBox 不会拉伸以覆盖整个视口区域。而是在视口内垂直和水平居中。
 
 03-SVG\demo-project\04-viewport和viewBox\04-viewport和viewBox不同的宽高比.html
 

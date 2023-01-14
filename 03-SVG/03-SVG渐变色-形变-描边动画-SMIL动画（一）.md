@@ -112,7 +112,7 @@ SVG 支持在填充和描边上应用渐变色，使用 <linearGradient>。
 
 - 方案二：使用 SVG 的 `filter` 和 `feGaussianBlur` 元素（建议少用）：
 
-	- <filter>：元素是滤镜操作的容器，该元素定义的滤镜效果需要在 SVG 元素上的 `filter` 属性引用。
+	- <filter>：滤镜操作的容器，该元素定义的滤镜效果，需要在 SVG 元素上的 `filter` 属性引用。
 		- `x`，`y`，`width`，`height` 定义了在画布上应用此过滤器的矩形区域；`x`，`y` 默认值为 -10%（相对自身）；`width` ，`height` 默认 值为 120% （相对自身）。
 	- <feGaussianBlur>：对图像进行高斯模糊，`stdDeviation` 属性指定模糊的程度；
 	- <feOffset>：指定输入图像的偏移量。
@@ -127,6 +127,7 @@ SVG 支持在填充和描边上应用渐变色，使用 <linearGradient>。
 			<feGaussianBlur stdDeviation="8"></feGaussianBlur>
 		</filter>
 	</defs>
+  
 	<image
 		href="../images/avatar.jpeg"
 		width="200"
@@ -142,7 +143,7 @@ SVG 支持在填充和描边上应用渐变色，使用 <linearGradient>。
 `transform` 属性用来定义元素及其子元素的形变的列表。
 
 - 可以与任何一个 SVG 中的元素一起使用。会**在该元素内部建立一个新的坐标系统**。
-- 从 SVG2.0 开始，`transform` 它是一个 **Presentation Attribute**，意味着它可以用作 CSS 属性。
+- 从 SVG2.0 开始，`transform` 它是一个 **Presentation Attribute**，意味着它也可以用作 CSS 属性。
 - transform 同时作为 CSS 属性，和元素（attribute）属性，语法上会存在一些差异。
 	- 比如作为元素（attribute）属性时：仅支持 2D 变换，不需单位；
 	- 比如作为元素（attribute）属性时 `rotate()` 可指定旋转原点。
@@ -215,11 +216,10 @@ SVG 支持在填充和描边上应用渐变色，使用 <linearGradient>。
 
 想给各种描边添加动画效果，需用到下面两个属性：
 
-- `stroke-dasharray =“number [, number , ….]”`：将虚线类型应用在描边上，该值必须是用逗号分割的数字组成的数列，空格会被忽略。比如 3，5 :
-
-	- 第一个表示填色区域的长度为 3
-	- 第二个表示非填色区域的长度为 5
-
+- `stroke-dasharray =“number [, number , ….]”`：将虚线类型应用在描边上，必须是用**逗号**分割的数字组成的数列，空格会被忽略。比如 `3，5` :
+- 第一个表示填色区域的长度为 3；
+	- 第二个表示非填色区域的长度为 5。
+	
 - `stroke-dashoffset`：指定在 **dasharray 模式**下路径的偏移量。
 - 值为 number 类型，除了可以正值，也可以取负值。
 
@@ -227,7 +227,7 @@ SVG 支持在填充和描边上应用渐变色，使用 <linearGradient>。
 
 1. 先将描边设置为虚线。
 2. 接着将描边偏移到不可见处。
-3. 通过动画改变偏移量，让描边慢慢变为可见，偏移量设置的大，则动画效果快。
+3. 通过动画改变偏移量，让描边变为可见，偏移量设置的大，则动画效果快。
 
 03-SVG\demo-project\12-SVG描边动画\04-stroke描边动画效果4.html
 
@@ -286,7 +286,7 @@ SVG 支持在填充和描边上应用渐变色，使用 <linearGradient>。
 1. 找到一个雪糕的 SVG 图片（设计师提供 | 网站下载）。
 2. 将雪糕的每一个路径都改成虚线。
 3. 将每个路径的描边都偏移到虚线的空白处（不可见）。
-4. 给每个路径添加动画，将路径描边慢慢偏移到虚线填充处，即可。
+4. 给每个路径添加动画，将路径描边偏移到虚线填充处，即可。
 
 03-SVG\demo-project\12-SVG描边动画\05-雪糕动画案例.html
 
@@ -378,7 +378,7 @@ SMIL 方式实现动画的优势：
 	- `begin`：定义何时开始动画或何时丢弃元素。默认是 0s 。
 	- `dur`：动画的持续时间，该值必须，并要求大于 0。单位可以用小时 (h)、分钟 (m)、秒 (s) 或毫秒 (ms) 表示。
 	- `fill`：定义动画的最终状态。 `freeze`（保持最后一个动画帧的状态） | `remove`（保持第一个动画帧的状态）。
-	- `repeatCount`：指示动画将发生的次数：[number] | indefinite。没有默认值。
+	- `repeatCount`：指示动画将发生的次数：[number] | `indefinite`。没有默认值。
 
 	03-SVG\demo-project\13-SVG的SMIL动画\02-animate元素-动画.html
 

@@ -15,11 +15,11 @@ Canvas 绘画状态包括：
 
 - 当前应用的变形（即移动，旋转和缩放）
 - 以及这些属性：
-	- strokeStyle, fillStyle；
-	- globalAlpha；
-	- lineWidth, lineCap, lineJoin；
-	- font, textAlign, textBaseline；
-	- miterLimit, shadowOffsetX, shadowOffsetY, shadowBlur, shadowColor, ......
+	- `strokeStyle`, `fillStyle`；
+	- `globalAlpha`；
+	- `lineWidth`, `lineCap`, `lineJoin`；
+	- `font`, `textAlign`, `textBaseline`；
+	- `miterLimit`, `shadowOffsetX`, `shadowOffsetY`, `shadowBlur`, `shadowColor`, ......
 - 当前的裁切路径（clipping path）
 
 02-Canvas\demo-project\05-Canvas绘画状态\02-保存和恢复绘画状态.html
@@ -83,7 +83,7 @@ Canvas 绘画状态包括：
 
 # Canvas 形变
 
-Canvas 和 CSS3 一样也支持变形；可以将坐标进行移动、旋转和缩放。
+Canvas 和 CSS3 一样也支持形变；可以将**坐标**进行移动、旋转和缩放。
 
 Canvas 的形变有4种方法实现：
 - `translate(x, y)`：用来移动 canvas 和它的原点到一个不同的位置。
@@ -102,16 +102,16 @@ Canvas 的形变有4种方法实现：
 
 ## Canvas 的移动
 
-translate 方法，它用来移动 canvas 和它的原点到一个不同的位置。
+`translate` 方法，它用来移动 canvas 和它的原点到一个不同的位置。
 
 - `translate(x, y)`：x 是左右偏移量，y 是上下偏移量（无需单位）。
 
-translate 方法可让我们任意放置图形，而不需要手工一个个调整坐标值。
+`translate` 方法可任意放置图形，而不需要手工一个个调整坐标值。
 
 比如要移动一个矩形的位置，可以这么做：
 
 1. 先保存一下 canvas 当前的状态；
-2. 在绘制图形前 translate 移动画布；
+2. 在绘制图形前 translate 移动画布坐标系；
 3. 开始绘制图形，并填充颜色。
 
 02-Canvas\demo-project\06-Canvas的形变\01-形变-translate.html
@@ -137,7 +137,7 @@ window.onload = function() {
 
 ## Canvas 的旋转
 
-rotate 方法，它用于以原点为中心旋转 canvas，即沿着 z 轴 旋转。
+`rotate` 方法，它用于以原点为中心旋转 canvas，即沿着 z 轴 旋转。
 
 `rotate(angle)`：只接受一个参数：旋转的弧度 (angle)，它是顺时针方向，
 
@@ -173,7 +173,7 @@ window.onload = function() {
 
 ## Canvas 的缩放
 
-scale 方法可以缩放画布。可用它来增减图形在 canvas 中的像素数目，对图形进行缩小或者放大。
+`scale` 方法可以缩放画布。可用它来增减图形在 canvas 中的像素数目，对图形进行缩小或者放大。
 
 - `scale(x, y)`：x 为水平缩放因子，y 为垂直缩放因子，也支持负数；如果比 1 小，会缩小图形，如果比 1 大会放大图形。默认值为 1。
 
@@ -214,10 +214,10 @@ window.onload = function() {
 Canvas 绘图都是通过 JavaScript 去操控的，如要实现一些交互性动画是相当容易的。那 Canvas 是如何做一些基本动画的？
 - canvas 可能最大的限制就是图像一旦绘制出来，就不会改变。
 - 如需要执行动画，不得不对画布上所有图形进行一帧一帧的重绘（比如在1秒绘60帧就可绘出流畅的动画了）。
-- 为了实现动画，我们需要一些可以定时执行重绘的方法。然而在 Canvas 中有三种方法可以实现：分别为 `setInterval`、`setTimeout` 和 `requestAnimationFrame` 三种方法来定期执行指定函数进行重绘。
+- 为了实现动画，我们需要一些可以定时执行重绘的方法，有三种方法可以实现：分别为 `setInterval`、`setTimeout` 和 `requestAnimationFrame` 三种方法来定期执行指定函数进行重绘。
 
 Canvas 画出一帧动画的基本步骤（如要画出流畅动画，1s 需绘 60 帧）：
-1. 用 clearRect 方法清空 canvas ，除非接下来要画的内容会完全充满 canvas（例如背景图），否则你需要清空所有。
+1. 用 `clearRect` 方法清空 canvas ，除非接下来要画的内容会完全充满 canvas（例如背景图），否则你需要清空所有。
 2. 保存 canvas 状态，如果加了 canvas 状态的设置（样式，变形之类的），又想在每画一帧之时都是原始状态的话， 你需要先保存一下，后面再恢复原始状态。
 3. 绘制动画图形（animated shapes） ，即绘制动画中的一帧。
 4. 恢复 canvas 状态，如果已经保存了 canvas 的状态，先恢复它，然后重绘下一帧。
@@ -228,7 +228,7 @@ Canvas 画出一帧动画的基本步骤（如要画出流畅动画，1s 需绘 
 
 步骤：
 
-1. 用 clearRect(x,y,w,h) 方法，清空 canvas 。
+1. 用 `clearRect(x,y,w,h)` 方法，清空 canvas 。
 2. 保存 canvas 状态 。
 3. 修改 canvas 状态 （样式、移动坐标、旋转等）。
 4. 绘制秒针图形（即绘制动画中的一帧）。
@@ -267,17 +267,16 @@ window.onload = function() {
 }
 ```
 
-setInterval 定时器的缺陷
+`setInterval` 定时器的缺陷
 
-- setInterval 定时器不是非常精准的，因为 setInterval 的回调函数是放到了宏任务中等待执行。
-- 如果微任务中一直有未处理完成的任务，那么 setInterval 的回调函数就有可能不会在指定时间内触发回调。
-- 如果想要更加平稳和更加精准的定时执行某个任务的话，就要使用 `requestAnimationFrame` 函数。
+-  `setInterval` 的回调函数是放到了宏任务中等待执行。
+- 如果微任务中一直有未处理完成的任务，那么 `setInterval` 的回调函数就有可能不会在指定时间内触发回调。
+- 如果想要更加平稳和更加精准的定时执行某个任务的话，就用 `requestAnimationFrame` 函数。
 
-### 使用 requestAnimationFrame
+### 使用 requestAnimationFrame 绘制
 
 `requestAnimationFrame` 函数：
 
-- 告诉浏览器——你希望执行一个动画，并且要求浏览器在下次重绘之前调用该函数的回调函数来更新动画。
 - 该方法需要传入一个回调函数作为参数，该回调函数会在浏览器下一次重绘之前执行
 - 若想在浏览器下次重绘之前继续更新下一帧动画，那么在回调函数自身内必须再次调用 `requestAnimationFrame()`
 - 通常每秒钟回调函数执行 60 次左右，也有可能会被降低。
@@ -413,9 +412,10 @@ window.onload = function() {
 - 圆上 x, y 轴坐标实际上就是下图的 ( AB, BC )，AC 为时钟半径
 - x = AB = cosa * AC => x = Math.cos(弧度) * R
 - y = BC = sina * AC => y = Math.sin(弧度) * R
-- 第 i 小时的坐标： 
-	- x = Math.cos( Math.PI * 2 / 12 * i ) * R 
-	- y = Math.sin( Math.PI * 2 / 12 * i ) * R
+
+第 i 小时的坐标： 
+- x = Math.cos( Math.PI * 2 / 12 * i ) * R 
+- y = Math.sin( Math.PI * 2 / 12 * i ) * R
 
 <img src="NodeAssets/时钟数字坐标计算.jpg" style="zoom:80%;" />
 

@@ -1,8 +1,10 @@
 # SVG 可绘制哪些基本形状
 
-- 在 SVG 画布中，如果要想插入一个形状，可以在文档中创建一个对应的元素。
-- 并且可以使用不同的属性，来定义图形的大小和位置。
-- SVG 所支持的基本形状有：矩形、圆形、椭圆、线条、折线、多边形、路径。
+在 SVG 画布中，如果要想插入一个形状，可以在文档中创建一个对应的元素。
+
+并且可以使用不同的属性，来定义图形的大小和位置。
+
+SVG 所支持的基本形状有：矩形、圆形、椭圆、线条、折线、多边形、路径。
 
 # SVG 绘制圆形
 
@@ -159,16 +161,16 @@
 有哪些命令？
 
 - 直线命令：
-	- M / m：Move To
-	- L / l：Line To
-	- Z / z：Close Path
-	- H / h：horizontal
-	- V / v：vertical
+	- `M` / `m`：Move To
+	- `L` / `l`：Line To
+	- `Z` / `z`：Close Path
+	- `H` / `h`：horizontal
+	- `V` / `v`：vertical
 - 曲线命令
-	- C：三次贝塞尔曲线
-	- S：简写三次贝塞尔曲线
-	- Q：二次贝塞尔曲线
-	- T：简写二次贝塞尔曲线
+	- `C`：三次贝塞尔曲线
+	- `S`：简写三次贝塞尔曲线
+	- `Q`：二次贝塞尔曲线
+	- `T`：简写二次贝塞尔曲线
 
 # SVG 绘制图片
 
@@ -280,7 +282,7 @@ text {
 
 <tspan> 元素用来标记文本的子部分，它必须是一个 <text> 元素或别的 <tspan> 元素的子元素。
 
-- `x` 和 `y` 属性决定了文本在视口坐标系中显示的位置。
+- `x` 和 `y` 属性决定了文本在**视口坐标系**中显示的位置。
 - `alignment-baseline` 基线对齐属性：`auto`、`baseline`、`middle`、`hanging`、`top`、`bottom` ...，默认是 `auto`。
 
 03-SVG\demo-project\06-SVG绘制图片和文字\03-绘制-文字-tspan.html
@@ -323,7 +325,7 @@ text {
 
 # SVG 中图形元素的复用
 
-SVG 中定义一可复用元素，使用 <defs> 元素，
+SVG 中定义可复用元素，使用 <defs> 元素，
 
 再通过 <use> 元素来引用和显示。
 
@@ -479,7 +481,7 @@ SVG 中使用 <use> 元素，获取定义的节点，复制到指定的地方。
 <symbol> 和 <defs> 的区别：
 
 - <symbol> 元素可以使用属性，<defs> 元素没有专有属性。
-	- 比如： viewBox、 preserveAspectRatio 、x、y、width、height 等。
+	- 比如： `viewBox`、 `preserveAspectRatio` 、`x`、`y`、`width`、`height` 等。
 - <symbol> 元素有自己用户坐标系，可以用于制作 SVG 精灵图。
 - <symbol> 元素定义的图形增加了结构和语义性，提高文档的可访问性。
 
@@ -494,7 +496,7 @@ SVG 中使用 <use> 元素，获取定义的节点，复制到指定的地方。
 给 SVG 中的元素上色，有两种方案：
 
 - 方案一：使用元素的属性，比如：填充（fill）属性、描边（stroke）属性等。
-- 方案二：使用 CSS 样式，因为 svg 也是 HTML 中的元素，也支持用 CSS 的方式来编写样式。
+- 方案二：使用 CSS 样式，因为 svg 也是 HTML 中的元素，也支持用 CSS 编写样式。
 
 ## SVG 属性实现元素的填充和描边
 
@@ -556,13 +558,13 @@ CSS 样式可写在 <defs> 中，也可写在 HTML 头部或外部等）。
 
 不是所有的属性都能用 CSS 来设置：
 
-- 比如，`fill`，`stroke`，`stroke-dasharray` 等可以用 CSS 设置；
-- 比如，路径的命令则不能用 CSS 设置。
+- `fill`，`stroke`，`stroke-dasharray` 等可以用 CSS 设置；
+- 路径的命令则不能用 CSS 设置。
 
 > SVG 规范中将属性区分成 `Presentation Attributes` 和 `Attributes` 属性。
 >
-> - [Presentation Attributes 属性（支持 CSS 和元素用）](https://developer.> mozilla.org/en-US/docs/Web/SVG/Attribute/Presentation)
-> - [Attributes 属性（只能在元素用）](https://developer.mozilla.org/> en-US/docs/Web/SVG/Attribute)
+> - [Presentation Attributes](https://developer.> mozilla.org/en-US/docs/Web/SVG/Attribute/Presentation)，支持 CSS 和元素用。
+> - [Attributes ](https://developer.mozilla.org/> en-US/docs/Web/SVG/Attribute)，只能在元素用。
 
 
 CSS 支持如下4种编写方式：
@@ -574,6 +576,6 @@ CSS 支持如下4种编写方式：
 
 CSS样式优先级别：
 
-- 行内 style > defs 中的内联 style > 外部 / head 内联 style > 属性，如 fill
+- 行内 `style` > <defs> 中的内联 <style> > 外部 / <head> 内联 <style> > 元素上的属性，如 `fill`
 
 
