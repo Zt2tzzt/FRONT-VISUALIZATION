@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body, ul{
+      margin: 0;
+      padding: 0;
+    }
+
+    body{
+      background-image: url(../images/grid.png);
+    }
+    svg{
+      background-color: rgba(255, 0, 0, 0.1);
+    }
+  </style>
+
+</head>
+<body>
+
+  <svg width="300" height="300" xmlns="http://www.w3.org/2000/svg" >
+    
+    <!-- 汽车 -->
+    <rect id="rectangle" x="-10" y="-5" width="20" height="10" rx="4" ry="4" fill="red"></rect>
+
+    <!-- 图形 -->
+    <path id="linePath" d="M 0 100, L 100 30, L 200 100, L 300 30" fill="transparent" stroke="red"></path>
+
+    <!-- 动画 -->
+    <animateMotion
+      href="#rectangle"
+      dur="5s"
+      rotate="auto"
+      fill="freeze"
+    >
+      <mpath href="#linePath"></mpath>
+    </animateMotion>
+  </svg>
+
+</body>
+</html>

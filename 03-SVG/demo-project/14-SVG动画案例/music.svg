@@ -1,0 +1,91 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="100"
+  viewBox="0 0 80 100"
+>
+  <!-- line 1 -->
+  <rect
+        fill="#fff"
+        width="3"
+        height="100"
+        transform="rotate(180,3,50)"
+  >
+    <animate
+          attributeName="height"
+          values="30; 100; 30"
+          dur="1s"
+          repeatCount="indefinite"
+          begin="0s"
+    >
+    </animate>
+  </rect>
+  <!-- line2 -->
+  <rect
+        x="17"
+        fill="#fff"
+        width="3"
+        height="100"
+        transform="rotate(180 20 50)"
+  >
+    <animate
+          attributeName="height"
+          values="30; 100; 30"
+          dur="1s"
+          repeatCount="indefinite"
+          begin="0.1s"
+    >
+    </animate>
+  </rect>
+  <!-- line3 -->
+  <rect
+        x="40"
+        fill="#fff"
+        width="3"
+        height="100"
+        transform="rotate(180,40,50)"
+  >
+  <animate
+        attributeName="height"
+        values="30; 100; 30"
+        dur="1s"
+        repeatCount="indefinite"
+        begin="0.3s"
+  >
+  </animate>
+  </rect>
+  <!-- line4 -->
+  <rect
+        x="60"
+        fill="#fff"
+        width="3"
+        height="100"
+        transform="rotate(180 58 50)"
+  >
+    <animate
+          attributeName="height"
+          values="30; 100; 30"
+          dur="1s"
+          repeatCount="indefinite"
+          begin="0.5s"
+    >
+    </animate>
+  </rect>
+  <!-- line4 -->
+  <rect
+        x="80"
+        fill="#fff"
+        width="3"
+        height="100"
+        transform="translate(0) rotate(180 76 50)"
+  >
+    <animate
+          attributeName="height"
+          values="30; 100; 30"
+          dur="1s"
+          repeatCount="indefinite"
+          begin="0.1s"
+    >
+    </animate>
+  </rect>
+</svg>

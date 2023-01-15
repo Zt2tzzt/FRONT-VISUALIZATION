@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .first-box {
+        width: 600px;
+        height: 314px;
+        background: url(./images/bg-location.png);
+        background-size: 100% 100%;
+      }
+      
+      /* 定位的 icon */
+      #loc1{
+        animation: moveLoc1Icon1 1s linear infinite alternate;
+      }
+      #loc2{
+        animation: moveLoc2Icon 1s linear infinite alternate;
+        animation-delay: 0.3s;
+      }
+      
+      @keyframes moveLoc1Icon1{
+        0%{
+          transform: translateY(-20px);
+        }
+        100%{
+          transform: translateY(0px);
+        }
+      }
+      @keyframes moveLoc2Icon{
+        0%{
+          transform: translateY(0px);
+        }
+        100%{
+          transform: translateY(10px);
+        }
+      }
+
+      
+      #c1{
+        animation: scaleEllipse1 2s linear infinite;
+      }
+
+      #c2{
+        animation: scaleEllipse2 2s linear infinite;
+        animation-delay: 1s;
+      }
+
+      #c3, #c4{
+        animation: scaleEllipse3 2s linear infinite;
+      }
+
+      #c4{
+        animation-delay: 1s;
+      }
+
+
+      @keyframes scaleEllipse1{
+        0%{
+          rx:0;
+          ry:0;
+          opacity: 1;
+        }
+        100%{
+          rx:16;
+          ry:8;
+          opacity: 0;
+        }
+      }
+      @keyframes scaleEllipse2{
+        0%{
+          rx:0;
+          ry:0;
+          opacity: 1;
+        }
+        100%{
+          rx:12;
+          ry:6;
+          opacity: 0;
+        }
+      }
+      @keyframes scaleEllipse3{
+        0%{
+          rx:0;
+          ry:0;
+          opacity: 1;
+        }
+        100%{
+          rx:10;
+          ry:5;
+          opacity: 0;
+        }
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="box-left first-box">
+      
+      <svg
+        id="location"
+        height="400"
+        version="1.1"
+        width="744"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <desc>Created with Snap</desc>
+        <defs>
+          <linearGradient
+            x1="100%"
+            y1="40.7087699%"
+            x2="4.9797314%"
+            y2="60.8683027%"
+            id="linearGradient-1"
+          >
+            <stop stop-color="#F5533D" stop-opacity="0" offset="0%"></stop>
+            <stop stop-color="#F5533D" offset="44.5180532%"></stop>
+            <stop stop-color="#F5533D" stop-opacity="0" offset="100%"></stop>
+          </linearGradient>
+        </defs>
+        <image
+          id="loc1"
+          xlink:href="./images/redPoint.png"
+          preserveAspectRatio="none"
+          x="265"
+          y="50.275"
+          width="55"
+          height="74"
+        ></image>
+        <image
+          id="loc2"
+          xlink:href="./images/smPoint.png"
+          preserveAspectRatio="none"
+          x="155"
+          y="69.97776888888889"
+          width="25"
+          height="34"
+        ></image>
+        <image
+          id="loc3"
+          xlink:href="./images/smPoint.png"
+          preserveAspectRatio="none"
+          x="435"
+          y="90.35983743115371"
+          width="25"
+          height="34"
+        ></image>
+        <image
+          xlink:href=" ./images/bg-red.png"
+          preserveAspectRatio="none"
+          x="278"
+          y="94"
+          width="30"
+          height="100"
+        ></image>
+        <image
+          xlink:href=" ./images/bg-red.png"
+          preserveAspectRatio="none"
+          x="160"
+          y="94"
+          width="15"
+          height="50"
+        ></image>
+        <image
+          xlink:href="./images/first-smbg.png"
+          preserveAspectRatio="none"
+          x="438"
+          y="125"
+          width="20"
+          height="20"
+        ></image>
+        <ellipse
+          id="c1"
+          cx="293"
+          cy="187"
+          rx="8.106666666666667"
+          ry="3.546666666666667"
+          fill="rgba(0,0,0,0)"
+          stroke="#ff0000"
+          style="opacity: 0.493333"
+        ></ellipse>
+        <ellipse
+          id="c2"
+          cx="293"
+          cy="187"
+          rx="0"
+          ry="0"
+          fill="rgba(0,0,0,0)"
+          stroke="#ff0000"
+          style="opacity: 1"
+        ></ellipse>
+        <ellipse
+          id="c3"
+          cx="168"
+          cy="143"
+          rx="0"
+          ry="0"
+          fill="rgba(0,0,0,0)"
+          stroke="#ff0000"
+          style="opacity: 1"
+        ></ellipse>
+        <ellipse
+          id="c4"
+          cx="168"
+          cy="143"
+          rx="6.08"
+          ry="2.5333333333333337"
+          fill="rgba(0,0,0,0)"
+          stroke="#ff0000"
+          style="opacity: 0.493333"
+        ></ellipse>
+      </svg>
+
+    </div>
+  </body>
+</html>

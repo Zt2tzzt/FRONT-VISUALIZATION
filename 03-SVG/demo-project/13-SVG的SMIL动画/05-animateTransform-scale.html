@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body, ul{
+      margin: 0;
+      padding: 0;
+    }
+
+    body{
+      background-image: url(../images/grid.png);
+    }
+    svg{
+      background-color: rgba(255, 0, 0, 0.1);
+    }
+  </style>
+
+</head>
+<body>
+
+  <svg width="300" height="200" xmlns="http://www.w3.org/2000/svg" >
+    <rect x="0" y="0" width="100" height="50" fill="red">
+      <animateTransform
+        attributeName="transform"
+        type="scale"
+        from="1 1"
+        to="1 3"
+        dur="2s"
+        begin="1s"
+        repeatCount="indefinite"
+      >
+      </animateTransform>
+    </rect>
+  </svg>
+
+  <svg width="300" height="200" xmlns="http://www.w3.org/2000/svg" >
+    <rect x="0" y="0" width="100" height="50" fill="red">
+      <animateTransform
+        attributeName="transform"
+        type="scale"
+        values="1; 0.5"
+        dur="2s"
+        begin="1s"
+        repeatCount="indefinite"
+      >
+      </animateTransform>
+    </rect>
+  </svg>
+
+
+
+</body>
+</html>

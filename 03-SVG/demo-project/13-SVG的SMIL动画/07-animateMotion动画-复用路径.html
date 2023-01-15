@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body{
+      margin: 0;
+      padding: 0;
+      background-image: url(../images/grid.png);
+    }
+    svg{
+      background-color: rgba(255, 0, 0, 0.1);
+    }
+  </style>
+
+</head>
+<body>
+
+  <svg width="300" height="300" xmlns="http://www.w3.org/2000/svg" >
+    <!-- 路径 -->
+    <path id="linePath" d="M 0 100, L 100 30, L 200 100, L 300 30" fill="transparent" stroke="red"></path>
+
+    <!-- 汽车 -->
+    <rect x="0" y="0" width="20" height="10" rx="4" ry="4" fill="red">
+      <!-- 动画 -->
+      <animateMotion
+       dur="5s"
+       rotate="auto"
+      >
+        <mpath href="#linePath"></mpath>
+      </animateMotion>
+    </rect>
+  </svg>
+
+</body>
+</html>

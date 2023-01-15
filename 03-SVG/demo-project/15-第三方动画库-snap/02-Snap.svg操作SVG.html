@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-image: url(../images/grid.png);
+    }
+
+    svg {
+      background-color: rgba(255, 0, 0, 0.1);
+    }
+  </style>
+
+</head>
+<body>
+
+  <svg id="ztSvg" width="300" height="300" xmlns="http://www.w3.org/2000/svg" >
+    <rect id="rectangle1" x="0" y="0" width="100" height="50"></rect>
+  </svg>
+
+  <script src="./libs/snap.svg-min.js"></script>
+  <script>
+    window.onload = function() {
+      const svg = Snap('#ztSvg')
+      const paper = svg.paper
+
+      // 1.绘制一个矩形
+      const rectangle = paper.rect(0, 100, 100, 50)
+      rectangle.attr({
+        fill: 'red'
+      })
+
+      // 2.选择一个矩形
+      const rectangle1 = paper.select('#rectangle1')
+      rectangle1.attr({
+        fill: 'green'
+      })
+
+    }
+  </script>
+</body>
+</html>

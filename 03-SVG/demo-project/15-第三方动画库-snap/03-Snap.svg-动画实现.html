@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-image: url(../images/grid.png);
+    }
+    svg {
+      background-color: rgba(255, 0, 0, 0.1);
+    }
+  </style>
+
+</head>
+<body>
+
+  <svg id="hySvg" width="300" height="300" xmlns="http://www.w3.org/2000/svg" >
+    <rect id="rectangle1" x="0" y="0" width="100" height="50"></rect>
+  </svg>
+
+  <script src="./libs/snap.svg-min.js"></script>
+  <script>
+    window.onload = function() {
+      const svg = Snap('#hySvg')
+      const paper = svg.paper
+
+      // 1.绘制一个矩形
+      const rectangle = paper.rect(0, 100, 100, 50)
+      rectangle.attr({
+        fill: 'red'
+      })
+
+      // 2.选择一个矩形
+      const rectangle1 = paper.select('#rectangle1')
+      rectangle1.attr({
+        fill: 'green'
+      })
+
+      // 3.动画的实现（底层用 requestAnimatationFrame 实现，1s 回调 61 次)
+      Snap.animate(
+        0, // from
+        200, // to
+        function(val) {
+          console.log('val', val)
+          // 这里会回调 61 次, 会将0-200拆分成61份
+          rectangle.attr({
+            x: val
+          })
+        },
+        1000, // begin 毫秒 -> 1s
+        mina.linear,
+        function() {
+          console.log('动画结束了')
+        }
+      )
+    
+      Snap.animate(
+        [0, 0], // from x ,y 
+        [200, 200], // to x, y
+        function(val) {
+          console.log('val', val)
+          // 这里会回调 61 次, 会将0-200拆分成61份
+          rectangle1.attr({
+            x: val[0],
+            y: val[1]
+          })
+        },
+        3000, // 毫秒 -> 1s
+        mina.easeout,
+        function() {
+          console.log('动画结束了')
+        }
+      )
+    }
+  </script>
+</body>
+</html>

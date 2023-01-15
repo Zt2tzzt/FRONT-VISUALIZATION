@@ -2,8 +2,8 @@
 
 SVG 支持在填充和描边上应用渐变色，使用 <linearGradient>。
 
-- 编写渐变时，必须给渐变内容指定一个 `id` 属性，用于 <use> 引用。
 - 建议渐变内容定义在 <defs> 标签内部，因为渐变通常是可复用的。
+- 编写渐变时，必须给渐变内容指定一个 `id` 属性，用于 <use> 引用。
 
 渐变有两种类型：**线性渐变**和**径向渐变**。
 
@@ -11,11 +11,11 @@ SVG 支持在填充和描边上应用渐变色，使用 <linearGradient>。
 
 线性渐变，是沿着直线改变颜色。使用步骤：
 
-1. 在 SVG 文件的 <defs> 元素内部，创建一个 <linearGradient> 节点，并添加 `id` 属性。
-2. 在 <linearGradient> 内编写几个 <stop> 结点。
-	- 给 <stop> 结点指定位置 `offset` 属性和颜色 `stop-color` 属性，用来指定渐变在特定的位置上应用什么颜色（这两个属性值，也可以通过 CSS 来指定）。
-	- 给 <stop> 结点指定某个位置的半透明度，通过 `stop-opacity` 属性。
-3. 在一个元素的 `fill` 属性或 `stroke` 属性中通过 `id` 来引用 <linearGradient> 节点。如 `fill=url(#Gradient2)`。
+1. <defs> 元素内部，创建一个 <linearGradient> 节点，并添加 `id` 属性。
+2. <linearGradient> 内编写几个 <stop> 元素。
+	- 给 <stop> 元素指定 `offset` （位置）属性和 `stop-color` （颜色）属性，用来指定渐变在特定的位置上应用什么颜色（这两个属性值，也可以通过 CSS 来指定）。
+	- 给 <stop> 元素指定 `stop-opacity` （透明度）属性。
+3. 在一个元素的 `fill` 属性或 `stroke` 属性中通过 id 选择器来引用 <linearGradient> 节点。如 `fill=url(#Gradient2)`。
 4. 控制渐变方向，通过 `(x1, y1)` 和 `(x2, y2)` 两个点控制。
 	- `(0, 0) (0, 1)` 从上到下；`(0, 0) (1, 0)` 从左到右。
 	- 也可以通过 `gradientTransform` 属性设置渐变形变。比如：`gradientTransform=“rotate(90)`表示从上到下。
@@ -110,7 +110,7 @@ SVG 支持在填充和描边上应用渐变色，使用 <linearGradient>。
 </html>
 ```
 
-- 方案二：使用 SVG 的 `filter` 和 `feGaussianBlur` 元素（建议少用）：
+- 方案二：使用 SVG 的 <filter>  和 <feGaussianBlur> 元素（建议少用）：
 
 	- <filter>：滤镜操作的容器，该元素定义的滤镜效果，需要在 SVG 元素上的 `filter` 属性引用。
 		- `x`，`y`，`width`，`height` 定义了在画布上应用此过滤器的矩形区域；`x`，`y` 默认值为 -10%（相对自身）；`width` ，`height` 默认 值为 120% （相对自身）。
@@ -144,7 +144,7 @@ SVG 支持在填充和描边上应用渐变色，使用 <linearGradient>。
 
 - 可以与任何一个 SVG 中的元素一起使用。会**在该元素内部建立一个新的坐标系统**。
 - 从 SVG2.0 开始，`transform` 它是一个 **Presentation Attribute**，意味着它也可以用作 CSS 属性。
-- transform 同时作为 CSS 属性，和元素（attribute）属性，语法上会存在一些差异。
+- `transform` 同时作为 CSS 属性，和元素（attribute）属性，语法上会存在一些差异。
 	- 比如作为元素（attribute）属性时：仅支持 2D 变换，不需单位；
 	- 比如作为元素（attribute）属性时 `rotate()` 可指定旋转原点。
 
@@ -177,7 +177,7 @@ SVG 支持在填充和描边上应用渐变色，使用 <linearGradient>。
 `rotate(deg, cx, cy)` 函数。仅支持 2D 变化。
 
 - 一个值时，设置以 z 轴为轴心，进行旋转的角度。
-- 三个值时，后两个值 cx, cy 指定旋转的圆点（相对于自身）
+- 三个值时，后两个值 cx, cy 指定旋转的圆点（相对于自身坐标系）
 
 03-SVG\demo-project\11-SVG的形变\02-旋转-rotate.html
 
@@ -217,9 +217,9 @@ SVG 支持在填充和描边上应用渐变色，使用 <linearGradient>。
 想给各种描边添加动画效果，需用到下面两个属性：
 
 - `stroke-dasharray =“number [, number , ….]”`：将虚线类型应用在描边上，必须是用**逗号**分割的数字组成的数列，空格会被忽略。比如 `3，5` :
-- 第一个表示填色区域的长度为 3；
-	- 第二个表示非填色区域的长度为 5。
-	
+  - 第一个表示填色区域的长度为 3；
+  - 第二个表示非填色区域的长度为 5。
+
 - `stroke-dashoffset`：指定在 **dasharray 模式**下路径的偏移量。
 - 值为 number 类型，除了可以正值，也可以取负值。
 
@@ -320,7 +320,7 @@ SMIL 方式实现动画的优势：
 
 - 只需在页面放几个 animate 元素就可以实现强大的动画效果，无需任何 CSS 和 JS 代码。
 - SMIL 支持声明式动画。声明式动画不需指定如何做某事的细节，而是指定最终结果应该是什么，将实现细节留给客户端软件.
-- 在 JavaScript 中，动画通常使用 `setTimeout()` 或 `setInterval()` 等方法创建，这些方法需要手动管理动画的时间。而 SMIL 声明式动画可以让浏览器自动处理，比如：动画轨迹直接与动画对象相关联、物体和运动路径方向、管理动画时间等等。
+  - 在 JavaScript 中，动画通常使用 `setTimeout()` 或 `setInterval()` 等方法创建，这些方法需要手动管理动画的时间。而 SMIL 声明式动画可以让浏览器自动处理，比如：动画轨迹直接与动画对象相关联、物体和运动路径方向、管理动画时间等等。
 - SMIL 动画还有一个令人愉快的特点是，动画与对象本身是紧密集成的，对于代码的编写和阅读性都非常好。
 
 # SMIL 动画的元素有哪些？
@@ -335,7 +335,7 @@ SMIL 方式实现动画的优势：
 
 常用属性：
 
-- `attributeName`：指示将在动画期间更改的目标元素的 CSS 属性（property）或元素属性（attribute）的名称。
+- `attributeName`：指示将在动画期间更改的目标元素的 CSS 属性或元素属性（attribute）的名称。
 - ~~attributeType~~：（已过期，不推荐）指定定义目标属性的类型（值为：CSS | XML | auto）。
 - `to`：定义在特定时间设置目标属性的值。该值必须与目标属性的要求相匹配。 值类型：anything；默认值：无
 - `begin`：定义何时开始动画或何时丢弃元素，默认是 0s (begin 支持多种类型的值)。
@@ -364,7 +364,7 @@ SMIL 方式实现动画的优势：
 
 常用的属性：
 
-- `attributeName`：指将在动画期间更改目标元素的 property（CSS 属性）或 attribute（元素属性）的名称。
+- `attributeName`：指将在动画期间更改目标元素的 CSS 属性或元素（attribute）属性的名称。
 - 动画值属性：
 
 	- `from`：动画期间属性的初始值。没有默认值。
@@ -380,7 +380,7 @@ SMIL 方式实现动画的优势：
 	- `fill`：定义动画的最终状态。 `freeze`（保持最后一个动画帧的状态） | `remove`（保持第一个动画帧的状态）。
 	- `repeatCount`：指示动画将发生的次数：[number] | `indefinite`。没有默认值。
 
-	03-SVG\demo-project\13-SVG的SMIL动画\02-animate元素-动画.html
+03-SVG\demo-project\13-SVG的SMIL动画\02-animate元素-动画.html
 
 ```xml
 <svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
