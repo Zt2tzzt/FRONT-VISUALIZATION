@@ -126,7 +126,7 @@
 <aniamteMotion> 元素常用属性：
 
 - `path`：定义运动的路径，值和 <path> 元素的 `d` 属性一样，
-- `href` 引用一个进行动画的元素。
+- `href`：引用一个进行动画的元素。
 - `rotate`：动画元素自动跟随路径旋转，使元素动画方向和路径方向相同，值类型：<数字> | `auto` | `auto-reverse`; 默认值：0
 - 动画值属性：`from`、`to` 、`values`
 - 动画时间属性：`begin`、`dur`、`fill`、`repeatCount`
@@ -181,7 +181,7 @@
 	<!-- 汽车 -->
 	<rect id="rectangle" x="-10" y="-5" width="20" height="10" rx="4" ry="4" fill="red"></rect>
 
-	<!-- 图形 -->
+	<!-- 路径 -->
 	<path id="linePath" d="M 0 100, L 100 30, L 200 100, L 300 30" fill="transparent" stroke="red"></path>
 
 	<!-- 动画 -->
@@ -226,7 +226,7 @@
 - Snap 为 Web 开发人员提供了干净、直观、功能强大的 API，专门用来操作 SVG。
 - Snap 可用于创建动画，操作现有的 SVG 内容，以及生成 SVG 内容。
 
-为什么旋转 Snap.svg
+为什么使用 Snap.svg
 
 - Snap 是由 Dmitry Baranovskiy 从零开始编写，专为现代浏览器（IE9 及更高版本、Safari、Chrome、Firefox 和 Opera）而设计的。并且支持遮罩、剪辑、图案、全渐变、组等功能。
 - SVG 内容不必使用 Snap 生成，也可使用 Snap 来处理它。比如可以在 Illustrator 或 Sketch 等工具中创建 SVG 内容，然后使用 Snap 对其进行动画处理或其它操作。

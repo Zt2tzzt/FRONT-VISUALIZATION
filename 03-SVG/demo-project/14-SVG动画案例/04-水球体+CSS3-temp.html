@@ -146,7 +146,7 @@
           if(currentPercentage >= targetPercentage){
             clearInterval(timeId)
           }
-          countEL.innerHTML = currentPercentage
+          countEL.textContent = currentPercentage
 
           if(currentPercentage <= 100){
             waterEl.style.transform = `translateY(${100 - currentPercentage}%)`
