@@ -138,6 +138,7 @@
 	<!-- 画一条路径 -->
 	<path d="M 0 100, L 100 30, L 200 100, L 300 30" fill="transparent" stroke="red"></path>
 
+  <!-- 汽车 -->
 	<rect x="0" y="0" width="20" height="10" rx="4" ry="4" fill="red">
 		<animateMotion
 			path="M 0 100, L 100 30, L 200 100, L 300 30"
@@ -216,7 +217,7 @@
 
 03-SVG\demo-project\14-SVG动画案例\04-水球体+CSS3-temp.html
 
-# Snap 动画
+# Snap 库
 
 官网：http://snapsvg.io/
 
@@ -365,7 +366,7 @@ Snap.svg 的动画实现。
             y: val[1]
           })
         },
-        3000, // 毫秒 -> 1s
+        3000,
         mina.easeout,
         function() {
           console.log('动画结束了')

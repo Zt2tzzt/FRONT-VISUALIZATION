@@ -641,15 +641,14 @@
     <script>
       window.onload = function() {
         
-        const crocodileSVGEl = Snap('#crocodile-2')
+        const crocodileSVGEl = Snap('#crocodile-2') // 获取 svg 画布
 
         const ids = ['eye', 'pie', 'map']
 
         ids.forEach(function(id) {
-          // id = eye  pie  map
           const diagramEl = crocodileSVGEl.select('#diagram-' + id)
           const iconEl = crocodileSVGEl.select('#hit-' + id)
-          iconEl.hover(function() { // // 鼠标的进入
+          iconEl.hover(function() { // 鼠标的进入
             showIcon(diagramEl)
           })
         })
@@ -661,8 +660,7 @@
           Snap.animate(
             0.8,
             1,
-            function(value) { // 30 : 0.8 -> 1
-              // console.log(value)
+            function(value) { // 0.8 -> 1
               diagramEl.attr({
                 transform: `scale(${value})`
               })
