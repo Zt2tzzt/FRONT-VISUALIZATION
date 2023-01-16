@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body, ul{
+      margin: 0;
+      padding: 0;
+      background-image: url(../images/grid.png);
+    }
+    svg{
+      background-color: rgba(255, 0, 0, 0.1);
+    }
+  </style>
+
+</head>
+<body>
+
+  <svg width="300" height="300" xmlns="http://www.w3.org/2000/svg" >
+    <rect id="rectangle1" x="0" y="0" width="50" height="50" fill="skyblue" onclick="scaleRectangle()" ></rect>
+    <rect id="rectangle2" x="100" y="0" width="50" height="50" fill="orange"></rect>
+    <rect id="rectangle3" x="200" y="0" width="50" height="50" fill="purple"></rect>
+  </svg>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+  <script>
+  function scaleRectangle() {
+    // 1 - 3
+    gsap.to('#rectangle1', {
+      scale: 0.5,
+      duration: 1
+    })
+
+    gsap.to('#rectangle2', {
+      scale: 0.5,
+      duration: 1,
+      delay: 1
+    })
+
+    gsap.to('#rectangle3', {
+      scale: 0.5,
+      duration: 1,
+      delay: 2
+    })
+  }
+  </script>
+</body>
+</html>
