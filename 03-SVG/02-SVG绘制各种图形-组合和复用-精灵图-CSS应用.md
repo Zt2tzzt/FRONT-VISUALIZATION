@@ -124,8 +124,8 @@ SVG 所支持的基本形状有：矩形、圆形、椭圆、线条、折线、�
 路径有1个基本属性 `d` 用来基于用户坐标系设置路径点的位置。
 
 - `d`：一个点集数列，采用命令+参数的序列，必须以 `M` 命令开头。
-- 所以点列表 (0,0), (1,1) 和 (2,2) 推荐写成这样：“M 0 0, 1 1, 2 2”。
-- 支持格式： “M 0 0, 1 1, 2 2” 或 “M 0 0, 1 1, 2 2” 或 “M 0，0, 1, 1, 2，2” 或 “M 0 0 1 1 2 2”
+- 所以点列表 (0,0), (1,1) 和 (2,2) 推荐写成这样：`M 0 0, 1 1, 2 2`。
+- 支持格式： “`M 0 0, 1 1, 2 2`” 或 “`M 0，0, 1, 1, 2，2`” 或 “`M 0 0 1 1 2 2`”
 
 03-SVG\demo-project\05-SVG基本图形\07-绘制-路径.html
 
@@ -134,7 +134,7 @@ SVG 所支持的基本形状有：矩形、圆形、椭圆、线条、折线、�
 	<!-- 使用 path 绘制一个三角新折线 -->
 	<path d="M 20 0, 80 50, 20 100" fill="transparent" stroke="red"></path>
 	<!-- 使用 path 绘制一个闭合的三角形 -->
-	<path d="M 70 0, 130, 50, 70, 100 Z" fill="transparent" stroke="red"></path>
+	<path d="M 70, 0, 130, 50, 70, 100 Z" fill="transparent" stroke="red"></path>
 	<!--
 		使用 path 绘制命令
 			M：MoveTo
@@ -431,7 +431,7 @@ SVG 中使用 <use> 元素，获取定义的节点，复制到指定的地方。
 - `x` 和 `y` ：元素的坐标，默认值：0。
 - `width` 和 `height`：元素的宽度：默认值：0。
 
-制作ICON图标，不使用 <symbol>
+制作 ICON 图标，不使用 <symbol>
 
 03-SVG\demo-project\07-SVG的组合和复用\04-制作ICON图标.html
 
@@ -444,7 +444,7 @@ SVG 中使用 <use> 元素，获取定义的节点，复制到指定的地方。
 	<polygon points="20 0, 80 50, 20 100"></polygon>
 </svg>
 ```
-制作ICON图标，使用 <symbol> 定义，使用 <use> 复用
+制作 ICON 图标，使用 <symbol> 定义，使用 <use> 复用
 
 03-SVG\demo-project\07-SVG的组合和复用\05-制作ICON图标-使用symbol.html
 
@@ -559,7 +559,7 @@ CSS 样式可写在 <defs> 中，也可写在 HTML 头部或外部等）。
 不是所有的属性都能用 CSS 来设置：
 
 - `fill`，`stroke`，`stroke-dasharray` 等可以用 CSS 设置；
-- 路径的命令则不能用 CSS 设置。
+- 路径（<path>）的命令则不能用 CSS 设置。
 
 > SVG 规范中将属性区分成 `Presentation Attributes` 和 `Attributes` 属性。
 >
@@ -577,5 +577,3 @@ CSS 支持如下4种编写方式：
 CSS样式优先级别：
 
 - 行内 `style` > <defs> 中的内联 <style> > 外部 / <head> 内联 <style> > 元素上的属性，如 `fill`
-
-

@@ -134,12 +134,12 @@
 
     <script>
       window.onload = function() {
-        var countEL = document.getElementById('count')
-        var waterEl = document.getElementById('water')
-        var currentPercentage = 0;
-        var targetPercentage = 70;
+        const countEL = document.getElementById('count')
+        const waterEl = document.getElementById('water')
+        let currentPercentage = 0;
+        const targetPercentage = 70;
 
-        var timeId = null
+        let timeId = null
         timeId = setInterval(function(){
           
           currentPercentage++; // 170

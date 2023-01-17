@@ -125,10 +125,10 @@
 
 <aniamteMotion> 元素常用属性：
 
-- `path`：定义运动的路径，值和 <path> 元素的 `d` 属性一样，
+- `path`：定义运动的路径，值和 <path> 元素的 `d` 属性一样；
 - `href`：引用一个进行动画的元素。
 - `rotate`：动画元素自动跟随路径旋转，使元素动画方向和路径方向相同，值类型：<数字> | `auto` | `auto-reverse`; 默认值：0
-- 动画值属性：`from`、`to` 、`values`
+- 动画值属性：`from`、`to`、`values`
 - 动画时间属性：`begin`、`dur`、`fill`、`repeatCount`
 
 基本使用：
@@ -219,7 +219,7 @@
 
 # Snap 库
 
-官网：http://snapsvg.io/
+[官网](http://snapsvg.io/)
 
 什么是 Snap.svg
 
@@ -280,6 +280,7 @@
   <script src="./libs/snap.svg-min.js"></script>
   <script>
     window.onload = function() {
+      // 选中已有的 svg 画布
       const svg = Snap('#ztSvg')
       const paper = svg.paper
 
