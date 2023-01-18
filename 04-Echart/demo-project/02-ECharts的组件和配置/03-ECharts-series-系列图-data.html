@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <div id="main" style="height: 400px"></div>
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.1/dist/echarts.min.js"></script>
+  <script>
+    window.onload = function() {
+      const myChart = echarts.init(document.getElementById('main'));
+      const option = {
+        backgroundColor: 'rgba(255, 0, 0, 0.1)',
+        grid: {
+          show: true,
+          backgroundColor: 'rgba(0, 255, 0, 0.1)',
+        },
+        xAxis: {
+          data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
+        },
+        yAxis: {},
+        series: [
+          {
+            type: 'bar',
+            label: { 
+              show: true // 在柱状图上显示数字
+            },
+            // 方式一
+            // data: [5, 20, 36, 10, 10, 20],
+              
+                   
+            // 方式二
+            // data: [
+            //   // x index ,  y value
+            //   [2, 36],
+            //   [3, 10],
+            //   [4, 10],
+            //   [5, 20],
+            //   [0, 5],
+            //   [1, 20],
+            // ],
+
+            // 方式三(推荐)
+            // data: [
+            //   {
+            //     value: 5,
+            //     name: "衬衫", // 数据项名称, 比如 pie 系列 tooltip 需要用到
+            //   },
+            //   {
+            //     value: 20,
+            //     name: "羊毛衫",
+            //   },
+            //   {
+            //     value: 36,
+            //     name: "雪纺衫",
+            //   },
+            //   {
+            //     value: 10,
+            //     name: "裤子",
+            //   },
+            //   {
+            //     value: 10,
+            //     name: "高跟鞋",
+            //   },
+            //   {
+            //     value: 20,
+            //     name: "袜子",
+            //   },
+            // ],
+                    
+
+            // 方式四
+            // data: [
+            //   {
+            //     value: [0, 5], // 数组第一项为x轴值，第二项为y轴值
+            //     name: "衬衫", // 数据项名称, 比如pie系列 tooltip 需要用到
+            //   },
+            //   {
+            //     value: [1, 20],
+            //     name: "羊毛衫",
+            //   },
+            //   {
+            //     value: [2, 36],
+            //     name: "雪纺衫",
+            //   },
+            //   {
+            //     value: [3, 10],
+            //     name: "裤子",
+            //   },
+            //   {
+            //     value: [4, 10],
+            //     name: "高跟鞋",
+            //   },
+            //   {
+            //     value: [5, 20],
+            //     name: "袜子",
+            //   },
+            // ],
+
+
+            // 方式五(地理坐标系推荐)
+   			    data: [
+              {
+                value: [0, 5, 500], // 第一项为x轴或纬度值，第二项为y或维度轴值，第三项以后为扩展值
+                name: "衬衫", // 数据项名称, 比如pie系列 tooltip 需要用到
+              },
+              {
+                value: [1, 20, 400],
+                name: "羊毛衫",
+              },
+              {
+                value: [2, 36, 200],
+                name: "雪纺衫",
+              },
+              {
+                value: [3, 10, 100],
+                name: "裤子",
+              },
+              {
+                value: [4, 10, 600],
+                name: "高跟鞋",
+              },
+              {
+                value: [5, 20, 300],
+                name: "袜子",
+              },
+            ],
+          }
+        ]
+      };
+      myChart.setOption(option);
+    }
+  </script>
+</body>
+</html>

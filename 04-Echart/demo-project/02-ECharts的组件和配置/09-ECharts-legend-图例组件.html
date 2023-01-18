@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <div id="main" style="height: 400px"></div>
+  <script src="../libs/echarts-5.3.3.js"></script>
+  <script>
+    window.onload = function() {
+      let myChart = echarts.init(document.getElementById('main'));
+      let option = {
+        backgroundColor: 'rgba(255, 0, 0, 0.1)',
+        grid: {
+          show: true,
+          backgroundColor: 'rgba(0, 255, 0, 0.1)',
+        },
+        legend: {
+          show: true,
+          // width: 100,
+          // itemWidth: 20
+          icon: 'circle',  // round circle ...
+
+          // formatter: 'liu-{name}'
+          formatter: function(name) {
+            console.log(name)
+            // 富文本的语法: {style_name|content}
+            return name + '{percentageStyle| 40%}'
+          },
+          textStyle: {
+            rich: { // 给富文本添加样式
+              percentageStyle: {
+                color: 'red',
+                fontSize: 12
+                // css 样式
+              }
+            }
+          }
+
+        },
+        xAxis: {
+          show: false,
+          data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
+        },
+        yAxis: {},
+        series: [
+          {
+            type: 'pie', // line bar scatter pie
+            label: { 
+              show: true
+            },
+   
+            // 方式三(推荐)
+            data: [
+              {
+                value: 5,
+                name: "衬衫", // 数据项名称, 比如pie系列 tooltip 需要用到
+              },
+              {
+                value: 20,
+                name: "羊毛衫",
+              },
+              {
+                value: 36,
+                name: "雪纺衫",
+              },
+              {
+                value: 10,
+                name: "裤子",
+              },
+              {
+                value: 10,
+                name: "高跟鞋",
+              },
+              {
+                value: 20,
+                name: "袜子",
+              },
+            ],
+                 
+
+          }
+        ]
+      };
+      myChart.setOption(option);
+    }
+  </script>
+</body>
+</html>
