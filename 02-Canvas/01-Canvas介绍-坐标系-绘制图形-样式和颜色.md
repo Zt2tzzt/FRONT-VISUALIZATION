@@ -60,9 +60,7 @@ Canvas 缺点：
 			// 1.查找 canvas 的元素对象
 			const canvasEl = document.getElementById('tutorial')
 			if (!canvasEl.getContext) return
-			// 2.拿到 Canvas 渲染的上下文
-      // ctx: CanvasRenderingContext2D
-      // ctx 是一个绘图的上下文: 提供了绘图的指令, 可以绘制各种图形(圆形、直线、椭圆... )
+			// 2.拿到 Canvas 渲染的上下文 ctx 类型 CanvasRenderingContext2D，ctx 是一个绘图的上下文: 提供了绘图的指令, 可以绘制各种图形(圆形、直线、椭圆...)
 			const ctx = canvasEl.getContext('2d') // 2d | webgl
 			console.log('ctx:', ctx)
 		}
@@ -177,16 +175,16 @@ window.onload = function() {
 
 有哪些常用函数？
 
-- `beginPath()`：新建一条路径，生成之后，图形绘制命令被指向到新的路径上绘图，不会关联到旧的路径。
-- `closePath()`：闭合路径之后图形绘制命令又重新指向到 beginPath 之前的上下文中。
+- `beginPath()`：新建一条路径，图形绘制命令指向到新的路径上绘图，与旧路径无关了。
+- `closePath()`：闭合路径后，图形绘制命令又重新指向 beginPath 之前的上下文中。
 - `stroke()`：通过线条来绘制图形轮廓/描边（针对当前路径图形）。
-- `fill()`：通过填充路径的内容区域生成实心的图形（针对当前路径图形）。
+- `fill()`：通过填充路径的内容区域，生成实心的图形（针对当前路径图形）。
 
 # 路径绘制直线
 
 移动画笔 `moveTo` 方法：
 
-1. moveTo 方法是不能画出任何东西，但是它也是路径列表的一部分。
+1. `moveTo` 方法是不能画出任何东西，但是它也是路径列表的一部分。
 2. `moveTo(x, y)`：将画笔移动到指定的坐标 x、y 上。
 4. 当 canvas 初始化或者 beginPath() 调用后，我们通常会使用 `moveTo(x, y)` 函数设置起点。
 5. 使用 `moveTo` 函数能够绘制一些不连续的路径。
@@ -194,7 +192,6 @@ window.onload = function() {
 绘制直线 `lineTo` 方法：
 
 1. `lineTo(x, y)`：绘制一条从当前位置到指定 (x，y) 位置的直线。
-2. 该方法有两个参数 (x，y) 代表坐标系中直线结束的点。
 3. 开始点和之前的绘制路径有关，之前路径的结束点就是接下来的开始点。
 4. 当然开始点也可以通过 `moveTo(x, y)` 函数改变。
 
@@ -262,7 +259,7 @@ window.onload = function() {
 - `arc(x, y, radius, startAngle, endAngle, anticlockwise)`，该方法有六个参数：
 - `x、y`：为绘制圆弧所在圆上的圆心坐标。
 - `radius`：为圆弧半径。
-- `startAngle、endAngle`：该参数用弧度定义了开始以及结束的弧度。这些都是以 x 轴为基准。
+- `startAngle、endAngle`：定义了开始以及结束的弧度。这些都是以 x 轴为基准。
 - `anticlockwise`：布尔值。为 true ，是逆时针方向，为 false，是顺时针方向，默认为 false。
 
 绘制一个圆弧的步骤
@@ -313,7 +310,6 @@ window.onload = function() {
 	// 1.创建一个路径
 	ctx.beginPath()
 	// 2.绘图指令
-	// ctx.moveTo(0, 0)
 	ctx.rect(100, 100, 100, 50)
 	// 3.闭合路径
 	ctx.closePath()
@@ -347,7 +343,7 @@ window.onload = function() {
 
 	// 2.修改画笔的颜色
 	ctx.fillStyle = 'rgba(255, 0, 0, 0.3)'
-	ctx.fillRect(0,0, 100, 50) // 单位也是不用写 px
+	ctx.fillRect(0,0, 100, 50) // 单位不用写 px
 
 	ctx.strokeStyle = 'blue'
 	ctx.strokeRect(200, 0, 100, 50)
@@ -361,7 +357,7 @@ window.onload = function() {
 
 # 为 Canvas 绘制的图形设置透明度 Transparent
 
-方式一：`strokeStyle` 和 `fillStyle` 属性结合RGBA：
+方式一：`strokeStyle` 和 `fillStyle` 属性结合 RGBA：
 
 方式二：`globalAlpha` 属性
 
@@ -394,7 +390,7 @@ window.onload = function() {
 
 # 线型 line styles
 
-调用 lineTo() 函数绘制的线条，可以通过一系列属性来设置线的样式。
+调用 `lineTo()` 函数绘制的线条，可以通过一系列属性来设置线的样式。
 
 - `lineWidth = value`：设置线条宽度。
 - `lineCap = type`：设置线条末端样式。
@@ -402,10 +398,10 @@ window.onload = function() {
 
 线宽的特点 `lineWidth`
 
-- 设置线条宽度的属性值必须为正数。默认值是 1.0px，不需单位。（零、负数、Infinity 和 NaN 值将被忽略）
+- 设置线条宽度的属性值必须为正数。默认值是 1.0px，不需单位（零、负数、Infinity 和 NaN 值将被忽略）。
 - 线宽是指给定路径的中心到两边的粗细。换句话说就是在路径的两边各绘制线宽的一半。
 - 如果你想要绘制一条从 (3,1) 到 (3,5)，宽度是 1.0 的线条，你会得到像第二幅图一样的结果。
-	-	路径的两边各延伸半个像素，填充并渲染出1像素的线条（深蓝色部分）；
+	-	路径的两边各延伸半个像素，填充并渲染出一像素的线条（深蓝色部分）；
 	-	两边剩下的半个像素，又会以实际画笔颜色一半色调来填充（浅蓝部分）；
 	-	实际画出线条的区域为（浅蓝和深蓝的部分），填充色大于1像素了，这就是为何宽度为 1.0 的线经常不准确的原因。
 - 要解决这个问题，必须对路径精确的控制。如，1px 的线条会在路径两边各延伸半像素，那么像第三幅图那样绘制从 (3.5 ,1) 到 (3.5,

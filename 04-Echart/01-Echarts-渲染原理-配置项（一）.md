@@ -30,11 +30,11 @@ ECharts 底层依赖轻量级的 ZRender 图形库，可提供直观，生动，
 强劲的渲染引擎
 - Canvas、SVG 双引擎灵活切换，增量渲染等技术实现千万级数据的流畅交互；
 
-简单易容，上手容易
-- 直接通过编写配置，便可以生成各种图表，并且支持多种集成方式；
+简单易懂，上手容易
+- 通过编写配置，生成各种图表，且支持多种集成方式；
 
 活跃的社区
-- 活跃的社区用户保证了项目的健康发展，也贡献了丰富的第三方插件满足不同场景的需求；
+- 活跃的社区用户保证了项目的健康发展，贡献了丰富的第三方插件，满足不同场景的需求；
 
 # ECharts 初体验
 
@@ -141,9 +141,9 @@ window.onload = function() {
 
 在软硬件环境较好，数据量不大的场景下，两种渲染器都可以适用，并不需要太多纠结；
 
-在软硬件环境较差，出现性能问题需要优化的场景下，可以通过试验来确定使用哪种渲染器。
+在软硬件环境较差，出现性能问题需要优化的场景下，通过试验来确定使用哪种渲染器。
 
-- 创建很多 ECharts 实例，浏览器易崩溃的时（可能因为 Canvas 数量多导致内存占用超出手机承受能力），用 SVG 渲染器。
+- 创建很多 ECharts 实例，浏览器易崩溃（可能因为 Canvas 数量多导致内存占用超出手机承受能力）时，用 SVG 渲染器。
 	- SVG 具有内存占用更低、适配性、扩展性好，放大缩小图表不会模糊的优势。
 - 数据量较大、较多交互时，建议选择 Canvas 渲染器。
 	- Canvas 更适合绘制图形元素数量较多的图表。如，热力图、炫光尾迹特效、地理坐标系、平行坐标系上的大规模线图等。
@@ -174,7 +174,7 @@ ECharts 配置项（options）有哪些？或者说组成 ECharts 的组件有�
 
 # grid 网格配置
 
-grid 选项 ：直角坐标系内绘图区域：
+`grid` 选项 ：直角坐标系内绘图区域：
 
 - `show`: 是否显示直角坐标系网格。 boolean 类型。
 - `left`、`right`、`top`、`bottom`：grid 组件离容器左右上下的距离。 string | number 类型。
@@ -207,10 +207,10 @@ const option = {
 	- `value`: 数值轴，适用于连续数据。
 	- `category`: 类目轴，适用于离散的类目数据。类目数据可来源 `xAxis.data`、`series.data` 或 `dataset.source` 之一。
 - `data`：类目数据，在类目轴（`type: 'category'`）中有效。 array 类型
-- `axisLine`： 坐标轴轴线相关设置。object 类型
-- `axisTick`：坐标轴刻度相关设置。object 类型
-- `axisLabel`：坐标轴刻度标签的相关设置。object 类型
-- `splitLine`：坐标轴在 grid 区域中的分隔线。object 类型
+- `axisLine`： 坐标轴轴线设置。object 类型。
+- `axisTick`：坐标轴刻度设置。object 类型。
+- `axisLabel`：坐标轴刻度标签的设置。object 类型。
+- `splitLine`：坐标轴在 grid 区域中的分隔线设置。object 类型。
 
 `yAxis` 选项：直角坐标系 grid 中的 y 轴，参数基本和 xAxis 差不多。
 
@@ -259,25 +259,25 @@ const option = {
 
 # series 系列图配置
 
-`series`：配置图表的类型和图形信息数据。object[] 类型，每个 object 具体配置信息如下
+`series`：配置图表的类型和图形信息数据。object[] 类型，每个 object 具体配置信息如下；[参考文档](https://echarts.apache.org/zh/option.html#series)
 
-- `name`：系列名称，用于 tooltip 的显示，legend 的图例筛选等。
-- `type`：指定系列图表的类型，比如：柱状图（`bar`）、折线图（`line`）、饼图（`pie`）、散点图（`scatter`）、地图等
+- `name`：系列名称，用于 `tooltip` 的显示，`legend` 的图例筛选等。
+- `type`：指定系列图表的类型，比如：柱状图（`bar`）、折线图（`line`）、饼图（`pie`）、散点图（`scatter`）等等
 - `data`：数值内容数组。数组中的每一项称为数据项。
 	- 一维数组: `[value，value]`（一维数组是二维数组的简写）。
 	- 二维数组。
 		- `[[index, value]`，`[index, value]]`，`x` 轴和 `y` 轴的值，注意 `index` 从 0 开始。
-		- `[[x, y, value]`，`[x, y，value]]`，注意这里的 `x` 和 `y` 可以表示 x 轴和 y 轴，也可以表示经度和纬度等信息。
+		- `[[x, y, value]`，`[x, y，value]]`，`x` 轴（或经度等其它释义） `y` 轴（或纬度等其它释义）。
 	- 对象写法（推荐）。`data: [{ value: x， name: x， label: {}，itemStyle:{}、 emphasis:{} .... }]`
 - `label`：图形上的文本标签（就近原则，`data` 选项的比 `series` 选项的优先级高）。
-- `itemStyle`：图形样式。
-- `emphasis`：高亮的图形样式和标签样式。
+- `itemStyle`：图形样式（就近原则，`data` 选项的比 `series` 选项的优先级高）。
+- `emphasis`：高亮的图形样式和标签样式（就近原则，`data` 选项的比 `series` 选项的优先级高）。
 - `coordinateSystem`：该系列使用的坐标系，默认值为二维的直角坐标系（笛卡尔坐标系，y 轴向上，x 轴向右）
 
 
 ## data 属性的使用
 
-方式一：一维数组
+方式一：一维数组。
 
 04-Echart\demo-project\02-ECharts的组件和配置\03-ECharts-series-系列图-data.html
 
@@ -335,7 +335,6 @@ const option = {
 			label: {
 				show: true // 在柱状图上显示数字
 			},
-
 			data: [
 			  {
 			    value: 5,
@@ -382,7 +381,7 @@ const option = {
 			data: [
 				{
 					value: [0, 5], // x 轴值，y 轴值
-					name: "衬衫", // 数据项名称, 比如 pie 系列 tooltip 需要用到
+					name: "衬衫",
 				},
 				{
 					value: [1, 20],
@@ -423,7 +422,7 @@ const option = {
       data: [
         {
           value: [0, 5, 500], // x 轴值或纬度，y 轴值或经度，第三项以后为扩展值
-          name: "衬衫", // 数据项名称, 比如 pie 系列 tooltip 需要用到
+          name: "衬衫",
         },
         {
           value: [1, 20, 400],
@@ -453,7 +452,7 @@ const option = {
 
 ## type 属性的使用
 
-实现柱状图，实现折线图，实现散点图，
+改变 `type` 熟悉，实现柱状图，实现折线图，实现散点图，
 
 04-Echart\demo-project\02-ECharts的组件和配置\03-ECharts-series-系列图-type.html
 
@@ -509,7 +508,7 @@ window.onload = function() {
 }
 ```
 
-实现饼图，实现圆环图，实现玫瑰图：
+`{type: pie}` 时，改变 `center`，`radius`，`ros3Type` 等属性，实现饼图，圆环图，玫瑰图：
 
 04-Echart\demo-project\02-ECharts的组件和配置\04-ECharts-series-系列图-type-pie.html
 
@@ -539,7 +538,7 @@ window.onload = function() {
 				data: [
 					{
 						value: 5,
-						name: "衬衫", // 数据项名称, 比如pie系列 tooltip 需要用到
+						name: "衬衫",
 					},
 					{
 						value: 20,
@@ -630,14 +629,12 @@ window.onload = function() {
 			{
 				name: "产品销量柱形图",
 				type: "bar",
-
 				itemStyle: { // 系列图形的样式
 					color: "green",
 					borderColor: "orange",
 					borderWidth: 4,
 					opacity: 0.4,
 				},
-
 				data: [
 					{
 						value: 5,
@@ -686,7 +683,7 @@ window.onload = function() {
 
 鼠标悬浮到图形元素上时，高亮的样式。
 
-- 默认情况高亮的样式是根据普通样式自动生成。但是也可自己定义
+- 默认情况高亮的样式是根据普通样式自动生成。但是也可自己定义；
 - `emphsis` 的结构和普通样式结构相同。
 
 04-Echart\demo-project\02-ECharts的组件和配置\07-ECharts-series-系列图-emphasis.html
@@ -767,7 +764,7 @@ window.onload = function() {
 }
 ```
 
-ECharts 4 以前，的写法，这种写法 仍然被兼容，但是不再推荐了
+ECharts 4 以前，的写法，这种写法 仍然被兼容，但是不再推荐了。
 
 ```js
 const obj = {
