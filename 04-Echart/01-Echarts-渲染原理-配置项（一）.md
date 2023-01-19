@@ -212,7 +212,7 @@ const option = {
 - `axisLabel`：坐标轴刻度标签的设置。object 类型。
 - `splitLine`：坐标轴在 grid 区域中的分隔线设置。object 类型。
 
-`yAxis` 选项：直角坐标系 grid 中的 y 轴，参数基本和 xAxis 差不多。
+`yAxis` 选项：直角坐标系 grid 中的 y 轴，参数基本和 `xAxis` 差不多。
 
 04-Echart\demo-project\02-ECharts的组件和配置\02-xAxis-坐标系组件-配置.html
 
@@ -267,7 +267,7 @@ const option = {
 	- 一维数组: `[value，value]`（一维数组是二维数组的简写）。
 	- 二维数组。
 		- `[[index, value]`，`[index, value]]`，`x` 轴和 `y` 轴的值，注意 `index` 从 0 开始。
-		- `[[x, y, value]`，`[x, y，value]]`，`x` 轴（或经度等其它释义） `y` 轴（或纬度等其它释义）。
+		- `[[x, y, value]`，`[x, y，value]]`，`x` 轴（或经度等其它释义），`y` 轴（或纬度等其它释义）。
 	- 对象写法（推荐）。`data: [{ value: x， name: x， label: {}，itemStyle:{}、 emphasis:{} .... }]`
 - `label`：图形上的文本标签（就近原则，`data` 选项的比 `series` 选项的优先级高）。
 - `itemStyle`：图形样式（就近原则，`data` 选项的比 `series` 选项的优先级高）。
@@ -771,6 +771,9 @@ const obj = {
 	// ...
 	itemStyle: {
 		color: 'green',
+    normal: {
+      // ...
+    },
 		emphasis: { // 图形高亮( label、labelLine、itemStyle、lineStyle、areaStyle... )
 			label: {
 				show: true,
@@ -820,7 +823,6 @@ window.onload = function() {
 			{
 				name: "产品销量柱形图",
 				type: "bar",
-
 				data: [5, 20, 36, 10, 10, 20]
 			}
 		]
