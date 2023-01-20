@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+   <button onclick="back()"> 返回 > 中国地图</button>
+  <div id="main" style="height: 400px"></div>
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.1/dist/echarts.min.js"></script>
+  <!-- 
+    1.导入了一个中国的 geo json
+    window.china_geojson = {}
+  -->
+  <script src="../lib/geojson/china_geojson.js"></script>
+  <script src="../lib/geojson/guangdong_geojson.js"></script>
+
+  <script>
+    let myChart = null
+    let option = {}
+    window.onload = function() {
+      // 2.注册一下中国地图的 geo json ( 需要在setOption之前调用 )
+      echarts.registerMap('中国', { geoJSON: china_geojson })
+
+      myChart = echarts.init(document.getElementById('main'));
+      option = {
+        // 3.在 echarts 中展示中国地图
+        series: [
+          {
+            type: 'map', // 系列图是 地图
+            map: '中国', // 展示中国地图( 因为只注册一个中国地图 )
+            roam: true
+          }
+        ]
+      };
+      myChart.setOption(option);
+
+      // 1.地图下钻的功能
+      myChart.on('click', function(event) {
+        console.log(event)
+        if(event.name === '广东'){
+          // 如果还未注册地图
+          if(!echarts.getMap(event.name)){
+            console.log('注册地图')
+            echarts.registerMap(event.name, { geoJSON: guangdong_geojson})
+          }
+          option.series[0].map = event.name // 将中国地图切换为广东地图
+          myChart.setOption(option)
+        }
+      })
+    }
+    function back() {
+      option.series[0].map ='中国' 
+      myChart.setOption(option)
+    }
+    
+  </script>
+</body>
+</html>

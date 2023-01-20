@@ -192,7 +192,7 @@ const option = {
 		bottom: 0,
 		left: 0,
 		right: 0,
-		containLabel: false, // 效果：当 left: 0, 时，y 轴会紧贴容积左边
+		containLabel: false, // 效果：当 left: 0, 时，y 轴会紧贴容器左边，而非消失。
 	},
 }
 ```
@@ -207,7 +207,7 @@ const option = {
 	- `value`: 数值轴，适用于连续数据。
 	- `category`: 类目轴，适用于离散的类目数据。类目数据可来源 `xAxis.data`、`series.data` 或 `dataset.source` 之一。
 - `data`：类目数据，在类目轴（`type: 'category'`）中有效。 array 类型
-- `axisLine`： 坐标轴轴线设置。object 类型。
+- `axisLine`：坐标轴轴线设置。object 类型。
 - `axisTick`：坐标轴刻度设置。object 类型。
 - `axisLabel`：坐标轴刻度标签的设置。object 类型。
 - `splitLine`：坐标轴在 grid 区域中的分隔线设置。object 类型。
@@ -259,19 +259,27 @@ const option = {
 
 # series 系列图配置
 
-`series`：配置图表的类型和图形信息数据。object[] 类型，每个 object 具体配置信息如下；[参考文档](https://echarts.apache.org/zh/option.html#series)
+`series`：配置图表的类型和图形相关数据。object[] 类型，每个 object 具体配置信息如下；[参考文档](https://echarts.apache.org/zh/option.html#series)
 
 - `name`：系列名称，用于 `tooltip` 的显示，`legend` 的图例筛选等。
+
 - `type`：指定系列图表的类型，比如：柱状图（`bar`）、折线图（`line`）、饼图（`pie`）、散点图（`scatter`）等等
+
 - `data`：数值内容数组。数组中的每一项称为数据项。
 	- 一维数组: `[value，value]`（一维数组是二维数组的简写）。
 	- 二维数组。
 		- `[[index, value]`，`[index, value]]`，`x` 轴和 `y` 轴的值，注意 `index` 从 0 开始。
 		- `[[x, y, value]`，`[x, y，value]]`，`x` 轴（或经度等其它释义），`y` 轴（或纬度等其它释义）。
-	- 对象写法（推荐）。`data: [{ value: x， name: x， label: {}，itemStyle:{}、 emphasis:{} .... }]`
-- `label`：图形上的文本标签（就近原则，`data` 选项的比 `series` 选项的优先级高）。
-- `itemStyle`：图形样式（就近原则，`data` 选项的比 `series` 选项的优先级高）。
-- `emphasis`：高亮的图形样式和标签样式（就近原则，`data` 选项的比 `series` 选项的优先级高）。
+	- 对象写法（推荐）。`data: [{ value: ……， name: ……， label: {}，itemStyle:{}、 emphasis:{}, …… }]`
+	
+- `label`：图形上的文本标签。
+
+- `itemStyle`：图形样式。
+
+- `emphasis`：高亮的图形样式和标签样式。
+
+  > `label`, `itemStyle`, `emphasis` 在 `data` 选项和 `series` 选项中都可配置，就近原则，`data` 选项的比 `series` 选项的优先级高。
+
 - `coordinateSystem`：该系列使用的坐标系，默认值为二维的直角坐标系（笛卡尔坐标系，y 轴向上，x 轴向右）
 
 
@@ -594,7 +602,7 @@ window.onload = function() {
 				// 系列图形上的文本标签
 				label: {
 					show: true,
-					position: [10, 10], // 支持的类型可以查文档，不同type的position的值会有些差异
+					position: [10, 10], // 支持的类型可以查文档，不同 type 的 position 的值会有些差异
 					color: "red",
 					fontSize: 20,
 				},

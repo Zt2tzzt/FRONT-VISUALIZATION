@@ -58,7 +58,7 @@ GSAP 几乎可以为任何属性制作动画：
 
 - 包括 CSS 属性、元素属性（attribute）、自定义对象属性。
 - 甚至 CSS 变量和复杂的字符串。
-- 还专门为 CSS 形变（transform）相关属性提供了简写，如下图所示：[官网形变文档](https://greensock.com/get-started/#transformShorthand)
+- 还专门为 CSS 形变（transform）相关属性提供了简写，如下图所示：[官网形变相关文档](https://greensock.com/get-started/#transformShorthand)
 
   <img src="NodeAssets/GSAP形变简写.jpg" style="zoom:80%;" />
 

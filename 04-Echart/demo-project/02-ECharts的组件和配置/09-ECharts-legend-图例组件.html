@@ -9,11 +9,12 @@
 <body>
   
   <div id="main" style="height: 400px"></div>
-  <script src="../libs/echarts-5.3.3.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.1/dist/echarts.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.1/dist/echarts.min.js"></script>
   <script>
     window.onload = function() {
-      let myChart = echarts.init(document.getElementById('main'));
-      let option = {
+      const myChart = echarts.init(document.getElementById('main'));
+      const option = {
         backgroundColor: 'rgba(255, 0, 0, 0.1)',
         grid: {
           show: true,
@@ -22,21 +23,19 @@
         legend: {
           show: true,
           // width: 100,
-          // itemWidth: 20
+          // itemWidth: 20,
           icon: 'circle',  // round circle ...
-
-          // formatter: 'liu-{name}'
-          formatter: function(name) {
+          formatter: 'liu-{name}', // 字符春写法
+          formatter: function(name) { // 函数的写法
             console.log(name)
-            // 富文本的语法: {style_name|content}
-            return name + '{percentageStyle| 40%}'
+            return name + '{percentageStyle|\n40%}' // 富文本的语法: {styleName|content}
           },
           textStyle: {
             rich: { // 给富文本添加样式
               percentageStyle: {
+                // css 样式
                 color: 'red',
                 fontSize: 12
-                // css 样式
               }
             }
           }
@@ -49,12 +48,10 @@
         yAxis: {},
         series: [
           {
-            type: 'pie', // line bar scatter pie
+            type: 'pie',
             label: { 
               show: true
             },
-   
-            // 方式三(推荐)
             data: [
               {
                 value: 5,

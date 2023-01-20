@@ -9,7 +9,7 @@
 <body>
   
   <div id="main" style="height: 400px"></div>
-  <script src="../libs/echarts-5.3.3.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.1/dist/echarts.min.js"></script>
   <script>
     window.onload = function() {
       let myChart = echarts.init(document.getElementById('main'));
@@ -19,17 +19,13 @@
           show: true,
           backgroundColor: 'rgba(0, 255, 0, 0.1)',
         },
-
         tooltip: {
           show: true,
-          // 使用了 trigger ，一般也结合 axisPointer
-          trigger: "axis",  // 默认是 item
+          trigger: "axis",
           axisPointer: {
-            type: "shadow", //  (默认是竖线 line)  (横线 + 竖线 cross)  (横线 + 竖线 shadow)
+            type: "shadow",
           },
-          // formatter: '<div style="color:red">haha</div>'
         },
-
         xAxis: {
           data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
         },
