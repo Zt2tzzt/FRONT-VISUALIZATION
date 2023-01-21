@@ -59,14 +59,15 @@
 
       /*获取地图数据*/
       myChart.showLoading();
-      // console.log(echarts.getMap(mapName));
 
       // 1.先拿到地图的 geo json 对象
-      const geoCoordMap = echarts.getMap(mapName).geoJson.features.reduce((accumulate, currentValue) => {
-        // 地区名称， 地区经纬度
-        accumulate[currentValue.properties.name] = currentValue.properties.cp;
-        return accumulate
-      }, {});
+      const geoCoordMap = echarts.getMap(mapName).geoJson.features
+        .reduce((accumulate, currentValue) => {
+          // 地区名称， 地区经纬度
+          accumulate[currentValue.properties.name] = currentValue.properties.cp;
+          return accumulate
+        }, {});
+
       myChart.hideLoading();
       console.log("geoCoordMap=>", geoCoordMap);
 
@@ -144,7 +145,7 @@
             tooltip: {
               show: true,
               trigger: "item",
-              formatter: function (params) {
+              formatter: function(params) {
                 console.log('params:', params);
                 const data = params.data;
                 return `${params.seriesName} <div style="margin:5px 0px;"/> ${data.name} ${data.value[2]}`;

@@ -1,4 +1,4 @@
-# GSAP 动画库
+# 一、GSAP 动画库
 
 什么是 GSAP ？[官网](https://greensock.com/)
 
@@ -7,12 +7,12 @@
 
 GSAP 动画库的特点
 
-- GSAP 支持 HTML 元素、SVG、Vue、React 组件的动画。
+- GSAP 支持 HTML 元素、SV 元素、Vue、React 组件的动画。
 - GSAP 还提供了一些插件，用最少的代码实现炫酷的动画，比如：[ScrollTrigger 插件](https://greensock.com/scrolltrigger)和 MorphSVG 插件。
 - GSAP 的核心是一个高速的属性操纵器，随着时间的推移，它以极高的准确性更新值。它比 jQuery 快 20 倍！
 - GSAP 使用起来非常灵活，在需要动画的地方基本都可以使用，并且是零依赖。
 
-# GSAP 初体验
+# 二、GSAP 初体验
 
 移动 SVG 中的一个矩形：
 
@@ -41,7 +41,7 @@ GSAP 动画库的特点
 </body>
 ```
 
-# GSAP 的补间动画
+# 三、GSAP 的补间动画
 
 tween 动画，又称补间动画，有4种类型：
 
@@ -92,7 +92,7 @@ GSAP 几乎可以为任何属性制作动画：
    <script>
 
     function onRectClick1() {
-      // 补间动画( 参数一也是支持数组的 )
+      // 补间动画（第一个参数一也支持数组）
       gsap.to(['#rectangle1'], {
         scale: 0.5, // 1 - 0.5
         duration: 1
@@ -138,7 +138,7 @@ GSAP 几乎可以为任何属性制作动画：
 </body>
 ```
 
-# GSAP 的动画时间线
+# 四、GSAP 的动画时间线
 
 时间线（TimeLine）用来创建易于调整、有弹性的动画序列。
 
@@ -148,6 +148,8 @@ TimeLine 的使用步骤：
 
 1. `gsap.timeline(vars)` 拿到时间线对象。[timeline 文档](https://greensock.com/docs/v3/GSAP/Timeline)
 2. 调用时间线上的 Tween 动画方法，比如：`form`、`to` 等。
+
+## 1.使用 `delay` 实现动画时间线：
 
 使用 `delay` 实现动画时间线：
 
@@ -187,7 +189,7 @@ TimeLine 的使用步骤：
 </body>
 ```
 
-使用 `timeline` 实现动画时间线
+## 2.使用 `timeline` 实现动画时间线
 
 03-SVG\demo-project\16-第三方动画库-gsap\04-gsap动画时间线-timeline.html
 
@@ -217,6 +219,6 @@ TimeLine 的使用步骤：
 </body>
 ```
 
-# GSAP + SVG 动画案例
+# 五、GSAP + SVG 动画案例
 
 03-SVG\demo-project\16-第三方动画库-gsap\05-滑板车生成动画.html

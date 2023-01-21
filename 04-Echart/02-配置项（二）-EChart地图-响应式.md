@@ -22,10 +22,10 @@ window.onload = function() {
 			// width: 100,
 			// itemWidth: 20,
 			icon: 'circle',  // round circle ...
-			formatter: 'liu-{name}', // 字符春写法
+			formatter: 'zhu-{name}', // 字符春写法
 			formatter: function(name) { // 函数的写法
 				console.log(name)
-				return name + '{percentageStyle|\n40%}' // 富文本的语法: {styleName|content}
+				return name + '{percentageStyle|\n40%}' // 富文本的语法: {styleName|content}，\n 表示换行
 			},
 			textStyle: {
 				rich: { // 给富文本添加样式
@@ -127,21 +127,21 @@ window.onload = function() {
 
 # 二、ECharts 中配置 color 渐变色
 
-ECharts中 Color 支持的格式：
+ECharts 中 Color 支持的格式：
 
 - RGB、RGBA、关键字、十六进制格式
 
-ECharts中的渐变色：
+ECharts 中的渐变色：
 
 - 线性渐变，前四个参数分别是 `(x, y)`, `(x2, y2)` 范围从 `0 – 1`。
-- 径向渐变，前三个参数分别是圆心坐标 x, y 和半径，取值同线性渐变。
+- 径向渐变，前三个参数分别是圆心坐标（x, y) 和半径，取值同线性渐变。
 
 04-Echart\demo-project\02-ECharts的组件和配置\11-ECharts-图形-渐变色.html
 
 ```js
 window.onload = function() {
-	let myChart = echarts.init(document.getElementById('main'));
-	let option = {
+	const myChart = echarts.init(document.getElementById('main'));
+	const option = {
 		backgroundColor: 'rgba(255, 0, 0, 0.1)',
 		grid: {
 			show: true,
@@ -255,7 +255,7 @@ ECharts 需要使用 GeoJSON 格式的数据作为地图的轮廓，获取第三
 
 ## 1.ECharts 地图引入并展示
 
-### 1.引入地图配置文件两种方式：
+### 1.引入地图配置方式：
 
 方式一：引入 json 格式的地图数据，并手动注册。
 
@@ -301,7 +301,7 @@ window.onload = function() {
     series: [
       {
         type: 'map', // 系列图是 地图
-        map: 'china' // 展示中国地图( 因为只注册一个中国地图 )
+        map: 'china' // 展示中国地图（因为只注册一个中国地图）
       }
     ]
   };
@@ -311,7 +311,7 @@ window.onload = function() {
 
 两种方式有何区别？
 
-方式一：geo 组件配置：
+方式一：`geo` 组件配置：
 
 - 会生成一个 geo 地理坐标系组件。
 - 该组件用于地图的绘制；
@@ -319,7 +319,7 @@ window.onload = function() {
 - 该组件可以共其它系列复用；
 	- 注意：其他系列在复用该地理坐标系时，`series` 的 `itemStyle` 等样式将不起作用。
 
-方式二：series 系列图组件 map 配置：
+方式二：`series` 系列图组件 `map` 配置：
 
 - 默认情况下，会自己生成内部专用的 geo 地理坐标系组件；用于地图的绘制；
 - 主要用于地理区域数据的可视化，配合 `data`, `visualMap` 使用
@@ -333,7 +333,6 @@ window.onload = function() {
 
 	const myChart = echarts.init(document.getElementById('main'));
 	const option = {
-		// 3.在 echarts 中展示中国地图
 		geo: [
 			{
 				map: '中国', // 全局的地图( 创建一个地理坐标系统, 供其它系列复用该坐标系 )
@@ -342,7 +341,7 @@ window.onload = function() {
 		],
 		series: [
 			{
-				type: 'map', // 系列图是 地图(创建一个地理坐标系统, 用来展示数据 )
+				type: 'map', // 系列图是 地图( 创建一个地理坐标系统, 用来展示数据 )
 				map: '中国',
 				roam: true,
 
@@ -415,8 +414,8 @@ window.onload = function() {
 
 主要步骤：
 
-1. 数据填充
-2. 添加视觉映射
+1. 数据填充；
+2. 添加视觉映射。
 
 04-Echart\demo-project\04-Echarts地图\05-中国地图-填充数据.html
 
@@ -472,53 +471,55 @@ const option = {
 基本步骤：
 
 1. 添加一个 effectScatter series；
+   - `series: {type: 'effectScatter'}`
 2. 指定使用的地理坐标系；
-3. 添加地图所需的数据；
-4. 修改标记的大小和样式；
-5. 修改默认的 tooltip 提示。
+3. - `series: {geoIndex: 0, coordinateSystem: "geo"}` 复用 geo 组件。
+4. 添加地图所需的数据；
+   - `series: {data: ...}`
+5. 修改标记的大小和样式；
+6. 修改默认的 tooltip 提示。
 
 04-Echart\demo-project\04-Echarts地图\06-中国地图+散点图.html
 
 ```js
 const option = {
 	// 3.在 echarts 中展示中国地图
-	geo: [
-	{
-		map: '中国'
-	}
-	],
-	series: [
-	{
-		name: "散点图",
-		type: "effectScatter",
+  geo: [
+    {
+      map: '中国'
+    }
+  ],
+  series: [
+    {
+      name: "散点图",
+      type: "effectScatter",
 
-		geoIndex: 0, // geo 支持数组，默认是 0
-		coordinateSystem: "geo", // 使用地理坐标系，通过 geoIndex 指定相应的地理坐标系组件。
-		data: [
-			{
-				name: "广东",
-				value: [113.280637, 23.125178, 93],
-			},
-			{
-				name: "北京",
-				value: [116.405285, 39.904989, 199],
-			},
-		],
+      geoIndex: 0, // geo 支持数组，默认是 0
+      coordinateSystem: "geo", // 使用地理坐标系，通过 geoIndex 指定相应的地理坐标系组件。
+      data: [
+        {
+          name: "广东",
+          value: [113.280637, 23.125178, 93],
+        },
+        {
+          name: "北京",
+          value: [116.405285, 39.904989, 199],
+        },
+      ],
 
-			// ====== 散点大小和着色========
-			symbolSize: function (val) {
-			console.log(val)
-				return val[2] / 10;  // 控制散点图的大小
-			},
-
-			itemStyle: {
-				color: "green",
-				shadowBlur: 10,
-				shadowColor: "yellow",
-			},
-			// ====== 散点大小和着色========
-		}
-	]
+      // ====== 散点大小和着色========
+      symbolSize: function(val) {
+        console.log(val)
+        return val[2] / 10;  // 控制散点图的大小
+      },
+      itemStyle: {
+        color: "green",
+        shadowBlur: 10,
+        shadowColor: "yellow",
+      },
+      // ====== 散点大小和着色========
+    }
+  ]
 }
 ```
 
@@ -534,15 +535,15 @@ const option = {
 - `registerMap(mapName，opts)`：注册地图。
 - `getMap( mapName )`：获取已注册地图。
 
-[通过 echarts.init](https://echarts.apache.org/zh/api.html#echartsInstance)，创建的实例（echartsInstance）
+通过 echarts.init，创建的 [echartsInstance 实例](https://echarts.apache.org/zh/api.html#echartsInstance)
 
 - `setOption(opts)`：设置图表实例的配置项以及数据，万能接口。
 - `getWidth()`、`getHeight()`：获取 ECharts 实例容器的宽高度。
 - `resize(opts)`：改变图表尺寸，在容器大小发生改变时需要手动调用。
 - `showLoading()`、`hideLoading()`：显示和隐藏加载动画效果。
-- `dispatchAction( )`：触发图表行为，例如：图例开关、显示提示框 showTip 等
+- `dispatchAction( )`：触发图表行为，例如：图例开关、显示提示框等。
 - `dispose`：销毁实例，销毁后实例无法再被使用
-- `on()`：通过 on 方法添加事件处理函数，该文档描述了所有 ECharts 的事件列表。
+- `on()`：添加事件处理函数，该文档描述了所有 ECharts 的事件列表。
 
 # 六、ECharts 响应式图表实现
 
@@ -551,7 +552,7 @@ const option = {
 基本步骤：
 
 1. 图表只设置高度，宽度设置为 `100%` 或不设置。
-2. 监听窗口的 `resize` 事件（考虑性能优化需节流）。
+2. 监听窗口的 `resize` 事件（如果要考虑性能优化，需节流）。
 3. 当窗口大小改变时，调用 `echartsInstance.resize` 改变图表的大小。
 
 04-Echart\demo-project\05-ECharts的补充API\01-响应式图表-.html
@@ -622,13 +623,12 @@ window.onload = function() {
 	let index = 0; // 0-5
 
 	function autoToolTip() {
-		index++;
-		if (index > 5) {
+		if (++index > 5) {
 			index = 0;
 		}
 		// 1.显示提示框
 		myChart.dispatchAction({
-			type: "showTip", // 触发的action type
+			type: "showTip", // 触发的 action type
 			seriesIndex: 0, // 系列的 索引
 			dataIndex: index,// 数据项的 索引
 			position: "top", // top
@@ -671,7 +671,7 @@ window.onload = function() {
 		if(event.name === '广东'){
 			// 如果还未注册地图
 			if(!echarts.getMap(event.name)){
-				console.log('注册地图')
+				// 注册地图
 				echarts.registerMap(event.name, { geoJSON: guangdong_geojson})
 			}
 			option.series[0].map = event.name // 将中国地图切换为广东地图
@@ -684,75 +684,3 @@ function back() {
 	myChart.setOption(option)
 }
 ```
-
-# 七、认识大屏设备
-
-## 1.什么是大屏？
-
-在开发网页时，我适配最多的屏幕尺寸是：
-- PC 端电脑屏幕：1920px * 1080px（也有4k屏的情况）
-- 移动设备：750px * auto
-
-那什么是大屏设备
-- 指挥大厅、展厅、展会中的大屏。这些设备就可以称之为大屏设备；
-- 当然 1920×1080 和 3840×2160（4k 屏）也可以说是属于大屏。
-
-大屏的应用场景
-- 数据可视化，借助于图形化手段，清晰有效地传达与沟通信息
-- 比如用在：零售、物流、电力、水利、环保、交通、医疗等领域。
-
-大屏的硬件设备的分类：
-
-- 拼接屏、LED屏、投影等。
-
-## 2.什么是拼接屏？
-
-拼接屏就是很多屏幕按照某种排列方式拼接而成。
-- 常见的使用场景有指挥大厅、展厅、展会等等。
-
-拼接方式取决于使用场景的需求，如下例子：
-- 1920px * 1080px，即 1 * 1 个 显示屏（16 : 9）
-- 3840 * 2160（4k 屏），即 2 * 2 个显示屏（16 : 9）
-- 5760 * 3240，即 3 * 3 个显示屏（16 : 9）
-- 7680 * 3240，即 4 * 3 个显示屏（64 : 27）
-- 9600 * 3240，即 5 * 3 个显示屏（80 : 27）
-
-## 3.什么是 LED 屏
-
-LED 也是现在大屏中常用的硬件，它是由若干单体屏幕模块组成的，它的像素点计算及拼接方式与拼接屏有很大区别。
-
-LED 可以看成是矩形点阵，具体拼接方式也会根据现场实际情况有所不同，拼接方式的不同直接影响到设计的尺寸规则。
-
-LED 屏有很多规格，各规格计算方法相同。
-
-- 比如，我们用单体为 500 * 500 的作为标准计算，每个单体模块像素点横竖都为 128px
-- 如下图，横向 12 块竖向 6 块，横向像素为 128×12=1536px，竖向 128×6=768px。可以使用横竖总像素去设计。
-- 最终算出的屏幕尺寸：1536px * 768px
-
-<img src="NodeAssets/LED屏.jpg" style="zoom:80%;" />
-
-# 八、怎么定设计稿尺寸
-
-## 1.大屏设计稿定稿
-
-普通大屏，拼接屏，LED屏幕定设计稿
-
-因为超过 4K 后现容易造成卡顿，GPU 压力过大，高负荷运行等等问题，设计稿应保持在 4K 左右，参照大屏的比例等比例缩放，比如：
-
-- 1920px * 1080px（1*1），设计搞尺寸：1920px * 1080px。
-- 3840 * 2160（2*2 4k 屏 ），设计搞尺寸：3840px * 2160px。
-- 5760 * 3240（3*3），设计搞尺寸：设计搞尺寸：5760px * 3240px。
-- 7680 * 3240（4*3），设计搞尺寸：设计搞尺寸：3840px * 1620px，需要出1倍图和2倍图，
-- 9600 * 3240（5*3），设计搞尺寸：设计搞尺寸：4800px * 1620px，需要出1倍图和2倍图。
-
-> 特殊尺寸没有必要专门适配，不可能一稿既适配电脑也适配各种尺寸大屏。
->
-> 这种情况应该优先考虑目标屏幕的适配，要针对性设计，而在特殊尺寸屏幕中，进行等比例缩放显示，这才是最佳的解决方法。
-
-## 2.移动端屏目设计稿定稿
-
-基本按照实际尺寸设计即可，比如：750px * Auto，设计搞尺寸：750px * Auto 。
-
-# 九、大屏适配方案有哪些？
-- 方案一：rem + 动态设置 html 的 font-size.
-- 方案二：vw

@@ -70,7 +70,7 @@
       // =====准备数据=====
 
       // 2.指定图表的配置项和数据
-      var option = {
+      const option = {
         backgroundColor: "rgb(40,46,72)",
         // 标题组件
         title: {
@@ -113,9 +113,9 @@
           icon: "rect",
 
           // 自定义图例的名称
-          formatter: function (name) {
+          formatter: function(name) {
             // 图例文本格式化 + 富文本定制样式  
-            var currentItem = pieDatas.find((item) => item.name === name);
+            const currentItem = pieDatas.find((item) => item.name === name);
             return (
               "{nameSty|" +
               currentItem.name +
@@ -152,12 +152,12 @@
             type: "pie",
             center: ["50%", "50%"], // 饼图的中心（圆心）坐标，数组的第一项是横坐标，第二项是纵坐标。
             radius: ["30%", "75%"], // 饼图的半径。数组的第一项是内半径，第二项是外半径。
+            roseType: "area", //  area 玫瑰图, 圆心角一样，通过半径展现数据大小( 默认为false )
             label: {
               show: true,
             },
             // data: [  { name: '',  value: '',  itemStyle }  ],
             data: data,
-            roseType: "area", //  area 玫瑰图, 圆心角一样，通过半径展现数据大小( 默认为false )
           },
         ],
       };

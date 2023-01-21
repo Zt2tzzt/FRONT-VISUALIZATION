@@ -1,4 +1,4 @@
-# ECharts 是什么
+# 一、ECharts 是什么
 
 ECharts（全称 Enterprise Charts）企业级数据图表。官方的解释：一个基于 JavaScript 的开源可视化图表库。
 
@@ -6,14 +6,14 @@ ECharts 可以流畅的运行在 PC 和移动设备上，兼容当前绝大部�
 
 ECharts 底层依赖轻量级的 ZRender 图形库，可提供直观，生动，可交互，可高度个性化定制的数据可视化图表。
 
-# Echarts 的发展历史
+# 二、Echarts 的发展历史
 
 1. ECharts 由百度团队开源。
 2. 2018 年初，捐赠给 Apache 基金会，成为 Apache 软件基金会孵化级项目。
 3. 2021 年 1 月 26 日晚，Apache 基金会官方宣布 ECharts 项目正式毕业，成为 Apache 顶级项目。
 4. 2021 年 1 月 28 日，ECharts5 线上发布会举行。
 
-# ECharts 的应用场景
+# 三、ECharts 的应用场景
 
 智慧城市、园区、航运、公安、机房、监所、电力、物业、应急管理等多个领域的数据可视化展示。
 
@@ -21,7 +21,7 @@ ECharts 底层依赖轻量级的 ZRender 图形库，可提供直观，生动，
 
 <img src="NodeAssets/EChart的应用场景2.jpg" alt="s" style="zoom:100%;" />
 
-# ECharts 的特点
+# 四、ECharts 的特点
 
 丰富的图表类型
 - 提供开箱即用的二十多种图表和十几种组件，
@@ -36,14 +36,16 @@ ECharts 底层依赖轻量级的 ZRender 图形库，可提供直观，生动，
 活跃的社区
 - 活跃的社区用户保证了项目的健康发展，贡献了丰富的第三方插件，满足不同场景的需求；
 
-# ECharts 初体验
+# 五、ECharts 初体验
 
-集成 Echarts 的常见方式：
+引入（集成） Echarts 的常见方式：
 
 - 通过 jsDelivr 等 CDN 引入。
 - 通过 npm 获取 echarts：`npm install echarts`
 
 > ECharts 的容器必须设高度。
+
+## 1.普通配置项实现
 
 04-Echart\demo-project\01-ECharts初体验\01-ECharts初体验.html
 
@@ -85,6 +87,8 @@ ECharts 底层依赖轻量级的 ZRender 图形库，可提供直观，生动，
 </body>
 ```
 
+## 2.精简版配置项实现
+
 精简版的配置选项，仅包含必填项：
 
 ```js
@@ -102,7 +106,7 @@ let option = {
 };
 ```
 
-# ECharts 渲染原理
+# 六、ECharts 渲染原理
 
 浏览器端的图表库大多会选择 SVG 或者 Canvas 进行渲染。
 
@@ -111,7 +115,7 @@ let option = {
 - ZRender 是二维轻量级的绘图引擎，它提供 Canvas、SVG、VML 等多种渲染方式。
 - 因此，Echarts 可以轻松的互换 SVG 和 Canvas 渲染器。切换渲染器只须在初始化图表时设置 `{renderer: "canvas"}` 或 `{renderer: "svg"}` 即可。
 
-切换渲染模式：
+## 1.切换渲染模式：
 
 04-Echart\demo-project\01-ECharts初体验\03-ECharts-切换渲染器.html
 
@@ -137,18 +141,18 @@ window.onload = function() {
 }
 ```
 
-# svg 和 canvas 渲染模式应如何选择？
+## 2.渲染模式的选择
 
 在软硬件环境较好，数据量不大的场景下，两种渲染器都可以适用，并不需要太多纠结；
 
 在软硬件环境较差，出现性能问题需要优化的场景下，通过试验来确定使用哪种渲染器。
 
-- 创建很多 ECharts 实例，浏览器易崩溃（可能因为 Canvas 数量多导致内存占用超出手机承受能力）时，用 SVG 渲染器。
+- svg 更适用的场景：创建很多 ECharts 实例时，浏览器易崩溃（可能因为 Canvas 数量多导致内存占用超出手机承受能力）。
 	- SVG 具有内存占用更低、适配性、扩展性好，放大缩小图表不会模糊的优势。
-- 数据量较大、较多交互时，建议选择 Canvas 渲染器。
+- canvas 更适用的场景：数据量较大、较多交互时，建议选择 Canvas 渲染器。
 	- Canvas 更适合绘制图形元素数量较多的图表。如，热力图、炫光尾迹特效、地理坐标系、平行坐标系上的大规模线图等。
 
-# option 配置项（组件）
+# 七、ECharts 配置项（组件）
 
 ECharts 配置项（options）有哪些？或者说组成 ECharts 的组件有哪些？
 
@@ -160,7 +164,7 @@ ECharts 配置项（options）有哪些？或者说组成 ECharts 的组件有�
 - `legend`: 图例，展现了不同系列的标记、颜色和名字。
 - `tooltip`: 提示框。
 - `toolbox`: 工具栏，提供操作图表的工具。
-- `series`: （必填）系列，配置系列图表的类型和图形信息数据。
+- `series`: （必填）系列图，配置系列图表的类型和图形信息数据。
 - `visualMap`: 视觉映射，可以将数据值映射到图形的形状、大小、颜色等。
 - `geo`：地理坐标系组件。用于地图的绘制，支持在地理坐标系上绘制散点图，线集。
 
@@ -172,13 +176,13 @@ ECharts 配置项（options）有哪些？或者说组成 ECharts 的组件有�
 
 <img src="NodeAssets/图形种类.jpg" style="zoom:80%;" />
 
-# grid 网格配置
+# 八、grid 网格配置
 
-`grid` 选项 ：直角坐标系内绘图区域：
+`grid` 选项（组件）：直角坐标系内绘图区域，有如下属性：
 
 - `show`: 是否显示直角坐标系网格。 boolean 类型。
-- `left`、`right`、`top`、`bottom`：grid 组件离容器左右上下的距离。 string | number 类型。
-- `containLabel`：grid 区域是否包含坐标轴的刻度标签。 boolean 类型。
+- `left`、`right`、`top`、`bottom`：组件离容器左右上下的距离。 string | number 类型。
+- `containLabel`：组件区域是否包含坐标轴的刻度标签。 boolean 类型。
 - `backgroundColor`：网格背景色，默认透明。
 
 04-Echart\demo-project\02-ECharts的组件和配置\01-Grid-组件-配置.html
@@ -197,9 +201,9 @@ const option = {
 }
 ```
 
-# xAsis，yAsis 坐标系配置
+# 九、xAsis，yAsis 坐标系配置
 
-`xAxis` 选项：直角坐标系 grid 中的 x 轴。
+`xAxis`、`yAxis`选项：直角坐标系 grid 中的 x、y 轴，有如下属性：
 
 - `show`：是否显示 x 轴。boolean 类型。
 - `name`：坐标轴名称。
@@ -211,8 +215,6 @@ const option = {
 - `axisTick`：坐标轴刻度设置。object 类型。
 - `axisLabel`：坐标轴刻度标签的设置。object 类型。
 - `splitLine`：坐标轴在 grid 区域中的分隔线设置。object 类型。
-
-`yAxis` 选项：直角坐标系 grid 中的 y 轴，参数基本和 `xAxis` 差不多。
 
 04-Echart\demo-project\02-ECharts的组件和配置\02-xAxis-坐标系组件-配置.html
 
@@ -257,7 +259,7 @@ const option = {
 }
 ```
 
-# series 系列图配置
+# 十、series 系列图配置
 
 `series`：配置图表的类型和图形相关数据。object[] 类型，每个 object 具体配置信息如下；[参考文档](https://echarts.apache.org/zh/option.html#series)
 
@@ -278,12 +280,12 @@ const option = {
 
 - `emphasis`：高亮的图形样式和标签样式。
 
-  > `label`, `itemStyle`, `emphasis` 在 `data` 选项和 `series` 选项中都可配置，就近原则，`data` 选项的比 `series` 选项的优先级高。
+  > `label`, `itemStyle`, `emphasis` 在 `data` 选项和 `series` 选项中都可配置，优先级采用就近原则，即 `data` 选项的比 `series` 选项的优先级高。
 
 - `coordinateSystem`：该系列使用的坐标系，默认值为二维的直角坐标系（笛卡尔坐标系，y 轴向上，x 轴向右）
 
 
-## data 属性的使用
+## 1.data 属性的使用
 
 方式一：一维数组。
 
@@ -333,7 +335,7 @@ const option = {
 
 04-Echart\demo-project\02-ECharts的组件和配置\03-ECharts-series-系列图-data.html
 
-写法一
+写法一：
 
 ```js
 const option = {
@@ -375,7 +377,7 @@ const option = {
 }
 ```
 
-写法二
+写法二：
 
 ```js
 const option = {
@@ -458,7 +460,7 @@ const option = {
 }
 ```
 
-## type 属性的使用
+## 2.type 属性的使用
 
 改变 `type` 熟悉，实现柱状图，实现折线图，实现散点图，
 
@@ -576,7 +578,7 @@ window.onload = function() {
 }
 ```
 
-## label 属性的使用
+## 3.label 属性的使用
 
 图形上的文本标签（优先级采用就近原则，`series` -> `data` -> `labbel` 大于 `series` -> `label`）
 
@@ -614,7 +616,7 @@ window.onload = function() {
 }
 ```
 
-## itemStyle 属性的使用，
+## 4.itemStyle 属性的使用
 
 图形样式（优先级采用就近原则，`series` -> `data` -> `labbel` 大于 `series` -> `label`）
 
@@ -686,7 +688,7 @@ window.onload = function() {
 }
 ```
 
-## emphasis 属性的使用
+## 5.emphasis 属性的使用
 
 
 鼠标悬浮到图形元素上时，高亮的样式。
@@ -719,7 +721,7 @@ window.onload = function() {
 				itemStyle: {
 					color: 'green'
 				},
-				emphasis: { // 图形高亮( label、labelLine、itemStyle、lineStyle、areaStyle... )
+				emphasis: { // 图形高亮(label、labelLine、itemStyle、lineStyle、areaStyle...)
 					label: {
 						show: true,
 						color: 'red'
@@ -797,7 +799,7 @@ const obj = {
 }
 ```
 
-# title 标题配置
+# 十一、title 标题配置
 
 图表的标题。object 类型。
 
