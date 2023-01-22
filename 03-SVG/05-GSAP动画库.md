@@ -7,7 +7,7 @@
 
 GSAP 动画库的特点
 
-- GSAP 支持 HTML 元素、SV 元素、Vue、React 组件的动画。
+- GSAP 支持 HTML 元素、SVG 元素、Vue、React 组件的动画。
 - GSAP 还提供了一些插件，用最少的代码实现炫酷的动画，比如：[ScrollTrigger 插件](https://greensock.com/scrolltrigger)和 MorphSVG 插件。
 - GSAP 的核心是一个高速的属性操纵器，随着时间的推移，它以极高的准确性更新值。它比 jQuery 快 20 倍！
 - GSAP 使用起来非常灵活，在需要动画的地方基本都可以使用，并且是零依赖。
@@ -149,7 +149,7 @@ TimeLine 的使用步骤：
 1. `gsap.timeline(vars)` 拿到时间线对象。[timeline 文档](https://greensock.com/docs/v3/GSAP/Timeline)
 2. 调用时间线上的 Tween 动画方法，比如：`form`、`to` 等。
 
-## 1.使用 `delay` 实现动画时间线：
+## 1.使用 `delay` 实现：
 
 使用 `delay` 实现动画时间线：
 
@@ -189,7 +189,7 @@ TimeLine 的使用步骤：
 </body>
 ```
 
-## 2.使用 `timeline` 实现动画时间线
+## 2.使用 `timeline` 实现
 
 03-SVG\demo-project\16-第三方动画库-gsap\04-gsap动画时间线-timeline.html
 

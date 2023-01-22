@@ -75,8 +75,6 @@ window.onload = function() {
 						name: "袜子",
 					},
 				],
-
-
 			}
 		]
 	};
@@ -186,7 +184,7 @@ window.onload = function() {
 					{
 						value: 5,
 						name: "衬衫", // 数据项名称, 比如pie系列 tooltip 需要用到
-							// 图形的颜色
+						// 图形的颜色
 						itemStyle: {
 							color: new echarts.graphic.LinearGradient(
 								0,
@@ -309,7 +307,7 @@ window.onload = function() {
 }
 ```
 
-两种方式有何区别？
+#### 1.两种方式有何区别？
 
 方式一：`geo` 组件配置：
 
@@ -542,7 +540,7 @@ const option = {
 - `resize(opts)`：改变图表尺寸，在容器大小发生改变时需要手动调用。
 - `showLoading()`、`hideLoading()`：显示和隐藏加载动画效果。
 - `dispatchAction( )`：触发图表行为，例如：图例开关、显示提示框等。
-- `dispose`：销毁实例，销毁后实例无法再被使用
+- `dispose`：销毁实例，销毁后实例无法再被使用。
 - `on()`：添加事件处理函数，该文档描述了所有 ECharts 的事件列表。
 
 # 六、ECharts 响应式图表实现
@@ -560,6 +558,7 @@ const option = {
 ```js
 window.onload = function() {
 	const myChart = echarts.init(document.getElementById('main'));
+  
 	const option = {
 		backgroundColor: 'rgba(255, 0, 0, 0.1)',
 		grid: {
@@ -577,6 +576,7 @@ window.onload = function() {
 			}
 		]
 	};
+  
 	myChart.setOption(option);
 
 	// 1.响应式图表
@@ -593,6 +593,7 @@ window.onload = function() {
 ```js
 window.onload = function() {
 	const myChart = echarts.init(document.getElementById('main'));
+  
 	const option = {
 		backgroundColor: 'rgba(255, 0, 0, 0.1)',
 		grid: {
@@ -613,6 +614,7 @@ window.onload = function() {
 			}
 		]
 	};
+  
 	myChart.setOption(option);
 
 	// 1.实现提示框轮播的功能
@@ -623,9 +625,7 @@ window.onload = function() {
 	let index = 0; // 0-5
 
 	function autoToolTip() {
-		if (++index > 5) {
-			index = 0;
-		}
+		if (++index > 5) index = 0;
 		// 1.显示提示框
 		myChart.dispatchAction({
 			type: "showTip", // 触发的 action type

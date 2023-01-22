@@ -1,26 +1,30 @@
-# Canvas 绘画状态-保存和恢复。
+# 一、Canvas 绘画状态
 
-什么是 Canvas 绘画状态？
+## 1.基本概念
 
-- 是当前绘画时所产生的样式和变形的一个快照。
-- Canvas 在绘画时，会产生相应的绘画状态，其实我们是可以将某些绘画的状态存储在栈中来为以后复用。
+是当前绘画时所产生的样式和变形的一个快照。
 
+Canvas 在绘画时，会产生相应的绘画状态，通常会将绘画的状态存储在栈中来为以后复用。
 
-Canvas 绘画状态要调用 `save` 和 `restore` 方法来保存和恢复，这两个方法都没有参数，并且它们是成对存在的。
+## 2.保存和恢复
+
+调用 `save` 和 `restore` 方法，这两个方法都没有参数，并且它们是成对存在的。
 
 - `save()`：保存画布 (canvas) 的所有绘画状态。
 - `restore()`：恢复画布 (canvas) 的所有绘画状态。
 
-Canvas 绘画状态包括：
+## 3.有哪些绘画状态
 
-- 当前应用的变形（即移动，旋转和缩放）
-- 以及这些属性：
-	- `strokeStyle`, `fillStyle`；
-	- `globalAlpha`；
-	- `lineWidth`, `lineCap`, `lineJoin`；
-	- `font`, `textAlign`, `textBaseline`；
-	- `miterLimit`, `shadowOffsetX`, `shadowOffsetY`, `shadowBlur`, `shadowColor`, ......
-- 当前的裁切路径（clipping path）
+当前应用的变形（即移动，旋转和缩放）；
+
+以及这些属性：
+- `strokeStyle`, `fillStyle`；
+- `globalAlpha`；
+- `lineWidth`, `lineCap`, `lineJoin`；
+- `font`, `textAlign`, `textBaseline`；
+- `miterLimit`, `shadowOffsetX`, `shadowOffsetY`, `shadowBlur`, `shadowColor`, ......
+
+当前的裁切路径（clipping path）。
 
 02-Canvas\demo-project\05-Canvas绘画状态\02-保存和恢复绘画状态.html
 
@@ -81,9 +85,9 @@ Canvas 绘画状态包括：
 </html>
 ```
 
-# Canvas 形变
+# 二、Canvas 形变
 
-Canvas 和 CSS3 一样也支持形变；可以将**坐标**进行移动、旋转和缩放。
+Canvas 和 CSS3 一样也支持形变；即将**坐标**进行移动、旋转和缩放。
 
 Canvas 的形变有4种方法实现：
 - `translate(x, y)`：用来移动 canvas 和它的原点到一个不同的位置。
@@ -100,7 +104,7 @@ Canvas 的形变有4种方法实现：
 - 如果在一个循环中做位移但没有保存和恢复 canvas 状态，很可能到最后会发现有些东西不见了，因为它很可能已超出 canvas 画布以外了。
 - 形变需要在绘制图形前调用。
 
-## Canvas 的移动
+## 1。Canvas 的移动
 
 `translate` 方法，它用来移动 canvas 和它的原点到一个不同的位置。
 
@@ -135,7 +139,7 @@ window.onload = function() {
 }
 ```
 
-## Canvas 的旋转
+## 2.Canvas 的旋转
 
 `rotate` 方法，它用于以原点为中心旋转 canvas，即沿着 z 轴 旋转。
 
@@ -171,7 +175,7 @@ window.onload = function() {
 }
 ```
 
-## Canvas 的缩放
+## 3.Canvas 的缩放
 
 `scale` 方法可以缩放画布。可用它来增减图形在 canvas 中的像素数目，对图形进行缩小或者放大。
 
@@ -208,7 +212,7 @@ window.onload = function() {
 }
 ```
 
-# Canvas 动画
+# 三、Canvas 动画
 
 
 Canvas 绘图都是通过 JavaScript 去操控的，如要实现一些交互性动画是相当容易的。那 Canvas 是如何做一些基本动画的？
@@ -222,9 +226,9 @@ Canvas 画出一帧动画的基本步骤（如要画出流畅动画，1s 需绘 
 3. 绘制动画图形（animated shapes） ，即绘制动画中的一帧。
 4. 恢复 canvas 状态，如果已经保存了 canvas 的状态，先恢复它，然后重绘下一帧。
 
-## 绘制秒针案例
+实现绘制秒针的案例：
 
-### 使用 setInterval 绘制；
+## 1.setInterval 绘制；
 
 步骤：
 
@@ -244,8 +248,8 @@ window.onload = function() {
 	function draw() {
 		if (count++ >= 60) count = 0
 		ctx.clearRect(0, 0, 300, 300)
+    
 		ctx.save()
-
 		// 1.开始绘画
 		ctx.translate(100, 100)
 		ctx.rotate(Math.PI * 2 / 60 * count)
@@ -273,7 +277,7 @@ window.onload = function() {
 - 如果微任务中一直有未处理完成的任务，那么 `setInterval` 的回调函数就有可能不会在指定时间内触发回调。
 - 如果想要更加平稳和更加精准的定时执行某个任务的话，就用 `requestAnimationFrame` 函数。
 
-### 使用 requestAnimationFrame 绘制
+## 2.requestAnimationFrame 绘制
 
 `requestAnimationFrame` 函数：
 
@@ -289,12 +293,11 @@ window.onload = function() {
 	if (!canvasEl.getContext) return
 	const ctx = canvasEl.getContext('2d')
 
-	let count = 0
 	function draw() {
 		const second = new Date().getSeconds()
 		ctx.clearRect(0, 0, 300, 300)
+    
 		ctx.save()
-
 		// 1.开始绘画
 		ctx.translate(100, 100)
 		ctx.rotate(Math.PI * 2 / 60 * second)
@@ -307,15 +310,17 @@ window.onload = function() {
 		ctx.moveTo(0, 0)
 		ctx.lineTo(0, -80)
 		ctx.stroke()
-
 		ctx.restore()
+    
 		requestAnimationFrame(draw)
 	}
 	requestAnimationFrame(draw)
 }
 ```
 
-# 绘制太阳系旋转案例
+# 四、Canvas 动画案例
+
+## 1.太阳系旋转案例
 
 步骤：
 
@@ -405,7 +410,7 @@ window.onload = function() {
 	}
 }
 ```
-# 绘制时钟案例
+## 2.时钟案例
 
 求圆上 x, y 的坐标：
 

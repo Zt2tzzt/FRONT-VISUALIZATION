@@ -41,7 +41,7 @@ ECharts 底层依赖轻量级的 ZRender 图形库，可提供直观，生动，
 引入（集成） Echarts 的常见方式：
 
 - 通过 jsDelivr 等 CDN 引入。
-- 通过 npm 获取 echarts：`npm install echarts`
+- `npm install echarts`
 
 > ECharts 的容器必须设高度。
 
@@ -87,7 +87,7 @@ ECharts 底层依赖轻量级的 ZRender 图形库，可提供直观，生动，
 </body>
 ```
 
-## 2.精简版配置项实现
+## 2.精简（必填）配置项实现
 
 精简版的配置选项，仅包含必填项：
 
@@ -203,14 +203,14 @@ const option = {
 
 # 九、xAsis，yAsis 坐标系配置
 
-`xAxis`、`yAxis`选项：直角坐标系 grid 中的 x、y 轴，有如下属性：
+`xAxis`、`yAxis` 选项：直角坐标系 grid 中的 x、y 轴，有如下属性：
 
 - `show`：是否显示 x 轴。boolean 类型。
 - `name`：坐标轴名称。
 - `type`：坐标轴类型。string 类型。
 	- `value`: 数值轴，适用于连续数据。
 	- `category`: 类目轴，适用于离散的类目数据。类目数据可来源 `xAxis.data`、`series.data` 或 `dataset.source` 之一。
-- `data`：类目数据，在类目轴（`type: 'category'`）中有效。 array 类型
+- `data`：类目数据，在类目轴（`type: 'category'`）中有效。 array 类型。
 - `axisLine`：坐标轴轴线设置。object 类型。
 - `axisTick`：坐标轴刻度设置。object 类型。
 - `axisLabel`：坐标轴刻度标签的设置。object 类型。
@@ -280,7 +280,7 @@ const option = {
 
 - `emphasis`：高亮的图形样式和标签样式。
 
-  > `label`, `itemStyle`, `emphasis` 在 `data` 选项和 `series` 选项中都可配置，优先级采用就近原则，即 `data` 选项的比 `series` 选项的优先级高。
+  > `label`, `itemStyle`, `emphasis` 在 `data` 选项和 `series` 选项中都可配置，优先级采用就近原则，即 `data` 选项中的比 `series` 选项中的优先级高。
 
 - `coordinateSystem`：该系列使用的坐标系，默认值为二维的直角坐标系（笛卡尔坐标系，y 轴向上，x 轴向右）
 
@@ -518,7 +518,7 @@ window.onload = function() {
 }
 ```
 
-`{type: pie}` 时，改变 `center`，`radius`，`ros3Type` 等属性，实现饼图，圆环图，玫瑰图：
+`{type: pie}` 时，改变 `center`，`radius`，`roseType` 等属性，实现饼图，圆环图，玫瑰图：
 
 04-Echart\demo-project\02-ECharts的组件和配置\04-ECharts-series-系列图-type-pie.html
 
@@ -691,7 +691,7 @@ window.onload = function() {
 ## 5.emphasis 属性的使用
 
 
-鼠标悬浮到图形元素上时，高亮的样式。
+鼠标悬浮到图形元素上时，高亮的样式：
 
 - 默认情况高亮的样式是根据普通样式自动生成。但是也可自己定义；
 - `emphsis` 的结构和普通样式结构相同。
@@ -701,6 +701,7 @@ window.onload = function() {
 ```js
 window.onload = function() {
 	const myChart = echarts.init(document.getElementById('main'));
+  
 	const option = {
 		backgroundColor: 'rgba(255, 0, 0, 0.1)',
 		grid: {

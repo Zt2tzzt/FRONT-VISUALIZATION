@@ -1,4 +1,4 @@
-# 邂逅 SVG
+# 一、SVG 邂逅
 
 什么是 SVG？
 
@@ -7,7 +7,8 @@
   > 矢量定义：既有大小又有方向的量。
   >
   > - 在物理学中称作矢量，如一个带箭头线段：长度表示大小，箭头表示方向；
-  > - 在数学中称作向量。在计算机中，矢量图可无限放大而不变形。
+  > - 在数学中称作向量。
+  > - 在计算机中，矢量图可无限放大而不变形。
 
 - SVG 规范是万维网联盟(W3C)自1998年以来开发的标准。
 - SVG 是一种基于 XML 格式的矢量图，主要用于定义二维图形，支持交互和动画。
@@ -21,7 +22,7 @@ SVG 的兼容性：
 <img src="NodeAssets/SVG的兼容性.jpg" style="zoom:150%;" />
 
 
-# SVG 的发展历史
+# 二、SVG 发展历史
 
 SVG 1.x 版本
 - SVG 是 W3C SVG 工作组于 1998 年开始开发，而 SVG1.0 于 2001 年 9 月 4 日 成为 W3C 推荐的标准。
@@ -36,10 +37,10 @@ SVG 2.0 版本（推荐）
 	- Added the ability to use `auto` for the `width` and `height` attributes on `<image>`.
 	- Added `lang` attribute on `<desc>` and `<title>` elements.
 	- Removed the `xlink:type`, `xlink:role`, `xlink:arcrole`, `xlink:show` and `xlink:actuate` attributes（“xlink”为命名空间的前缀）.
-	- Deprecated the `xlink:href` attribute in favor of using ‘href’ without a namespace.
+	- Deprecated the `xlink:href` attribute in favor of using `href` without a namespace.
 
 
-# SVG 的优点和缺点
+# 三、SVG 优点和缺点
 
 SVG 的优点：
 
@@ -47,13 +48,22 @@ SVG 的优点：
   > 矢量图像是基于矢量的点、线、形状和数学公式来构建的图形，该图形是没有像素的，放大缩小是不会失真的。
   >
   > 光栅图像是由像素点（微小的彩色方块）构建的图像，大量像素点可以形成高清图像，比如照片。图像像素越多，质量越高。
+  
 - 【灵活】：SVG 是 W3C 开发的标准，可结合其它的语言和技术一起使用，包括 CSS、JavaScript、HTML 和 SMIL 。SVG 图像可以直接使用 JS 和 CSS 进行操作，使用时非常方便和灵活，因为 SVG 也是可集成到 DOM 中的。
-- 【可以动画】：SVG 图像可以使用 JS、CSS 和 SMIL 进行动画处理。对于 Web 开发人员来说非常的友好。
+
+  - SVG 图像可以使用 JS、CSS 和 SMIL 进行动画处理。对于 Web 开发人员来说非常的友好。
+
 - 【轻量级】：与其它格式相比，SVG 图像的尺寸非常小。根据图像的不同，PNG 图像质量可能是 SVG 图像的 50 倍。
+
 - 【可打印】：SVG 图像可以以任何分辨率打印，而不会损失图像质量。
+
 - 【利于SEO】：SVG 图像被搜索引擎索引。因此，SVG 图像非常适合 SEO（搜索引擎优化）目的。
+
 - 【可压缩】：与其它图像格式一样，SVG 文件支持压缩。
-- 【易于编辑】：只需一个文本编辑器就可以创建 SVG 图像。设计师通常会使用 Adobe Illustrator（AI）等矢量图形工具创建和编辑。在 Vue 或 React 中可以方便地将 SVG 图片，转成 SVG 组件。
+
+- 【易于编辑】：只需一个文本编辑器就可以创建 SVG 图像。设计师通常会使用 Adobe Illustrator（AI）等矢量图形工具创建和编辑。
+
+  - 在 Vue 或 React 中可以方便地将 SVG 图片，转成 SVG 组件。
 
 SVG 的缺点：
 
@@ -65,41 +75,41 @@ SVG 的缺点：
 - SVG 图像变得复杂时，加载会比较慢；
 - 不完全扩平台：
 
-	- 尽管 SVG 自 1998 年以来就已经存在，并得到了大多数现代浏览器（桌面和移动设备）的支持，但它不适用于 IE8 及更低版本的旧版浏览器。根据 caniuse 的数据，大约还有 5% 的用户在使用不支持 SVG 的浏览器。
+	- 它不适用于 IE8 及更低版本的旧版浏览器。根据 caniuse 的数据，大约还有 5% 的用户在使用不支持 SVG 的浏览器。
 
 
-# SVG 有哪些应用场景
+# 四、SVG 应用场景
 
 下面是一些保证 SVG 优于其他图像格式的应用场景：
 
 - SVG 非常适合显示矢量徽标（Logo）、图标（ICON）和其他几何设计。
 - SVG 适合应用在需适配多种尺寸的屏幕上展示，因为 SVG 的扩展性更好。
-- 当需要创建简单的动画时，SVG 是一种理想的格式。
-   - SVG 可以与 JS 交互来制作线条动画、过渡和其他复杂的动画。
-  - SVG 可以与 CSS 动画交互，也可以使用自己内置的 SMIL 动画。
+- SVG 适合创建一些简单动画的场景：
+   - 可以方便的适用 JS、CSS、SMIL 实现动画效果。
 - SVG 也非常适合制作各种图表（条形图、折线图、饼图、散点图等等），以及大屏可视化页面开发。
 
 <img src="NodeAssets/SVG的应用场景.jpg" style="zoom:150%;" />
 
 
-# SVG 和 Canvas 的区别
+# 五、SVG 和 Canvas 的区别
 
 可扩展性：
-- SVG 是基于矢量的点、线、形状和数学公式来构建的图形，该图形是没有像素的，放大缩小不会失真。Canvas 是由一个个像素点构成的图形，放大会使图形变得颗粒状和像素化（模糊）。
-- SVG 可以在任何分辨率下高质量的打印。Canvas 不适合在任意分辨率下打印。
+- SVG 基于矢量的点、线、形状和数学公式来构建图形，没有像素，放大缩小不会失真。可在任何分辨率下高质量的打印
+- Canvas 由一个个像素点构成的图形，放大会使图形变得颗粒状和像素化（模糊），不适合在任意分辨率下打印。
 
 渲染能力：
-- 当 SVG 很复杂时，它的渲染就会变得很慢，因为在很大程度上去使用了 DOM，Canvas 提供了高性能的渲染和更快的图形处理能力，例如：适合制作 H5 小游戏。
-- 当图像中具有大量元素时，SVG 文件的大小会增长得更快（导致 DOM 变得复杂），而 Canvas 并不会增加太多。
+- 当 SVG 很复杂时，渲染就会变得很慢，因为在很大程度上去使用了 DOM。当图像中具有大量元素时，SVG 文件的大小会增长得更快（导致 DOM 变得复杂）
+- Canvas 提供了高性能的渲染和更快的图形处理能力，例如：适合制作 H5 小游戏；当图像中有很多内容时，文件大小不会增加太多，相对的，内存会有较大消耗，
 
 灵活度：
-- SVG 可以通过 JavaScript 和 CSS 进行修改，用 SVG 来创建动画和制作特效非常方便。Canvas 只能通过 JavaScript 进行修改，创建动画得一帧帧重绘。
+- SVG 可以通过 JavaScript、CSS、SMIL 进行修改，用 SVG 来创建动画和制作特效非常方便。
+- Canvas 只能通过 JavaScript 进行修改，创建动画得一帧帧重绘。
 
 使用场景：
 - SVG 非常适合显示矢量徽标（Logo）、图标（ICON）和其他几何设计。
-- Canvas 主要用于游戏开发、绘制图形、复杂照片的合成，以及对图片进行像素级别的操作，如：取色器、复古照片。
+- Canvas 主要用于游戏开发、绘制复杂图形、复杂照片的合成，以及对图片进行像素级别的操作，如：取色器、复古照片。
 
-# 创建 SVG 矢量图方式
+# 六、SVG 创建方式
 
 四种方式：
 
@@ -108,7 +118,7 @@ SVG 的缺点：
 - 方式三：直接使用 JavaScript 代码来生成 svg 矢量图；
 - 方式四：使用 AI（Adobe IIIustractor）矢量绘图工具来绘制矢量图，并导出为 svg 文件（推荐）。
 
-## 方式一：在单独的 svg 文件中绘制
+## 1.svg 文件
 
 4个步骤：
 
@@ -120,14 +130,13 @@ SVG 的缺点：
 	
 	> SVG2.0 之前，`version` 和 `baseProfile` 属性用来验证和识别 SVG 版本。而 **SVG2.0 后不推荐使用这两个属性了**。
 	
-	- `width / height`：指定 svg 画布（视口）的宽和高，默认值分别为 300 和 150，默认使用 px 单位。
+	- `width / height`：指定 svg 画布（视口）的宽和高，默认值分别为 `300` 和 `150`，默认使用 px 单位。
 	- `xmlns`：给 svg 元素绑定一个命名空间（http://www.w3.org/2000/svg） 意味着这个 `<svg>` 标签和它的子元素都属于该命名空间下。
 3. 在 `<svg>` 元素中添加图形（比如：`<rect>`）元素
-4. 在浏览器直接预览或嵌入到 HTML 中预览。
+4. 在浏览器直接预览或嵌入到 HTML 中预览。[嵌入 HTML 的 6 种方式](#svg 在 HTML 中引用的方式)。
    
-   - 嵌入 HTML 有6种方案。
 
-### svg 文件中的 XML 声明：
+### 1.XML 声明：
 
 由于 SVG 文件是一个 XML 文件格式，在编写 XML 文档时，通常是推荐编写 XML 声明的。
 
@@ -146,7 +155,7 @@ SVG 的 XML 声明格式：
    - 默认为 `no`：代表依赖外部标记声明；
    - `yes`：代表依赖内部默认的标记声明。
 
-### svg 文件中 DTD 声明：
+### 2.DTD 声明：
 
 SVG 的文档类型声明 DTD（Document Type Declare），用于解析器验证 XML 文件是否符合该规范，与 HTML5 文件的 DTD 声明类似。
 
@@ -160,7 +169,7 @@ SVG 的文档类型声明 DTD（Document Type Declare），用于解析器验证
    <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
    ```
 
-通过 svg 文件，创建 svg 矢量图
+### 4.创建 svg 矢量图
 
 ```xml
 <?xml version="1.1" encoding="UTF-8" standalone="no" ?>
@@ -185,7 +194,7 @@ SVG 的文档类型声明 DTD（Document Type Declare），用于解析器验证
 </svg>
 ```
 
-### SVG 文档解构
+### 3.SVG 文档解构
 
 [SVG 1.1 文档结构](https://www.w3.org/TR/SVG11/struct.html)
 
@@ -194,9 +203,11 @@ SVG 的文档类型声明 DTD（Document Type Declare），用于解析器验证
 
 [SVG 2.0 文档结构](https://www.w3.org/TR/SVG2/struct.html#Namespace)
 
+- 第一行：XML 声明。
+
 -  不推荐写 DTD 声明。
 -  `<svg>` 标签上 `version` 和 `baseProfile` 属性已删除；
--  其中 `<desc>` 元素是用来描述该文件的。
+-  `<desc>` 元素是用来描述该文件的。
 
 <img src="NodeAssets/SVG文档解构对比.jpg" style="zoom:150%;" />
 
@@ -213,7 +224,9 @@ SVG 的文档类型声明 DTD（Document Type Declare），用于解析器验证
 </svg>
 ```
 
-## 方式二：在 HTML 文件中使用 svg 元素绘制
+## 2.svg 元素
+
+在 HTML 文件中使用 svg 元素绘制
 
 ```html
 <!DOCTYPE html>
@@ -258,20 +271,20 @@ SVG 的文档类型声明 DTD（Document Type Declare），用于解析器验证
 </html>
 ```
 
-## 方式三：使用 JS 创建 svg
+## 3.JS 创建 svg
 
 使用 JS 脚本来创建 SVG 时，创建的元素都是需要添加命名空间的。
-- 比如：创建 `<svg>` 或者 `<rect>` 元素都需要添加命名空间`http://www.w3.org/2000/svg`
+- 比如：创建 `<svg>` 或者 `<rect>` 元素都需要添加命名空间 “`http://www.w3.org/2000/svg`”
 - 对于元素上的属性不带前缀的，命名空间就为 `null`。
 
-因为在 XML1.1 命名空间规范中建议，不带前缀的属性（带前缀如 xlink:href）命名空间的名称是没有值的，这时命名空间的值必须使用 null 值。
+因为在 XML1.1 命名空间规范中建议，不带前缀的属性（带前缀如 `xlink:href`）命名空间的名称是没有值的，这时命名空间的值必须使用 `null` 值。
 
-创建 SVG 常用的 DOM2 API：
-- `createElementNS(ns, elname)`：创建SVG元素；
-- `setAttributeNS(ns, attrname, value)`：给SVG元素添加属性；
-- `getAttributeNS(ns, attrname)`：获取SVG元素上的属性；
-- `hasAttributeNS(ns, attrname)`： 判断SVG元素上是否存在某个属性；
-- `removeAttributeNS(ns, attname)`：删除SVG元素上的某个属性；
+创建 SVG 常用的 DOM API：
+- `createElementNS(ns, elname)`：创建 SVG 元素；
+- `setAttributeNS(ns, attrname, value)`：给 SVG 元素添加属性；
+- `getAttributeNS(ns, attrname)`：获取 SVG 元素上的属性；
+- `hasAttributeNS(ns, attrname)`： 判断 SVG 元素上是否存在某个属性；
+- `removeAttributeNS(ns, attname)`：删除 SVG 元素上的某个属性；
 - [更多的API](https://developer.mozilla.org/zh-CN/docs/Web/SVG/Namespaces_Crash_Course)
 
 03-SVG\demo-project\01-创建SVG的方式\05-方式三-通过JS来创建SVG.html
@@ -315,17 +328,19 @@ SVG 的文档类型声明 DTD（Document Type Declare），用于解析器验证
 </html>
 ```
 
-# 在 HTML 中引入 svg 的6种方式。
+# 七、SVG 在 HTML 中引用的方式
 
-方式一：img 元素
-- 作为一张图片使用，不支持交互，只兼容 ie9 以上。
+## 1.img 元素
+
+作为一张图片使用，不支持交互，只兼容 ie9 以上。
 
 ```html
 <img src="./rect.svg" alt="">
 ```
 
-方式二：CSS 背景
-- 作为一张背景图片使用，不支持交互。
+## 2.CSS 背景
+
+作为一张背景图片使用，不支持交互。
 
 ```css
 .box{
@@ -336,25 +351,28 @@ SVG 的文档类型声明 DTD（Document Type Declare），用于解析器验证
 }
 ```
 
-方式三：直接在 HTML 文件引用源文件
-- 作为 HTML 的 DOM 元素，支持交互，只兼容 ie9 以上。
-- 见上方“在 HTML 中使用 svg 元素”。
+## 3.svg 元素
 
-方式四：object 元素（了解）。
+作为 HTML 的 DOM 元素，支持交互，只兼容 ie9 以上。见上方[svg 元素](##2.svg 元素)。
+
+## 4.object 元素（了解）
+
 - 支持交互式 svg，能拿到 object 的引用，为 SVG 设置动画、更改其样式表等。
 
 ```html
 <object data="./svg/rect.svg" type="image/svg+xml"></object>
 ```
 
-方式五：iframe 元素（了解） 。
+## 5.iframe 元素（了解） 
+
 - 支持交互式 svg，能拿到 iframe 的引用，为 SVG 设置动画、更改其样式表等
 
 ```html
 <iframe src="./svg/rect.svg"></iframe>
 ```
 
-方式六：embed 元素（了解） 。
+## 6.embed 元素（了解） 
+
 - 支持交互式 svg，能拿到 embed 的引用，为 SVG 设置动画、更改其样式表等，对旧版浏览器有更好的支持。
 
 ```html
@@ -362,14 +380,14 @@ SVG 的文档类型声明 DTD（Document Type Declare），用于解析器验证
 ```
 
 
-# SVG 中的坐标系（Grid）
+# 八、SVG 坐标系（Grid）
 
 SVG 使用的坐标系统（网格系统）和 Canvas 的差不多。坐标系是以左上角 (0,0) 为坐标原点，被称为初始**视口坐标系**，坐标以像素为单位，x 轴正方向向右，y 轴正方向向下。
 
-- `<svg>` 元素默认宽为 300px, 高为 150px。`<svg>` 元素默认被网格所覆盖。
+- `<svg>` 元素默认宽为 `300px`, 高为 `150px`。`<svg>` 元素默认被网格所覆盖。
 - 通常来说网格中的一个单元相当于 svg 元素中的一像素；基本上在 SVG 文档中的 1 个像素对应输出设备（比如显示屏）上的 1 个像素（除非缩放）。
 - `<svg>` 的 transform 属性可以用来移动、旋转、缩放 SVG 中的某个元素，
-  - 如 <svg> 中某个元素用了变形，**该元素内部会建立一个新的坐标系统，该元素默认后续所有变化都是基于新创建的坐标系统**。
+  - 如 `<svg>` 中某个元素用了变形，**该元素内部会建立一个新的坐标系统，该元后续所有形变都是基于新创建的坐标系统**。
 
 03-SVG\demo-project\03-SVG坐标系\01-坐标系统.html
 
@@ -402,7 +420,7 @@ SVG 使用的坐标系统（网格系统）和 Canvas 的差不多。坐标系�
 </html>
 ```
 
-# SVG 坐标系单位
+# 九、SVG 坐标系单位
 
 SVG 坐标系统，在没有明确指定单位时，默认以像素为单位。
 
@@ -422,7 +440,7 @@ SVG 坐标系统，在没有明确指定单位时，默认以像素为单位。
 <img src="NodeAssets/可用于SVG元素的单位列表.jpg" style="zoom:80%;" />
 
 
-# SVG 中的视口 - viewport
+# 十、SVG 视口（viewport）
 
 视口是 SVG 可见的区域（也可以说是 SVG 画布大小）。
 
@@ -430,13 +448,13 @@ SVG 坐标系统，在没有明确指定单位时，默认以像素为单位。
 
 一旦设置了 svg 元素的宽度和高度，浏览器就会建立初始**视口坐标系**和初始**用户坐标系**。
 
-## 视口坐标系
+## 1.视口坐标系
 
-视口坐标系是在视口上建立的坐标系，原点在视口左上角的点 (0, 0)，x 轴正向向右，y 轴正向下。
+视口坐标系是在视口上建立的坐标系，原点在视口左上角的点 (0, 0)，x 轴正向向右，y 轴正向向下。
 
 初始视口坐标系中的一个单位等于视口中的一个像素，该坐标系类似于 HTML 元素的坐标系。
 
-## 用户坐标系
+## 2.用户坐标系
 
 **用户坐标系**是建立在 SVG 视口上的坐标系。该坐标系最初与视口坐标系相同，它的原点位于视口的左上角。
 
@@ -456,29 +474,32 @@ SVG 坐标系统，在没有明确指定单位时，默认以像素为单位。
 </svg>
 ```
 
-# svg 上的 viewBox 属性
+### 1.svg 上的 viewBox 属性
 
 `viewBox` 称为视图框，viewport 是 SVG 画布的大小，而 `viewBox` 是用来定义用户坐标系中的位置和尺寸的（该区域通常会被缩放来填充视口）。
 
 - SVG 的图形都是绘制在用户坐标系中。用户坐标系可以比视口坐标系更小或更大，也可以在视口内完全或部分可见。
 - 一旦创建了视口坐标系（即 `<svg>` 使用 `width` 和 `height`），浏览器就会创建一个与其相同的用户坐标系。
-- 我们可以使用 viewBox 属性指定用户坐标系的大小。
-  - 如果用户坐标系与视口坐标系具有**相同的高宽比**，它将 viewBox 区域拉伸以填充视口区域。
-  - 如果用户坐标系和视口坐标系**没有相同的宽高比**，可用 `preserveAspectRatio` 属性来指定整个用户坐标系是否在视口内可见。
+
+`viewBox` 属性指定用户坐标系的大小。
+
+- 如果用户坐标系与视口坐标系具有**相同的高宽比**，它将 viewBox 区域拉伸以填充视口区域。
+- 如果用户坐标系和视口坐标系**没有相同的宽高比**，可用 `preserveAspectRatio` 属性来指定整个用户坐标系是否在视口内可见。
 
 `viewBox` 的语法：
 
-- viewBox = “<min-x> <min-y> <width> <height>”，比如：`viewBox = “0 0 100 100”`
+- viewBox = “`<min-x> <min-y> <width> <height>`”，比如：`viewBox = “0 0 100 100”`
 
-- <min-x> <min-y> 确定视图框的左上角坐标（即视图框的可见区域，不是修改用户坐标系的原点，绘图还是从原来的 (0, 0) 开始）.
+- `<min-x> <min-y>` 确定视图框的左上角坐标（即视图框的可见区域，**不是修改用户坐标系的原点**，绘图还是从原来的 (0, 0) 开始）.
 
   <img src="NodeAssets/确定视图框的左上角坐标.jpg" style="zoom:50%;" />
 
-- <width> <height> 确定该视图框的宽度和高度。
+- `<width> <height>` 确定该视图框的宽度和高度。
+  
   - 宽度和高度为 0 是禁用元素的显示；
   - 宽度和高度负值无效。
 
-## 用户坐标系与视口坐标系相同宽高比的情况
+用户坐标系与视口坐标系相同宽高比的情况
 
 等比例缩放：
 
@@ -490,7 +511,7 @@ SVG 坐标系统，在没有明确指定单位时，默认以像素为单位。
 
 <img src="NodeAssets/用户坐标系与视口坐标系相同宽高比情况.jpg" style="zoom:110%;" />
 
-## 用户坐标系与视口坐标系不同宽高比的情况
+用户坐标系与视口坐标系不同宽高比的情况
 
 保留视图框 viewBox 的宽高比，但视图框 viewBox 不会拉伸以覆盖整个视口区域。而是在视口内垂直和水平居中。
 
@@ -506,7 +527,7 @@ SVG 坐标系统，在没有明确指定单位时，默认以像素为单位。
 
 <img src="NodeAssets/用户坐标系与视口坐标系不同宽高比情况一.jpg" style="zoom:80%;" />
 
-想改变视口内的视框位置怎么办？给 `<svg>` 添加 `preserveAspectRatio` 属性，该属性允许强制统一缩放视图框 viewBox
+改变视口内的视框位置，给 `<svg>` 添加 `preserveAspectRatio` 属性，该属性允许强制统一缩放视图框 viewBox
 
 - `preserveAspectRatio= "none"`, 强制拉伸图形以填充整个视口。
 - `preserveAspectRatio= “xMinYMin”`, 图形在视口的最小 x 和 y 轴上显示。
@@ -522,7 +543,7 @@ SVG 坐标系统，在没有明确指定单位时，默认以像素为单位。
 
 <img src="NodeAssets/用户坐标系与视口坐标系不同宽高比情况二.jpg" style="zoom:80%;" />
 
-# 使用 SVG 绘制矩形
+# 十一、使用 SVG 绘制矩形
 
 使用 `<rect>` 元素绘制矩形，其中有6个基本属性：
 

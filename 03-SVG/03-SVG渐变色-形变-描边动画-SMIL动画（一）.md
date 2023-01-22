@@ -1,9 +1,9 @@
-# SVG 中的渐变
+# 一、SVG 中的渐变
 
-SVG 支持在填充和描边上应用渐变色，使用 <linearGradient>。
+SVG 支持在填充和描边上应用渐变色，使用 `<linearGradient>`。
 
-- 建议渐变内容定义在 <defs> 标签内部，因为渐变通常是可复用的。
-- 编写渐变时，必须给渐变内容指定一个 `id` 属性，用于 <use> 引用。
+- 建议渐变内容定义在 `<defs>` 标签内部，因为渐变通常是可复用的。
+- 编写渐变时，必须给渐变内容指定一个 `id` 属性，用于 `<use>` 引用。
 
 渐变有两种类型：**线性渐变**和**径向渐变**。
 
@@ -11,14 +11,14 @@ SVG 支持在填充和描边上应用渐变色，使用 <linearGradient>。
 
 线性渐变，是沿着直线改变颜色。使用步骤：
 
-1. <defs> 元素内部，创建一个 <linearGradient> 节点，并添加 `id` 属性。
-2. <linearGradient> 内编写几个 <stop> 元素。
-	- 给 <stop> 元素指定 `offset`（位置）属性和 `stop-color`（颜色）属性，用来指定渐变在特定的位置上应用什么颜色（这两个属性值，也可以通过 CSS 来指定）。
-	- 给 <stop> 元素指定 `stop-opacity` （透明度）属性。
-3. 在一个元素的 `fill` 属性或 `stroke` 属性中通过 id 选择器来引用 <linearGradient> 节点。如 `fill=url(#Gradient2)`。
-4. 控制渐变方向，通过 `(x1, y1)` 和 `(x2, y2)` 两个点控制。
-	- `(0, 0) (0, 1)` 从上到下；`(0, 0) (1, 0)` 从左到右。
-	- 也可以通过 `gradientTransform` 属性设置形变。比如：`gradientTransform=“rotate(90)` 表示从上到下。
+1. `<defs>` 元素内部，创建一个 `<linearGradient>` 节点，并添加 `id` 属性。
+2. `<linearGradient>` 内编写几个 `<stop>` 元素。
+	- 给 `<stop>` 元素指定 `offset`（位置）属性和 `stop-color`（颜色）属性，用来指定渐变在特定的位置上应用什么颜色（这两个属性值，也可以通过 CSS 来指定）。
+	- 给 `<stop>` 元素指定 `stop-opacity`（透明度）属性。
+3. 在一个元素的 `fill` 属性或 `stroke` 属性中通过 id 选择器来引用 `<linearGradient>` 节点。如 `fill=url(#Gradient2)`。
+4. `<linearGradient>` 控制渐变方向：
+	- 通过 `x1, y1` 和 `x2, y2` 属性控制，`(0, 0) (0, 1)` 从上到下；`(0, 0) (1, 0)` 从左到右。
+	- 也可通过 `gradientTransform` 属性设置形变。比如：`gradientTransform=“rotate(90)` 表示从上到下。
 
 03-SVG\demo-project\10-渐变色和滤镜效果\01-渐变色.html
 
@@ -51,14 +51,16 @@ SVG 支持在填充和描边上应用渐变色，使用 <linearGradient>。
 </svg>
 ```
 
-# SVG 中实现毛玻璃效果，与 CSS 做对比
+# 二、SVG 毛玻璃效果
 
 在前端开发中，毛玻璃效果有几种方案来实现：
 
-- 方案一：使用 CSS 的 `backdrop-filter` 或 `filter` 属性：
+## 1.方案一：CSS
 
-	- `backdrop-filter`：可以给一个元素后面区域添加模糊效果。适用于元素背后的所有元素。为了看到效果，必须使元素或其背景至少部分透明。
-	- `filter`：直接将模糊效果应用于指定的元素。
+使用 CSS 的 `backdrop-filter` 或 `filter` 属性：
+
+- `backdrop-filter`：可以给一个元素后面区域添加模糊效果。适用于元素背后的所有元素。为了看到效果，必须使元素或其背景至少部分透明。
+- `filter`：直接将模糊效果应用于指定的元素。
 
 03-SVG\demo-project\10-渐变色和滤镜效果\02-CSS实现毛玻璃效果.html
 
@@ -110,12 +112,15 @@ SVG 支持在填充和描边上应用渐变色，使用 <linearGradient>。
 </html>
 ```
 
-- 方案二：使用 SVG 的 <filter>  和 <feGaussianBlur> 元素（建议少用）：
+## 2.方案二：SVG
 
-	- <filter>：滤镜操作的容器，该元素定义的滤镜效果，需要在 SVG 元素上的 `filter` 属性引用。
-		- `x`，`y`，`width`，`height` 定义了在画布上应用此过滤器的矩形区域；`x`，`y` 默认值为 `-10%`（相对自身）；`width` ，`height` 默认 值为 `120%` （相对自身）。
-	- <feGaussianBlur>：对图像进行高斯模糊，`stdDeviation` 属性指定模糊的程度；
-	- <feOffset>：指定输入图像的偏移量。
+使用 svg 的 `<filter>` 和 `<feGaussianBlur>` 元素（建议少用）：
+
+`<filter>`：滤镜操作的容器，该元素定义的滤镜效果，需要在 SVG 元素上的 `filter` 属性引用。
+
+- `x`，`y`，`width`，`height` 定义了在画布上应用此过滤器的矩形区域；`x`，`y` 默认值为 `-10%`（相对自身）；`width` ，`height` 默认 值为 `120%` （相对自身）。
+- `<feGaussianBlur>`：对图像进行高斯模糊，`stdDeviation` 属性指定模糊的程度；
+- `<feOffset>`：指定输入图像的偏移量。
 
 03-SVG\demo-project\10-渐变色和滤镜效果\04-SVG的滤镜效果-模糊效果-区域.html
 
@@ -138,7 +143,7 @@ SVG 支持在填充和描边上应用渐变色，使用 <linearGradient>。
 </svg>
 ```
 
-# SVG 的形变 transform
+# 三、SVG 的形变
 
 `transform` 属性用来定义元素及其子元素的形变的列表。
 
@@ -156,7 +161,7 @@ SVG 支持在填充和描边上应用渐变色，使用 <linearGradient>。
 - `skew(x, y)`：倾斜。
 - `matrix(a, b, c, d, e)`：2*3 的形变矩阵
 
-## SVG 的平移 translate
+## 1.平移 translate
 
 03-SVG\demo-project\11-SVG的形变\01-平移-translate.html
 
@@ -172,7 +177,7 @@ SVG 支持在填充和描边上应用渐变色，使用 <linearGradient>。
 </svg>
 ```
 
-## SVG 的旋转 rotate
+## 2.旋转 rotate
 
 `rotate(deg, cx, cy)` 函数。仅支持 2D 变化。
 
@@ -188,7 +193,7 @@ SVG 支持在填充和描边上应用渐变色，使用 <linearGradient>。
 </svg>
 ```
 
-## SVG 的缩放 scale
+## 3.缩放 scale
 
 `scale(x, y)` 函数。仅支持 2D 变化。
 
@@ -210,9 +215,9 @@ SVG 支持在填充和描边上应用渐变色，使用 <linearGradient>。
 </svg>
 ```
 
-# SVG 描边动画 stroke
+# 四、SVG 描边动画
 
-`stroke` 是描边属性，专门给图形描边。
+`<svg>` 的 `stroke` 属性，专门给图形描边。
 
 想给各种描边添加动画效果，需用到下面两个属性：
 
@@ -279,7 +284,7 @@ SVG 支持在填充和描边上应用渐变色，使用 <linearGradient>。
 </html>
 ```
 
-# SVG 实现雪糕描边案例
+# 五、SVG 实现雪糕描边案例
 
 实现步骤：
 
@@ -290,7 +295,7 @@ SVG 支持在填充和描边上应用渐变色，使用 <linearGradient>。
 
 03-SVG\demo-project\12-SVG描边动画\05-雪糕动画案例.html
 
-# SVG 动画的实现方式有哪些？
+# 六、SVG 动画实现方式总结
 
 方式一：用 JS 脚本实现：给 SVG 创建动画和开发交互式的用户界面。
 
@@ -298,46 +303,48 @@ SVG 支持在填充和描边上应用渐变色，使用 <linearGradient>。
 
 方式三：用 SMIL 语言实现：
 
-# SMIL 是什么？它有哪些优势？
+# 七、SMIL 是什么？
 
 SMIL（Synchronized Multimedia Integration Language 同步多媒体集成语言）是 W3C 推荐的可扩展标记语言，用于描述多媒体演示。
 
 - SMIL 标记是用 XML 编写的，与 HTML 有相似之处。
 - SMIL 允许开发多媒体项目，例如：文本、图像、视频、音频等。
-- SMIL 定义了时间、布局、动画、视觉转换和媒体嵌入等标记，比如：<head> <body> <seq> <par> <excl> 等元素。
+- SMIL 定义了时间、布局、动画、视觉转换和媒体嵌入等标记，比如：`<head> <body> <seq> <par> <excl>` 等元素。
 
 SMIL 的应用
 
 - 目前最常用的 Web 浏览器基本都支持 SMIL 语言。
-- SVG 动画元素是基于 SMIL 实现（SVG 中使用 SMIL 实现元素有：<set>、<animate>、<animateMotion>...）。
+- SVG 动画元素是基于 SMIL 实现（SVG 中使用 SMIL 实现元素有：`<set>、<animate>、<animateMotion>`...）。
 
 > 使用 SMIL 制作的播放器有：
 >
 > - Adobe Media Player implement SMIL playback。
 > - QuickTime Player implement SMIL playback。
 
-SMIL 方式实现动画的优势：
+# 八、SMIL 实现动画的优势
 
-- 只需在页面放几个 <animate> 元素就可以实现强大的动画效果，无需任何 CSS 和 JS 代码。
-- 支持声明式动画。不需指定如何做某事，而是指定最终结果应该是什么，将实现细节留给客户端软件.
-  - 在 JavaScript 中，动画通常使用 `setTimeout()` 或 `setInterval()` 等方法实现，这些方法需要手动管理动画的时间。
-  - 而 SMIL 声明式动画可以让浏览器自动处理，比如：动画轨迹直接与动画对象相关联、物体和运动路径方向、管理动画时间等等。
-- SMIL 动画还有一个令人愉快的特点是，动画与对象本身是紧密集成的，对于代码的编写和阅读性都非常好。
+编写简单，只需在页面放几个 `<animate>` 元素就可以实现强大的动画效果，无需任何 CSS 和 JS 代码。
 
-# SMIL 动画的元素有哪些？
+支持声明式动画。不需指定如何做某事，而是指定最终结果应该是什么，将实现细节留给客户端软件.
+- 在 JavaScript 中，动画通常使用 `setTimeout()` 或 `setInterval()` 等方法实现，这些方法需要手动管理动画的时间。
+- 而 SMIL 声明式动画可以让浏览器自动处理，比如：动画轨迹直接与动画对象相关联、物体和运动路径方向、管理动画时间等等。
 
-包括了 <set> <animate> <animateColor> <animateMotion> 等等。[更多](https://www.w3.org/TR/SVG11/animate.html#AnimationElements)
+阅读性好，SMIL 动画与对象本身是紧密集成的。
 
-# SMIL 动画 set 元素
+# 九、SMIL 动画元素
 
-<set> 是最简单的 SVG 动画元素。它是在经过特定时间间隔后，将属性设置为某个值。不是连续动画，而是改变一次属性值。
+包括了 `<set> <animate> <animateColor> <animateMotion>` 等等。[更多](https://www.w3.org/TR/SVG11/animate.html#AnimationElements)
 
-它支持所有属性类型，包括那些无法合理插值的属性类型，例如：字符串和布尔值。而对于可以合理插值的属性通常首选 <animate> 元素。
+## 1.set 元素
+
+`<set>` 是最简单的 SVG 动画元素。它是在经过特定时间间隔后，将属性设置为某个值。不是连续动画，而是改变一次属性值。
+
+它支持所有属性类型，包括那些无法合理插值的属性类型，例如：字符串和布尔值。而对于可以合理插值的属性通常首选 `<animate>` 元素。
 
 常用属性：
 
 - `attributeName`：指示将在动画期间更改的目标元素的 CSS 属性或元素属性（attribute）的名称。
-- ~~attributeType~~：（已过期，不推荐）指定定义目标属性的类型（值为：CSS | XML | auto）。
+- ~~`attributeType`~~：（已过期，不推荐）指定目标属性的类型（值为：CSS | XML | auto）。
 - `to`：定义在特定时间设置目标属性的值。该值必须与目标属性的要求相匹配。 值类型：anything；默认值：无
 - `begin`：定义何时开始动画或何时丢弃元素，默认是 0s (begin 支持多种类型的值)。
 
@@ -359,9 +366,9 @@ SMIL 方式实现动画的优势：
 </svg>
 ```
 
-# SMIL 动画 animate 元素
+## 2.animate 元素
 
-<animate> 元素给某个属性创建过度动画效果。需嵌套在应用动画的元素内。
+`<animate>` 元素给某个属性创建过度动画效果。需嵌套在应用动画的元素内。
 
 常用的属性：
 
@@ -377,7 +384,7 @@ SMIL 方式实现动画的优势：
 - 动画时间属性：
 
 	- `begin`：定义何时开始动画或何时丢弃元素。默认是 0s 。
-	- `dur`：动画的持续时间，该值必须，并要求大于 0。单位可以用小时 (h)、分钟 (m)、秒 (s) 或毫秒 (ms) 表示。
+	- `dur`：（必填）动画持续时间，要求大于 0。单位可以用小时 (h)、分钟 (m)、秒 (s) 或毫秒 (ms) 表示。
 	- `fill`：定义动画的最终状态。 `freeze`（保持最后一个动画帧的状态） | `remove`（保持第一个动画帧的状态）。
 	- `repeatCount`：指示动画将发生的次数：[number] | `indefinite`。没有默认值。
 
@@ -385,6 +392,7 @@ SMIL 方式实现动画的优势：
 
 ```xml
 <svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
+  
 	<rect x="0" y="0" width="100" height="50" fill="red">
 		<!-- animate 元素基本使用 -->
 		<animate
@@ -396,6 +404,7 @@ SMIL 方式实现动画的优势：
 			fill="freeze"
 		></animate>
 	</rect>
+  
 	<rect x="0" y="100" width="100" height="50" fill="red">
 		<!-- animate 元素基本使用，3个属性是必须的 -->
 		<animate
@@ -404,9 +413,11 @@ SMIL 方式实现动画的优势：
 			dur="3s"
 		></animate>
 	</rect>
+  
 </svg>
 
 <svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
+  
 	<rect x="0" y="0" width="100" height="50" fill="skyblue">
 		<!-- value 属性的使用 -->
 		<animate
@@ -416,6 +427,7 @@ SMIL 方式实现动画的优势：
 			repeatCount="indefinite"
 		></animate>
 	</rect>
+  
 	<rect x="0" y="100" width="100" height="50" fill="skyblue">
 		<!-- value 属性的使用 -->
 		<animate
@@ -425,14 +437,16 @@ SMIL 方式实现动画的优势：
 			repeatCount="indefinite"
 		></animate>
 	</rect>
+  
 </svg>
 
 
 <svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
+  
 	<rect x="0" y="0" width="100" height="50" fill="skyblue">
 		<!-- 动画的衔接 -->
 		<animate
-			id="oneAnimate"
+			id="firstAnimate"
 			attributeName="x"
 			values="0; 200"
 			dur="3s"
@@ -443,8 +457,9 @@ SMIL 方式实现动画的优势：
 			values="0; 100"
 			dur="3s"
 			fill="freeze"
-			begin="oneAnimate.end"
+			begin="firstAnimate.end"
 		></animate>
 	</rect>
+  
 </svg>
 ```

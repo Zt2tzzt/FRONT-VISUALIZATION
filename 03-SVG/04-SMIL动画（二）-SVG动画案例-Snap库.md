@@ -1,4 +1,6 @@
-# SMIL 动画 animateTransform 元素
+# 一、SMIL 动画元素
+
+## 2.animateTransform 元素
 
 `<animateTransform>` 元素，控制元素的形变（平移、旋转、缩放或倾斜）动画。
 
