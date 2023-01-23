@@ -21,7 +21,7 @@ window.onload = function() {
 			show: true,
 			// width: 100,
 			// itemWidth: 20,
-			icon: 'circle',  // round circle ...
+			icon: 'circle',  // round ...
 			formatter: 'zhu-{name}', // 字符春写法
 			formatter: function(name) { // 函数的写法
 				console.log(name)
@@ -92,8 +92,8 @@ window.onload = function() {
 
 ```js
 window.onload = function() {
-	let myChart = echarts.init(document.getElementById('main'));
-	let option = {
+	const myChart = echarts.init(document.getElementById('main'));
+	const option = {
 		backgroundColor: 'rgba(255, 0, 0, 0.1)',
 		grid: {
 			show: true,
@@ -101,7 +101,7 @@ window.onload = function() {
 		},
 		tooltip: {
 			show: true,
-			// 使用了 trigger ，一般也结合 axisPointer
+			// 使用了 trigger，一般也结合 axisPointer
 			trigger: "axis",  // 默认是 item
 			axisPointer: {
 				type: "shadow", //  line，默认是竖线；cross，横线 + 竖线；shadow，横线 + 竖线；
@@ -125,14 +125,12 @@ window.onload = function() {
 
 # 二、ECharts 中配置 color 渐变色
 
-ECharts 中 Color 支持的格式：
-
-- RGB、RGBA、关键字、十六进制格式
+ECharts 中 Color 支持的格式：RGB、RGBA、关键字、十六进制格式
 
 ECharts 中的渐变色：
 
 - 线性渐变，前四个参数分别是 `(x, y)`, `(x2, y2)` 范围从 `0 – 1`。
-- 径向渐变，前三个参数分别是圆心坐标（x, y) 和半径，取值同线性渐变。
+- 径向渐变，前三个参数分别是圆心坐标 `x`, `y` 和半径 `r`，取值同线性渐变。
 
 04-Echart\demo-project\02-ECharts的组件和配置\11-ECharts-图形-渐变色.html
 
@@ -255,17 +253,21 @@ ECharts 需要使用 GeoJSON 格式的数据作为地图的轮廓，获取第三
 
 ### 1.引入地图配置方式：
 
-方式一：引入 json 格式的地图数据，并手动注册。
+#### 1.引入 json 文件
+
+引入 json 格式的地图数据，并手动注册。
 
 ```js
 echarts.registerMap('china', { geoJSON: china_geojson })
 ```
 
-方式二：引入 js 文件，该文件中已经将 json 数据注册好。
+#### 2.引入 js 文件
+
+引入 js 文件，该文件中已经将 json 数据注册好。
 
 ### 2.展示地图的两种方式：
 
-方式一：配置 `geo` 选项。
+#### 1.配置 `geo` 选项。
 
 04-Echart\demo-project\04-Echarts地图\01-方式一-初体验中国地图-json.html
 
@@ -284,7 +286,9 @@ window.onload = function() {
 }
 ```
 
-方式二：配置 `series` 选项，`series: {type: "map", map: "china"}`。
+#### 2.配置 series 选项
+
+配置 `series` 选项，`series: {type: "map", map: "china"}`。
 
 04-Echart\demo-project\04-Echarts地图\02-方式二-初体验中国地图-json.html
 
@@ -311,11 +315,11 @@ window.onload = function() {
 
 方式一：`geo` 组件配置：
 
-- 会生成一个 geo 地理坐标系组件。
-- 该组件用于地图的绘制；
+- 会生成一个 geo 地理坐标系组件，用于地图的绘制；
 - 该组件上支持绘制散点图，线集；
 - 该组件可以共其它系列复用；
-	- 注意：其他系列在复用该地理坐标系时，`series` 的 `itemStyle` 等样式将不起作用。
+
+> 注意：其他系列在复用该地理坐标系时，`series` 的 `itemStyle` 等样式将不起作用。
 
 方式二：`series` 系列图组件 `map` 配置：
 
@@ -531,9 +535,9 @@ const option = {
 
 - `init(dom，theme，opts)`：创建 echartsInstance 实例。
 - `registerMap(mapName，opts)`：注册地图。
-- `getMap( mapName )`：获取已注册地图。
+- `getMap(mapName)`：获取已注册地图。
 
-通过 echarts.init，创建的 [echartsInstance 实例](https://echarts.apache.org/zh/api.html#echartsInstance)
+通过 `echarts.init`，创建的 [echartsInstance 实例](https://echarts.apache.org/zh/api.html#echartsInstance)
 
 - `setOption(opts)`：设置图表实例的配置项以及数据，万能接口。
 - `getWidth()`、`getHeight()`：获取 ECharts 实例容器的宽高度。

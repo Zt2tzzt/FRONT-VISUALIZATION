@@ -1,8 +1,8 @@
 # 一、SMIL 动画元素
 
-## 2.animateTransform 元素
+## 1.animateTransform 元素
 
-`<animateTransform>` 元素，控制元素的形变（平移、旋转、缩放或倾斜）动画。
+`<animateTransform>` 元素，控制元素的形变（平移、旋转、缩放、倾斜）动画。
 
 在一个 svg 元素中，`<animateTransform>` 只能使用一次，如果使用多次，后面会覆盖前面的。
 
@@ -13,7 +13,7 @@
 - 动画值属性：`from`、`to`、`values`
 - 动画时间属性：`begin`、`dur`、`fill`、`repeatCount`
 
-平移（translate）动画
+### 1.平移（translate）动画
 
 03-SVG\demo-project\13-SVG的SMIL动画\03-animateTransform-translate.html
 
@@ -48,7 +48,9 @@
 </svg>
 ```
 
-旋转（rotate）动画
+### 2.旋转（rotate）动画
+
+可指定旋转的圆心点：cx, cy；
 
 03-SVG\demo-project\13-SVG的SMIL动画\04-animateTransform-rotate.html
 
@@ -83,7 +85,7 @@
 </svg>
 ```
 
-缩放（sclae）动画
+### 3.缩放（sclae）动画
 
 03-SVG\demo-project\13-SVG的SMIL动画\05-animateTransform-scale.html
 
@@ -118,22 +120,22 @@
 </svg>
 ```
 
-# SMIL 动画 animateMotion 元素
+## 2.animateMotion 元素
 
 `<animateMotion>` 定义了一个元素沿着路径进行移动。
 
-- 进行动画的元素的坐标原点，会影响元素运动路径，建议从 `(0, 0)` 开始。
+- 进行动画的元素的坐标原点，会影响元素运动路径，建议将进行动画的元素放置在 `(0, 0)` 点开始。
 - 要复用现有路径，可在 `<animateMotion>` 元素中使用 `<mpath>` 元素。
 
 `<animateMotion>` 元素常用属性：
 
 - `path`：定义运动的路径，值和 `<path>` 元素的 `d` 属性一样；
 - `href`：引用一个进行动画的元素。
-- `rotate`：动画元素自动跟随路径旋转，使元素动画方向和路径方向相同，值类型：<数字> | `auto` | `auto-reverse`; 默认值：0
+- `rotate`：动画元素自动跟随路径旋转，使元素动画方向和路径方向相同，值类型：`<number>` | `auto` | `auto-reverse`; 默认值：0
 - 动画值属性：`from`、`to`、`values`
 - 动画时间属性：`begin`、`dur`、`fill`、`repeatCount`
 
-基本使用：
+### 1.基本使用
 
 ```xml
 <svg width="300" height="300" xmlns="http://www.w3.org/2000/svg" >
@@ -152,7 +154,9 @@
 </svg>
 ```
 
-路径的复用，使用 `<mpath>`：
+### 2.路径的复用
+
+使用 `<mpath>`：
 
 03-SVG\demo-project\13-SVG的SMIL动画\07-animateMotion动画-复用路径.html
 
@@ -174,7 +178,7 @@
 </svg>
 ```
 
-优化，动画的抽取：
+### 3.动画的抽取
 
 03-SVG\demo-project\13-SVG的SMIL动画\08-animateMotion动画-优化.html
 
@@ -199,7 +203,7 @@
 </svg>
 ```
 
-# SVG + SMIL 动画案例
+# 二、SVG + SMIL 动画案例
 
 飞机轨迹飞行
 
@@ -209,7 +213,7 @@
 
 03-SVG\demo-project\14-SVG动画案例\02-进度加载动画-temp.html
 
-# SVG + CSS3 动画案例
+# 三、SVG + CSS3 动画案例
 
 城市定位动图
 
@@ -219,25 +223,31 @@
 
 03-SVG\demo-project\14-SVG动画案例\04-水球体+CSS3-temp.html
 
-# Snap 库
+# 四、Snap 库
 
-[官网](http://snapsvg.io/)
+[Snap.svg 官网](http://snapsvg.io/)
 
-什么是 Snap.svg
+## 1.Snap.svg 是什么？
 
-- Snap.svg 由 Dmitry Baranovskiy 从零开始编写，是一个专门用于处理 SVG 的 JavaScript 库 (类似 jQuery)。
-- Snap 为 Web 开发人员提供了干净、直观、功能强大的 API，专门用来操作 SVG。
-- Snap 可用于创建动画，操作现有的 SVG 内容，以及生成 SVG 内容。
+Snap.svg 由 Dmitry Baranovskiy 从零开始编写，是一个专门用于处理 SVG 的 JavaScript 库 (类似 jQuery)。
 
-为什么使用 Snap.svg
+Snap 为 Web 开发人员提供了干净、直观、功能强大的 API，专门用来操作 SVG。
 
-- Snap.svg 专为现代浏览器（IE9 及更高版本、Safari、Chrome、Firefox 和 Opera）而设计的。并且支持遮罩、剪辑、图案、全渐变、组等功能。
-- SVG 内容不必使用 Snap 生成，也可使用 Snap 来处理它。比如可以在 Illustrator 或 Sketch 等工具中创建 SVG 内容，然后使用 Snap 对其进行动画处理或其它操作。
-- Snap.svg 库处理 SVG 就像 jQuery 处理 DOM 一样简单，并且 Snap 是 100% 免费和 100% 开源的。
+Snap 可用于创建动画，操作现有的 SVG 内容，以及生成 SVG 内容。
 
-## Snap.svg 的初体验
+## 2.Snap.svg 优势
 
-使用 Snap.svg 绘制一个圆。
+Snap.svg 专为现代浏览器（IE9 及更高版本、Safari、Chrome、Firefox 和 Opera）而设计。并且支持遮罩、剪辑、图案、全渐变、组等功能。
+
+SVG 内容不必使用 Snap 生成，也可使用 Snap 来处理它。
+
+- 比如可以在 Illustrator 或 Sketch 等工具中创建 SVG 内容，然后使用 Snap 对其进行动画处理或其它操作。
+
+Snap.svg 库处理 SVG 就像 jQuery 处理 DOM 一样简单，并且 Snap 是 100% 免费和 100% 开源的。
+
+## 3.Snap.svg 的初体验
+
+### 1.绘制一个圆
 
 03-SVG\demo-project\15-第三方动画库-snap\01-Snap.svg的初体验.html
 
@@ -269,7 +279,7 @@
 </body>
 ```
 
-使用 Snap.svg 选中已有的 svg 元素
+### 2.选中已有的 svg 元素
 
 03-SVG\demo-project\15-第三方动画库-snap\02-Snap.svg操作SVG.html
 
@@ -302,7 +312,7 @@
 </body>
 ```
 
-Snap.svg 常用的 API：
+### 3.常用的 API
 
 - `Snap`： 工厂函数
 	- `Snap(w, h)` ：创建 svg 画布。
@@ -314,7 +324,7 @@ Snap.svg 常用的 API：
 - `mina`：通常用到的一些动画时间函数。
 	- `mina.linear`、`mina.easeIn`、`mina.easeOut` …
 
-Snap.svg 的动画实现。
+### 4.动画实现
 
 03-SVG\demo-project\15-第三方动画库-snap\03-Snap.svg-动画实现.html
 
@@ -380,7 +390,7 @@ Snap.svg 的动画实现。
 </body>
 ```
 
-## Snap.svg 鳄鱼动画案例
+## 2.Snap.svg 鳄鱼动画案例
 
 03-SVG\demo-project\15-第三方动画库-snap\04-鳄鱼+Snap-temp.html
 

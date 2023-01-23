@@ -7,7 +7,7 @@
 
 GSAP 动画库的特点
 
-- GSAP 支持 HTML 元素、SVG 元素、Vue、React 组件的动画。
+- GSAP 支持 <u>HTML 元素</u>、<u>SVG 元素</u>、<u>Vue 组件</u>、<u>React 组件</u>的动画。
 - GSAP 还提供了一些插件，用最少的代码实现炫酷的动画，比如：[ScrollTrigger 插件](https://greensock.com/scrolltrigger)和 MorphSVG 插件。
 - GSAP 的核心是一个高速的属性操纵器，随着时间的推移，它以极高的准确性更新值。它比 jQuery 快 20 倍！
 - GSAP 使用起来非常灵活，在需要动画的地方基本都可以使用，并且是零依赖。
@@ -43,16 +43,20 @@ GSAP 动画库的特点
 
 # 三、GSAP 的补间动画
 
+## 1.API
+
 tween 动画，又称补间动画，有4种类型：
 
-- `gsap.from(targets | selector, vars)`：元素从 `from` 定义的状态过度到元素当前的状态。
+- `from(targets | selector, vars)`：元素从 `from` 定义的状态过度到元素当前的状态。
 	- `targets | selector` ：需动画的元素对象，支持字符串的选择器。
 	- `vars`: 一个对象，包括了需动画的属性和 GSAP 扩展的属性，如 `duration`、`ease`、`transformOrigin`、`repeat`、`delay`、`yoyo`、`stagger`、`onComplete` ……
 	- [官网 gsap.form 文档](https://greensock.com/docs/v3/GSAP/gsap.from())
-- `gsap.to(targets | selector, vars)`：元素从当前的状态过度到 `to` 状态。
-- `gsap.fromTo(targets | selector, fromVars， toVars)`：元素从 `from` 定义状态过度到 `to` 定义的状态。
-- `gsap.set(targets | selector, vars)`：立即设置属性（无过度效果）。
+- `to(targets | selector, vars)`：元素从当前的状态过度到 `to` 状态。
+- `fromTo(targets | selector, fromVars， toVars)`：元素从 `from` 定义状态过度到 `to` 定义的状态。
+- `set(targets | selector, vars)`：立即设置属性（无过度效果）。
 	- 本质上是一个 `duration = 0` 的 `to` 补间动画。
+
+## 2.适用范围
 
 GSAP 几乎可以为任何属性制作动画：
 
@@ -61,6 +65,8 @@ GSAP 几乎可以为任何属性制作动画：
 - 还专门为 CSS 形变（transform）相关属性提供了简写，如下图所示：[官网形变相关文档](https://greensock.com/get-started/#transformShorthand)
 
   <img src="NodeAssets/GSAP形变简写.jpg" style="zoom:80%;" />
+
+## 3.基本使用
 
 03-SVG\demo-project\16-第三方动画库-gsap\02-gsap-补间动画-tween.html
 
@@ -92,7 +98,7 @@ GSAP 几乎可以为任何属性制作动画：
    <script>
 
     function onRectClick1() {
-      // 补间动画（第一个参数一也支持数组）
+      // 补间动画（第一个参数，也支持数组）
       gsap.to(['#rectangle1'], {
         scale: 0.5, // 1 - 0.5
         duration: 1
@@ -140,13 +146,13 @@ GSAP 几乎可以为任何属性制作动画：
 
 # 四、GSAP 的动画时间线
 
-时间线（TimeLine）用来创建易于调整、有弹性的动画序列。
+[时间线（TimeLine）](https://greensock.com/docs/v3/GSAP/Timeline)用来创建易于调整、有弹性的动画序列。
 
 将补间动画添加到时间线（Timeline）时，默认情况下，它们会按照添加到时间轴的顺序一个接一个地播放。
 
 TimeLine 的使用步骤：
 
-1. `gsap.timeline(vars)` 拿到时间线对象。[timeline 文档](https://greensock.com/docs/v3/GSAP/Timeline)
+1. `gsap.timeline(vars)` 拿到时间线对象。
 2. 调用时间线上的 Tween 动画方法，比如：`form`、`to` 等。
 
 ## 1.使用 `delay` 实现：
@@ -189,7 +195,7 @@ TimeLine 的使用步骤：
 </body>
 ```
 
-## 2.使用 `timeline` 实现
+## 2.使用 timeline 实现
 
 03-SVG\demo-project\16-第三方动画库-gsap\04-gsap动画时间线-timeline.html
 
