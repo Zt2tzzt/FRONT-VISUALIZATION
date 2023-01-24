@@ -178,7 +178,7 @@ window.onload = function() {
 						],
 					}
 				},
-					data: [
+        data: [
 					{
 						value: 5,
 						name: "衬衫", // 数据项名称, 比如pie系列 tooltip 需要用到
@@ -267,7 +267,7 @@ echarts.registerMap('china', { geoJSON: china_geojson })
 
 ### 2.展示地图的两种方式：
 
-#### 1.配置 `geo` 选项。
+#### 1.配置 geo 选项。
 
 04-Echart\demo-project\04-Echarts地图\01-方式一-初体验中国地图-json.html
 
@@ -475,11 +475,11 @@ const option = {
 1. 添加一个 effectScatter series；
    - `series: {type: 'effectScatter'}`
 2. 指定使用的地理坐标系；
-3. - `series: {geoIndex: 0, coordinateSystem: "geo"}` 复用 geo 组件。
-4. 添加地图所需的数据；
+   - `series: {geoIndex: 0, coordinateSystem: "geo"}` 复用 geo 组件。
+3. 添加地图所需的数据；
    - `series: {data: ...}`
-5. 修改标记的大小和样式；
-6. 修改默认的 tooltip 提示。
+4. 修改标记的大小和样式；
+5. 修改默认的 tooltip 提示。
 
 04-Echart\demo-project\04-Echarts地图\06-中国地图+散点图.html
 
@@ -676,7 +676,7 @@ window.onload = function() {
 			// 如果还未注册地图
 			if(!echarts.getMap(event.name)){
 				// 注册地图
-				echarts.registerMap(event.name, { geoJSON: guangdong_geojson})
+				echarts.registerMap(event.name, { geoJSON: guangdong_geojson })
 			}
 			option.series[0].map = event.name // 将中国地图切换为广东地图
 			myChart.setOption(option)
