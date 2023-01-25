@@ -53,29 +53,32 @@
 
   <script>
 
-    // 设计稿:  1920 * 1080
-    // 目标适配:  1920 * 1080   3840 * 2160 ( 2 * 2 ) ;  7680 * 2160( 4 * 2)
+    /**
+     * 设计稿:  1920 * 1080
+     * 目标适配:  1920 * 1080   3840 * 2160 ( 2 * 2 ) ;  7680 * 2160( 4 * 2 )
+     */
 
     // 1.设计稿的尺寸
-    let targetX = 1920
-    let targetY = 1080
-    let targetRatio = 16 / 9 // 宽高比率
+    const targetX = 1920
+    const targetY = 1080
+    const targetRatio = 16 / 9 // 宽高比率
 
     // 2.拿到当前设备(浏览器)的宽度
-    let currentX = document.documentElement.clientWidth || document.body.clientWidth
-    let currentY = document.documentElement.clientHeight || document.body.clientHeight
+    const currentX = document.documentElement.clientWidth || document.body.clientWidth
+    const currentY = document.documentElement.clientHeight || document.body.clientHeight
     //  1920 * 1080  -> 3840 * 2160
 
     // 3.计算缩放比例
-    let scaleRatio = currentX / targetX; // 参照宽度进行缩放 ( 默认情况 )
-    let currentRatio = currentX / currentY // 宽高比率
+    const currentRatio = currentX / currentY // 实际宽高比
+    let scaleRatio = currentX / targetX; // 实际宽 / 设计稿宽
 
     // 超宽屏
     if(currentRatio > targetRatio) {
-      scaleRatio = currentY / targetY // 参照高度进行缩放
-      document.body.style = `width:${targetX}px; height:${targetY}px;transform: scale(${scaleRatio}) translateX(-50%); left: 50%`
+      scaleRatio = currentY / targetY
+      // 不会有滚动条，居中展示
+      document.body.style = `width:${targetX}px; height:${targetY}px; transform: scale(${scaleRatio}) translateX(-50%); left: 50%`
     } else {
-      // 4.开始缩放网页
+      // 可能有滚动条
       document.body.style = `width:${targetX}px; height:${targetY}px; transform: scale(${scaleRatio})`
     }
       

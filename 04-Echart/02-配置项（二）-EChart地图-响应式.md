@@ -125,7 +125,7 @@ window.onload = function() {
 
 # 二、ECharts 中配置 color 渐变色
 
-ECharts 中 Color 支持的格式：RGB、RGBA、关键字、十六进制格式
+ECharts 中 Color 支持的格式：RGB、RGBA、关键字、十六进制格式：
 
 ECharts 中的渐变色：
 
@@ -389,7 +389,7 @@ window.onload = function() {
 		// 方式二
 		series: [
 			{
-				type: 'map', // 系列图是 地图(创建一个地理坐标系统, 用来展示数据 )
+				type: 'map', // 系列图是 地图(创建一个地理坐标系统, 用来展示数据)
 				map: 'china', //
 				roam: true,
 				itemStyle: {
@@ -544,7 +544,7 @@ const option = {
 - `resize(opts)`：改变图表尺寸，在容器大小发生改变时需要手动调用。
 - `showLoading()`、`hideLoading()`：显示和隐藏加载动画效果。
 - `dispatchAction( )`：触发图表行为，例如：图例开关、显示提示框等。
-- `dispose`：销毁实例，销毁后实例无法再被使用。
+- `dispose()`：销毁实例，销毁后实例无法再被使用。
 - `on()`：添加事件处理函数，该文档描述了所有 ECharts 的事件列表。
 
 # 六、ECharts 响应式图表实现
@@ -555,7 +555,7 @@ const option = {
 
 1. 图表只设置高度，宽度设置为 `100%` 或不设置。
 2. 监听窗口的 `resize` 事件（如果要考虑性能优化，需节流）。
-3. 当窗口大小改变时，调用 `echartsInstance.resize` 改变图表的大小。
+3. 当窗口大小改变时，调用 `echartsInstance.resize()` 改变图表的大小。
 
 04-Echart\demo-project\05-ECharts的补充API\01-响应式图表-.html
 
