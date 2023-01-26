@@ -85,10 +85,10 @@ html, body {
 	margin: -50px 0 0 -50px;
 	width: 100px;
 	height: 100px;
-
+	/* 启用 3D 空间 */
 	transform-style: preserve-3d;
 	transform: rotateX(-33.5deg) rotateY(45deg);
-
+	/* 帧动画 */
 	animation: outerLoop 3s ease-in-out infinite;
 }
 

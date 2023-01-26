@@ -495,7 +495,6 @@ const option = {
     {
       name: "散点图",
       type: "effectScatter",
-
       geoIndex: 0, // geo 支持数组，默认是 0
       coordinateSystem: "geo", // 使用地理坐标系，通过 geoIndex 指定相应的地理坐标系组件。
       data: [
@@ -553,7 +552,7 @@ const option = {
 
 基本步骤：
 
-1. 图表只设置高度，宽度设置为 `100%` 或不设置。
+1. 图表设置高度，宽度设置为 `100%` 或不设置。
 2. 监听窗口的 `resize` 事件（如果要考虑性能优化，需节流）。
 3. 当窗口大小改变时，调用 `echartsInstance.resize()` 改变图表的大小。
 
