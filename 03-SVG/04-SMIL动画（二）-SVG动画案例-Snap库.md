@@ -9,7 +9,7 @@
 `<animateTransform>` 常用属性：
 
 - `attributeName`：指示将在动画期间更改的目标元素的 CSS 属性或元素属性（attribute）的名称。
-- `type` ：指定形变动画的类型，只支持 `translate` | `rotate`（若有参数，cx, cy 参照用户坐标系） | `scale` | `skewX` | `skewY` 。
+- `type` ：指定形变动画的类型，只支持 `translate` | `rotate`（若有参数，`cx`, `cy` 参照用户坐标系） | `scale` | `skewX` | `skewY` 。
 - 动画值属性：`from`、`to`、`values`
 - 动画时间属性：`begin`、`dur`、`fill`、`repeatCount`
 
@@ -50,7 +50,7 @@
 
 ### 2.旋转（rotate）动画
 
-可指定旋转的圆心点：cx, cy；
+可指定旋转的圆心点：`cx`, `cy`；
 
 03-SVG\demo-project\13-SVG的SMIL动画\04-animateTransform-rotate.html
 
@@ -314,15 +314,22 @@ Snap.svg 库处理 SVG 就像 jQuery 处理 DOM 一样简单，并且 Snap 是 1
 
 ### 3.常用的 API
 
-- `Snap`： 工厂函数
-	- `Snap(w, h)` ：创建 svg 画布。
-	- `Snap(selector)` ：获取已存在的 svg 画布。
-- `paper`: 纸张 / SVG 画布
-	- `paper.circle`、`paper.rect`、`paper.line`、`paper.path`、`paper.text` …
-- Element：元素
-	- `animate`、`attr`、`select`、`before`、`after` …
-- `mina`：通常用到的一些动画时间函数。
-	- `mina.linear`、`mina.easeIn`、`mina.easeOut` …
+`Snap`：工厂函数
+
+- `Snap(w, h)` ：创建 svg 画布。
+- `Snap(selector)` ：获取已存在的 svg 画布。
+
+`paper`: 纸张 / SVG 画布
+
+- `paper.circle`、`paper.rect`、`paper.line`、`paper.path`、`paper.text` …
+
+Element：元素
+
+- `animate`、`attr`、`select`、`before`、`after` …
+
+`mina`：通常用到的一些动画时间函数。
+
+- `mina.linear`、`mina.easeIn`、`mina.easeOut` …
 
 ### 4.动画实现
 
