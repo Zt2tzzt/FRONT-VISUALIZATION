@@ -43,7 +43,7 @@ ECharts 底层依赖轻量级的 ZRender 图形库，可提供直观，生动，
 - 通过 jsDelivr 等 CDN 引入。
 - `npm install echarts`
 
-> ECharts 的容器必须设高度。
+ECharts 的容器必须设高度。
 
 ## 1.普通配置项实现
 
@@ -110,10 +110,10 @@ let option = {
 
 浏览器端的图表库大多会选择 SVG 或者 Canvas 进行渲染。
 
-- ECharts 最初一直都是使用 Canvas 绘制图表。直到 ECharts v4.0 版本，才支持 SVG 渲染器。
-- SVG 和 Canvas 渲染在技术上有很大的差异，EChart 能够做到同时支持，主要归功于 ECharts 底层使用 ZRender 库进行抽象和实现。
+- ECharts 最初使用 Canvas 绘制图表。ECharts v4.0 版本后，支持 SVG 渲染器。
+- SVG 和 Canvas 渲染在技术上有很大的差异，ECharts 底层使用 ZRender 库进行抽象和实现。
 - ZRender 是二维轻量级的绘图引擎，它提供 Canvas、SVG、VML 等多种渲染方式。
-- 因此，Echarts 可以轻松的互换 SVG 和 Canvas 渲染器。切换渲染器只须在初始化图表时设置 `{renderer: "canvas"}` 或 `{renderer: "svg"}` 即可。
+- Echarts 切换渲染器，需要在初始化图表时设置 `{renderer: "canvas"}` 或 `{renderer: "svg"}` 即可。
 
 ## 1.切换渲染模式：
 
@@ -143,7 +143,7 @@ window.onload = function() {
 
 ## 2.渲染模式的选择
 
-在软硬件环境较好，数据量不大的场景下，两种渲染器都可以适用，并不需要太多纠结；
+在软硬件环境较好，数据量不大的场景下，两种渲染器都适用（推荐 svg，扩展性好，缩放不会失真）；
 
 在软硬件环境较差，出现性能问题需要优化的场景下，通过试验来确定使用哪种渲染器。
 
@@ -209,7 +209,7 @@ const option = {
 - `name`：坐标轴名称。
 - `type`：坐标轴类型。string 类型。
 	- `value`: 数值轴，适用于连续数据。
-	- `category`: 类目轴，适用于离散的类目数据。类目数据可来源 `xAxis.data`、`series.data` 或 `dataset.source` 之一。
+	- `category`: 类目轴，适用于离散的类目数据（如饼图）。类目数据可来源 `xAxis.data`、`series.data` 或 `dataset.source` 之一。
 - `data`：类目数据，在类目轴（`type: 'category'`）中有效。 array 类型。
 - `axisLine`：坐标轴轴线设置。object 类型。
 - `axisTick`：坐标轴刻度设置。object 类型。
@@ -462,7 +462,7 @@ const option = {
 
 ## 2.type 属性的使用
 
-改变 `type` 熟悉，实现柱状图，实现折线图，实现散点图，
+改变 `type` 属性，实现柱状图，折线图，散点图，
 
 04-Echart\demo-project\02-ECharts的组件和配置\03-ECharts-series-系列图-type.html
 
@@ -775,7 +775,7 @@ window.onload = function() {
 }
 ```
 
-ECharts 4 以前，的写法，这种写法 仍然被兼容，但是不再推荐了。
+ECharts 4 以前，的写法，这种写法仍然被兼容，但是不再推荐了。
 
 ```js
 const obj = {

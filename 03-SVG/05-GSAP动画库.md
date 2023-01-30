@@ -17,7 +17,7 @@ GSAP 动画库的特点
 移动 SVG 中的一个矩形：
 
 - 引入 gsap.js 动画库（引入方式：1.CDN；2.本地引入；3.npm）。
-- 调用 `gsap.to` 方法来执行 tween（补间/过度）动画。
+- 调用 `gsap.to` 方法来执行 **tween（补间/过度）动画**。
 
 03-SVG\demo-project\16-第三方动画库-gsap\01-gsap的初体验.html
 
@@ -47,10 +47,9 @@ GSAP 动画库的特点
 
 tween 动画，又称补间动画，有4种类型：
 
-- `from(targets | selector, vars)`：元素从 `from` 定义的状态过度到元素当前的状态。
+- `from(targets | selector, vars)`：元素从 `from` 定义的状态过度到元素当前的状态。[官网 gsap.form 文档](https://greensock.com/docs/v3/GSAP/gsap.from())
 	- `targets | selector` ：需动画的元素对象，支持字符串的选择器。
 	- `vars`: 一个对象，包括了需动画的属性和 GSAP 扩展的属性，如 `duration`、`ease`、`transformOrigin`、`repeat`、`delay`、`yoyo`、`stagger`、`onComplete` ……
-	- [官网 gsap.form 文档](https://greensock.com/docs/v3/GSAP/gsap.from())
 - `to(targets | selector, vars)`：元素从当前的状态过度到 `to` 状态。
 - `fromTo(targets | selector, fromVars， toVars)`：元素从 `from` 定义状态过度到 `to` 定义的状态。
 - `set(targets | selector, vars)`：立即设置属性（无过度效果）。
@@ -155,9 +154,9 @@ TimeLine 的使用步骤：
 1. `gsap.timeline(vars)` 拿到时间线对象。
 2. 调用时间线上的 Tween 动画方法，比如：`form`、`to` 等。
 
-## 1.使用 `delay` 实现：
+## 1.使用 delay 实现：
 
-使用 `delay` 实现动画时间线：
+使用 `delay` 实现动画时间线的效果：
 
 03-SVG\demo-project\16-第三方动画库-gsap\03-gsap动画时间线-delay.html
 
