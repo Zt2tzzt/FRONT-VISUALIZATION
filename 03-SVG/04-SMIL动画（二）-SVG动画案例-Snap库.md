@@ -4,14 +4,15 @@
 
 `<animateTransform>` 元素，控制元素的形变（平移、旋转、缩放、倾斜）动画。
 
-在一个 svg 元素中，`<animateTransform>` 只能使用一次，如果使用多次，后面会覆盖前面的。
+一个 `<svg>` 元素中，只能使用一次 `<animateTransform>`，否则后面会覆盖前面的。
 
 `<animateTransform>` 常用属性：
 
 - `attributeName`：指示将在动画期间更改的目标元素的 CSS 属性或元素属性（attribute）的名称。
-- `type` ：指定形变动画的类型，只支持 `translate` | `rotate`（若有参数，`cx`, `cy` 参照用户坐标系） | `scale` | `skewX` | `skewY` 。
-- 动画值属性：`from`、`to`、`values`
-- 动画时间属性：`begin`、`dur`、`fill`、`repeatCount`
+- `type`：指定形变动画的类型，
+  - 支持 `translate` | `rotate`（若有参数，`cx`, `cy` 参照用户坐标系） | `scale` | `skewX` | `skewY` 。
+- `from`、`to`、`values`：动画值属性。
+- `begin`、`dur`、`fill`、`repeatCount`：动画时间属性。
 
 ### 1.平移（translate）动画
 
@@ -131,9 +132,10 @@
 
 - `path`：定义运动的路径，值和 `<path>` 元素的 `d` 属性一样；
 - `href`：引用一个进行动画的元素。
-- `rotate`：动画元素自动跟随路径旋转，使元素动画方向和路径方向相同，值类型：`<number>` | `auto` | `auto-reverse`; 默认值：0
-- 动画值属性：`from`、`to`、`values`
-- 动画时间属性：`begin`、`dur`、`fill`、`repeatCount`
+- `rotate`：动画元素自动跟随路径旋转，使元素动画方向和路径方向相同，
+  - 值类型：`<number>` | `auto` | `auto-reverse`; 默认值：0
+- `from`、`to`、`values`：动画值属性。
+- `begin`、`dur`、`fill`、`repeatCount`：动画时间属性。
 
 ### 1.基本使用
 
