@@ -143,13 +143,13 @@ window.onload = function() {
 
 ## 2.渲染模式的选择
 
-在软硬件环境较好，数据量不大的场景下，两种渲染器都适用（推荐 svg，扩展性好，缩放不会失真）；
+在软硬件环境较好，数据量不大的场景下，两种渲染器都适用（推荐 SVG，扩展性好，缩放不会失真）；
 
 在软硬件环境较差，出现性能问题需要优化的场景下，通过试验来确定使用哪种渲染器。
 
-- svg 更适用的场景：创建很多 ECharts 实例时，浏览器易崩溃（可能因为 Canvas 数量多导致内存占用超出手机承受能力）。
+- SVG 更适用的场景：创建很多 ECharts 实例时，浏览器易崩溃（可能因为 Canvas 数量多导致内存占用超出手机承受能力）。
 	- SVG 具有内存占用更低、适配性、扩展性好，放大缩小图表不会模糊的优势。
-- canvas 更适用的场景：数据量较大、较多交互时，建议选择 Canvas 渲染器。
+- Canvas 更适用的场景：数据量较大、较多交互时，建议选择 Canvas 渲染器。
 	- Canvas 更适合绘制图形元素数量较多的图表。如，热力图、炫光尾迹特效、地理坐标系、平行坐标系上的大规模线图等。
 
 # 七、ECharts 配置项（组件）
@@ -158,10 +158,10 @@ ECharts 配置项（options）有哪些？或者说组成 ECharts 的组件有�
 
 - `backgroundColor`: 设置直角坐标系内绘图区域的背景。
 - `grid`: 直角坐标系内绘图区域。
-- `yAxis`: （必填）直角坐标系 grid 中的 y 轴。
-- `xAxis`: （必填）直角坐标系 grid 中的 x 轴。
+- `yAxis`: （必填）直角坐标系 `grid` 中的 y 轴。
+- `xAxis`: （必填）直角坐标系 `grid` 中的 x 轴。
 - `title`: 图表的标题。
-- `legend`: 图例，展现了不同系列的标记、颜色和名字。
+- `legend`: 图例，展现了不同系列*（`series`）的标记、颜色和名字。
 - `tooltip`: 提示框。
 - `toolbox`: 工具栏，提供操作图表的工具。
 - `series`: （必填）系列图，配置系列图表的类型和图形信息数据。
@@ -209,7 +209,7 @@ const option = {
 - `name`：坐标轴名称。
 - `type`：坐标轴类型。string 类型。
 	- `value`: 数值轴，适用于连续数据。
-	- `category`: 类目轴，适用于离散的类目数据（如饼图）。类目数据可来源 `xAxis.data`、`series.data` 或 `dataset.source` 之一。
+	- `category`: 类目轴，适用于离散的类目数据。类目数据可来源 `xAxis.data`、`series.data` 或 `dataset.source` 之一。
 - `data`：类目数据，在类目轴（`type: 'category'`）中有效。 array 类型。
 - `axisLine`：坐标轴轴线设置。object 类型。
 - `axisTick`：坐标轴刻度设置。object 类型。
@@ -268,6 +268,7 @@ const option = {
 - `type`：指定系列图表的类型，比如：柱状图（`bar`）、折线图（`line`）、饼图（`pie`）、散点图（`scatter`）等等
 
 - `data`：数值内容数组。数组中的每一项称为数据项。
+	
 	- 一维数组: `[value，value]`（一维数组是二维数组的简写）。
 	- 二维数组。
 		- `[[index, value]`，`[index, value]]`，`x` 轴和 `y` 轴的值，注意 `index` 从 0 开始。
@@ -648,7 +649,7 @@ window.onload = function() {
 				data: [
 					{
 						value: 5,
-						name: "衬衫", // 数据项名称, 比如pie系列 tooltip 需要用到
+						name: "衬衫", // 数据项名称, 比如 pie 系列 tooltip 需要用到
 						itemStyle: { // 系列图形的样式
 							color: "red",
 						},
