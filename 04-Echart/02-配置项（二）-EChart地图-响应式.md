@@ -123,7 +123,7 @@ window.onload = function() {
 }
 ```
 
-# 二、ECharts 中配置 color 渐变色
+# 二、ECharts 配置渐变色
 
 ECharts 中 Color 支持的格式：RGB、RGBA、关键字、十六进制格式：
 
