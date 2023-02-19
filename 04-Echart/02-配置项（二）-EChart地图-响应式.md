@@ -294,7 +294,7 @@ window.onload = function() {
 
 ```js
 window.onload = function() {
-  // 2.注册一下中国地图的 geo json ( 需要在setOption之前调用 )
+  // 2.注册一下中国地图的 geojson ( 需要在 setOption 之前调用 )
   echarts.registerMap('china', { geoJSON: china_geojson })
 
   const myChart = echarts.init(document.getElementById('main'));
@@ -479,7 +479,7 @@ const option = {
 3. 添加地图所需的数据；
    - `series: {data: ...}`
 4. 修改标记的大小和样式；
-5. 修改默认的 tooltip 提示。
+5. 修改默认的 `tooltip` 提示。
 
 04-Echart\demo-project\04-Echarts地图\06-中国地图+散点图.html
 

@@ -92,7 +92,7 @@
         },
 
         geo: {  // 注册一个地理坐标系组件( 给散点图用 )
-          map: "中国",
+          map: mapName,
           roam: false,
           label: { show: false },
           aspectScale: 0.75,  // 缩放地图
@@ -109,7 +109,7 @@
           {
             name: "中国地图",
             type: "map",
-            map: "中国",
+            map: mapName,
             data,  // 给地图填充数据
 
             // 地图样式

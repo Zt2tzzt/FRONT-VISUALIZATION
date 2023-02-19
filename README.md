@@ -1,7 +1,7 @@
 # FRONT-VISUALIZATION
 
 #### 介绍
-ZeTian的前端可视化方案学习笔记分享
+ZeTian 的前端可视化方案学习笔记分享,From Coderwhy
 
 #### 参与贡献
 
