@@ -330,7 +330,7 @@ window.onload = function() {
 
 ```js
 window.onload = function() {
-	// 2.注册一下中国地图的 geo json ( 需要在setOption之前调用 )
+	// 2.注册一下中国地图的 geo json ( 需要在 setOption 之前调用 )
 	echarts.registerMap('中国', { geoJSON: china_geojson })
 
 	const myChart = echarts.init(document.getElementById('main'));
@@ -530,13 +530,13 @@ const option = {
 
 # 五、ECharts 常见 API 总结
 
-[全局 echarts 对象](https://echarts.apache.org/zh/api.html#echarts)，在 script 标签引入 echarts.js 文件后获得。
+[全局 echarts 对象](https://echarts.apache.org/zh/api.html#echarts)，在 `<script>` 标签引入 echarts.js 文件后获得。
 
 - `init(dom，theme，opts)`：创建 echartsInstance 实例。
 - `registerMap(mapName，opts)`：注册地图。
 - `getMap(mapName)`：获取已注册地图。
 
-通过 `echarts.init`，创建的 [echartsInstance 实例](https://echarts.apache.org/zh/api.html#echartsInstance)
+[echartsInstance 实例](https://echarts.apache.org/zh/api.html#echartsInstance)，通过 `echarts.init`，创建
 
 - `setOption(opts)`：设置图表实例的配置项以及数据，万能接口。
 - `getWidth()`、`getHeight()`：获取 ECharts 实例容器的宽高度。
@@ -653,7 +653,7 @@ window.onload = function() {
 let myChart = null
 let option = {}
 window.onload = function() {
-	// 2.注册一下中国地图的 geo json ( 需要在setOption之前调用 )
+	// 2.注册一下中国地图的 geo json ( 需要在 setOption 之前调用 )
 	echarts.registerMap('中国', { geoJSON: china_geojson })
 
 	myChart = echarts.init(document.getElementById('main'));
