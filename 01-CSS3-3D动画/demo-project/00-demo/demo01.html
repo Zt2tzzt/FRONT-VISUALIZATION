@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body{
+      margin: 0;
+      padding: 0;
+      background-image: url(./images/grid.png);
+    }
+    .box{
+      width: 200px;
+      height: 100px;
+      background-color: skyblue;
+      transition: transform 200ms ease;
+
+    }
+    .box:hover {
+      /* 形变：两个完全不同的形变结果。 */
+      transform: translateX(100px) rotate(45deg);
+      transform: rotate(45deg) translateX(100px);
+    }
+  </style>
+</head>
+<body>
+  <div class="box">div</div>
+</body>
+</html>
