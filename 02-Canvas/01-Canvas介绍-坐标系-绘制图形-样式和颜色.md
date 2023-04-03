@@ -1,22 +1,30 @@
 # 一、Canvas 是什么
 
-Canvas 最初由 Apple 于 2004 年引入，用于 MacOS X WebKit 组件，为仪表板小部件和 Safari 浏览器等应用程序提供支持。后来，它被 Gecko 内核的浏览器（尤其是 Mozilla Firefox），Opera 和 Chrome 实现，并被网页超文本应用技术工作小组提议为下一代的网络技术的标准元素（HTML5 新增元素）。
+Canvas 最初由 Apple 于 2004 年引入，用于 MacOS X WebKit 组件，为仪表板小部件和 Safari 浏览器等应用程序提供支持。
 
-Canvas 提供了非常多的 JavaScript 绘图 API（比如：绘制路径、矩形、圆、文本和图像等方法），与 `<canvas>` 元素结合可以绘制各种 2D 图形。
+后来，它被 Gecko 内核的浏览器（尤其是 Mozilla Firefox），Opera 和 Chrome 实现；
+
+并被网页超文本应用技术工作小组提议为下一代的网络技术的标准元素（HTML5 新增元素）。
+
+Canvas 提供了非常多的 JavaScript 绘图 API
+
+- 比如：绘制路径、矩形、圆、文本和图像等方法；
+- 与 `<canvas>` 元素结合可以绘制各种 2D 图形。
 
 Canvas API 主要聚焦于 2D 图形。当然也可以使用 `<canvas>` 元素对象的 WebGL API 来绘制 3D 图形。
 
-有哪些应用场景？兼容性如何？
+可以用于动画、游戏画面、数据可视化、图片编辑以及实时视频处理等方面。
 
-- 可以用于动画、游戏画面、数据可视化、图片编辑以及实时视频处理等方面。
+兼容性如下：
 
 <img src="NodeAssets/canvas的兼容性.jpg" style="zoom:150%;" />
 
 Canvas 优点：
 
-- Canvas 提供的功能更原始，适合像素处理，动态渲染和数据量大的绘制，如：图片编辑、热力图、炫光尾迹特效等。
+- Canvas 提供的功能更原始，动态渲染和数据量大的绘制；
+  - 如：图片编辑、热力图、炫光尾迹特效等。
 - Canvas 非常适合图像密集型的游戏开发，适合频繁重绘许多的对象。
-- Canvas 能够以 .png 或 .jpg 格式保存结果图像，适合对图片进行像素级的处理。
+- Canvas 能够以“.png”或“.jpg”格式保存结果图像，适合对图片进行像素级的处理。
 
 Canvas 缺点：
 
@@ -29,11 +37,14 @@ Canvas 缺点：
 使用 Canvas 的注意事项：
 
 - `<canvas>` 和 `<img>` 元素很相像，唯一的不同就是它并没有 `src` 和 `alt` 属性。
-- `<canvas>` 标签只有两个属性 `width` 和 `height`（单位默认为 px）；默认宽为 300px，默认高为 150px。
-- 与 `<img>` 元素不同，`<canvas>` 元素必须有结束标签 `</canvas>`。如结束标签不存在，则文档其余部分会被认为是替代内容，将不会显示出来。
+- `<canvas>` 标签只有两个属性 `width` 和 `height`（单位默认为“px”）；默认宽为 `300px`，默认高为 `150px`。
+- 与 `<img>` 元素不同，`<canvas>` 元素必须有结束标签 `</canvas>`。
+  - 如结束标签不存在，则文档其余部分会被认为是替代内容，将不会显示出来。
 - 测试 `canvas.getContext` 方法的存在，可以检查浏览器是否支持 Canvas。
 
 使用 Canvas 的通用模板：
+
+02-Canvas\demo-project\01-Canvas初体验\01-Canvas的通用模板.html
 
 ```html
 <!DOCTYPE html>
@@ -60,7 +71,7 @@ Canvas 缺点：
 			// 1.查找 canvas 的元素对象
 			const canvasEl = document.getElementById('tutorial')
 			if (!canvasEl.getContext) return
-			// 2.拿到 Canvas 渲染的上下文 ctx 类型 CanvasRenderingContext2D，ctx 是一个绘图的上下文: 提供了绘图的指令, 可以绘制各种图形(圆形、直线、椭圆...)
+			// 2.拿到 Canvas 渲染的上下文 ctx，类型 CanvasRenderingContext2D，ctx 是一个绘图的上下文: 提供了绘图的指令, 可以绘制各种图形(圆形、直线、椭圆...)
 			const ctx = canvasEl.getContext('2d') // 2d | webgl
 			console.log('ctx:', ctx)
 		}
@@ -70,6 +81,8 @@ Canvas 缺点：
 ```
 
 使用 Canvas 绘制一个矩形：
+
+02-Canvas\demo-project\01-Canvas初体验\02-Canvas绘制一个矩形.html
 
 ```html
 <!DOCTYPE html>
@@ -101,6 +114,7 @@ Canvas 缺点：
 			const canvasEl = document.getElementById('tutorial')
 			if (!canvasEl.getContext) return
 			const ctx = canvasEl.getContext('2d')
+      
 			ctx.fillRect(0, 0, 100, 50) // 坐标点x，坐标点y，长，宽
 		}
 	</script>
@@ -112,19 +126,24 @@ Canvas 缺点：
 
 Canvas 中的网格，也称为坐标系、坐标空间：
 
-- `<canvas>` 元素默认被网格所覆盖。
-- 通常来说网格中的一个单元相当于 canvas 元素中的一像素。
-- 该网格的原点位于坐标 (0,0) 的左上角。所有元素都相对于该原点放置。
-- 坐标 (0,0) 也被称为初始坐标系。
-- 网格或坐标空间是可以变换的，后面会介绍如何将原点转换到不同的位置，旋转网格甚至缩放它。
-	- 注意：移动了原点后，后续变换都将基于新坐标系的变换。
+`<canvas>` 元素默认被网格所覆盖。
+
+通常来说网格中的一个单元相当于 canvas 元素中的一像素。
+
+该网格的原点位于坐标 `(0,0)` 的左上角。所有元素都相对于该原点放置。
+
+坐标 `(0,0)` 也被称为初始坐标系。
+
+网格或坐标空间是可以变换的，后面会介绍如何将原点转换到不同的位置，旋转网格甚至缩放它。
+
+> 【注意】：移动了原点后，后续变换都将基于新坐标系的变换。
 
 # 四、Canvas 绘制矩形
 
 Canvas 支持两种方式来绘制矩形：**矩形方法**和**路径方法**。
 
 - 路径是通过，不同颜色和宽度的线段或曲线，相连形成的不同形状的点的集合。
-- 除了矩形和一些规则的图形，其他的图形都是通过一条或者多条路径组合而成的。
+- 除了矩形和一些规则的图形，其他的图形，都是通过一条或者多条**路径**组合而成的。
 - 通常我们会通过众多的路径来绘制复杂的图形。
 
 Canvas 绘图的矩形方法：
@@ -132,6 +151,8 @@ Canvas 绘图的矩形方法：
 - `fillRect(x, y, width, height)`：绘制一个填充的矩形；
 - `strokeRect(x, y, width, height)`：绘制一个矩形的边框；
 - `clearRect(x, y, width, height)`：清除指定矩形区域，让清除部分完全透明。
+
+02-Canvas\demo-project\02-绘制图形\01-绘制-矩形.html
 
 ```js
 window.onload = function() {
@@ -168,23 +189,23 @@ window.onload = function() {
 使用路径绘图的步骤。
 
 1. 首先需要创建路径起始点（`beginPath`）。
-2. 然后使用画图命令去画出路径(`arc`、`lineTo`)。
-3. 之后把路径闭合(`closePath`, 不是必须)。
-4. 一旦路径生成，就能通过描边(`stroke`)或填充路径区域(`fill`)来渲染图形。
+2. 使用画图命令去画出路径(`arc`、`lineTo`)。
+3. 把路径闭合(`closePath`, 不是必须)。
+4. 一旦路径生成，就能通过描边(`stroke`)，或填充路径区域(`fill`)来渲染图形。
 
 有哪些常用函数？
 
 - `beginPath()`：新建一条路径，图形绘制命令指向到新的路径上绘图，与旧路径无关了。
 - `closePath()`：闭合路径后，图形绘制命令又重新指向 `beginPath` 之前的上下文中。
-- `stroke()`：通过线条来绘制图形轮廓/描边（针对当前路径图形）。
+- `stroke()`：通过线条，来绘制图形轮廓/描边（针对当前路径图形）。
 - `fill()`：通过填充路径的内容区域，生成实心的图形（针对当前路径图形）。
 
 # 六、路径绘制直线
 
 移动画笔 `moveTo` 方法：
 
-1. `moveTo` 方法是不能画出任何东西，但是它也是路径列表的一部分。
-2. `moveTo(x, y)`：将画笔移动到指定的坐标 x、y 上。
+1. `moveTo` 方法，不能画出任何东西，但是它也是路径列表的一部分。
+2. `moveTo(x, y)`：将画笔，移动到指定的坐标 x、y 上。
 4. 当 canvas 初始化或者 `beginPath()` 调用后，我们通常会使用 `moveTo(x, y)` 函数设置起点。
 5. 使用 `moveTo` 函数能够绘制一些不连续的路径。
 
@@ -193,6 +214,8 @@ window.onload = function() {
 1. `lineTo(x, y)`：绘制一条从当前位置到指定 (x，y) 位置的直线。
 3. 开始点和之前的绘制路径有关，之前路径的结束点就是接下来的开始点。
 4. 当然开始点也可以通过 `moveTo(x, y)` 函数改变。
+
+02-Canvas\demo-project\02-绘制图形\02-绘制-直线-路劲.html
 
 ```js
 window.onload = function() {
@@ -219,9 +242,11 @@ window.onload = function() {
 1. 调用 `beginPath()` 来生成路径。
 2. 调用 `moveTo()`、`lineTo()` 函数来绘制路径。
 3. 闭合路径 `closePath()`，不是必需的。
-	- `closePath()` 方法会通过绘制一条从当前点到开始点的直线来闭合图形。
+	- `closePath()` 方法，会通过绘制一条从当前点到开始点的直线来闭合图形。
 	- 如果图形是已经闭合了的，即当前点为开始点，该函数什么也不做。
-4. 调用 `stroke()` 函数来给线描边，或者调用 `fill()` 函数来填充（使用填充 fill 时，路径会自动闭合，而 stroke 不会）。
+4. 调用 `stroke()` 函数来给线描边，或者调用 `fill()` 函数来填充（使用填充 `fill` 时，路径会自动闭合，而 `stroke` 不会）。
+
+02-Canvas\demo-project\02-绘制图形\03-绘制-三角形-路径.html
 
 ```js
 window.onload = function() {
@@ -301,6 +326,8 @@ window.onload = function() {
 3. `rect(x, y, width, height)`
   -	绘制一个左上角坐标为（x,y），宽高为 width 以及 height 的矩形。
 
+02-Canvas\demo-project\02-绘制图形\05-绘制-矩形-路径.html
+
 ```js
 window.onload = function() {
 	const canvasEl = document.getElementById('tutorial')
@@ -335,6 +362,8 @@ color 颜色
 - 一旦设置了 `strokeStyle` 或者 `fillStyle` 的值，那么这个新值就会成为新绘制的图形的默认值。
 - 如果你要给图形上不同的颜色，你需要重新设置 `fillStyle` 或 `strokeStyle` 的值。
 
+02-Canvas\demo-project\03-Canvas的样式和颜色\02-描边颜色-strokeStyle.html
+
 ```js
 window.onload = function() {
 	const canvasEl = document.getElementById('tutorial')
@@ -361,11 +390,13 @@ window.onload = function() {
 
 方式一：`strokeStyle` 和 `fillStyle` 属性结合 RGBA：
 
-方式二：`globalAlpha` 属性
+方式二：`globalAlpha` 属性.
 
 - globalAlpha = 0 ~ 1
 - 这个属性影响到 canvas 里所有图形的透明度
 - 有效的值范围是 0.0（完全透明）到 1.0（完全不透明），默认是 1.0。
+
+02-Canvas\demo-project\03-Canvas的样式和颜色\03-透明度-global-alpha.html
 
 ```js
 window.onload = function() {
@@ -394,14 +425,14 @@ window.onload = function() {
 
 调用 `lineTo()` 函数绘制的线条，可以通过一系列属性来设置线的样式。
 
-- `lineWidth = value`：设置线条宽度。
-- `lineCap = type`：设置线条末端样式。
-- `lineJoin = type`：设定线条与线条间接合处的样式。
+- `lineWidth = value`：线条宽度。
+- `lineCap = type`：线条末端样式。
+- `lineJoin = type`：线条与线条间接合处的样式。
 
 线宽的特点 `lineWidth`
 
 - 必须为正数。默认值 1.0px，不需单位（零、负数、Infinity 和 NaN 值将被忽略）。
-- 线宽是指给定路径的中心到两边的粗细。换句话说就是在路径的两边各绘制线宽的一半。
+- 线宽是指，给定路径的中心到两边的粗细。换句话说就是在路径的两边各绘制线宽的一半。
 - 如果绘制一条从 `(3,1)` 到 `(3,5)`，宽度是 `1.0` 的线条，你会得到像第二幅图一样的结果。
 	-	路径的两边各延伸半个像素，填充并渲染出一像素的线条（深蓝色部分）；
 	-	两边剩下的半个像素，又会以实际画笔颜色一半色调来填充（浅蓝部分）；
@@ -414,19 +445,21 @@ window.onload = function() {
 
 线条端点可以怎样设置？`lineCap`
 
-- `butt` 截断，默认是 butt。
-- `round` 圆形
-- `square` 正方形
+- `butt` 截断，默认是 butt；
+- `round` 圆形；
+- `square` 正方形。
 
 <img src="NodeAssets/线段端点.jpg" style="zoom:80%;" />
 
 线条接合处可以怎样设置？`lineJoin`
 
-- `round` 圆形
-- `bevel` 斜角
+- `round` 圆形；
+- `bevel` 斜角；
 - `miter` 斜槽规，默认值。
 
 <img src="NodeAssets/线段接合处.jpg" style="zoom:80%;" />
+
+02-Canvas\demo-project\03-Canvas的样式和颜色\06-绘制线链接处样式-lineJoin.html
 
 ```js
 window.onload = function() {
@@ -460,9 +493,14 @@ canvas 提供了两种方法来渲染文本：
 
 文本的样式（需在绘制文本前调用）
 
-- `font`：当前绘制文本的样式。这个字符串使用和 CSS font 属性相同的语法。默认的字体是：10px sans-serif。
-- `textAlign`：文本对齐选项。可选的值包括：`start, end, left, right or cente`r. 默认值是 `start`
-- `textBaseline`：基线对齐选项。可选的值包括：`top, hanging, middle, alphabetic, ideographic, bottom`。默认值是 `alphabetic`。
+- `font`：当前绘制文本的样式。这个字符串使用和 CSS font 属性相同的语法：
+  - 默认的字体是：`10px sans-serif`。
+- `textAlign`：文本对齐选项
+  - 可选的值包括：`start, end, left, right or center`. 默认值是 `start`
+- `textBaseline`：基线对齐选项；
+  - 可选的值包括：`top, hanging, middle, alphabetic, ideographic, bottom`。默认值是 `alphabetic`。
+
+02-Canvas\demo-project\04-绘制字体和图片\01-Canvas-绘制-字体.html
 
 ```js
 window.onload = function() {
@@ -484,24 +522,27 @@ window.onload = function() {
 
 # 十四、Canvas 绘制图片
 
-绘制图片，可以使用 `drawImage` 方法将它渲染到 canvas 里。drawImage 方法有三种形态：
+绘制图片，可以使用 `drawImage` 方法将它渲染到 `<canvas>` 里。`drawImage` 方法有三种形态：
 
 - `drawImage(image, x, y)`
 	- 其中 `image` 是 图片或者 canvas 对象，`x` 和 `y` 是其在目标 canvas 里的起始坐标。
 - `drawImage(image, x, y, width, height)`
 	- 这个方法多了 2 个参数：`width` 和 `height`，用来控制当向 canvas 画入时应该缩放的大小。
 - `drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight)`
-	- 第一个参数和其它的是相同的，都是一个图像或者另一个 canvas 的引用。其它 8 个参数，前 4 个是定义图像源的切片位置和大小，后 4 个则是定义切片的目标显示位置和大小。
+	- 第一个参数和其它的是相同的，都是一个图像或者另一个 canvas 的引用；
+	- 其它 8 个参数，前 4 个是定义图像源的切片位置和大小，后 4 个则是定义切片的目标显示位置和大小。
 
 图片的来源，canvas 的 API 可以使用下面这些类型中的一种作为图片的源：
 
 - `HTMLImageElement`：这些图片是由 `Image()` 函数构造出来的，或者任何的 `<img>` 元素。
 	1. `new Image();`
 	2. `document.getElementById('#image');`
-- `HTMLVideoElement`：用一个 HTML 的 `<video>` 元素作为你的图片源，可以从视频中抓取当前帧作为一个图像。
-- `HTMLCanvasElement`：可以使用另一个 `<canvas>` 元素或 `<svg>` 作为你的图片源。
+- `HTMLVideoElement`：用一个 HTML 的 `<video>` 元素，作为图片源，即从视频中抓取当前帧作为一个图像。
+- `HTMLCanvasElement`：可以使用另一个 `<canvas>` 元素，或 `<svg>` 作为你的图片源。
 
 注意：后绘制的内容会覆盖前绘制的内容。
+
+02-Canvas\demo-project\04-绘制字体和图片\02-Canvas-绘制-图片.html
 
 ```js
 window.onload = function() {
