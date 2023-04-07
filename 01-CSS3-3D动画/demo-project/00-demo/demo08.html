@@ -1,78 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <style>
-    body{
-      margin: 0;
-      padding: 100px;
-      background-image: url(../images/grid.png);
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 100px;
+        background-image: url(../images/grid.png);
+      }
 
-		/* 搭建舞台 */
-    .box{
-      position: relative;
-      width: 100px;
-      height: 100px;
-      background-color: red;
+      /* 搭建舞台 */
+      .box {
+        position: relative;
+        width: 100px;
+        height: 100px;
+        background-color: red;
 
-      /* 在父元素中添加 transform-style 来启用 3D 空间 */
-      transform-style: preserve-3d;
-      transform: rotateX(-33.5deg) rotateY(45deg) scaleZ(2); /* 拉伸成为长方体 */
-    }
+        /* 在父元素中添加 transform-style 来启用 3D 空间 */
+        transform-style: preserve-3d;
+        transform: rotateX(-33.5deg) rotateY(45deg) scaleZ(2); /* 拉伸成为长方体 */
+      }
 
-    .item{
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-    }
+      .item {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
 
-    .top{
-      background-color: rgba(255, 0, 0, 0.4);
-      transform: rotateX(90deg) translateZ(50px);
-    }
-    .bottom{
-      background-color: rgba(0, 255, 0, 0.4);
-      transform: rotateX(-90deg) translateZ(50px);
-    }
+      .top {
+        background-color: rgba(255, 0, 0, 0.4);
+        transform: rotateX(90deg) translateZ(50px);
+      }
+      .bottom {
+        background-color: rgba(0, 255, 0, 0.4);
+        transform: rotateX(-90deg) translateZ(50px);
+      }
 
-    .front{
-      background-color: rgba(100, 100, 100, 0.4);
-      transform: rotateY(0deg) translateZ(50px);
-    }
+      .front {
+        background-color: rgba(100, 100, 100, 0.4);
+        transform: rotateY(0deg) translateZ(50px);
+      }
 
-    .back{
-      background-color: rgba(0, 255, 255, 0.4);
-      transform: rotateY(-180deg) translateZ(50px);
-    }
+      .back {
+        background-color: rgba(0, 255, 255, 0.4);
+        transform: rotateY(-180deg) translateZ(50px);
+      }
 
-    .left{
-      background-color: rgba(255, 255, 0, 0.4);
-      transform: rotateY(-90deg) translateZ(50px);
-    }
-    .right{
-      background-color: rgba(0, 0, 255, 0.4);
-      transform: rotateY(90deg) translateZ(50px);
-    }
-
-  </style>
-</head>
-<body>
-
-  <!-- 父元素(舞台) -->
-  <div class="box">div
-    <!-- 子元素 -->
-    <div class="item top">1</div>
-    <div class="item bottom">2</div>
-    <div class="item front">3</div>
-    <div class="item back">4</div>
-    <div class="item left">5</div>
-    <div class="item right">6</div>
-  </div>
-</body>
+      .left {
+        background-color: rgba(255, 255, 0, 0.4);
+        transform: rotateY(-90deg) translateZ(50px);
+      }
+      .right {
+        background-color: rgba(0, 0, 255, 0.4);
+        transform: rotateY(90deg) translateZ(50px);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 父元素(舞台) -->
+    <div class="box">
+      div
+      <!-- 子元素 -->
+      <div class="item top">1</div>
+      <div class="item bottom">2</div>
+      <div class="item front">3</div>
+      <div class="item back">4</div>
+      <div class="item left">5</div>
+      <div class="item right">6</div>
+    </div>
+  </body>
 </html>

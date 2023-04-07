@@ -1,40 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>渐变色和滤镜效果</title>
-	<style>
-		body {
-			padding: 0;
-			margin: 0;
-			background-image: url(../images/grid.png);
-		}
-		svg {
-			background-color: rgba(255, 0, 0, 0.1);
-		}
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>渐变色和滤镜效果</title>
+    <style>
+      body {
+        padding: 0;
+        margin: 0;
+        background-image: url(../images/grid.png);
+      }
+      svg {
+        background-color: rgba(255, 0, 0, 0.1);
+      }
 
-		#line1 {
-			/* 指定为虚线 */
-			stroke-dasharray: 100;
-			/* 初始状态：完全可见 */
-			stroke-dashoffset: 100px;
-			animation: lineMove 2s linear infinite;
-		}
+      #line1 {
+        /* 指定为虚线 */
+        stroke-dasharray: 100;
+        /* 初始状态：完全可见 */
+        stroke-dashoffset: 100px;
+        animation: lineMove 2s linear infinite;
+      }
 
-		@keyframes lineMove {
-			to {
-				stroke-dashoffset: 0;
-			}
-		}
-	</style>
-</head>
-<body>
-
-	<svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
-		<line id="line1" x1="100" y1="70" x2="200" y2="70" stroke="red" stroke-width="10"></line>
-	</svg>
-	
-</body>
+      @keyframes lineMove {
+        to {
+          stroke-dashoffset: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
+      <line id="line1" x1="100" y1="70" x2="200" y2="70" stroke="red" stroke-width="10"></line>
+    </svg>
+  </body>
 </html>

@@ -1,7 +1,5 @@
 # 一、SVG 邂逅
 
-
-
 SVG 全称为（Scalable Vector Graphics），即可缩放矢量图形。
 
 > 矢量定义：既有大小又有方向的量。
@@ -10,7 +8,7 @@ SVG 全称为（Scalable Vector Graphics），即可缩放矢量图形。
 > - 在数学中称作向量。
 > - 在计算机中，矢量图可无限放大而不变形。
 
-SVG 规范是万维网联盟(W3C)自1998年以来开发的标准。
+SVG 规范是万维网联盟(W3C)自 1998 年以来开发的标准。
 
 SVG 是一种基于 XML 格式的矢量图，主要用于定义二维图形，支持交互和动画。
 
@@ -24,7 +22,6 @@ SVG 的兼容性：
 
 <img src="NodeAssets/SVG的兼容性.jpg" style="zoom:150%;" />
 
-
 # 二、SVG 发展历史
 
 ## 1.SVG 1.x 版本
@@ -32,9 +29,11 @@ SVG 的兼容性：
 1. SVG 是 W3C SVG 工作组于 1998 年开始开发，
 2. SVG1.0 于 2001 年 9 月 4 日 成为 W3C 推荐的标准。
 3. SVG 1.1 于 2003 年 1 月 14 日成为 W3C 推荐的标准。
+
    - 该版本增加了模块化规范的内容。除此之外，1.1 和 1.0 几乎没有区别。
 
 4. SVG Tiny 1.2 于 2008 年 12 月 22 日成为 W3C 推荐标准，
+
    - 主要是为性能低的小设备生成图形，但是后来被 SVG 2.0 所弃用了。
 
 5. SVG 1.1 第二版于 2011 年 8 月 16 日发布，
@@ -53,12 +52,12 @@ SVG 的兼容性：
 - Removed the `xlink:type`, `xlink:role`, `xlink:arcrole`, `xlink:show` and `xlink:actuate` attributes（“xlink”为命名空间的前缀）.
 - Deprecated the `xlink:href` attribute in favor of using `href` without a namespace.
 
-
 # 三、SVG 优缺点
 
 ## 1.SVG 优点：
 
 【扩展好】：矢量图像在浏览器中放大缩小不会失真，可在许多设备和浏览器中使用。而光栅图像（PNG、JPG）放大缩小会失真。
+
 > 矢量图像是基于矢量的点、线、形状和数学公式来构建的图形，该图形是没有像素的，放大缩小是不会失真的。
 >
 > 光栅图像是由像素点（微小的彩色方块）构建的图像，大量像素点可以形成高清图像，比如照片。图像像素越多，质量越高。
@@ -93,7 +92,6 @@ SVG 图像变得复杂时，加载会比较慢；
 
 - 它不适用于 IE8 及更低版本的旧版浏览器。根据 caniuse 的数据，大约还有 5% 的用户在使用不支持 SVG 的浏览器。
 
-
 # 四、SVG 应用场景
 
 下面是一些保证 SVG 优于其他图像格式的应用场景：
@@ -101,27 +99,30 @@ SVG 图像变得复杂时，加载会比较慢；
 - 显示矢量徽标（Logo）、图标（ICON）和其他几何设计。
 - 应用在需适配多种尺寸的屏幕上展示，因为 SVG 的扩展性更好。
 - 创建一些简单动画的场景：
-   - 可以方便的适用 JS、CSS、SMIL 实现动画效果。
+  - 可以方便的适用 JS、CSS、SMIL 实现动画效果。
 - 制作各种图表（条形图、折线图、饼图、散点图等等），以及大屏可视化页面开发。
 
 <img src="NodeAssets/SVG的应用场景.jpg" style="zoom:150%;" />
 
-
 # 五、SVG 和 Canvas 的区别
 
 可扩展性：
+
 - SVG 基于矢量的点、线、形状和数学公式来构建图形，没有像素，放大缩小不会失真。可在任何分辨率下高质量的打印
 - Canvas 由一个个像素点构成的图形，放大会使图形变得颗粒状和像素化（模糊），不适合在任意分辨率下打印。
 
 渲染能力：
+
 - SVG 很复杂时，渲染会很慢，因为在很大程度上去使用了 DOM。当图像中具有大量元素时，SVG 文件的大小会增长得更快（导致 DOM 变得复杂）
 - Canvas 提供了高性能的渲染和更快的图形处理能力，例如：适合制作 H5 小游戏；当图像中有很多内容时，文件大小不会增加太多，相对的，内存会有较大消耗，
 
 灵活度：
+
 - SVG 可以通过 JavaScript、CSS、SMIL 进行修改，用 SVG 来创建动画和制作特效非常方便。
 - Canvas 只能通过 JavaScript 进行修改，创建动画得一帧帧重绘。
 
 使用场景：
+
 - SVG 非常适合显示矢量徽标（Logo）、图标（ICON）和其他几何设计。
 - Canvas 主要用于游戏开发、绘制复杂图形、复杂照片的合成，以及对图片进行像素级别的操作，如：取色器、复古照片。
 
@@ -136,21 +137,21 @@ SVG 图像变得复杂时，加载会比较慢；
 
 ## 1.svg 文件
 
-4个步骤：
+4 个步骤：
 
 1. 新建一个 svg 文件，在文件第一行编写 XML 文件声明；
 2. 编写一个 `<svg>` 元素，并给该元素添加下属性：
 
-	- `version`：指定使用 svg 的版本（值为 `1.0` 和 `1.1`，并没有 `2.0`）。
-	- `baseProfile`：渲染时的语言描述。
-	
-	> SVG2.0 之前，`version` 和 `baseProfile` 属性用来验证和识别 SVG 版本。而 **SVG2.0 后不推荐使用这两个属性了**。
-	
-	- `width / height`：指定 svg 画布（视口）的宽和高，默认值分别为 `300` 和 `150`，默认使用 px 单位。
-	- `xmlns`：给 svg 元素绑定一个命名空间（http://www.w3.org/2000/svg） 意味着这个 `<svg>` 标签和它的子元素都属于该命名空间下。
+   - `version`：指定使用 svg 的版本（值为 `1.0` 和 `1.1`，并没有 `2.0`）。
+   - `baseProfile`：渲染时的语言描述。
+
+   > SVG2.0 之前，`version` 和 `baseProfile` 属性用来验证和识别 SVG 版本。而 **SVG2.0 后不推荐使用这两个属性了**。
+
+   - `width / height`：指定 svg 画布（视口）的宽和高，默认值分别为 `300` 和 `150`，默认使用 px 单位。
+   - `xmlns`：给 svg 元素绑定一个命名空间（http://www.w3.org/2000/svg） 意味着这个 `<svg>` 标签和它的子元素都属于该命名空间下。
+
 3. 在 `<svg>` 元素中添加图形（比如：`<rect>`）元素
 4. 在浏览器直接预览或嵌入到 HTML 中预览。[嵌入 HTML 的 6 种方式](#七、svg 在 HTML 中引用的方式)。
-   
 
 ### 1.XML 声明：
 
@@ -161,15 +162,15 @@ SVG 图像变得复杂时，加载会比较慢；
 
 SVG 的 XML 声明格式：
 
-```xml
+```html
 <?xml version="1.1" encoding="UTF-8" standalone="no" ?>
 ```
 
 - `version` 指定版本（必填）；
 - `encoding` 指定 XML 文档的编码（可选，默认是 UTF-8）；
 - `standalone`：指定当前 XML 文档是否依赖于外部标记声明（可选，和 DTD 声明一起用才有意义）。
-   - 默认为 `no`：代表依赖外部标记声明；
-   - `yes`：代表依赖内部默认的标记声明。
+  - 默认为 `no`：代表依赖外部标记声明；
+  - `yes`：代表依赖内部默认的标记声明。
 
 ### 2.DTD 声明：
 
@@ -181,32 +182,26 @@ XML 中内部 DTD 声明（可选）；
 
 XML 中外部 DTD 声明（可选）
 
-```xml
+```html
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 ```
 
 ### 4.创建 svg 矢量图
 
-```xml
+```html
 <?xml version="1.1" encoding="UTF-8" standalone="no" ?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" >
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <!--
-	version="1.1"
-	baseProfile="full" 正确渲染 svg 内容时所需要最小 SVG 语言概述(版本);
-		* full: 正常的 SVG 语言概述；
-		* basic: 基本 SVG 语言概述；
-		* tiny: 轻量级 SVG 语言概述。
-	xmlns: 指定 svg 元素和 svg 内的子元素都是属于 http://www.w3.org/2000/svg 这个命名空间下
+  version="1.1"
+  baseProfile="full" 正确渲染 svg 内容时所需要最小 SVG 语言概述(版本);
+    * full: 正常的 SVG 语言概述；
+    * basic: 基本 SVG 语言概述；
+    * tiny: 轻量级 SVG 语言概述。
+  xmlns: 指定 svg 元素和 svg 内的子元素都是属于 http://www.w3.org/2000/svg 这个命名空间下
 -->
-<svg
-	version="1.1"
-	baseProfile="full"
-	width="100"
-	height="100"
-	xmlns="http://www.w3.org/2000/svg"
->
-	<rect x="0" y="0" width="100" height="100"></rect>
-	<title>我是 svg title</title>
+<svg version="1.1" baseProfile="full" width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="100" height="100"></rect>
+  <title>我是 svg title</title>
 </svg>
 ```
 
@@ -221,21 +216,17 @@ XML 中外部 DTD 声明（可选）
 
 - 第一行：XML 声明。
 
--  不推荐写 DTD 声明。
--  `<svg>` 标签上 `version` 和 `baseProfile` 属性已删除；
--  `<desc>` 元素是用来描述该文件的。
+- 不推荐写 DTD 声明。
+- `<svg>` 标签上 `version` 和 `baseProfile` 属性已删除；
+- `<desc>` 元素是用来描述该文件的。
 
 <img src="NodeAssets/SVG文档解构对比.jpg" style="zoom:150%;" />
 
 使用 SVG 2.0 文档结构重构上面代码：
 
-```xml
+```html
 <?xml version="1.1" standalone="no" ?>
-<svg
- width="100"
- height="100"
- xmlns="http://www.w3.org/2000/svg"
->
+<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg">
   <rect x="0" y="0" width="100" height="100"></rect>
 </svg>
 ```
@@ -247,100 +238,96 @@ XML 中外部 DTD 声明（可选）
 ```html
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 1.创建svg 1.0 -->
+    <svg
+      version="1.0"
+      baseProfile="full"
+      width="100"
+      height="100"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <rect x="0" y="0" width="100" height="100"></rect>
+    </svg>
 
-  <!-- 1.创建svg 1.0 -->
-  <svg
-    version="1.0"
-    baseProfile="full"
-    width="100"
-    height="100"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-   <rect x="0" y="0" width="100" height="100"></rect>
-  </svg>
-
-  <!-- 2.创建svg 2.0 -->
-  <svg
-    width="100"
-    height="100"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-   <rect x="0" y="0" width="100" height="100"></rect>
-  </svg>
+    <!-- 2.创建svg 2.0 -->
+    <svg width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="0" width="100" height="100"></rect>
+    </svg>
 
     <!--
       3.创建 svg 2.0 简写
         * 默认：w：300px；h：150px
         * xmlns="http://www.w3.org/2000/svg" 这个命名空间浏览器的解析器会自动添加
     -->
-  <svg>
-    <rect x="0" y="0" width="100" height="100"></rect>
-  </svg>
-</body>
+    <svg>
+      <rect x="0" y="0" width="100" height="100"></rect>
+    </svg>
+  </body>
 </html>
 ```
 
 ## 3.JS 创建 svg
 
 使用 JS 脚本来创建 SVG 时，创建的元素都是需要添加命名空间的。
+
 - 比如：创建 `<svg>` 或者 `<rect>` 元素时，都需要添加命名空间 “`http://www.w3.org/2000/svg`”
 - 对于元素上的属性不带前缀的，命名空间就为 `null`。
 
 因为在 XML1.1 命名空间规范中建议，不带前缀的属性（带前缀如 `xlink:href`）命名空间的名称是没有值的，这时命名空间的值必须使用 `null` 值。
 
 创建 SVG 常用的 DOM API：
+
 - `createElementNS(ns, elname)`：创建 SVG 元素；
 - `setAttributeNS(ns, attrname, value)`：给 SVG 元素添加属性；
 - `getAttributeNS(ns, attrname)`：获取 SVG 元素上的属性；
 - `hasAttributeNS(ns, attrname)`： 判断 SVG 元素上是否存在某个属性；
 - `removeAttributeNS(ns, attname)`：删除 SVG 元素上的某个属性；
-- [更多的API](https://developer.mozilla.org/zh-CN/docs/Web/SVG/Namespaces_Crash_Course)
+- [更多的 API](https://developer.mozilla.org/zh-CN/docs/Web/SVG/Namespaces_Crash_Course)
 
-03-SVG\demo-project\01-创建SVG的方式\05-方式三-通过JS来创建SVG.html
+03-SVG\demo-project\01-创建 SVG 的方式\05-方式三-通过 JS 来创建 SVG.html
 
 ```html
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /**
+       * 使用 js 操作；
+       * svg 的框架 Snap.svg，类似于 jQuery。
+       */
+      window.onload = function () {
+        // 1.创建 svg 和 rect 元素
+        const xmlns = 'http://www.w3.org/2000/svg'
+        const svgEl = document.createElementNS(xmlns, 'svg')
+        const rectEl = document.createElementNS(xmlns, 'rect')
 
-	<script>
-		/**
-		 * 使用 js 操作；
-		 * svg 的框架 Snap.svg，类似于 jQuery。
-		 */
-		window.onload = function() {
-			// 1.创建 svg 和 rect 元素
-			const xmlns = 'http://www.w3.org/2000/svg'
-			const svgEl = document.createElementNS(xmlns, 'svg')
-			const rectEl = document.createElementNS(xmlns, 'rect')
+        // 2.给 svg 和 rect 元素对象添加属性
+        svgEl.setAttributeNS(null, 'version', '1.0')
+        svgEl.setAttributeNS(null, 'width', 100)
+        svgEl.setAttributeNS(null, 'height', 100)
 
-			// 2.给 svg 和 rect 元素对象添加属性
-			svgEl.setAttributeNS(null, 'version', '1.0')
-			svgEl.setAttributeNS(null, 'width', 100)
-			svgEl.setAttributeNS(null, 'height', 100)
+        rectEl.setAttributeNS(null, 'width', 50)
+        rectEl.setAttributeNS(null, 'height', 50)
 
-			rectEl.setAttributeNS(null, 'width', 50)
-			rectEl.setAttributeNS(null, 'height', 50)
-
-			// 3.将 svg 添加到 body 上
-			svgEl.appendChild(rectEl)
-			document.body.appendChild(svgEl)
-    }
-	</script>
-</body>
+        // 3.将 svg 添加到 body 上
+        svgEl.appendChild(rectEl)
+        document.body.appendChild(svgEl)
+      }
+    </script>
+  </body>
 </html>
 ```
 
@@ -351,7 +338,7 @@ XML 中外部 DTD 声明（可选）
 作为一张图片使用，不支持交互，只兼容 ie9 以上。
 
 ```html
-<img src="./rect.svg" alt="">
+<img src="./rect.svg" alt="" />
 ```
 
 ## 2.CSS 背景
@@ -359,7 +346,7 @@ XML 中外部 DTD 声明（可选）
 作为一张背景图片使用，不支持交互。
 
 ```css
-.box{
+.box {
   width: 200px;
   height: 200px;
   background-image: url(./rect.svg);
@@ -379,7 +366,7 @@ XML 中外部 DTD 声明（可选）
 <object data="./svg/rect.svg" type="image/svg+xml"></object>
 ```
 
-## 5.iframe 元素（了解） 
+## 5.iframe 元素（了解）
 
 - 支持交互式 svg，能拿到 iframe 的引用，为 SVG 设置动画、更改其样式表等
 
@@ -387,14 +374,13 @@ XML 中外部 DTD 声明（可选）
 <iframe src="./svg/rect.svg"></iframe>
 ```
 
-## 6.embed 元素（了解） 
+## 6.embed 元素（了解）
 
 - 支持交互式 svg，能拿到 embed 的引用，为 SVG 设置动画、更改其样式表等，对旧版浏览器有更好的支持。
 
 ```html
 <embed src="./svg/rect.svg" type="image/svg+xml" />
 ```
-
 
 # 八、SVG 坐标系（Grid）
 
@@ -405,34 +391,32 @@ SVG 使用的坐标系统（网格系统）和 Canvas 的差不多。坐标系�
 - `<svg>` 的 `transform` 属性可以用来移动、旋转、缩放 SVG 中的某个元素，
   - 如 `<svg>` 中某个元素用了变形，**该元素内部会建立一个新的坐标系统，该元后续所有形变都是基于新创建的坐标系统**。
 
-03-SVG\demo-project\03-SVG坐标系\01-坐标系统.html
+03-SVG\demo-project\03-SVG 坐标系\01-坐标系统.html
 
 ```html
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background-image: url(../images/grid.png);
-    }
-    svg {
-      background-color: rgba(255, 0, 0, 0.1);
-    }
-  </style>
-</head>
-<body>
-
-  <svg width="300" height="300" xmlns="http://www.w3.org/2000/svg" >
-    <rect x="10" y="10" width="100" height="100"></rect>
-  </svg>
-
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-image: url(../images/grid.png);
+      }
+      svg {
+        background-color: rgba(255, 0, 0, 0.1);
+      }
+    </style>
+  </head>
+  <body>
+    <svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
+      <rect x="10" y="10" width="100" height="100"></rect>
+    </svg>
+  </body>
 </html>
 ```
 
@@ -440,21 +424,20 @@ SVG 使用的坐标系统（网格系统）和 Canvas 的差不多。坐标系�
 
 SVG 坐标系统，在没有明确指定单位时，默认以像素为单位。
 
-```xml
+```html
 <!-- 定义一个矩形，即从左上角开始，向右延展 100px，向下延展 100px，形成一个 100*100 大的矩形 -->
 <rect x="0" y="0" width="100" height="100" />
 ```
 
 也可以手动指明坐标系的单位，比如：
 
-```xml
-<svg width="15cm" height="300" xmlns="http://www.w3.org/2000/svg" >
+```html
+<svg width="15cm" height="300" xmlns="http://www.w3.org/2000/svg">
   <rect x="10" y="10" width="100px" height="5cm"></rect>
 </svg>
 ```
 
 <img src="NodeAssets/可用于SVG元素的单位列表.jpg" style="zoom:80%;" />
-
 
 # 十、SVG 视口（viewport）
 
@@ -482,10 +465,10 @@ SVG 坐标系统，在没有明确指定单位时，默认以像素为单位。
 >
 > - 因为 SVG 是矢量图，支持任意缩放。在用户坐标系绘制的图形，最终会参照视口坐标系来进行等比例缩放。
 
-03-SVG\demo-project\04-viewport和viewBox\02-viewport和viewBox有相同的宽高比.html
+03-SVG\demo-project\04-viewport 和 viewBox\02-viewport 和 viewBox 有相同的宽高比.html
 
-```xml
-<svg width="400" height="400" viewBox="0 0 100 100" >
+```html
+<svg width="400" height="400" viewBox="0 0 100 100">
   <circle cx="50" cy="50" r="50"></circle>
 </svg>
 ```
@@ -518,8 +501,8 @@ SVG 坐标系统，在没有明确指定单位时，默认以像素为单位。
 
 等比例缩放：
 
-```xml
-<svg width="400" height="400" viewBox="0 0 100 100" >
+```html
+<svg width="400" height="400" viewBox="0 0 100 100">
   <circle cx="50" cy="50" r="50"></circle>
 </svg>
 ```
@@ -530,12 +513,10 @@ SVG 坐标系统，在没有明确指定单位时，默认以像素为单位。
 
 保留视图框 `viewBox` 的宽高比，但视图框 `viewBox` 不会拉伸以覆盖整个视口区域。而是在视口内垂直和水平居中。
 
-03-SVG\demo-project\04-viewport和viewBox\04-viewport和viewBox不同的宽高比.html
+03-SVG\demo-project\04-viewport 和 viewBox\04-viewport 和 viewBox 不同的宽高比.html
 
-```xml
-<svg width="400" height="400"
-  viewBox="0 0 200 100"
->
+```html
+<svg width="400" height="400" viewBox="0 0 200 100">
   <circle cx="50" cy="50" r="50"></circle>
 </svg>
 ```
@@ -547,11 +528,8 @@ SVG 坐标系统，在没有明确指定单位时，默认以像素为单位。
 - `preserveAspectRatio= "none"`, 强制拉伸图形以填充整个视口。
 - `preserveAspectRatio= “xMinYMin”`, 图形在视口的最小 x 和 y 轴上显示。
 
-```xml
-<svg width="400" height="400"
-    viewBox="0 0 200 100"
-    preserveAspectRatio="xMinYMin"
-  >
+```html
+<svg width="400" height="400" viewBox="0 0 200 100" preserveAspectRatio="xMinYMin">
   <circle cx="50" cy="50" r="50"></circle>
 </svg>
 ```
@@ -560,7 +538,7 @@ SVG 坐标系统，在没有明确指定单位时，默认以像素为单位。
 
 # 十一、使用 SVG 绘制矩形
 
-使用 `<rect>` 元素绘制矩形，其中有6个基本属性：
+使用 `<rect>` 元素绘制矩形，其中有 6 个基本属性：
 
 - `x`： 矩形左上角的 x 轴位置；
 - `y`： 矩形左上角的 y 轴位置；
@@ -569,10 +547,10 @@ SVG 坐标系统，在没有明确指定单位时，默认以像素为单位。
 - `rx`： 圆角的 x 轴方位的半径；
 - `ry`： 圆角的 y 轴方位的半径。
 
-03-SVG\demo-project\05-SVG基本图形\01-绘制-矩形.html
+03-SVG\demo-project\05-SVG 基本图形\01-绘制-矩形.html
 
-```xml
-<svg width="300" height="300" xmlns="http://www.w3.org/2000/svg" >
+```html
+<svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
   <rect x="0" y="0" width="100" height="50"></rect>
   <rect x="100" y="100" width="100" height="50" rx="20" ry="20"></rect>
 </svg>

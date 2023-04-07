@@ -1,90 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <style>
-    body, ul{
-      margin: 0;
-      padding: 0;
-      background-image: url(../images/grid.png);
-    }
-    svg{
-      background-color: rgba(255, 0, 0, 0.1);
-    }
-  </style>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body,
+      ul {
+        margin: 0;
+        padding: 0;
+        background-image: url(../images/grid.png);
+      }
+      svg {
+        background-color: rgba(255, 0, 0, 0.1);
+      }
+    </style>
+  </head>
+  <body>
+    <svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
+      <rect
+        id="rectangle1"
+        x="0"
+        y="0"
+        width="100"
+        height="100"
+        fill="skyblue"
+        onclick="onRectClick1()"
+      ></rect>
+      <rect
+        id="rectangle2"
+        x="100"
+        y="0"
+        width="100"
+        height="100"
+        fill="orange"
+        onclick="onRectClick2()"
+      ></rect>
+      <rect
+        id="rectangle3"
+        x="200"
+        y="0"
+        width="100"
+        height="100"
+        fill="purple"
+        onclick="onRectClick3()"
+      ></rect>
+      <rect
+        id="rectangle4"
+        x="0"
+        y="100"
+        width="100"
+        height="100"
+        fill="lime"
+        onclick="onRectClick4()"
+      ></rect>
+      <rect
+        id="rectangle5"
+        x="100"
+        y="100"
+        width="100"
+        height="100"
+        fill="deepskyblue"
+        onclick="onRectClick5()"
+      ></rect>
+    </svg>
 
-</head>
-<body>
-
-  <svg width="300" height="300" xmlns="http://www.w3.org/2000/svg" >
-    <rect id="rectangle1" x="0" y="0" width="100" height="100" fill="skyblue"
-    onclick="onRectClick1()" 
-    ></rect>
-    <rect id="rectangle2" x="100" y="0" width="100" height="100" fill="orange"
-    onclick="onRectClick2()" 
-    ></rect>
-    <rect id="rectangle3" x="200" y="0" width="100" height="100" fill="purple"
-    onclick="onRectClick3()" 
-    ></rect>
-    <rect id="rectangle4" x="0" y="100" width="100" height="100" fill="lime"
-    onclick="onRectClick4()" 
-    ></rect>
-    <rect id="rectangle5" x="100" y="100" width="100" height="100" fill="deepskyblue"
-    onclick="onRectClick5()" 
-    ></rect>
-  </svg>
-
-  <!-- 
+    <!-- 
     window.gsap = {}
    -->
-   <script>
+    <script>
+      function onRectClick1() {
+        // 补间动画( 参数一也是支持数组的 )
+        gsap.to(['#rectangle1'], {
+          scale: 0.5, // 1 - 0.5
+          duration: 1
+        })
+      }
 
-    function onRectClick1() {
-      // 补间动画( 参数一也是支持数组的 )
-      gsap.to(['#rectangle1'], {
-        scale: 0.5, // 1 - 0.5
-        duration: 1
-      })
-    }
+      function onRectClick2() {
+        gsap.from(['#rectangle2'], {
+          scale: 0.3, // 0.3 - 1
+          duration: 1
+        })
+      }
 
-    function onRectClick2() {
-      gsap.from(['#rectangle2'], {
-        scale: 0.3,  // 0.3 - 1
-        duration: 1
-      })
-    }
+      function onRectClick3() {
+        gsap.fromTo(
+          ['#rectangle3'],
+          {
+            scale: 0
+            // duration: 4 // 可省略
+          },
+          {
+            scale: 1,
+            duration: 2,
+            repeat: 1 // 重复一次
+          }
+        )
+      }
 
-    function onRectClick3() {
-      gsap.fromTo(['#rectangle3'], {
-        scale: 0, 
-        // duration: 4 // 可省略
-      }, {
-        scale: 1,  
-        duration: 2,
-        repeat:1, // 重复一次
-      })
-    }
+      function onRectClick4() {
+        gsap.to(['#rectangle4'], {
+          scale: 0.5,
+          duration: 1,
+          transformOrigin: 'center' // 动画的原点，left, top, right, bottom
+        })
+      }
 
-    function onRectClick4() {
-      gsap.to(['#rectangle4'], {
-        scale: 0.5,
-        duration: 1,
-        transformOrigin: 'center'  // 动画的原点，left, top, right, bottom
-      })
-    }
-
-    function onRectClick5() {
-      gsap.to(['#rectangle5'], {
-        scale: 0.5, // 1 - 0.5
-        duration: 1,
-        transformOrigin: 'center',  // 动画的原点
-        ease: 'bounce.out'   // power1.out
-      })
-    }
-    
-   </script>
-</body>
+      function onRectClick5() {
+        gsap.to(['#rectangle5'], {
+          scale: 0.5, // 1 - 0.5
+          duration: 1,
+          transformOrigin: 'center', // 动画的原点
+          ease: 'bounce.out' // power1.out
+        })
+      }
+    </script>
+  </body>
 </html>

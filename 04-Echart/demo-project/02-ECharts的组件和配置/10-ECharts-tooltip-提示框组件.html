@@ -1,46 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  
-  <div id="main" style="height: 400px"></div>
-  <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.1/dist/echarts.min.js"></script>
-  <script>
-    window.onload = function() {
-      let myChart = echarts.init(document.getElementById('main'));
-      let option = {
-        backgroundColor: 'rgba(255, 0, 0, 0.1)',
-        grid: {
-          show: true,
-          backgroundColor: 'rgba(0, 255, 0, 0.1)',
-        },
-        tooltip: {
-          show: true,
-          // 使用了 trigger ，一般也结合 axisPointer
-          trigger: "axis",  // 默认是 item
-          axisPointer: {
-            type: "shadow", //  line，默认是竖线；cross，横线 + 竖线；shadow，横线 + 竖线；
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="main" style="height: 400px"></div>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.1/dist/echarts.min.js"></script>
+    <script>
+      window.onload = function () {
+        let myChart = echarts.init(document.getElementById('main'))
+        let option = {
+          backgroundColor: 'rgba(255, 0, 0, 0.1)',
+          grid: {
+            show: true,
+            backgroundColor: 'rgba(0, 255, 0, 0.1)'
           },
-          // formatter: '<div style="color:red">haha</div>'
-        },
-        xAxis: {
-          data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
-        },
-        yAxis: {},
-        series: [
-          {
-            type: 'bar',
-            data: [5, 20, 36, 10, 10, 20]
-          }
-        ]
-      };
-      myChart.setOption(option);
-    }
-  </script>
-</body>
+          tooltip: {
+            show: true,
+            // 使用了 trigger ，一般也结合 axisPointer
+            trigger: 'axis', // 默认是 item
+            axisPointer: {
+              type: 'shadow' //  line，默认是竖线；cross，横线 + 竖线；shadow，横线 + 竖线；
+            }
+            // formatter: '<div style="color:red">haha</div>'
+          },
+          xAxis: {
+            data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
+          },
+          yAxis: {},
+          series: [
+            {
+              type: 'bar',
+              data: [5, 20, 36, 10, 10, 20]
+            }
+          ]
+        }
+        myChart.setOption(option)
+      }
+    </script>
+  </body>
 </html>

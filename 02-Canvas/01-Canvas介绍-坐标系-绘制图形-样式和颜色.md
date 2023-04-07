@@ -44,81 +44,75 @@ Canvas 缺点：
 
 使用 Canvas 的通用模板：
 
-02-Canvas\demo-project\01-Canvas初体验\01-Canvas的通用模板.html
+02-Canvas\demo-project\01-Canvas 初体验\01-Canvas 的通用模板.html
 
 ```html
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
-	<style>
-		canvas {
-			background-color: rgba(255, 0, 0, 0.1);
-		}
-	</style>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      canvas {
+        background-color: rgba(255, 0, 0, 0.1);
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="tutorial" width="300" height="300"> 您的浏览器不支持Canvas </canvas>
 
-	<canvas id="tutorial" width="300" height="300">
-		您的浏览器不支持Canvas
-	</canvas>
-
-	<script>
-		window.onload = function() {
-			// 1.查找 canvas 的元素对象
-			const canvasEl = document.getElementById('tutorial')
-			if (!canvasEl.getContext) return
-			// 2.拿到 Canvas 渲染的上下文 ctx，类型 CanvasRenderingContext2D，ctx 是一个绘图的上下文: 提供了绘图的指令, 可以绘制各种图形(圆形、直线、椭圆...)
-			const ctx = canvasEl.getContext('2d') // 2d | webgl
-			console.log('ctx:', ctx)
-		}
-	</script>
-</body>
+    <script>
+      window.onload = function () {
+        // 1.查找 canvas 的元素对象
+        const canvasEl = document.getElementById('tutorial')
+        if (!canvasEl.getContext) return
+        // 2.拿到 Canvas 渲染的上下文 ctx，类型 CanvasRenderingContext2D，ctx 是一个绘图的上下文: 提供了绘图的指令, 可以绘制各种图形(圆形、直线、椭圆...)
+        const ctx = canvasEl.getContext('2d') // 2d | webgl
+        console.log('ctx:', ctx)
+      }
+    </script>
+  </body>
 </html>
 ```
 
 使用 Canvas 绘制一个矩形：
 
-02-Canvas\demo-project\01-Canvas初体验\02-Canvas绘制一个矩形.html
+02-Canvas\demo-project\01-Canvas 初体验\02-Canvas 绘制一个矩形.html
 
 ```html
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
-	<style>
-		body {
-			margin: 0;
-			padding: 0;
-			background-image: url(../images/grid.png);
-		}
-		canvas {
-			background-color: rgba(255, 0, 0, 0.1);
-		}
-	</style>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-image: url(../images/grid.png);
+      }
+      canvas {
+        background-color: rgba(255, 0, 0, 0.1);
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="tutorial" width="300" height="300"> 你的浏览器不兼容Canvas </canvas>
 
-	<canvas id="tutorial" width="300" height="300">
-		你的浏览器不兼容Canvas
-	</canvas>
+    <script>
+      window.onload = function () {
+        const canvasEl = document.getElementById('tutorial')
+        if (!canvasEl.getContext) return
+        const ctx = canvasEl.getContext('2d')
 
-	<script>
-		window.onload = function() {
-			const canvasEl = document.getElementById('tutorial')
-			if (!canvasEl.getContext) return
-			const ctx = canvasEl.getContext('2d')
-      
-			ctx.fillRect(0, 0, 100, 50) // 坐标点x，坐标点y，长，宽
-		}
-	</script>
-</body>
+        ctx.fillRect(0, 0, 100, 50) // 坐标点x，坐标点y，长，宽
+      }
+    </script>
+  </body>
 </html>
 ```
 
@@ -155,21 +149,20 @@ Canvas 绘图的矩形方法：
 02-Canvas\demo-project\02-绘制图形\01-绘制-矩形.html
 
 ```js
-window.onload = function() {
-	const canvasEl = document.getElementById('tutorial')
-	if (!canvasEl.getContext) return
-	const ctx = canvasEl.getContext('2d')
+window.onload = function () {
+  const canvasEl = document.getElementById('tutorial')
+  if (!canvasEl.getContext) return
+  const ctx = canvasEl.getContext('2d')
 
+  // 1.绘制了一个填充图形
+  ctx.fillStyle = 'red'
+  ctx.fillRect(0, 0, 100, 50)
 
-	// 1.绘制了一个填充图形
-	ctx.fillStyle = 'red'
-	ctx.fillRect(0, 0, 100, 50)
+  // 2.绘制一个边框的矩形
+  ctx.strokeRect(100, 100, 100, 50)
 
-	// 2.绘制一个边框的矩形
-	ctx.strokeRect(100, 100, 100, 50)
-
-	// 3.清除指定
-	ctx.clearRect(0, 0, 50, 100)
+  // 3.清除指定
+  ctx.clearRect(0, 0, 50, 100)
 }
 ```
 
@@ -206,34 +199,34 @@ window.onload = function() {
 
 1. `moveTo` 方法，不能画出任何东西，但是它也是路径列表的一部分。
 2. `moveTo(x, y)`：将画笔，移动到指定的坐标 x、y 上。
-4. 当 canvas 初始化或者 `beginPath()` 调用后，我们通常会使用 `moveTo(x, y)` 函数设置起点。
-5. 使用 `moveTo` 函数能够绘制一些不连续的路径。
+3. 当 canvas 初始化或者 `beginPath()` 调用后，我们通常会使用 `moveTo(x, y)` 函数设置起点。
+4. 使用 `moveTo` 函数能够绘制一些不连续的路径。
 
 绘制直线 `lineTo` 方法：
 
 1. `lineTo(x, y)`：绘制一条从当前位置到指定 (x，y) 位置的直线。
-3. 开始点和之前的绘制路径有关，之前路径的结束点就是接下来的开始点。
-4. 当然开始点也可以通过 `moveTo(x, y)` 函数改变。
+2. 开始点和之前的绘制路径有关，之前路径的结束点就是接下来的开始点。
+3. 当然开始点也可以通过 `moveTo(x, y)` 函数改变。
 
 02-Canvas\demo-project\02-绘制图形\02-绘制-直线-路劲.html
 
 ```js
-window.onload = function() {
-	const canvasEl = document.getElementById('tutorial')
-	if(!canvasEl.getContext) return
-	const ctx = canvasEl.getContext('2d') // 2d | webgl
+window.onload = function () {
+  const canvasEl = document.getElementById('tutorial')
+  if (!canvasEl.getContext) return
+  const ctx = canvasEl.getContext('2d') // 2d | webgl
 
-	ctx.lineWidth = 10
-  
-	// 1.创建一个新的路径
-	ctx.beginPath()
-	// 2.使用的绘图的命名(ctx 对象中的属性和 API)
-	ctx.moveTo(10, 10)
-	ctx.lineTo(100, 10)
-	// 3.闭合路径
-	ctx.closePath() // 不是必须
-	// 4.描边或填充
-	ctx.stroke()  // 绘制线条只能用 stroke 填充,不用 fill
+  ctx.lineWidth = 10
+
+  // 1.创建一个新的路径
+  ctx.beginPath()
+  // 2.使用的绘图的命名(ctx 对象中的属性和 API)
+  ctx.moveTo(10, 10)
+  ctx.lineTo(100, 10)
+  // 3.闭合路径
+  ctx.closePath() // 不是必须
+  // 4.描边或填充
+  ctx.stroke() // 绘制线条只能用 stroke 填充,不用 fill
 }
 ```
 
@@ -242,33 +235,33 @@ window.onload = function() {
 1. 调用 `beginPath()` 来生成路径。
 2. 调用 `moveTo()`、`lineTo()` 函数来绘制路径。
 3. 闭合路径 `closePath()`，不是必需的。
-	- `closePath()` 方法，会通过绘制一条从当前点到开始点的直线来闭合图形。
-	- 如果图形是已经闭合了的，即当前点为开始点，该函数什么也不做。
+   - `closePath()` 方法，会通过绘制一条从当前点到开始点的直线来闭合图形。
+   - 如果图形是已经闭合了的，即当前点为开始点，该函数什么也不做。
 4. 调用 `stroke()` 函数来给线描边，或者调用 `fill()` 函数来填充（使用填充 `fill` 时，路径会自动闭合，而 `stroke` 不会）。
 
 02-Canvas\demo-project\02-绘制图形\03-绘制-三角形-路径.html
 
 ```js
-window.onload = function() {
-	const canvasEl = document.getElementById('tutorial')
-	if (!canvasEl.getContext) return
+window.onload = function () {
+  const canvasEl = document.getElementById('tutorial')
+  if (!canvasEl.getContext) return
   const ctx = canvasEl.getContext('2d') // 2d | webgl
 
-	// 1.描边三角形
-	ctx.beginPath()
-	ctx.moveTo(50, 0)
-	ctx.lineTo(100, 50)
-	ctx.lineTo(50, 100)
-	ctx.closePath()
-	ctx.stroke()
+  // 1.描边三角形
+  ctx.beginPath()
+  ctx.moveTo(50, 0)
+  ctx.lineTo(100, 50)
+  ctx.lineTo(50, 100)
+  ctx.closePath()
+  ctx.stroke()
 
-	// 2.实心的三角形
-	ctx.beginPath()
-	ctx.moveTo(150, 0)
-	ctx.lineTo(200, 50)
-	ctx.lineTo(150, 100)
-	// ctx.closePath()
-	ctx.fill() // 它会 自动闭合路径
+  // 2.实心的三角形
+  ctx.beginPath()
+  ctx.moveTo(150, 0)
+  ctx.lineTo(200, 50)
+  ctx.lineTo(150, 100)
+  // ctx.closePath()
+  ctx.fill() // 它会 自动闭合路径
 }
 ```
 
@@ -276,8 +269,8 @@ window.onload = function() {
 
 什么是弧度？
 
-- 弧度 = (Math.PI / 180) * 角度
-- 角度 = (Math.PI / 180) * 弧度
+- 弧度 = (Math.PI / 180) \* 角度
+- 角度 = (Math.PI / 180) \* 弧度
 
 绘制圆弧或者圆，使用 `arc()` 方法。
 
@@ -295,53 +288,55 @@ window.onload = function() {
 4. 调用 `stroke()` 函数来描边，或者调用 `fill()` 函数来填充（使用填充 fill 时，路径会自动闭合）。
 
 ```js
-window.onload = function() {
-	const canvasEl = document.getElementById('tutorial')
-	if(!canvasEl.getContext) return
-	const ctx = canvasEl.getContext('2d') // 2d | webgl
+window.onload = function () {
+  const canvasEl = document.getElementById('tutorial')
+  if (!canvasEl.getContext) return
+  const ctx = canvasEl.getContext('2d') // 2d | webgl
 
-	// 1.每个图形都绘制在一个路径中
-	ctx.beginPath()
-	ctx.arc(50, 50, 25, 0, Math.PI * 2, false)
-	ctx.stroke()
+  // 1.每个图形都绘制在一个路径中
+  ctx.beginPath()
+  ctx.arc(50, 50, 25, 0, Math.PI * 2, false)
+  ctx.stroke()
 
-	ctx.beginPath()
-	ctx.arc(150, 150, 25, 0, Math.PI)
-	ctx.closePath()
-	ctx.stroke()
+  ctx.beginPath()
+  ctx.arc(150, 150, 25, 0, Math.PI)
+  ctx.closePath()
+  ctx.stroke()
 
-	// 2.在一个路径中绘制多个图形
-	ctx.beginPath()
-	ctx.arc(50, 50, 25, 0, Math.PI * 2, false)
-	ctx.moveTo(175, 150)
-	ctx.arc(150, 150, 25, 0, Math.PI)
-	// ctx.closePath()
-	ctx.stroke()
+  // 2.在一个路径中绘制多个图形
+  ctx.beginPath()
+  ctx.arc(50, 50, 25, 0, Math.PI * 2, false)
+  ctx.moveTo(175, 150)
+  ctx.arc(150, 150, 25, 0, Math.PI)
+  // ctx.closePath()
+  ctx.stroke()
 }
 ```
+
 # 九、路径绘制矩形
 
 1. 调用 `rect()` 也可绘制，即将一个矩形路径增加到当前路径上。
 2. 调用 `stroke()` 或者 `fill()` 进行描边或填充。
 3. `rect(x, y, width, height)`
-  -	绘制一个左上角坐标为（x,y），宽高为 width 以及 height 的矩形。
+
+- 绘制一个左上角坐标为（x,y），宽高为 width 以及 height 的矩形。
 
 02-Canvas\demo-project\02-绘制图形\05-绘制-矩形-路径.html
 
 ```js
-window.onload = function() {
-	const canvasEl = document.getElementById('tutorial')
-	if(!canvasEl.getContext) return
-	const ctx = canvasEl.getContext('2d') // 2d | webgl
+window.onload = function () {
+  const canvasEl = document.getElementById('tutorial')
+  if (!canvasEl.getContext) return
+  const ctx = canvasEl.getContext('2d') // 2d | webgl
 
-	// 1.创建一个路径
-	ctx.beginPath()
-	// 2.绘图指令
-	ctx.rect(100, 100, 100, 50)
-	// 3.闭合路径
-	ctx.closePath()
-	// 4.填充和描边
-	ctx.stroke()
+  // 1.创建一个路径
+  ctx.beginPath()
+  // 2.绘图指令
+  ctx.rect(100, 100, 100, 50)
+  // 3.闭合路径
+  ctx.closePath()
+  // 4.填充和描边
+  ctx.stroke()
 }
 ```
 
@@ -362,25 +357,25 @@ color 颜色
 - 一旦设置了 `strokeStyle` 或者 `fillStyle` 的值，那么这个新值就会成为新绘制的图形的默认值。
 - 如果你要给图形上不同的颜色，你需要重新设置 `fillStyle` 或 `strokeStyle` 的值。
 
-02-Canvas\demo-project\03-Canvas的样式和颜色\02-描边颜色-strokeStyle.html
+02-Canvas\demo-project\03-Canvas 的样式和颜色\02-描边颜色-strokeStyle.html
 
 ```js
-window.onload = function() {
-	const canvasEl = document.getElementById('tutorial')
-	if(!canvasEl.getContext) return
-	const ctx = canvasEl.getContext('2d') // 2d | webgl
+window.onload = function () {
+  const canvasEl = document.getElementById('tutorial')
+  if (!canvasEl.getContext) return
+  const ctx = canvasEl.getContext('2d') // 2d | webgl
 
-	// 2.修改画笔的颜色
-	ctx.fillStyle = 'rgba(255, 0, 0, 0.3)'
-	ctx.fillRect(0,0, 100, 50) // 单位不用写 px
+  // 2.修改画笔的颜色
+  ctx.fillStyle = 'rgba(255, 0, 0, 0.3)'
+  ctx.fillRect(0, 0, 100, 50) // 单位不用写 px
 
-	ctx.strokeStyle = 'blue'
-	ctx.strokeRect(200, 0, 100, 50)
+  ctx.strokeStyle = 'blue'
+  ctx.strokeRect(200, 0, 100, 50)
 
-	ctx.strokeStyle = 'green' // 关键字, 十六进制, rbg , rgba
-	ctx.beginPath()
-	ctx.rect(0, 100, 100, 50)
-	ctx.stroke()
+  ctx.strokeStyle = 'green' // 关键字, 十六进制, rbg , rgba
+  ctx.beginPath()
+  ctx.rect(0, 100, 100, 50)
+  ctx.stroke()
 }
 ```
 
@@ -396,28 +391,28 @@ window.onload = function() {
 - 这个属性影响到 canvas 里所有图形的透明度
 - 有效的值范围是 0.0（完全透明）到 1.0（完全不透明），默认是 1.0。
 
-02-Canvas\demo-project\03-Canvas的样式和颜色\03-透明度-global-alpha.html
+02-Canvas\demo-project\03-Canvas 的样式和颜色\03-透明度-global-alpha.html
 
 ```js
-window.onload = function() {
-	const canvasEl = document.getElementById('tutorial')
-	if(!canvasEl.getContext) return
-	const ctx = canvasEl.getContext('2d') // 2d | webgl
+window.onload = function () {
+  const canvasEl = document.getElementById('tutorial')
+  if (!canvasEl.getContext) return
+  const ctx = canvasEl.getContext('2d') // 2d | webgl
 
-	// 针对于Canvas中所有的图形生效
-	ctx.globalAlpha = 0.3
+  // 针对于Canvas中所有的图形生效
+  ctx.globalAlpha = 0.3
 
-	// 2.修改画笔的颜色
-	ctx.fillStyle = 'rgba(255, 0, 0, .3)'
-	ctx.fillRect(0,0, 100, 50) // 单位也是不用写 px
+  // 2.修改画笔的颜色
+  ctx.fillStyle = 'rgba(255, 0, 0, .3)'
+  ctx.fillRect(0, 0, 100, 50) // 单位也是不用写 px
 
-	ctx.fillStyle = 'blue'
-	ctx.fillRect(200, 0, 100, 50)
+  ctx.fillStyle = 'blue'
+  ctx.fillRect(200, 0, 100, 50)
 
-	ctx.fillStyle = 'green' // 关键字, 十六进制, rbg , rgba
-	ctx.beginPath()
-	ctx.rect(0, 100, 100, 50)
-	ctx.fill()
+  ctx.fillStyle = 'green' // 关键字, 十六进制, rbg , rgba
+  ctx.beginPath()
+  ctx.rect(0, 100, 100, 50)
+  ctx.fill()
 }
 ```
 
@@ -434,14 +429,13 @@ window.onload = function() {
 - 必须为正数。默认值 1.0px，不需单位（零、负数、Infinity 和 NaN 值将被忽略）。
 - 线宽是指，给定路径的中心到两边的粗细。换句话说就是在路径的两边各绘制线宽的一半。
 - 如果绘制一条从 `(3,1)` 到 `(3,5)`，宽度是 `1.0` 的线条，你会得到像第二幅图一样的结果。
-	-	路径的两边各延伸半个像素，填充并渲染出一像素的线条（深蓝色部分）；
-	-	两边剩下的半个像素，又会以实际画笔颜色一半色调来填充（浅蓝部分）；
-	-	实际画出线条的区域为（浅蓝和深蓝的部分），填充色大于1像素了，这就是为何宽度为 1.0 的线经常不准确的原因。
+  - 路径的两边各延伸半个像素，填充并渲染出一像素的线条（深蓝色部分）；
+  - 两边剩下的半个像素，又会以实际画笔颜色一半色调来填充（浅蓝部分）；
+  - 实际画出线条的区域为（浅蓝和深蓝的部分），填充色大于 1 像素了，这就是为何宽度为 1.0 的线经常不准确的原因。
 - 要解决这个问题，必须对路径精确的控制。如，1px 的线条会在路径两边各延伸半像素，那么像第三幅图那样绘制从 `(3.5 ,1)` 到 `(3.5,
 5)` 的线条，其边缘正好落在像素边界，填充出来就是准确的宽为 1.0 的线条。
 
 <img src="NodeAssets/线宽的特点.jpg" style="zoom:80%;" />
-
 
 线条端点可以怎样设置？`lineCap`
 
@@ -459,24 +453,23 @@ window.onload = function() {
 
 <img src="NodeAssets/线段接合处.jpg" style="zoom:80%;" />
 
-02-Canvas\demo-project\03-Canvas的样式和颜色\06-绘制线链接处样式-lineJoin.html
+02-Canvas\demo-project\03-Canvas 的样式和颜色\06-绘制线链接处样式-lineJoin.html
 
 ```js
-window.onload = function() {
-	const canvasEl = document.getElementById('tutorial')
-	if(!canvasEl.getContext) return
-	const ctx = canvasEl.getContext('2d') // 2d | webgl
+window.onload = function () {
+  const canvasEl = document.getElementById('tutorial')
+  if (!canvasEl.getContext) return
+  const ctx = canvasEl.getContext('2d') // 2d | webgl
 
+  ctx.lineWidth = 10
+  ctx.lineCap = 'butt' // butt round square
+  ctx.lineJoin = 'bevel' // miter  round  bevel
 
-	ctx.lineWidth = 10
-	ctx.lineCap = 'butt' // butt round square
-	ctx.lineJoin = 'bevel' // miter  round  bevel
-
-	ctx.beginPath()
-	ctx.moveTo(0, 0)
-	ctx.lineTo(100, 100)
-	ctx.lineTo(200, 0)
-	ctx.stroke()
+  ctx.beginPath()
+  ctx.moveTo(0, 0)
+  ctx.lineTo(100, 100)
+  ctx.lineTo(200, 0)
+  ctx.stroke()
 }
 ```
 
@@ -485,11 +478,11 @@ window.onload = function() {
 canvas 提供了两种方法来渲染文本：
 
 - `fillText(text, x, y [, maxWidth])`
-	- 在 (x,y) 位置，填充指定的文本。
-	- 绘制的最大宽度（可选）。
+  - 在 (x,y) 位置，填充指定的文本。
+  - 绘制的最大宽度（可选）。
 - `strokeText(text, x, y [, maxWidth])`
-	- 在 (x,y) 位置，绘制文本边框。
-	- 绘制的最大宽度（可选）。
+  - 在 (x,y) 位置，绘制文本边框。
+  - 绘制的最大宽度（可选）。
 
 文本的样式（需在绘制文本前调用）
 
@@ -503,20 +496,20 @@ canvas 提供了两种方法来渲染文本：
 02-Canvas\demo-project\04-绘制字体和图片\01-Canvas-绘制-字体.html
 
 ```js
-window.onload = function() {
-	const canvasEl = document.getElementById('tutorial')
-	if(!canvasEl.getContext) return
-	const ctx = canvasEl.getContext('2d') // 2d | webgl
+window.onload = function () {
+  const canvasEl = document.getElementById('tutorial')
+  if (!canvasEl.getContext) return
+  const ctx = canvasEl.getContext('2d') // 2d | webgl
 
-	ctx.font = '60px sen-serif'
-	ctx.textAlign = 'center'
-	ctx.textBaseline = 'middle'
-	ctx.strokeStyle ="red"
-	ctx.fillStyle ="red"
+  ctx.font = '60px sen-serif'
+  ctx.textAlign = 'center'
+  ctx.textBaseline = 'middle'
+  ctx.strokeStyle = 'red'
+  ctx.fillStyle = 'red'
 
-	// 将字体绘制在 100, 100 这个坐标点
-	ctx.fillText('Ay', 100, 100)
-	ctx.strokeText('Ay', 200, 200)
+  // 将字体绘制在 100, 100 这个坐标点
+  ctx.fillText('Ay', 100, 100)
+  ctx.strokeText('Ay', 200, 200)
 }
 ```
 
@@ -525,18 +518,18 @@ window.onload = function() {
 绘制图片，可以使用 `drawImage` 方法将它渲染到 `<canvas>` 里。`drawImage` 方法有三种形态：
 
 - `drawImage(image, x, y)`
-	- 其中 `image` 是 图片或者 canvas 对象，`x` 和 `y` 是其在目标 canvas 里的起始坐标。
+  - 其中 `image` 是 图片或者 canvas 对象，`x` 和 `y` 是其在目标 canvas 里的起始坐标。
 - `drawImage(image, x, y, width, height)`
-	- 这个方法多了 2 个参数：`width` 和 `height`，用来控制当向 canvas 画入时应该缩放的大小。
+  - 这个方法多了 2 个参数：`width` 和 `height`，用来控制当向 canvas 画入时应该缩放的大小。
 - `drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight)`
-	- 第一个参数和其它的是相同的，都是一个图像或者另一个 canvas 的引用；
-	- 其它 8 个参数，前 4 个是定义图像源的切片位置和大小，后 4 个则是定义切片的目标显示位置和大小。
+  - 第一个参数和其它的是相同的，都是一个图像或者另一个 canvas 的引用；
+  - 其它 8 个参数，前 4 个是定义图像源的切片位置和大小，后 4 个则是定义切片的目标显示位置和大小。
 
 图片的来源，canvas 的 API 可以使用下面这些类型中的一种作为图片的源：
 
 - `HTMLImageElement`：这些图片是由 `Image()` 函数构造出来的，或者任何的 `<img>` 元素。
-	1. `new Image();`
-	2. `document.getElementById('#image');`
+  1.  `new Image();`
+  2.  `document.getElementById('#image');`
 - `HTMLVideoElement`：用一个 HTML 的 `<video>` 元素，作为图片源，即从视频中抓取当前帧作为一个图像。
 - `HTMLCanvasElement`：可以使用另一个 `<canvas>` 元素，或 `<svg>` 作为你的图片源。
 
@@ -545,27 +538,27 @@ window.onload = function() {
 02-Canvas\demo-project\04-绘制字体和图片\02-Canvas-绘制-图片.html
 
 ```js
-window.onload = function() {
-	const canvasEl = document.getElementById('tutorial')
-	if(!canvasEl.getContext) return
-	const ctx = canvasEl.getContext('2d') // 2d | webgl
-	
-	// 1.准备一张图片
-	var image = new Image()
-	image.src = '../images/backdrop.png'
+window.onload = function () {
+  const canvasEl = document.getElementById('tutorial')
+  if (!canvasEl.getContext) return
+  const ctx = canvasEl.getContext('2d') // 2d | webgl
 
-	image.onload = function() {
-		// 2.开始用 Canvas 来绘制图片
-		ctx.drawImage(image, 0, 0, 180, 130)
+  // 1.准备一张图片
+  var image = new Image()
+  image.src = '../images/backdrop.png'
 
-		// 3.绘制折线
-		ctx.beginPath()
-		ctx.moveTo(40, 100)
-		ctx.lineTo(50, 70)
-		ctx.lineTo(60, 90)
-		ctx.lineTo(100, 30)
-		ctx.lineTo(170, 90)
-		ctx.stroke()
-	}
+  image.onload = function () {
+    // 2.开始用 Canvas 来绘制图片
+    ctx.drawImage(image, 0, 0, 180, 130)
+
+    // 3.绘制折线
+    ctx.beginPath()
+    ctx.moveTo(40, 100)
+    ctx.lineTo(50, 70)
+    ctx.lineTo(60, 90)
+    ctx.lineTo(100, 30)
+    ctx.lineTo(170, 90)
+    ctx.stroke()
+  }
 }
 ```

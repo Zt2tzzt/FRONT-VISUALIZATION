@@ -1,184 +1,176 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width,initial-scale=1.0">
-	<title>Document</title>
-	<style>
-		body {
-			margin: 0;
-			padding: 0;
-			background-image: url(../images/grid.png);
-		}
-		canvas {
-			background-color: rgba(255, 0, 0, .1);
-		}
-		.clock {
-			width: 300px;
-			height: 300px;
-			margin: 10px;
-			background-color: black;
-			border-radius: 50px;
-		}
-	</style>
-</head>
-<body>
-	
-	<div class="clock">
-		<canvas id="tutorial" width="300" height="300">
-			您的浏览器不兼容 Canvas，请升级您的浏览器。
-		</canvas>
-	</div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-image: url(../images/grid.png);
+      }
+      canvas {
+        background-color: rgba(255, 0, 0, 0.1);
+      }
+      .clock {
+        width: 300px;
+        height: 300px;
+        margin: 10px;
+        background-color: black;
+        border-radius: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="clock">
+      <canvas id="tutorial" width="300" height="300">
+        您的浏览器不兼容 Canvas，请升级您的浏览器。
+      </canvas>
+    </div>
 
-	<script>
-		window.onload = function() {
-			const canvasEl = document.getElementById('tutorial')
-			if (!canvasEl.getContext) return
-			const ctx = canvasEl.getContext('2d')
+    <script>
+      window.onload = function () {
+        const canvasEl = document.getElementById('tutorial')
+        if (!canvasEl.getContext) return
+        const ctx = canvasEl.getContext('2d')
 
-			function draw() {
-				ctx.clearRect(0, 0, 300, 300)
+        function draw() {
+          ctx.clearRect(0, 0, 300, 300)
 
-				ctx.save()
-				drawBg()
-				drawNumbers()
-				const time = new Date()
-				const hours = time.getHours()
-				const minute = time.getMinutes()
-				const second = time.getSeconds()
-				drawHours(hours, minute, second)
-				drawMinute(minute, second)
-				drawSecond(second)
-				drawCircle()
-				drawTick()
-				ctx.restore()
+          ctx.save()
+          drawBg()
+          drawNumbers()
+          const time = new Date()
+          const hours = time.getHours()
+          const minute = time.getMinutes()
+          const second = time.getSeconds()
+          drawHours(hours, minute, second)
+          drawMinute(minute, second)
+          drawSecond(second)
+          drawCircle()
+          drawTick()
+          ctx.restore()
 
-				requestAnimationFrame(draw)
-			}
-			requestAnimationFrame(draw)
+          requestAnimationFrame(draw)
+        }
+        requestAnimationFrame(draw)
 
+        function drawBg() {
+          // 1.绘制背景（白色钟表盘）
+          ctx.save()
+          ctx.translate(150, 150)
+          ctx.fillStyle = 'white'
+          ctx.beginPath()
+          ctx.arc(0, 0, 130, 0, Math.PI * 2)
+          ctx.fill()
+          ctx.restore() // 背景 end
+        }
 
-			function drawBg() {
-				// 1.绘制背景（白色钟表盘）
-				ctx.save()
-				ctx.translate(150, 150)
-				ctx.fillStyle = 'white'
-				ctx.beginPath()
-				ctx.arc(0, 0, 130, 0, Math.PI * 2)
-				ctx.fill()
-				ctx.restore() // 背景 end
-			}
+        function drawNumbers() {
+          // 2.绘制数字
+          ctx.save()
+          ctx.translate(150, 150)
+          // 绘制数字 3
+          ctx.font = '30px fangsong'
+          ctx.textBaseline = 'middle'
+          ctx.textAlign = 'center'
+          for (let i = 0; i < 12; i++) {
+            const x = Math.cos(((Math.PI * 2) / 12) * i) * 100
+            const y = Math.sin(((Math.PI * 2) / 12) * i) * 100
+            let num = i + 3
+            if (num - 12 > 0) num -= 12
+            ctx.fillText(num, x, y)
+          }
+          ctx.restore() // 数字 end
+        }
 
-			function drawNumbers() {
-				// 2.绘制数字
-				ctx.save()
-				ctx.translate(150, 150)
-				// 绘制数字 3
-				ctx.font = '30px fangsong'
-				ctx.textBaseline = 'middle'
-				ctx.textAlign = 'center'
-				for (let i = 0; i < 12; i++) {
-					const x = Math.cos(Math.PI * 2 / 12 * i) * 100
-					const y = Math.sin(Math.PI * 2 / 12 * i) * 100
-					let num = i + 3
-					if (num - 12 > 0) num -= 12
-					ctx.fillText(num, x, y)
-				}
-				ctx.restore() // 数字 end
-			}
+        function drawHours(hours, minute, second) {
+          // 3. 绘制时针
+          ctx.save()
+          ctx.translate(150, 150)
+          ctx.rotate(
+            ((Math.PI * 2) / 12) * hours +
+              ((Math.PI * 2) / 12 / 60) * minute +
+              ((Math.PI * 2) / 12 / 60 / 60) * second
+          )
+          ctx.lineWidth = 5
+          ctx.lineCap = 'round'
+          ctx.beginPath()
+          ctx.moveTo(0, 0)
+          ctx.lineTo(0, -50)
+          ctx.stroke()
+          ctx.restore() // 时钟 end
+        }
 
-			function drawHours(hours, minute, second) {
-				// 3. 绘制时针
-				ctx.save()
-				ctx.translate(150, 150)
-				ctx.rotate(
-					Math.PI * 2 / 12 * hours + 
-					Math.PI * 2 / 12 / 60 * minute +
-					Math.PI * 2 / 12 / 60 / 60 * second
-				)
-				ctx.lineWidth = 5
-				ctx.lineCap = 'round'
-				ctx.beginPath()
-				ctx.moveTo(0, 0)
-				ctx.lineTo(0, -50)
-				ctx.stroke()
-				ctx.restore() // 时钟 end
-			}
+        function drawMinute(minute, second) {
+          // 4.绘制分钟
+          ctx.save()
+          ctx.translate(150, 150)
+          ctx.rotate(((Math.PI * 2) / 60) * minute + ((Math.PI * 2) / 60 / 60) * second)
+          ctx.lineWidth = 3
+          ctx.lineCap = 'round'
+          ctx.beginPath()
+          ctx.moveTo(0, 0)
+          ctx.lineTo(0, -70)
+          ctx.stroke()
+          ctx.restore() // 分针 end
+        }
 
-			function drawMinute(minute, second) {
-				// 4.绘制分钟
-				ctx.save()
-				ctx.translate(150, 150)
-				ctx.rotate(
-					Math.PI * 2 / 60 * minute +
-					Math.PI * 2 / 60 / 60 * second
-				)
-				ctx.lineWidth = 3
-				ctx.lineCap = 'round'
-				ctx.beginPath()
-				ctx.moveTo(0, 0)
-				ctx.lineTo(0, -70)
-				ctx.stroke()
-				ctx.restore() // 分针 end
-			}
+        function drawSecond(second) {
+          // 5.绘制秒针
+          ctx.save()
+          ctx.translate(150, 150)
+          ctx.rotate(((Math.PI * 2) / 60) * second)
+          ctx.strokeStyle = 'red'
+          ctx.lineWidth = 2
+          ctx.lineCap = 'round'
+          ctx.beginPath()
+          ctx.moveTo(0, 0)
+          ctx.lineTo(0, -80)
+          ctx.stroke()
+          ctx.restore() // 秒针 end
+        }
 
-			function drawSecond(second) {
-				// 5.绘制秒针
-				ctx.save()
-				ctx.translate(150, 150)
-				ctx.rotate(
-					Math.PI * 2 / 60 * second
-				)
-				ctx.strokeStyle = 'red'
-				ctx.lineWidth = 2
-				ctx.lineCap = 'round'
-				ctx.beginPath()
-				ctx.moveTo(0, 0)
-				ctx.lineTo(0, -80)
-				ctx.stroke()
-				ctx.restore() // 秒针 end
-			}
+        function drawCircle() {
+          // 6.绘制圆心
+          ctx.save()
+          ctx.translate(150, 150)
+          ctx.beginPath()
+          ctx.arc(0, 0, 8, 0, Math.PI * 2)
+          ctx.fill()
+          ctx.fillStyle = 'gray'
+          ctx.beginPath()
+          ctx.arc(0, 0, 5, 0, Math.PI * 2)
+          ctx.fill()
+          ctx.restore()
+        }
 
-			function drawCircle() {
-				// 6.绘制圆心
-				ctx.save()
-				ctx.translate(150, 150)
-				ctx.beginPath()
-				ctx.arc(0, 0, 8, 0, Math.PI * 2)
-				ctx.fill()
-				ctx.fillStyle = 'gray'
-				ctx.beginPath()
-				ctx.arc(0, 0, 5, 0, Math.PI * 2)
-				ctx.fill()
-				ctx.restore()
-			}
-
-			function drawTick() {
-				ctx.save()
-				// 7.绘制时钟刻度
-				ctx.translate(150, 150)
-				for (let i = 0; i < 12; i++) {
-					ctx.rotate(Math.PI * 2 / 12)
-					ctx.lineWidth = 3
-					ctx.beginPath()
-					ctx.moveTo(0, -130)
-					ctx.lineTo(0, -122)
-					ctx.stroke()
-				}
-				// 绘制秒针刻度
-				for (let i = 0; i < 60; i++) {
-					ctx.rotate(Math.PI * 2 / 60)
-					ctx.lineWidth = 1
-					ctx.beginPath()
-					ctx.moveTo(0, -130)
-					ctx.lineTo(0, -125)
-					ctx.stroke()
-				}
-				ctx.restore()
-			}
-		}
-		
-	</script>
-</body>
+        function drawTick() {
+          ctx.save()
+          // 7.绘制时钟刻度
+          ctx.translate(150, 150)
+          for (let i = 0; i < 12; i++) {
+            ctx.rotate((Math.PI * 2) / 12)
+            ctx.lineWidth = 3
+            ctx.beginPath()
+            ctx.moveTo(0, -130)
+            ctx.lineTo(0, -122)
+            ctx.stroke()
+          }
+          // 绘制秒针刻度
+          for (let i = 0; i < 60; i++) {
+            ctx.rotate((Math.PI * 2) / 60)
+            ctx.lineWidth = 1
+            ctx.beginPath()
+            ctx.moveTo(0, -130)
+            ctx.lineTo(0, -125)
+            ctx.stroke()
+          }
+          ctx.restore()
+        }
+      }
+    </script>
+  </body>
 </html>

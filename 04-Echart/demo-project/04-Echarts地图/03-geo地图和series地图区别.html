@@ -1,42 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  
-  <div id="main" style="height: 400px"></div>
-  <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.1/dist/echarts.min.js"></script>
-  <!-- 1.导入了一个中国的 geo json window.china_geojson = {} -->
-  <script src="../lib/geojson/china_geojson.js"></script>
-  <script>
-    window.onload = function() {
-      // 2.注册一下中国地图的 geo json ( 需要在setOption之前调用 )
-      echarts.registerMap('中国', { geoJSON: china_geojson })
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="main" style="height: 400px"></div>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.1/dist/echarts.min.js"></script>
+    <!-- 1.导入了一个中国的 geo json window.china_geojson = {} -->
+    <script src="../lib/geojson/china_geojson.js"></script>
+    <script>
+      window.onload = function () {
+        // 2.注册一下中国地图的 geo json ( 需要在setOption之前调用 )
+        echarts.registerMap('中国', { geoJSON: china_geojson })
 
-      const myChart = echarts.init(document.getElementById('main'));
-      const option = {
-        // 3.在 echarts 中展示中国地图
-        geo: [
-          {
-            map: '中国', // 全局的地图( 创建一个地理坐标系统, 供其它系列复用该坐标系 )
-            roam: true, // 可拖动地图
-          }
-        ],
-        series: [
-          {
-            type: 'map', // 系列图是 地图(创建一个地理坐标系统, 用来展示数据 )
-            map: '中国',
-            roam: true,
-            
-          }
-        ]
-      };
-      myChart.setOption(option);
-    }
-  </script>
-</body>
+        const myChart = echarts.init(document.getElementById('main'))
+        const option = {
+          // 3.在 echarts 中展示中国地图
+          geo: [
+            {
+              map: '中国', // 全局的地图( 创建一个地理坐标系统, 供其它系列复用该坐标系 )
+              roam: true // 可拖动地图
+            }
+          ],
+          series: [
+            {
+              type: 'map', // 系列图是 地图(创建一个地理坐标系统, 用来展示数据 )
+              map: '中国',
+              roam: true
+            }
+          ]
+        }
+        myChart.setOption(option)
+      }
+    </script>
+  </body>
 </html>

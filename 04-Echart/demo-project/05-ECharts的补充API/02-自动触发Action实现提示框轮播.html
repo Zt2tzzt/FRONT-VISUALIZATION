@@ -1,61 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  
-  <div id="main" style="height: 400px"></div>
-  <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.1/dist/echarts.min.js"></script>
-  <script>
-    window.onload = function() {
-      const myChart = echarts.init(document.getElementById('main'));
-      const option = {
-        backgroundColor: 'rgba(255, 0, 0, 0.1)',
-        grid: {
-          show: true,
-          backgroundColor: 'rgba(0, 255, 0, 0.1)',
-        },
-        tooltip: {
-          position: 'top', // top
-        },
-        xAxis: {
-          data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
-        },
-        yAxis: {},
-        series: [
-          {
-            type: 'bar',
-            data: [5, 20, 36, 10, 10, 20]
-          }
-        ]
-      };
-      myChart.setOption(option);
-
-      // 1.实现提示框轮播的功能
-      setInterval(function () {
-        autoToolTip();
-      }, 1000);
-
-      let index = 0; // 0-5
-      
-      function autoToolTip() {
-        index++;
-        if (index > 5) {
-          index = 0;
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="main" style="height: 400px"></div>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.1/dist/echarts.min.js"></script>
+    <script>
+      window.onload = function () {
+        const myChart = echarts.init(document.getElementById('main'))
+        const option = {
+          backgroundColor: 'rgba(255, 0, 0, 0.1)',
+          grid: {
+            show: true,
+            backgroundColor: 'rgba(0, 255, 0, 0.1)'
+          },
+          tooltip: {
+            position: 'top' // top
+          },
+          xAxis: {
+            data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
+          },
+          yAxis: {},
+          series: [
+            {
+              type: 'bar',
+              data: [5, 20, 36, 10, 10, 20]
+            }
+          ]
         }
-        // 1.显示提示框
-        myChart.dispatchAction({
-          type: "showTip", // 触发的action type
-          seriesIndex: 0, // 系列的 索引
-          dataIndex: index,// 数据项的 索引
-          position: "top", // top
-        });
+        myChart.setOption(option)
+
+        // 1.实现提示框轮播的功能
+        setInterval(function () {
+          autoToolTip()
+        }, 1000)
+
+        let index = 0 // 0-5
+
+        function autoToolTip() {
+          index++
+          if (index > 5) {
+            index = 0
+          }
+          // 1.显示提示框
+          myChart.dispatchAction({
+            type: 'showTip', // 触发的action type
+            seriesIndex: 0, // 系列的 索引
+            dataIndex: index, // 数据项的 索引
+            position: 'top' // top
+          })
+        }
       }
-    }
-  </script>
-</body>
+    </script>
+  </body>
 </html>

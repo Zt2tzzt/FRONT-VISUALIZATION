@@ -1,70 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  
-  <div id="main" style="height: 400px"></div>
-  <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.1/dist/echarts.min.js"></script>
-  <script>
-    window.onload = function() {
-      let myChart = echarts.init(document.getElementById('main'));
-      let option = {
-        backgroundColor: 'rgba(255, 0, 0, 0.1)',
-        grid: {
-          show: true,
-          backgroundColor: 'rgba(0, 255, 0, 0.1)',
-        },
-        xAxis: {
-          show: true,
-          name: "类目坐标",
-          type: "category", // 类目坐标才有 data 选项  
-          data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子'],
-          axisLine: { // 坐标轴轴线相关设置。
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="main" style="height: 400px"></div>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.1/dist/echarts.min.js"></script>
+    <script>
+      window.onload = function () {
+        let myChart = echarts.init(document.getElementById('main'))
+        let option = {
+          backgroundColor: 'rgba(255, 0, 0, 0.1)',
+          grid: {
             show: true,
-            lineStyle: {
-              color: "red",
-              width: 3,
-            },
+            backgroundColor: 'rgba(0, 255, 0, 0.1)'
           },
-          axisLabel: { // 坐标轴刻度标签的相关设置。
+          xAxis: {
             show: true,
-            color: "green",
-            fontSize: 16,
-          },
-          axisTick: {  // 坐标轴刻度相关设置。
-            show: true,
-            length: 10,
-            lineStyle: {
-              color: "blue",
-              width: 3,
+            name: '类目坐标',
+            type: 'category', // 类目坐标才有 data 选项
+            data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子'],
+            axisLine: {
+              // 坐标轴轴线相关设置。
+              show: true,
+              lineStyle: {
+                color: 'red',
+                width: 3
+              }
             },
-          },
-          splitLine: { // 坐标轴在 grid 区域中的分隔线。
-            show: true,
-            lineStyle: {
-              color: "orange",
-              width: 1,
+            axisLabel: {
+              // 坐标轴刻度标签的相关设置。
+              show: true,
+              color: 'green',
+              fontSize: 16
             },
-          }, 
-        },
-        yAxis: {
-          name: '数量 / 件'
-          // type: "value",
-        },
-        series: [
-          {
-            type: 'bar',
-            data: [5, 20, 36, 10, 10, 20]
-          }
-        ]
-      };
-      myChart.setOption(option);
-    }
-  </script>
-</body>
+            axisTick: {
+              // 坐标轴刻度相关设置。
+              show: true,
+              length: 10,
+              lineStyle: {
+                color: 'blue',
+                width: 3
+              }
+            },
+            splitLine: {
+              // 坐标轴在 grid 区域中的分隔线。
+              show: true,
+              lineStyle: {
+                color: 'orange',
+                width: 1
+              }
+            }
+          },
+          yAxis: {
+            name: '数量 / 件'
+            // type: "value",
+          },
+          series: [
+            {
+              type: 'bar',
+              data: [5, 20, 36, 10, 10, 20]
+            }
+          ]
+        }
+        myChart.setOption(option)
+      }
+    </script>
+  </body>
 </html>

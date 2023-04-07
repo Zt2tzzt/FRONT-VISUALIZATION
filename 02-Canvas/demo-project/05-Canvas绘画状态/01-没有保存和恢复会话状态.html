@@ -1,52 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
-	<style>
-		body {
-			margin: 0;
-			padding: 0;
-			background-image: url(../images/grid.png);
-		}
-		canvas {
-			background-color: rgba(255, 0, 0, .1);
-		}
-	</style>
-</head>
-<body>
-	
-	<canvas id="tutorial" width="300" height="300">
-		您的浏览器不兼容 Canvas，请升级您的浏览器。
-	</canvas>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-image: url(../images/grid.png);
+      }
+      canvas {
+        background-color: rgba(255, 0, 0, 0.1);
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="tutorial" width="300" height="300">
+      您的浏览器不兼容 Canvas，请升级您的浏览器。
+    </canvas>
 
-	<script>
-		window.onload = function() {
-			const canvasEl = document.getElementById('tutorial')
-			if (!canvasEl.getContext) return
-			const ctx = canvasEl.getContext('2d')
+    <script>
+      window.onload = function () {
+        const canvasEl = document.getElementById('tutorial')
+        if (!canvasEl.getContext) return
+        const ctx = canvasEl.getContext('2d')
 
-			ctx.fillStyle = 'red'
-			ctx.fillRect(10, 10, 30, 15)
+        ctx.fillStyle = 'red'
+        ctx.fillRect(10, 10, 30, 15)
 
-			ctx.fillStyle = 'green'
-			ctx.fillRect(50, 10, 30, 15)
+        ctx.fillStyle = 'green'
+        ctx.fillRect(50, 10, 30, 15)
 
-			ctx.fillStyle = 'blue'
-			ctx.fillRect(90, 10, 30, 15)
+        ctx.fillStyle = 'blue'
+        ctx.fillRect(90, 10, 30, 15)
 
-			ctx.fillStyle = 'red'
-			ctx.fillRect(10, 40, 30, 80)
+        ctx.fillStyle = 'red'
+        ctx.fillRect(10, 40, 30, 80)
 
-			ctx.fillStyle = 'green'
-			ctx.fillRect(50, 40, 30, 80)
+        ctx.fillStyle = 'green'
+        ctx.fillRect(50, 40, 30, 80)
 
-			ctx.fillStyle = 'blue'
-			ctx.fillRect(90, 40, 30, 80)
-
-		}
-	</script>
-</body>
+        ctx.fillStyle = 'blue'
+        ctx.fillRect(90, 40, 30, 80)
+      }
+    </script>
+  </body>
 </html>

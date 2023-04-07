@@ -1,36 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>GSAP的初体验</title>
-	<style>
-    body {
-      margin: 0;
-      padding: 0;
-			background-image: url(../images/grid.png);
-    }
-    svg {
-      background-color: rgba(255, 0, 0, 0.1);
-    }
-  </style>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GSAP的初体验</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-image: url(../images/grid.png);
+      }
+      svg {
+        background-color: rgba(255, 0, 0, 0.1);
+      }
+    </style>
+  </head>
+  <body>
+    <svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
+      <rect id="rectangle" x="0" y="0" width="100" height="50" fill="skyblue"></rect>
+    </svg>
 
-	<svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
-		<rect id="rectangle" x="0" y="0" width="100" height="50" fill="skyblue"></rect>
-	</svg>
-
-	<!-- window.gsap -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
-	<script>
-		window.onload = function() {
-			gsap.to('#rectangle', {
-				x: 200,
-				duration: 2 // 秒
-			})
-		}
-	</script>
-</body>
+    <!-- window.gsap -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script>
+      window.onload = function () {
+        gsap.to('#rectangle', {
+          x: 200,
+          duration: 2 // 秒
+        })
+      }
+    </script>
+  </body>
 </html>

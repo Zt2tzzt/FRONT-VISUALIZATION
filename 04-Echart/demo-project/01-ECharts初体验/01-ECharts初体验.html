@@ -1,45 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>ECharts 初体验</title>
-</head>
-<body>
-	<!-- 作为 ECharts 的容器，必须要有高度 -->
-	<div id="main" style="height: 400px;"></div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ECharts 初体验</title>
+  </head>
+  <body>
+    <!-- 作为 ECharts 的容器，必须要有高度 -->
+    <div id="main" style="height: 400px"></div>
 
-	<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.1/dist/echarts.min.js"></script>
-	<script>
-		window.onload = function () {
-			// 1.初始化 echarts 实例
-			const myChart = echarts.init(document.getElementById('main'))
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.1/dist/echarts.min.js"></script>
+    <script>
+      window.onload = function () {
+        // 1.初始化 echarts 实例
+        const myChart = echarts.init(document.getElementById('main'))
 
-			// 2.指定图表的配置项和数据
-			const option = {
-				title: {
-					text: 'ECharts 入门示例'
-				},
-				tooltip: {},
-				legend: {
-					data: ['销量']
-				},
-				xAxis: {
-					data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
-				},
-				yAxis: {},
-				series: [
-					{
-						name: '销量',
-						type: 'bar',
-						data: [5, 20, 36, 10, 10, 20]
-					}
-				]
-			}
+        // 2.指定图表的配置项和数据
+        const option = {
+          title: {
+            text: 'ECharts 入门示例'
+          },
+          tooltip: {},
+          legend: {
+            data: ['销量']
+          },
+          xAxis: {
+            data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
+          },
+          yAxis: {},
+          series: [
+            {
+              name: '销量',
+              type: 'bar',
+              data: [5, 20, 36, 10, 10, 20]
+            }
+          ]
+        }
 
-			myChart.setOption(option)
-		}
-	</script>
-</body>
+        myChart.setOption(option)
+      }
+    </script>
+  </body>
 </html>

@@ -56,47 +56,41 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
     <script>
-     window.onload = function() {
+      window.onload = function () {
+        const tl = gsap.timeline({
+          repeat: -1, // 重复的次数
+          yoyo: true // 反向执行动画
+        })
 
-      const tl = gsap.timeline({
-        repeat: -1, // 重复的次数
-        yoyo: true // 反向执行动画
-      })
-
-      // 1.给车轮做动画
-      tl.from(
-        ['#wheel1', '#wheel2', '#wheel3', '#wheel4' ], {
+        // 1.给车轮做动画
+        tl.from(['#wheel1', '#wheel2', '#wheel3', '#wheel4'], {
           scaleX: 0,
           scaleY: 0,
           duration: 1,
           transformOrigin: 'center',
           ease: 'bounce.out',
           stagger: 0.2 // 选中的元素，间隔 0.2s 进行动画
-        }
-      )
-      .from(
-        ["#footboard1", "#footboard2"], {
-          scaleX: 0,
-          duration: 1,
-          transformOrigin: 'left',
-          ease: 'bounce.out',
-          stagger: 0.2
         })
-      .from(
-        ["#scooter-head"], {
-          scaleY: 0,
-          duration: 1,
-          transformOrigin: 'bottom',
-          ease: 'bounce.out',
-        })
-      .from(
-        ["#head-block", "#footer-block"], {
-          scaleX: 0,
-          duration: 1,
-          transformOrigin: 'right',
-          ease: 'bounce.out',
-        })
-     }
+          .from(['#footboard1', '#footboard2'], {
+            scaleX: 0,
+            duration: 1,
+            transformOrigin: 'left',
+            ease: 'bounce.out',
+            stagger: 0.2
+          })
+          .from(['#scooter-head'], {
+            scaleY: 0,
+            duration: 1,
+            transformOrigin: 'bottom',
+            ease: 'bounce.out'
+          })
+          .from(['#head-block', '#footer-block'], {
+            scaleX: 0,
+            duration: 1,
+            transformOrigin: 'right',
+            ease: 'bounce.out'
+          })
+      }
     </script>
   </body>
 </html>

@@ -24,16 +24,20 @@ ECharts 底层依赖轻量级的 ZRender 图形库，可提供直观，生动，
 # 四、ECharts 的特点
 
 丰富的图表类型
+
 - 提供开箱即用的二十多种图表和十几种组件，
 - 支持各种图表以及组件的任意组合；
 
 强劲的渲染引擎
+
 - Canvas、SVG 双引擎灵活切换，增量渲染等技术实现千万级数据的流畅交互；
 
 简单易懂，上手容易
+
 - 通过编写配置，生成各种图表，且支持多种集成方式；
 
 活跃的社区
+
 - 活跃的社区用户保证了项目的健康发展，贡献了丰富的第三方插件，满足不同场景的需求；
 
 # 五、ECharts 初体验
@@ -47,43 +51,43 @@ ECharts 的容器必须设高度。
 
 ## 1.普通配置项实现
 
-04-Echart\demo-project\01-ECharts初体验\01-ECharts初体验.html
+04-Echart\demo-project\01-ECharts 初体验\01-ECharts 初体验.html
 
 ```html
 <body>
-	<!-- 作为 ECharts 的容器，必须要有高度 -->
-	<div id="main" style="height: 400px;"></div>
+  <!-- 作为 ECharts 的容器，必须要有高度 -->
+  <div id="main" style="height: 400px;"></div>
 
-	<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.1/dist/echarts.min.js"></script>
-	<script>
-		window.onload = function () {
-			// 1.初始化 echarts 实例
-			const myChart = echarts.init(document.getElementById('main'))
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.1/dist/echarts.min.js"></script>
+  <script>
+    window.onload = function () {
+      // 1.初始化 echarts 实例
+      const myChart = echarts.init(document.getElementById('main'))
 
-			// 2.指定图表的配置项和数据
-			const option = {
-				title: {
-					text: 'ECharts 入门示例'
-				},
-				legend: {
-					data: ['销量']
-				},
-				xAxis: {
-					data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
-				},
-				yAxis: {},
-				series: [
-					{
-						name: '销量',
-						type: 'bar',
-						data: [5, 20, 36, 10, 10, 20]
-					}
-				]
-			}
-      
-			myChart.setOption(option)
-		}
-	</script>
+      // 2.指定图表的配置项和数据
+      const option = {
+        title: {
+          text: 'ECharts 入门示例'
+        },
+        legend: {
+          data: ['销量']
+        },
+        xAxis: {
+          data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
+        },
+        yAxis: {},
+        series: [
+          {
+            name: '销量',
+            type: 'bar',
+            data: [5, 20, 36, 10, 10, 20]
+          }
+        ]
+      }
+
+      myChart.setOption(option)
+    }
+  </script>
 </body>
 ```
 
@@ -93,17 +97,17 @@ ECharts 的容器必须设高度。
 
 ```js
 let option = {
-	xAxis: {
-		data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
-	},
-	yAxis: {},
-	series: [
-		{
-			type: 'bar',
-			data: [5, 20, 36, 10, 10, 20]
-		}
-	]
-};
+  xAxis: {
+    data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
+  },
+  yAxis: {},
+  series: [
+    {
+      type: 'bar',
+      data: [5, 20, 36, 10, 10, 20]
+    }
+  ]
+}
 ```
 
 # 六、ECharts 渲染原理
@@ -117,27 +121,27 @@ let option = {
 
 ## 1.切换渲染模式：
 
-04-Echart\demo-project\01-ECharts初体验\03-ECharts-切换渲染器.html
+04-Echart\demo-project\01-ECharts 初体验\03-ECharts-切换渲染器.html
 
 ```js
-window.onload = function() {
-	// 切换为 svg 的渲染器（默认是 canvas）
-	const myChart = echarts.init(document.getElementById('main'), null, { renderer: 'svg' });
+window.onload = function () {
+  // 切换为 svg 的渲染器（默认是 canvas）
+  const myChart = echarts.init(document.getElementById('main'), null, { renderer: 'svg' })
 
-	const option = {
-		xAxis: {
-			data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
-		},
-		yAxis: {},
-		series: [
-			{
-				type: 'bar',
-				data: [5, 20, 36, 10, 10, 20]
-			}
-		]
-	};
-  
-	myChart.setOption(option);
+  const option = {
+    xAxis: {
+      data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
+    },
+    yAxis: {},
+    series: [
+      {
+        type: 'bar',
+        data: [5, 20, 36, 10, 10, 20]
+      }
+    ]
+  }
+
+  myChart.setOption(option)
 }
 ```
 
@@ -148,9 +152,9 @@ window.onload = function() {
 在软硬件环境较差，出现性能问题需要优化的场景下，通过试验来确定使用哪种渲染器。
 
 - SVG 更适用的场景：创建很多 ECharts 实例时，浏览器易崩溃（可能因为 Canvas 数量多导致内存占用超出手机承受能力）。
-	- SVG 具有内存占用更低、适配性、扩展性好，放大缩小图表不会模糊的优势。
+  - SVG 具有内存占用更低、适配性、扩展性好，放大缩小图表不会模糊的优势。
 - Canvas 更适用的场景：数据量较大、较多交互时，建议选择 Canvas 渲染器。
-	- Canvas 更适合绘制图形元素数量较多的图表。如，热力图、炫光尾迹特效、地理坐标系、平行坐标系上的大规模线图等。
+  - Canvas 更适合绘制图形元素数量较多的图表。如，热力图、炫光尾迹特效、地理坐标系、平行坐标系上的大规模线图等。
 
 # 七、ECharts 配置项（组件）
 
@@ -161,7 +165,7 @@ ECharts 配置项（options）有哪些？或者说组成 ECharts 的组件有�
 - `yAxis`: （必填）直角坐标系 `grid` 中的 y 轴。
 - `xAxis`: （必填）直角坐标系 `grid` 中的 x 轴。
 - `title`: 图表的标题。
-- `legend`: 图例，展现了不同系列*（`series`）的标记、颜色和名字。
+- `legend`: 图例，展现了不同系列\*（`series`）的标记、颜色和名字。
 - `tooltip`: 提示框。
 - `toolbox`: 工具栏，提供操作图表的工具。
 - `series`: （必填）系列图，配置系列图表的类型和图形信息数据。
@@ -185,19 +189,19 @@ ECharts 配置项（options）有哪些？或者说组成 ECharts 的组件有�
 - `containLabel`：组件区域是否包含坐标轴的刻度标签。 boolean 类型。
 - `backgroundColor`：网格背景色，默认透明。
 
-04-Echart\demo-project\02-ECharts的组件和配置\01-Grid-组件-配置.html
+04-Echart\demo-project\02-ECharts 的组件和配置\01-Grid-组件-配置.html
 
 ```js
 const option = {
-	grid: {
-		show: true,
-		backgroundColor: 'rgba(0, 255, 0, 0.1)',
-		top: 0,
-		bottom: 0,
-		left: 0,
-		right: 0,
-		containLabel: false, // 效果：当 left: 0, 时，y 轴会紧贴容器左边，而非消失。
-	},
+  grid: {
+    show: true,
+    backgroundColor: 'rgba(0, 255, 0, 0.1)',
+    top: 0,
+    bottom: 0,
+    left: 0,
+    right: 0,
+    containLabel: false // 效果：当 left: 0, 时，y 轴会紧贴容器左边，而非消失。
+  }
 }
 ```
 
@@ -208,54 +212,58 @@ const option = {
 - `show`：是否显示 x 轴。boolean 类型。
 - `name`：坐标轴名称。
 - `type`：坐标轴类型。string 类型。
-	- `value`: 数值轴，适用于连续数据。
-	- `category`: 类目轴，适用于离散的类目数据。类目数据可来源 `xAxis.data`、`series.data` 或 `dataset.source` 之一。
+  - `value`: 数值轴，适用于连续数据。
+  - `category`: 类目轴，适用于离散的类目数据。类目数据可来源 `xAxis.data`、`series.data` 或 `dataset.source` 之一。
 - `data`：类目数据，在类目轴（`type: 'category'`）中有效。 array 类型。
 - `axisLine`：坐标轴轴线设置。object 类型。
 - `axisTick`：坐标轴刻度设置。object 类型。
 - `axisLabel`：坐标轴刻度标签的设置。object 类型。
 - `splitLine`：坐标轴在 grid 区域中的分隔线设置。object 类型。
 
-04-Echart\demo-project\02-ECharts的组件和配置\02-xAxis-坐标系组件-配置.html
+04-Echart\demo-project\02-ECharts 的组件和配置\02-xAxis-坐标系组件-配置.html
 
 ```js
 const option = {
-	xAxis: {
-		show: true,
-		name: "类目坐标",
-		type: "category", // 类目坐标才有 data 选项
-		data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子'],
-		axisLine: { // 坐标轴轴线设置。
-			show: true,
-			lineStyle: {
-				color: "red",
-				width: 3,
-			},
-		},
-		axisLabel: { // 坐标轴刻度标签的设置。
-			show: true,
-			color: "green",
-			fontSize: 16,
-		},
-		axisTick: {  // 坐标轴刻度相关设置。
-			show: true,
-			length: 10,
-			lineStyle: {
-				color: "blue",
-				width: 3,
-			},
-		},
-		splitLine: { // 坐标轴在 grid 区域中的分隔线。
-			show: true,
-			lineStyle: {
-				color: "orange",
-				width: 1,
-			},
-		},
-	},
-	yAxis: {
-		name: '数量 / 件'
-	},
+  xAxis: {
+    show: true,
+    name: '类目坐标',
+    type: 'category', // 类目坐标才有 data 选项
+    data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子'],
+    axisLine: {
+      // 坐标轴轴线设置。
+      show: true,
+      lineStyle: {
+        color: 'red',
+        width: 3
+      }
+    },
+    axisLabel: {
+      // 坐标轴刻度标签的设置。
+      show: true,
+      color: 'green',
+      fontSize: 16
+    },
+    axisTick: {
+      // 坐标轴刻度相关设置。
+      show: true,
+      length: 10,
+      lineStyle: {
+        color: 'blue',
+        width: 3
+      }
+    },
+    splitLine: {
+      // 坐标轴在 grid 区域中的分隔线。
+      show: true,
+      lineStyle: {
+        color: 'orange',
+        width: 1
+      }
+    }
+  },
+  yAxis: {
+    name: '数量 / 件'
+  }
 }
 ```
 
@@ -268,13 +276,13 @@ const option = {
 - `type`：指定系列图表的类型，比如：柱状图（`bar`）、折线图（`line`）、饼图（`pie`）、散点图（`scatter`）等等
 
 - `data`：数值内容数组。数组中的每一项称为数据项。
-	
-	- 一维数组: `[value，value]`（一维数组是二维数组的简写）。
-	- 二维数组。
-		- `[[index, value]`，`[index, value]]`，`x` 轴和 `y` 轴的值，注意 `index` 从 0 开始。
-		- `[[x, y, value]`，`[x, y，value]]`，`x` 轴（或经度等其它释义），`y` 轴（或纬度等其它释义）。
-	- 对象写法（推荐）。`data: [{ value: ……， name: ……， label: {}，itemStyle:{}、 emphasis:{}, …… }]`
-	
+
+  - 一维数组: `[value，value]`（一维数组是二维数组的简写）。
+  - 二维数组。
+    - `[[index, value]`，`[index, value]]`，`x` 轴和 `y` 轴的值，注意 `index` 从 0 开始。
+    - `[[x, y, value]`，`[x, y，value]]`，`x` 轴（或经度等其它释义），`y` 轴（或纬度等其它释义）。
+  - 对象写法（推荐）。`data: [{ value: ……， name: ……， label: {}，itemStyle:{}、 emphasis:{}, …… }]`
+
 - `label`：图形上的文本标签。
 
 - `itemStyle`：图形样式。
@@ -285,96 +293,94 @@ const option = {
 
 - `coordinateSystem`：该系列使用的坐标系，默认值为二维的直角坐标系（笛卡尔坐标系，y 轴向上，x 轴向右）
 
-
 ## 1.data 属性的使用
 
 方式一：一维数组。
 
-04-Echart\demo-project\02-ECharts的组件和配置\03-ECharts-series-系列图-data.html
+04-Echart\demo-project\02-ECharts 的组件和配置\03-ECharts-series-系列图-data.html
 
 ```js
 const option = {
-	series: [
-		{
-			type: 'bar',
-			label: {
-				show: true // 在柱状图上显示数字
-			},
-			data: [5, 20, 36, 10, 10, 20],
-
-		}
-	]
+  series: [
+    {
+      type: 'bar',
+      label: {
+        show: true // 在柱状图上显示数字
+      },
+      data: [5, 20, 36, 10, 10, 20]
+    }
+  ]
 }
 ```
 
 方式二：二维数组，制定了数值对应的 x 轴坐标索引（意味着数组元素可以打乱顺序排列）。
 
-04-Echart\demo-project\02-ECharts的组件和配置\03-ECharts-series-系列图-data.html
+04-Echart\demo-project\02-ECharts 的组件和配置\03-ECharts-series-系列图-data.html
 
 ```js
 const option = {
-	series: [
-		{
-			type: 'bar',
-			label: {
-				show: true // 在柱状图上显示数字
-			},
-			data: [
-				[2, 36], // index, value
-			  [3, 10],
-			  [4, 10],
-			  [5, 20],
-			  [0, 5],
-			  [1, 20],
-			],
-		}
-	]
+  series: [
+    {
+      type: 'bar',
+      label: {
+        show: true // 在柱状图上显示数字
+      },
+      data: [
+        [2, 36], // index, value
+        [3, 10],
+        [4, 10],
+        [5, 20],
+        [0, 5],
+        [1, 20]
+      ]
+    }
+  ]
 }
 ```
 
 方式三：对象写法，有更多的选项可供配置。
 
-04-Echart\demo-project\02-ECharts的组件和配置\03-ECharts-series-系列图-data.html
+04-Echart\demo-project\02-ECharts 的组件和配置\03-ECharts-series-系列图-data.html
 
 写法一：
 
 ```js
 const option = {
-	series: [
-		{
-			type: 'bar',
-			label: {
-				show: true // 在柱状图上显示数字
-			},
-			data: [
-			  {
-			    value: 5,
-			    name: "衬衫", // 数据项名称, 比如 pie 系列 tooltip 需要用到
-			    // ....
-			  },
-			  {
-			    value: 20,
-			    name: "羊毛衫",
-			  },
-			  {
-			    value: 36,
-			    name: "雪纺衫",
-			  },
-			  {
-			    value: 10,
-			    name: "裤子",
-			  },
-			  {
-			    value: 10,
-			    name: "高跟鞋",
-			  },
-			  {
-			    value: 20,
-			    name: "袜子",
-			  },
-			],
-		}
-	]
+  series: [
+    {
+      type: 'bar',
+      label: {
+        show: true // 在柱状图上显示数字
+      },
+      data: [
+        {
+          value: 5,
+          name: '衬衫' // 数据项名称, 比如 pie 系列 tooltip 需要用到
+          // ....
+        },
+        {
+          value: 20,
+          name: '羊毛衫'
+        },
+        {
+          value: 36,
+          name: '雪纺衫'
+        },
+        {
+          value: 10,
+          name: '裤子'
+        },
+        {
+          value: 10,
+          name: '高跟鞋'
+        },
+        {
+          value: 20,
+          name: '袜子'
+        }
+      ]
+    }
+  ]
 }
 ```
 
@@ -382,41 +388,41 @@ const option = {
 
 ```js
 const option = {
-	series: [
-		{
-			type: 'bar',
-			label: {
-				show: true // 在柱状图上显示数字
-			},
+  series: [
+    {
+      type: 'bar',
+      label: {
+        show: true // 在柱状图上显示数字
+      },
 
-			data: [
-				{
-					value: [0, 5], // x 轴值，y 轴值
-					name: "衬衫",
-				},
-				{
-					value: [1, 20],
-					name: "羊毛衫",
-				},
-				{
-					value: [2, 36],
-					name: "雪纺衫",
-				},
-				{
-					value: [3, 10],
-					name: "裤子",
-				},
-				{
-					value: [4, 10],
-					name: "高跟鞋",
-				},
-				{
-					value: [5, 20],
-					name: "袜子",
-				},
-			],
-		}
-	]
+      data: [
+        {
+          value: [0, 5], // x 轴值，y 轴值
+          name: '衬衫'
+        },
+        {
+          value: [1, 20],
+          name: '羊毛衫'
+        },
+        {
+          value: [2, 36],
+          name: '雪纺衫'
+        },
+        {
+          value: [3, 10],
+          name: '裤子'
+        },
+        {
+          value: [4, 10],
+          name: '高跟鞋'
+        },
+        {
+          value: [5, 20],
+          name: '袜子'
+        }
+      ]
+    }
+  ]
 }
 ```
 
@@ -465,117 +471,117 @@ const option = {
 
 改变 `type` 属性，实现柱状图，折线图，散点图，
 
-04-Echart\demo-project\02-ECharts的组件和配置\03-ECharts-series-系列图-type.html
+04-Echart\demo-project\02-ECharts 的组件和配置\03-ECharts-series-系列图-type.html
 
 ```js
-window.onload = function() {
-	const myChart = echarts.init(document.getElementById('main'));
-	const option = {
-		backgroundColor: 'rgba(255, 0, 0, 0.1)',
-		grid: {
-			show: true,
-			backgroundColor: 'rgba(0, 255, 0, 0.1)',
-		},
-		xAxis: {
-			data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
-		},
-		yAxis: {},
-		series: [
-			{
-				type: 'scatter', // line 折线图；bar 柱状图；scatter 散点图；
-				label: {
-					show: true
-				},
-				data: [
-					{
-						value: 5,
-						name: "衬衫",
-					},
-					{
-						value: 20,
-						name: "羊毛衫",
-					},
-					{
-						value: 36,
-						name: "雪纺衫",
-					},
-					{
-						value: 10,
-						name: "裤子",
-					},
-					{
-						value: 10,
-						name: "高跟鞋",
-					},
-					{
-						value: 20,
-						name: "袜子",
-					},
-				],
-			}
-		]
-	};
-	myChart.setOption(option);
+window.onload = function () {
+  const myChart = echarts.init(document.getElementById('main'))
+  const option = {
+    backgroundColor: 'rgba(255, 0, 0, 0.1)',
+    grid: {
+      show: true,
+      backgroundColor: 'rgba(0, 255, 0, 0.1)'
+    },
+    xAxis: {
+      data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
+    },
+    yAxis: {},
+    series: [
+      {
+        type: 'scatter', // line 折线图；bar 柱状图；scatter 散点图；
+        label: {
+          show: true
+        },
+        data: [
+          {
+            value: 5,
+            name: '衬衫'
+          },
+          {
+            value: 20,
+            name: '羊毛衫'
+          },
+          {
+            value: 36,
+            name: '雪纺衫'
+          },
+          {
+            value: 10,
+            name: '裤子'
+          },
+          {
+            value: 10,
+            name: '高跟鞋'
+          },
+          {
+            value: 20,
+            name: '袜子'
+          }
+        ]
+      }
+    ]
+  }
+  myChart.setOption(option)
 }
 ```
 
 `{type: pie}` 时，改变 `center`，`radius`，`roseType` 等属性，实现饼图，圆环图，玫瑰图：
 
-04-Echart\demo-project\02-ECharts的组件和配置\04-ECharts-series-系列图-type-pie.html
+04-Echart\demo-project\02-ECharts 的组件和配置\04-ECharts-series-系列图-type-pie.html
 
 ```js
-window.onload = function() {
-	const myChart = echarts.init(document.getElementById('main'));
-	const option = {
-		backgroundColor: 'rgba(255, 0, 0, 0.1)',
-		grid: {
-			show: true,
-			backgroundColor: 'rgba(0, 255, 0, 0.1)',
-		},
-		xAxis: {
-			show: false, // 饼图无需展示 x 轴坐标系
-			data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
-		},
-		yAxis: {},
-		series: [
-			{
-				type: 'pie', // line bar scatter pie
-				label: {
-					show: true
-				},
-				center: ["50%", "50%"], // 饼图的中心（圆心）坐标，数组的第一项是横坐标，第二项是纵坐标。设置成百分比时第一项是相对于容器宽度，第二项是相对于容器高度。
-				radius: ["20%", "80%"], // 饼图的内半径和外半径，数组的第一项是内半径，第二项是外半径。百分比参照直径。
-				roseType: "area", // area 玫瑰图(南丁格尔图)。 圆心角一样，通过半径展现数据大小 (默认 false)。
-				data: [
-					{
-						value: 5,
-						name: "衬衫",
-					},
-					{
-						value: 20,
-						name: "羊毛衫",
-					},
-					{
-						value: 36,
-						name: "雪纺衫",
-					},
-					{
-						value: 10,
-						name: "裤子",
-					},
-					{
-						value: 10,
-						name: "高跟鞋",
-					},
-					{
-						value: 20,
-						name: "袜子",
-					},
-				],
-			}
-		]
-	};
-	myChart.setOption(option);
+window.onload = function () {
+  const myChart = echarts.init(document.getElementById('main'))
+  const option = {
+    backgroundColor: 'rgba(255, 0, 0, 0.1)',
+    grid: {
+      show: true,
+      backgroundColor: 'rgba(0, 255, 0, 0.1)'
+    },
+    xAxis: {
+      show: false, // 饼图无需展示 x 轴坐标系
+      data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
+    },
+    yAxis: {},
+    series: [
+      {
+        type: 'pie', // line bar scatter pie
+        label: {
+          show: true
+        },
+        center: ['50%', '50%'], // 饼图的中心（圆心）坐标，数组的第一项是横坐标，第二项是纵坐标。设置成百分比时第一项是相对于容器宽度，第二项是相对于容器高度。
+        radius: ['20%', '80%'], // 饼图的内半径和外半径，数组的第一项是内半径，第二项是外半径。百分比参照直径。
+        roseType: 'area', // area 玫瑰图(南丁格尔图)。 圆心角一样，通过半径展现数据大小 (默认 false)。
+        data: [
+          {
+            value: 5,
+            name: '衬衫'
+          },
+          {
+            value: 20,
+            name: '羊毛衫'
+          },
+          {
+            value: 36,
+            name: '雪纺衫'
+          },
+          {
+            value: 10,
+            name: '裤子'
+          },
+          {
+            value: 10,
+            name: '高跟鞋'
+          },
+          {
+            value: 20,
+            name: '袜子'
+          }
+        ]
+      }
+    ]
+  }
+  myChart.setOption(option)
 }
 ```
 
@@ -583,37 +589,37 @@ window.onload = function() {
 
 图形上的文本标签（优先级采用就近原则，`series` -> `data` -> `labbel` 大于 `series` -> `label`）
 
-04-Echart\demo-project\02-ECharts的组件和配置\05-ECharts-series-系列图-label.html
+04-Echart\demo-project\02-ECharts 的组件和配置\05-ECharts-series-系列图-label.html
 
 ```js
-window.onload = function() {
-	const myChart = echarts.init(document.getElementById('main'));
-	const option = {
-		backgroundColor: 'rgba(255, 0, 0, 0.1)',
-		grid: {
-			show: true,
-			backgroundColor: 'rgba(0, 255, 0, 0.1)',
-		},
-		xAxis: {
-			data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
-		},
-		yAxis: {},
-		series: [
-			{
-				name: "产品销量柱形图",
-				type: "bar",
-				// 系列图形上的文本标签
-				label: {
-					show: true,
-					position: [10, 10], // 支持的类型可以查文档，不同 type 的 position 的值会有些差异
-					color: "red",
-					fontSize: 20,
-				},
-				data: [5, 20, 36, 10, 10, 20]
-			}
-		]
-	};
-	myChart.setOption(option);
+window.onload = function () {
+  const myChart = echarts.init(document.getElementById('main'))
+  const option = {
+    backgroundColor: 'rgba(255, 0, 0, 0.1)',
+    grid: {
+      show: true,
+      backgroundColor: 'rgba(0, 255, 0, 0.1)'
+    },
+    xAxis: {
+      data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
+    },
+    yAxis: {},
+    series: [
+      {
+        name: '产品销量柱形图',
+        type: 'bar',
+        // 系列图形上的文本标签
+        label: {
+          show: true,
+          position: [10, 10], // 支持的类型可以查文档，不同 type 的 position 的值会有些差异
+          color: 'red',
+          fontSize: 20
+        },
+        data: [5, 20, 36, 10, 10, 20]
+      }
+    ]
+  }
+  myChart.setOption(option)
 }
 ```
 
@@ -621,158 +627,161 @@ window.onload = function() {
 
 图形样式（优先级采用就近原则，`series` -> `data` -> `labbel` 大于 `series` -> `label`）
 
-04-Echart\demo-project\02-ECharts的组件和配置\06-ECharts-series-系列图-itemStyle.html
+04-Echart\demo-project\02-ECharts 的组件和配置\06-ECharts-series-系列图-itemStyle.html
 
 ```js
-window.onload = function() {
-	const myChart = echarts.init(document.getElementById('main'));
-	const option = {
-		backgroundColor: 'rgba(255, 0, 0, 0.1)',
-		grid: {
-			show: true,
-			backgroundColor: 'rgba(0, 255, 0, 0.1)',
-		},
-		xAxis: {
-			data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
-		},
-		yAxis: {},
-		series: [
-			{
-				name: "产品销量柱形图",
-				type: "bar",
-				itemStyle: { // 系列图形的样式
-					color: "green",
-					borderColor: "orange",
-					borderWidth: 4,
-					opacity: 0.4,
-				},
-				data: [
-					{
-						value: 5,
-						name: "衬衫", // 数据项名称, 比如 pie 系列 tooltip 需要用到
-						itemStyle: { // 系列图形的样式
-							color: "red",
-						},
-					},
-					{
-						value: 20,
-						name: "羊毛衫",
-						itemStyle: { // 系列图形的样式
-							color: "orange",
-						},
-					},
-					{
-						value: 36,
-						name: "雪纺衫",
-						itemStyle: { // 系列图形的样式
-							color: "pink",
-						},
-					},
-					{
-						value: 10,
-						name: "裤子",
-					},
-					{
-						value: 10,
-						name: "高跟鞋",
-					},
-					{
-						value: 20,
-						name: "袜子",
-					},
-				],
-
-			}
-		]
-	};
-	myChart.setOption(option);
+window.onload = function () {
+  const myChart = echarts.init(document.getElementById('main'))
+  const option = {
+    backgroundColor: 'rgba(255, 0, 0, 0.1)',
+    grid: {
+      show: true,
+      backgroundColor: 'rgba(0, 255, 0, 0.1)'
+    },
+    xAxis: {
+      data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
+    },
+    yAxis: {},
+    series: [
+      {
+        name: '产品销量柱形图',
+        type: 'bar',
+        itemStyle: {
+          // 系列图形的样式
+          color: 'green',
+          borderColor: 'orange',
+          borderWidth: 4,
+          opacity: 0.4
+        },
+        data: [
+          {
+            value: 5,
+            name: '衬衫', // 数据项名称, 比如 pie 系列 tooltip 需要用到
+            itemStyle: {
+              // 系列图形的样式
+              color: 'red'
+            }
+          },
+          {
+            value: 20,
+            name: '羊毛衫',
+            itemStyle: {
+              // 系列图形的样式
+              color: 'orange'
+            }
+          },
+          {
+            value: 36,
+            name: '雪纺衫',
+            itemStyle: {
+              // 系列图形的样式
+              color: 'pink'
+            }
+          },
+          {
+            value: 10,
+            name: '裤子'
+          },
+          {
+            value: 10,
+            name: '高跟鞋'
+          },
+          {
+            value: 20,
+            name: '袜子'
+          }
+        ]
+      }
+    ]
+  }
+  myChart.setOption(option)
 }
 ```
 
 ## 5.emphasis 属性的使用
-
 
 鼠标悬浮到图形元素上时，高亮的样式：
 
 - 默认情况高亮的样式是根据普通样式自动生成。但是也可自己定义；
 - `emphsis` 的结构和普通样式结构相同。
 
-04-Echart\demo-project\02-ECharts的组件和配置\07-ECharts-series-系列图-emphasis.html
+04-Echart\demo-project\02-ECharts 的组件和配置\07-ECharts-series-系列图-emphasis.html
 
 ```js
-window.onload = function() {
-	const myChart = echarts.init(document.getElementById('main'));
-  
-	const option = {
-		backgroundColor: 'rgba(255, 0, 0, 0.1)',
-		grid: {
-			show: true,
-			backgroundColor: 'rgba(0, 255, 0, 0.1)',
-		},
-		xAxis: {
-			data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
-		},
-		yAxis: {},
-		series: [
-			{
-				name: "产品销量柱形图",
-				type: "bar",
-				label: {
-					show: true,
-				},
-				itemStyle: {
-					color: 'green'
-				},
-				emphasis: { // 图形高亮(label、labelLine、itemStyle、lineStyle、areaStyle...)
-					label: {
-						show: true,
-						color: 'red'
-					},
-					itemStyle: {
-						color: 'orange'
-					},
-					// .....
-				},
-				data: [
-					{
-						value: 5,
-						name: "衬衫",
-						emphasis: { // 图形高亮( label、labelLine、itemStyle、lineStyle、areaStyle... )
-							label: {
-								show: true,
-								color: 'blue'
-							},
-							itemStyle: {
-								color: 'pink'
-							},
-						},
-					},
-					{
-						value: 20,
-						name: "羊毛衫",
-					},
-					{
-						value: 36,
-						name: "雪纺衫",
-					},
-					{
-						value: 10,
-						name: "裤子",
-					},
-					{
-						value: 10,
-						name: "高跟鞋",
-					},
-					{
-						value: 20,
-						name: "袜子",
-					},
-				],
+window.onload = function () {
+  const myChart = echarts.init(document.getElementById('main'))
 
-			}
-		]
-	};
-	myChart.setOption(option);
+  const option = {
+    backgroundColor: 'rgba(255, 0, 0, 0.1)',
+    grid: {
+      show: true,
+      backgroundColor: 'rgba(0, 255, 0, 0.1)'
+    },
+    xAxis: {
+      data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
+    },
+    yAxis: {},
+    series: [
+      {
+        name: '产品销量柱形图',
+        type: 'bar',
+        label: {
+          show: true
+        },
+        itemStyle: {
+          color: 'green'
+        },
+        emphasis: {
+          // 图形高亮(label、labelLine、itemStyle、lineStyle、areaStyle...)
+          label: {
+            show: true,
+            color: 'red'
+          },
+          itemStyle: {
+            color: 'orange'
+          }
+          // .....
+        },
+        data: [
+          {
+            value: 5,
+            name: '衬衫',
+            emphasis: {
+              // 图形高亮( label、labelLine、itemStyle、lineStyle、areaStyle... )
+              label: {
+                show: true,
+                color: 'blue'
+              },
+              itemStyle: {
+                color: 'pink'
+              }
+            }
+          },
+          {
+            value: 20,
+            name: '羊毛衫'
+          },
+          {
+            value: 36,
+            name: '雪纺衫'
+          },
+          {
+            value: 10,
+            name: '裤子'
+          },
+          {
+            value: 10,
+            name: '高跟鞋'
+          },
+          {
+            value: 20,
+            name: '袜子'
+          }
+        ]
+      }
+    ]
+  }
+  myChart.setOption(option)
 }
 ```
 
@@ -780,24 +789,25 @@ ECharts 4 以前，的写法，这种写法仍然被兼容，但是不再推荐�
 
 ```js
 const obj = {
-	// ...
-	itemStyle: {
-		color: 'green',
+  // ...
+  itemStyle: {
+    color: 'green',
     normal: {
       // ...
     },
-		emphasis: { // 图形高亮( label、labelLine、itemStyle、lineStyle、areaStyle... )
-			label: {
-				show: true,
-				color: 'red'
-			},
-			itemStyle: {
-				color: 'orange'
-			},
-			// .....
-		},
-	},
-	// ...
+    emphasis: {
+      // 图形高亮( label、labelLine、itemStyle、lineStyle、areaStyle... )
+      label: {
+        show: true,
+        color: 'red'
+      },
+      itemStyle: {
+        color: 'orange'
+      }
+      // .....
+    }
+  }
+  // ...
 }
 ```
 
@@ -805,43 +815,40 @@ const obj = {
 
 图表的标题。object 类型。
 
-04-Echart\demo-project\02-ECharts的组件和配置\08-ECharts-title-标题组件.html
+04-Echart\demo-project\02-ECharts 的组件和配置\08-ECharts-title-标题组件.html
 
 ```js
-window.onload = function() {
-	const myChart = echarts.init(document.getElementById('main'));
-	const option = {
-		backgroundColor: 'rgba(255, 0, 0, 0.1)',
-		grid: {
-			show: true,
-			backgroundColor: 'rgba(0, 255, 0, 0.1)',
-		},
-		label: {
-			show: true
-		},
-		title: {
-			show: true,
-			text: "Echart 5 条形图",
-			left: 20,
-			top: 10,
-			subtext: '第二个标题'
-			// ....
-		},
-		xAxis: {
-			data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
-		},
-		yAxis: {},
-		series: [
-			{
-				name: "产品销量柱形图",
-				type: "bar",
-				data: [5, 20, 36, 10, 10, 20]
-			}
-		]
-	};
-	myChart.setOption(option);
+window.onload = function () {
+  const myChart = echarts.init(document.getElementById('main'))
+  const option = {
+    backgroundColor: 'rgba(255, 0, 0, 0.1)',
+    grid: {
+      show: true,
+      backgroundColor: 'rgba(0, 255, 0, 0.1)'
+    },
+    label: {
+      show: true
+    },
+    title: {
+      show: true,
+      text: 'Echart 5 条形图',
+      left: 20,
+      top: 10,
+      subtext: '第二个标题'
+      // ....
+    },
+    xAxis: {
+      data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
+    },
+    yAxis: {},
+    series: [
+      {
+        name: '产品销量柱形图',
+        type: 'bar',
+        data: [5, 20, 36, 10, 10, 20]
+      }
+    ]
+  }
+  myChart.setOption(option)
 }
 ```
-
-
-

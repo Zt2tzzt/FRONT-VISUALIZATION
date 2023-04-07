@@ -1,47 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <style>
-    body{
-      margin: 0;
-      padding: 0;
-      background-image: url(../images/grid.png);
-    }
-    canvas{
-      background-color: rgba(255, 0, 0, 0.1);
-    }
-  </style>
-</head>
-<body>
-
-  <canvas id="tutorial" width="300" height="300px">
-    你的浏览器不兼容Canvas,请升级您的浏览器!
-  </canvas>
-
-  <script>
-    window.onload = function() {
-      let canvasEl = document.getElementById('tutorial')
-      if(!canvasEl.getContext){
-        return
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-image: url(../images/grid.png);
       }
-      let ctx = canvasEl.getContext('2d') // 2d | webgl
-      
-      ctx.lineWidth = 10
-      // 1.创建一个新的路径
-      ctx.beginPath()
-      // 2.使用的绘图的命名(ctx对象中的 属性 和 API)
-      ctx.moveTo(10, 10)
-      ctx.lineTo(100, 10)
-      // 3.闭合路径
-      ctx.closePath() // 不是必须
-      // 4.描边或填充
-      ctx.stroke()  // 绘制线条只能用 stroke 填充,不用 fill
-      
-    }
-  </script>
-</body>
+      canvas {
+        background-color: rgba(255, 0, 0, 0.1);
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="tutorial" width="300" height="300px">
+      你的浏览器不兼容Canvas,请升级您的浏览器!
+    </canvas>
+
+    <script>
+      window.onload = function () {
+        let canvasEl = document.getElementById('tutorial')
+        if (!canvasEl.getContext) {
+          return
+        }
+        let ctx = canvasEl.getContext('2d') // 2d | webgl
+
+        ctx.lineWidth = 10
+        // 1.创建一个新的路径
+        ctx.beginPath()
+        // 2.使用的绘图的命名(ctx对象中的 属性 和 API)
+        ctx.moveTo(10, 10)
+        ctx.lineTo(100, 10)
+        // 3.闭合路径
+        ctx.closePath() // 不是必须
+        // 4.描边或填充
+        ctx.stroke() // 绘制线条只能用 stroke 填充,不用 fill
+      }
+    </script>
+  </body>
 </html>

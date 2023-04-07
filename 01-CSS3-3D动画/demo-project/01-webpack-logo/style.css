@@ -1,137 +1,140 @@
-html, body {
-	padding: 0;
-	margin: 0;
-	width: 100%;
-	height: 100%;
-	background-color: #2b3a42;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+html,
+body {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #2b3a42;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .webpack-logo {
-	width: 100%;
-	height: 200px;
-	border: 1px #fff solid;
-	position: relative;
+  width: 100%;
+  height: 200px;
+  border: 1px #fff solid;
+  position: relative;
 }
 
 /* 搭建第一个舞台 */
 .cube-inner {
-	position: absolute;
-	left: 50%;
-	top: 50%;
-	margin: -25px 0 0 -25px;
-	width: 50px;
-	height: 50px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin: -25px 0 0 -25px;
+  width: 50px;
+  height: 50px;
 
-	/* 启用 3D 空间 */
-	transform-style: preserve-3d;
-	transform: rotateX(-33.5deg) rotateY(45deg);
-	/* 帧动画 */
-	animation: innerLoop 3s ease-in-out infinite;
+  /* 启用 3D 空间 */
+  transform-style: preserve-3d;
+  transform: rotateX(-33.5deg) rotateY(45deg);
+  /* 帧动画 */
+  animation: innerLoop 3s ease-in-out infinite;
 }
 
 @keyframes innerLoop {
-	0% {
-		transform: rotateX(-33.5deg) rotateY(45deg);
-	}
+  0% {
+    transform: rotateX(-33.5deg) rotateY(45deg);
+  }
 
-	50%, 100% {
-		transform: rotateX(-33.5deg) rotateY(-315deg); /* 逆时针旋转 360°，45deg - 360deg */
-	}
+  50%,
+  100% {
+    transform: rotateX(-33.5deg) rotateY(-315deg); /* 逆时针旋转 360°，45deg - 360deg */
+  }
 }
 
 .cube-inner .panel {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background-color: #175d96;
-	border: 1px #fff solid;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #175d96;
+  border: 1px #fff solid;
 }
 
 .cube-inner .top {
-	transform: rotateX(90deg) translateZ(25px);
+  transform: rotateX(90deg) translateZ(25px);
 }
 
 .cube-inner .bottom {
-	transform: rotateX(-90deg) translateZ(25px);
+  transform: rotateX(-90deg) translateZ(25px);
 }
 
 .cube-inner .front {
-	transform: translateZ(25px);
+  transform: translateZ(25px);
 }
 
 .cube-inner .back {
-	transform: rotateX(180deg) translateZ(25px);
+  transform: rotateX(180deg) translateZ(25px);
 }
 
 .cube-inner .left {
-	transform: rotateY(-90deg) translateZ(25px);
+  transform: rotateY(-90deg) translateZ(25px);
 }
 
 .cube-inner .right {
-	transform: rotateY(90deg) translateZ(25px);
+  transform: rotateY(90deg) translateZ(25px);
 }
 
 /* 搭建第二个舞台 */
 .cube-outer {
-	position: absolute;
-	left: 50%;
-	top: 50%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
 
-	margin: -50px 0 0 -50px;
-	width: 100px;
-	height: 100px;
-	/* 启用 3D 空间 */
-	transform-style: preserve-3d;
-	transform: rotateX(-33.5deg) rotateY(45deg);
-	/* 帧动画 */
-	animation: outerLoop 3s ease-in-out infinite;
+  margin: -50px 0 0 -50px;
+  width: 100px;
+  height: 100px;
+  /* 启用 3D 空间 */
+  transform-style: preserve-3d;
+  transform: rotateX(-33.5deg) rotateY(45deg);
+  /* 帧动画 */
+  animation: outerLoop 3s ease-in-out infinite;
 }
 
 @keyframes outerLoop {
-	0% {
-		transform: rotateX(-33.5deg) rotateY(45deg);
-	}
+  0% {
+    transform: rotateX(-33.5deg) rotateY(45deg);
+  }
 
-	50%, 100% {
-		transform: rotateX(-33.5deg) rotateY(405deg); /* 顺时针旋转 360°，45deg + 360deg */
-	}
+  50%,
+  100% {
+    transform: rotateX(-33.5deg) rotateY(405deg); /* 顺时针旋转 360°，45deg + 360deg */
+  }
 }
 
 .cube-outer .panel {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background-color: rgba(141, 214, 249, .5);
-	border: 1px #fff solid;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(141, 214, 249, 0.5);
+  border: 1px #fff solid;
 }
 
 .cube-outer .top {
-	transform: rotateX(90deg) translateZ(50px);
+  transform: rotateX(90deg) translateZ(50px);
 }
 
 .cube-outer .bottom {
-	transform: rotateX(-90deg) translateZ(50px);
+  transform: rotateX(-90deg) translateZ(50px);
 }
 
 .cube-outer .front {
-	transform: translateZ(50px);
+  transform: translateZ(50px);
 }
 
 .cube-outer .back {
-	transform: rotateX(180deg) translateZ(50px);
+  transform: rotateX(180deg) translateZ(50px);
 }
 
 .cube-outer .left {
-	transform: rotateY(-90deg) translateZ(50px);
+  transform: rotateY(-90deg) translateZ(50px);
 }
 
 .cube-outer .right {
-	transform: rotateY(90deg) translateZ(50px);
+  transform: rotateY(90deg) translateZ(50px);
 }

@@ -1,81 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  
-  <div id="main" style="height: 400px"></div>
-  <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.1/dist/echarts.min.js"></script>
-  <script>
-    window.onload = function() {
-      const myChart = echarts.init(document.getElementById('main'));
-      const option = {
-        backgroundColor: 'rgba(255, 0, 0, 0.1)',
-        grid: {
-          show: true,
-          backgroundColor: 'rgba(0, 255, 0, 0.1)',
-        },
-        xAxis: {
-          data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
-        },
-        yAxis: {},
-        series: [
-          {
-            name: "产品销量柱形图",
-            type: "bar",
-              
-            itemStyle: { // 系列图形的样式
-              color: "green",
-              borderColor: "orange",
-              borderWidth: 4,
-              opacity: 0.4,
-            },
-            
-            data: [
-              {
-                value: 5,
-                name: "衬衫", // 数据项名称, 比如pie系列 tooltip 需要用到
-                itemStyle: { // 系列图形的样式
-                  color: "red",
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="main" style="height: 400px"></div>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.1/dist/echarts.min.js"></script>
+    <script>
+      window.onload = function () {
+        const myChart = echarts.init(document.getElementById('main'))
+        const option = {
+          backgroundColor: 'rgba(255, 0, 0, 0.1)',
+          grid: {
+            show: true,
+            backgroundColor: 'rgba(0, 255, 0, 0.1)'
+          },
+          xAxis: {
+            data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
+          },
+          yAxis: {},
+          series: [
+            {
+              name: '产品销量柱形图',
+              type: 'bar',
+
+              itemStyle: {
+                // 系列图形的样式
+                color: 'green',
+                borderColor: 'orange',
+                borderWidth: 4,
+                opacity: 0.4
+              },
+
+              data: [
+                {
+                  value: 5,
+                  name: '衬衫', // 数据项名称, 比如pie系列 tooltip 需要用到
+                  itemStyle: {
+                    // 系列图形的样式
+                    color: 'red'
+                  }
                 },
-              },
-              {
-                value: 20,
-                name: "羊毛衫",
-                itemStyle: { // 系列图形的样式
-                  color: "orange",
+                {
+                  value: 20,
+                  name: '羊毛衫',
+                  itemStyle: {
+                    // 系列图形的样式
+                    color: 'orange'
+                  }
                 },
-              },
-              {
-                value: 36,
-                name: "雪纺衫",
-                itemStyle: { // 系列图形的样式
-                  color: "pink",
+                {
+                  value: 36,
+                  name: '雪纺衫',
+                  itemStyle: {
+                    // 系列图形的样式
+                    color: 'pink'
+                  }
                 },
-              },
-              {
-                value: 10,
-                name: "裤子",
-              },
-              {
-                value: 10,
-                name: "高跟鞋",
-              },
-              {
-                value: 20,
-                name: "袜子",
-              },
-            ],
-                    
-          }
-        ]
-      };
-      myChart.setOption(option);
-    }
-  </script>
-</body>
+                {
+                  value: 10,
+                  name: '裤子'
+                },
+                {
+                  value: 10,
+                  name: '高跟鞋'
+                },
+                {
+                  value: 20,
+                  name: '袜子'
+                }
+              ]
+            }
+          ]
+        }
+        myChart.setOption(option)
+      }
+    </script>
+  </body>
 </html>

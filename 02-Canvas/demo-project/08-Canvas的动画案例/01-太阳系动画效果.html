@@ -1,94 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>太阳系动画</title>
-	<style>
-    body{
-      margin: 0;
-      padding: 0;
-      background-image: url(../images/grid.png);
-    }
-    canvas{
-      background-color: rgba(255, 0, 0, 0.1);
-    }
-  </style>
-</head>
-<body>
-	<canvas id="tutorial" width="300" height="300">
-		你的浏览器不支持 Canvas，请升级。
-	</canvas>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>太阳系动画</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-image: url(../images/grid.png);
+      }
+      canvas {
+        background-color: rgba(255, 0, 0, 0.1);
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="tutorial" width="300" height="300"> 你的浏览器不支持 Canvas，请升级。 </canvas>
 
-	<script>
-		window.onload = function() {
-			const canvasEl = document.getElementById('tutorial')
-			if (!canvasEl.getContext) return
-			const ctx = canvasEl.getContext('2d')
+    <script>
+      window.onload = function () {
+        const canvasEl = document.getElementById('tutorial')
+        if (!canvasEl.getContext) return
+        const ctx = canvasEl.getContext('2d')
 
-			const sun = new Image()
-			sun.src = '../images/canvas_sun.png'
+        const sun = new Image()
+        sun.src = '../images/canvas_sun.png'
 
-			const earth = new Image()
-			earth.src = '../images/canvas_earth.png'
+        const earth = new Image()
+        earth.src = '../images/canvas_earth.png'
 
-			const moon = new Image()
-			moon.src = '../images/canvas_moon.png'
+        const moon = new Image()
+        moon.src = '../images/canvas_moon.png'
 
-			function draw() {
-				console.log('draw')
-				ctx.clearRect(0, 0, 300, 300)
-				drawBg()
-				drawEarth()
-				requestAnimationFrame(draw)
-			}
-			requestAnimationFrame(draw)
+        function draw() {
+          console.log('draw')
+          ctx.clearRect(0, 0, 300, 300)
+          drawBg()
+          drawEarth()
+          requestAnimationFrame(draw)
+        }
+        requestAnimationFrame(draw)
 
-			function drawBg() {
-				// 绘制太阳背景图片&地球公转轨迹
-				ctx.save()
-				ctx.drawImage(sun, 0, 0)
-				ctx.translate(150, 150)
-				ctx.strokeStyle = 'rgba(0, 153, 255, 0.4)'
-				ctx.beginPath()
-				ctx.arc(0, 0, 105, 0, Math.PI * 2)
-				ctx.stroke()
-				ctx.restore()
-			}
+        function drawBg() {
+          // 绘制太阳背景图片&地球公转轨迹
+          ctx.save()
+          ctx.drawImage(sun, 0, 0)
+          ctx.translate(150, 150)
+          ctx.strokeStyle = 'rgba(0, 153, 255, 0.4)'
+          ctx.beginPath()
+          ctx.arc(0, 0, 105, 0, Math.PI * 2)
+          ctx.stroke()
+          ctx.restore()
+        }
 
-			function drawEarth() {
-				// 绘制地球
-				const time = new Date()
-				const second = time.getSeconds()
-				const milliseconds = time.getMilliseconds()
-				ctx.save()
-				ctx.translate(150, 150)
-				ctx.rotate(Math.PI * 2 / 60 * second + Math.PI * 2 / 60 / 1000 * milliseconds)
-				ctx.translate(105, 0)
-				ctx.drawImage(earth, -12, -12)
-				drawMoon(second, milliseconds)
-				drawEarthMask()
-				ctx.restore() // 地球 end
-			}
+        function drawEarth() {
+          // 绘制地球
+          const time = new Date()
+          const second = time.getSeconds()
+          const milliseconds = time.getMilliseconds()
+          ctx.save()
+          ctx.translate(150, 150)
+          ctx.rotate(((Math.PI * 2) / 60) * second + ((Math.PI * 2) / 60 / 1000) * milliseconds)
+          ctx.translate(105, 0)
+          ctx.drawImage(earth, -12, -12)
+          drawMoon(second, milliseconds)
+          drawEarthMask()
+          ctx.restore() // 地球 end
+        }
 
-			function drawMoon(second, milliseconds) {
-				// 绘制月球
-				ctx.save()
-				ctx.rotate(Math.PI * 2 / 10 * second + Math.PI * 2 / 10 / 1000 * milliseconds)
-				ctx.translate(0, 20)
-				ctx.drawImage(moon, -3.5, -3.5)
-				ctx.restore() // 月球 end
-			}
+        function drawMoon(second, milliseconds) {
+          // 绘制月球
+          ctx.save()
+          ctx.rotate(((Math.PI * 2) / 10) * second + ((Math.PI * 2) / 10 / 1000) * milliseconds)
+          ctx.translate(0, 20)
+          ctx.drawImage(moon, -3.5, -3.5)
+          ctx.restore() // 月球 end
+        }
 
-			function drawEarthMask() {
-				// 绘制地球的蒙版
-				ctx.save()
-				ctx.fillStyle = 'rgba(0, 0, 0, .4)'
-				ctx.fillRect(0, -12, 40, 24)
-				ctx.restore() // 蒙版 end
-			}
-		}
-	</script>
-</body>
+        function drawEarthMask() {
+          // 绘制地球的蒙版
+          ctx.save()
+          ctx.fillStyle = 'rgba(0, 0, 0, .4)'
+          ctx.fillRect(0, -12, 40, 24)
+          ctx.restore() // 蒙版 end
+        }
+      }
+    </script>
+  </body>
 </html>

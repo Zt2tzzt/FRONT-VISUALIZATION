@@ -1,49 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>渐变色和滤镜效果</title>
-	<style>
-		body {
-			padding: 0;
-			margin: 0;
-			background-image: url(../images/grid.png);
-		}
-		svg {
-			background-color: rgba(255, 0, 0, 0.1);
-		}
-	</style>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>渐变色和滤镜效果</title>
+    <style>
+      body {
+        padding: 0;
+        margin: 0;
+        background-image: url(../images/grid.png);
+      }
+      svg {
+        background-color: rgba(255, 0, 0, 0.1);
+      }
+    </style>
+  </head>
+  <body>
+    <svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
+      <!-- defs 定义可以复用的元素，样式，渐变，图形，滤镜... -->
+      <defs>
+        <linearGradient id="gradient1">
+          <stop offset="0%" stop-color="red"></stop>
+          <stop offset="50%" stop-color="green"></stop>
+          <stop offset="100%" stop-color="blue"></stop>
+        </linearGradient>
+        <!-- 控制渐变色方司 -->
+        <linearGradient id="gradient2" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="red"></stop>
+          <stop offset="50%" stop-color="green"></stop>
+          <stop offset="100%" stop-color="blue"></stop>
+        </linearGradient>
+        <!-- 渐变形变（了解） -->
+        <linearGradient id="gradient3" gradientTransform="rotate(90)">
+          <stop offset="0%" stop-color="red"></stop>
+          <stop offset="50%" stop-color="green"></stop>
+          <stop offset="100%" stop-color="blue"></stop>
+        </linearGradient>
+      </defs>
 
-	<svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
-		<!-- defs 定义可以复用的元素，样式，渐变，图形，滤镜... -->
-		<defs>
-			<linearGradient id="gradient1">
-				<stop offset="0%" stop-color="red"></stop>
-				<stop offset="50%" stop-color="green"></stop>
-				<stop offset="100%" stop-color="blue"></stop>
-			</linearGradient>
-			<!-- 控制渐变色方司 -->
-			<linearGradient id="gradient2" x1="0" y1="0" x2="1" y2="1">
-				<stop offset="0%" stop-color="red"></stop>
-				<stop offset="50%" stop-color="green"></stop>
-				<stop offset="100%" stop-color="blue"></stop>
-			</linearGradient>
-			<!-- 渐变形变（了解） -->
-			<linearGradient id="gradient3" gradientTransform="rotate(90)">
-				<stop offset="0%" stop-color="red"></stop>
-				<stop offset="50%" stop-color="green"></stop>
-				<stop offset="100%" stop-color="blue"></stop>
-			</linearGradient>
-		</defs>
-
-		<rect x="0" y="0" width="100" height="100" fill="url(#gradient1)"></rect>
-		<rect x="100" y="0" width="100" height="100" fill="url(#gradient2)"></rect>
-		<rect x="0" y="100" width="100" height="100" fill="url(#gradient3)"></rect>
-	</svg>
-	
-</body>
+      <rect x="0" y="0" width="100" height="100" fill="url(#gradient1)"></rect>
+      <rect x="100" y="0" width="100" height="100" fill="url(#gradient2)"></rect>
+      <rect x="0" y="100" width="100" height="100" fill="url(#gradient3)"></rect>
+    </svg>
+  </body>
 </html>

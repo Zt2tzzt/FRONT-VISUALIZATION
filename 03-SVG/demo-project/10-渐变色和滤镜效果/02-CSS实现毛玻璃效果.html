@@ -1,43 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>CSS实现毛玻璃效果</title>
-	<style>
-		body {
-			margin: 0;
-			padding: 0;
-		}
-		.box {
-			position: relative;
-			width: 200px;
-			height: 200px;
-		}
-		.bg-cover {
-			position: absolute;
-			left: 0;
-			top: 0;
-			right: 0;
-			bottom: 0;
-			/* 毛玻璃效果 */
-			background-color: transparent;
-			backdrop-filter: blur(8px);
-		}
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS实现毛玻璃效果</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      .box {
+        position: relative;
+        width: 200px;
+        height: 200px;
+      }
+      .bg-cover {
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        /* 毛玻璃效果 */
+        background-color: transparent;
+        backdrop-filter: blur(8px);
+      }
 
-		.image-filter {
-			filter: blur(8px);
-		}
-	</style>
-</head>
-<body>
-	<div class="box">
-		<img src="../images/avatar.jpeg" alt="">
-		<div class="bg-cover"></div>
-	</div>
-	<div class="box">
-		<img class="image-filter" src="../images/avatar.jpeg" alt="">
-	</div>
-</body>
+      .image-filter {
+        filter: blur(8px);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <img src="../images/avatar.jpeg" alt="" />
+      <div class="bg-cover"></div>
+    </div>
+    <div class="box">
+      <img class="image-filter" src="../images/avatar.jpeg" alt="" />
+    </div>
+  </body>
 </html>

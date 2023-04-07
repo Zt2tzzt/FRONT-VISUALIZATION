@@ -16,36 +16,34 @@
 
 ### 1.平移（translate）动画
 
-03-SVG\demo-project\13-SVG的SMIL动画\03-animateTransform-translate.html
+03-SVG\demo-project\13-SVG 的 SMIL 动画\03-animateTransform-translate.html
 
-```xml
-<svg width="300" height="200" xmlns="http://www.w3.org/2000/svg" >
-	<rect x="0" y="0" width="100" height="50" fill="red">
-		<animateTransform
-			attributeName="transform"
-			type="translate"
-			from="0, 0"
-			to="200, 0"
-			dur="2s"
-			begin="1s"
-			repeatCount="indefinite"
-		>
-		</animateTransform>
-	</rect>
+```html
+<svg width="300" height="200" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="100" height="50" fill="red">
+    <animateTransform
+      attributeName="transform"
+      type="translate"
+      from="0, 0"
+      to="200, 0"
+      dur="2s"
+      begin="1s"
+      repeatCount="indefinite"
+    ></animateTransform>
+  </rect>
 </svg>
 
-<svg width="300" height="200" xmlns="http://www.w3.org/2000/svg" >
-	<rect x="0" y="0" width="100" height="50" fill="red">
-		<animateTransform
-			attributeName="transform"
-			type="translate"
-			values="0 0; 200 0"
-			dur="2s"
-			begin="1s"
-			repeatCount="indefinite"
-		>
-		</animateTransform>
-	</rect>
+<svg width="300" height="200" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="100" height="50" fill="red">
+    <animateTransform
+      attributeName="transform"
+      type="translate"
+      values="0 0; 200 0"
+      dur="2s"
+      begin="1s"
+      repeatCount="indefinite"
+    ></animateTransform>
+  </rect>
 </svg>
 ```
 
@@ -53,71 +51,67 @@
 
 可指定旋转的圆心点：`cx`, `cy`；
 
-03-SVG\demo-project\13-SVG的SMIL动画\04-animateTransform-rotate.html
+03-SVG\demo-project\13-SVG 的 SMIL 动画\04-animateTransform-rotate.html
 
-```xml
-<svg width="300" height="300" xmlns="http://www.w3.org/2000/svg" >
-	<rect x="0" y="0" width="50" height="50" fill="red">
-		<animateTransform
-			attributeName="transform"
-			type="rotate"
-			from="0 50 50"
-			to="360 50 50"
-			dur="5s"
-			begin="1s"
-			repeatCount="indefinite"
-		>
-		</animateTransform>
-	</rect>
+```html
+<svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="50" height="50" fill="red">
+    <animateTransform
+      attributeName="transform"
+      type="rotate"
+      from="0 50 50"
+      to="360 50 50"
+      dur="5s"
+      begin="1s"
+      repeatCount="indefinite"
+    ></animateTransform>
+  </rect>
 </svg>
 
-<svg width="300" height="200" xmlns="http://www.w3.org/2000/svg" >
-	<rect x="0" y="0" width="100" height="50" fill="red">
-		<animateTransform
-			attributeName="transform"
-			type="rotate"
-			values="0 50 25; -360 50 25"
-			dur="2s"
-			begin="1s"
-			repeatCount="indefinite"
-		>
-		</animateTransform>
-	</rect>
+<svg width="300" height="200" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="100" height="50" fill="red">
+    <animateTransform
+      attributeName="transform"
+      type="rotate"
+      values="0 50 25; -360 50 25"
+      dur="2s"
+      begin="1s"
+      repeatCount="indefinite"
+    ></animateTransform>
+  </rect>
 </svg>
 ```
 
 ### 3.缩放（sclae）动画
 
-03-SVG\demo-project\13-SVG的SMIL动画\05-animateTransform-scale.html
+03-SVG\demo-project\13-SVG 的 SMIL 动画\05-animateTransform-scale.html
 
-```xml
-<svg width="300" height="200" xmlns="http://www.w3.org/2000/svg" >
-	<rect x="0" y="0" width="100" height="50" fill="red">
-		<animateTransform
-			attributeName="transform"
-			type="scale"
-			from="1 1"
-			to="1 3"
-			dur="2s"
-			begin="1s"
-			repeatCount="indefinite"
-		>
-		</animateTransform>
-	</rect>
+```html
+<svg width="300" height="200" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="100" height="50" fill="red">
+    <animateTransform
+      attributeName="transform"
+      type="scale"
+      from="1 1"
+      to="1 3"
+      dur="2s"
+      begin="1s"
+      repeatCount="indefinite"
+    ></animateTransform>
+  </rect>
 </svg>
 
-<svg width="300" height="200" xmlns="http://www.w3.org/2000/svg" >
-	<rect x="0" y="0" width="100" height="50" fill="red">
-		<animateTransform
-			attributeName="transform"
-			type="scale"
-			values="1; 0.5"
-			dur="2s"
-			begin="1s"
-			repeatCount="indefinite"
-		>
-		</animateTransform>
-	</rect>
+<svg width="300" height="200" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="100" height="50" fill="red">
+    <animateTransform
+      attributeName="transform"
+      type="scale"
+      values="1; 0.5"
+      dur="2s"
+      begin="1s"
+      repeatCount="indefinite"
+    ></animateTransform>
+  </rect>
 </svg>
 ```
 
@@ -139,20 +133,19 @@
 
 ### 1.基本使用
 
-```xml
-<svg width="300" height="300" xmlns="http://www.w3.org/2000/svg" >
-	<!-- 画一条路径 -->
-	<path d="M 0 100, L 100 30, L 200 100, L 300 30" fill="transparent" stroke="red"></path>
+```html
+<svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
+  <!-- 画一条路径 -->
+  <path d="M 0 100, L 100 30, L 200 100, L 300 30" fill="transparent" stroke="red"></path>
 
   <!-- 汽车 -->
-	<rect x="0" y="0" width="20" height="10" rx="4" ry="4" fill="red">
-		<animateMotion
-			path="M 0 100, L 100 30, L 200 100, L 300 30"
-			dur="5s"
-			rotate="auto"
-		>
-		</animateMotion>
-	</rect>
+  <rect x="0" y="0" width="20" height="10" rx="4" ry="4" fill="red">
+    <animateMotion
+      path="M 0 100, L 100 30, L 200 100, L 300 30"
+      dur="5s"
+      rotate="auto"
+    ></animateMotion>
+  </rect>
 </svg>
 ```
 
@@ -160,48 +153,49 @@
 
 使用 `<mpath>`：
 
-03-SVG\demo-project\13-SVG的SMIL动画\07-animateMotion动画-复用路径.html
+03-SVG\demo-project\13-SVG 的 SMIL 动画\07-animateMotion 动画-复用路径.html
 
-```xml
-<svg width="300" height="300" xmlns="http://www.w3.org/2000/svg" >
-	<!-- 路径 -->
-	<path id="linePath" d="M 0 100, L 100 30, L 200 100, L 300 30" fill="transparent" stroke="red"></path>
+```html
+<svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
+  <!-- 路径 -->
+  <path
+    id="linePath"
+    d="M 0 100, L 100 30, L 200 100, L 300 30"
+    fill="transparent"
+    stroke="red"
+  ></path>
 
-	<!-- 汽车 -->
-	<rect x="0" y="0" width="20" height="10" rx="4" ry="4" fill="red">
-		<!-- 动画 -->
-		<animateMotion
-			dur="5s"
-			rotate="auto"
-		>
-			<mpath href="#linePath"></mpath>
-		</animateMotion>
-	</rect>
+  <!-- 汽车 -->
+  <rect x="0" y="0" width="20" height="10" rx="4" ry="4" fill="red">
+    <!-- 动画 -->
+    <animateMotion dur="5s" rotate="auto">
+      <mpath href="#linePath"></mpath>
+    </animateMotion>
+  </rect>
 </svg>
 ```
 
 ### 3.动画的抽取
 
-03-SVG\demo-project\13-SVG的SMIL动画\08-animateMotion动画-优化.html
+03-SVG\demo-project\13-SVG 的 SMIL 动画\08-animateMotion 动画-优化.html
 
-```xml
-<svg width="300" height="300" xmlns="http://www.w3.org/2000/svg" >
+```html
+<svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
+  <!-- 汽车 -->
+  <rect id="rectangle" x="-10" y="-5" width="20" height="10" rx="4" ry="4" fill="red"></rect>
 
-	<!-- 汽车 -->
-	<rect id="rectangle" x="-10" y="-5" width="20" height="10" rx="4" ry="4" fill="red"></rect>
+  <!-- 路径 -->
+  <path
+    id="linePath"
+    d="M 0 100, L 100 30, L 200 100, L 300 30"
+    fill="transparent"
+    stroke="red"
+  ></path>
 
-	<!-- 路径 -->
-	<path id="linePath" d="M 0 100, L 100 30, L 200 100, L 300 30" fill="transparent" stroke="red"></path>
-
-	<!-- 动画 -->
-	<animateMotion
-		href="#rectangle"
-		dur="5s"
-		rotate="auto"
-		fill="freeze"
-	>
-		<mpath href="#linePath"></mpath>
-	</animateMotion>
+  <!-- 动画 -->
+  <animateMotion href="#rectangle" dur="5s" rotate="auto" fill="freeze">
+    <mpath href="#linePath"></mpath>
+  </animateMotion>
 </svg>
 ```
 
@@ -209,21 +203,21 @@
 
 飞机轨迹飞行
 
-03-SVG\demo-project\14-SVG动画案例\01-飞机飞行轨迹-temp.html
+03-SVG\demo-project\14-SVG 动画案例\01-飞机飞行轨迹-temp.html
 
 动态图片案例
 
-03-SVG\demo-project\14-SVG动画案例\02-进度加载动画-temp.html
+03-SVG\demo-project\14-SVG 动画案例\02-进度加载动画-temp.html
 
 # 三、SVG + CSS3 动画案例
 
 城市定位动图
 
-03-SVG\demo-project\14-SVG动画案例\03-定位动画+CSS3-temp.html
+03-SVG\demo-project\14-SVG 动画案例\03-定位动画+CSS3-temp.html
 
 水球加载动图
 
-03-SVG\demo-project\14-SVG动画案例\04-水球体+CSS3-temp.html
+03-SVG\demo-project\14-SVG 动画案例\04-水球体+CSS3-temp.html
 
 # 四、Snap 库
 
@@ -251,14 +245,13 @@ Snap.svg 库处理 SVG 就像 jQuery 处理 DOM 一样简单，并且 Snap 是 1
 
 ### 1.绘制一个圆
 
-03-SVG\demo-project\15-第三方动画库-snap\01-Snap.svg的初体验.html
+03-SVG\demo-project\15-第三方动画库-snap\01-Snap.svg 的初体验.html
 
 ```html
 <body>
   <script src="./libs/snap.svg-min.js"></script>
   <script>
-    window.onload = function() {
-
+    window.onload = function () {
       // 1.创建一个 svg 画布
       const svg = Snap(300, 300)
       console.log(svg === svg.paper) // true
@@ -283,17 +276,17 @@ Snap.svg 库处理 SVG 就像 jQuery 处理 DOM 一样简单，并且 Snap 是 1
 
 ### 2.选中已有的 svg 元素
 
-03-SVG\demo-project\15-第三方动画库-snap\02-Snap.svg操作SVG.html
+03-SVG\demo-project\15-第三方动画库-snap\02-Snap.svg 操作 SVG.html
 
 ```html
 <body>
-  <svg id="ztSvg" width="300" height="300" xmlns="http://www.w3.org/2000/svg" >
+  <svg id="ztSvg" width="300" height="300" xmlns="http://www.w3.org/2000/svg">
     <rect id="rectangle1" x="0" y="0" width="100" height="50"></rect>
   </svg>
 
   <script src="./libs/snap.svg-min.js"></script>
   <script>
-    window.onload = function() {
+    window.onload = function () {
       // 选中已有的 svg 画布
       const svg = Snap('#ztSvg')
       const paper = svg.paper
@@ -339,13 +332,13 @@ Element：元素
 
 ```html
 <body>
-  <svg id="hySvg" width="300" height="300" xmlns="http://www.w3.org/2000/svg" >
+  <svg id="hySvg" width="300" height="300" xmlns="http://www.w3.org/2000/svg">
     <rect id="rectangle1" x="0" y="0" width="100" height="50"></rect>
   </svg>
 
   <script src="./libs/snap.svg-min.js"></script>
   <script>
-    window.onload = function() {
+    window.onload = function () {
       const svg = Snap('#hySvg')
       const paper = svg.paper
 
@@ -365,7 +358,7 @@ Element：元素
       Snap.animate(
         0, // from
         200, // to
-        function(val) {
+        function (val) {
           console.log('val', val) // 函数会回调 61 次, 会将 0-200 拆分成 61 份
           rectangle.attr({
             x: val
@@ -373,15 +366,15 @@ Element：元素
         },
         1000, // begin 毫秒 -> 1s
         mina.linear,
-        function() {
+        function () {
           console.log('动画结束了')
         }
       )
-    
+
       Snap.animate(
-        [0, 0], // from x ,y 
+        [0, 0], // from x ,y
         [200, 200], // to x, y
-        function(val) {
+        function (val) {
           console.log('val', val)
           rectangle1.attr({
             x: val[0],
@@ -390,7 +383,7 @@ Element：元素
         },
         3000,
         mina.easeout,
-        function() {
+        function () {
           console.log('动画结束了')
         }
       )
@@ -402,4 +395,3 @@ Element：元素
 ## 2.Snap.svg 鳄鱼动画案例
 
 03-SVG\demo-project\15-第三方动画库-snap\04-鳄鱼+Snap-temp.html
-

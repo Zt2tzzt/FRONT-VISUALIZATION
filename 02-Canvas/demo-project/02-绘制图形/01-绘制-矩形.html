@@ -1,44 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
-	<style>
-		body {
-			margin: 0;
-			padding: 0;
-			background-image: url(../images/grid.png);
-		}
-		canvas {
-			background-color: rgba(255, 0, 0, 0.1);
-		}
-	</style>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-image: url(../images/grid.png);
+      }
+      canvas {
+        background-color: rgba(255, 0, 0, 0.1);
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="tutorial" width="300" height="300"> 你的浏览器不兼容Canvas </canvas>
 
-	<canvas id="tutorial" width="300" height="300">
-		你的浏览器不兼容Canvas
-	</canvas>
-	
-	<script>
-		window.onload = function() {
-			const canvasEl = document.getElementById('tutorial')
-			if (!canvasEl.getContext) return
-			const ctx = canvasEl.getContext('2d')
+    <script>
+      window.onload = function () {
+        const canvasEl = document.getElementById('tutorial')
+        if (!canvasEl.getContext) return
+        const ctx = canvasEl.getContext('2d')
 
+        // 1.绘制了一个填充图形
+        ctx.fillStyle = 'red'
+        ctx.fillRect(0, 0, 100, 50)
 
-			// 1.绘制了一个填充图形
-			ctx.fillStyle = 'red'
-			ctx.fillRect(0, 0, 100, 50)
+        // 2.绘制一个边框的矩形
+        ctx.strokeRect(100, 100, 100, 50)
 
-			// 2.绘制一个边框的矩形
-			ctx.strokeRect(100, 100, 100, 50)
-
-			// 3.清除指定
-			ctx.clearRect(0, 0, 50, 100)
-		}
-	</script>
-</body>
+        // 3.清除指定
+        ctx.clearRect(0, 0, 50, 100)
+      }
+    </script>
+  </body>
 </html>

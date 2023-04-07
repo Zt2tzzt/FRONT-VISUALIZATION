@@ -1,86 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>渐变色和滤镜效果</title>
-	<style>
-		body {
-			padding: 0;
-			margin: 0;
-			background-image: url(../images/grid.png);
-		}
-		svg {
-			background-color: rgba(255, 0, 0, 0.1);
-		}
-	</style>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>渐变色和滤镜效果</title>
+    <style>
+      body {
+        padding: 0;
+        margin: 0;
+        background-image: url(../images/grid.png);
+      }
+      svg {
+        background-color: rgba(255, 0, 0, 0.1);
+      }
+    </style>
+  </head>
+  <body>
+    <svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="0" width="100" height="50" fill="red">
+        <!-- animate 元素基本使用 -->
+        <animate attributeName="x" from="0" to="200" dur="3s" begin="2s" fill="freeze"></animate>
+      </rect>
+      <rect x="0" y="100" width="100" height="50" fill="red">
+        <!-- animate 元素基本使用，3个属性是必须的 -->
+        <animate attributeName="x" to="200" dur="3s"></animate>
+      </rect>
+    </svg>
 
-	<svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
-		<rect x="0" y="0" width="100" height="50" fill="red">
-			<!-- animate 元素基本使用 -->
-			<animate
-				attributeName="x"
-				from="0"
-				to="200"
-				dur="3s"
-				begin="2s"
-				fill="freeze"
-			></animate>
-		</rect>
-		<rect x="0" y="100" width="100" height="50" fill="red">
-			<!-- animate 元素基本使用，3个属性是必须的 -->
-			<animate
-				attributeName="x"
-				to="200"
-				dur="3s"
-			></animate>
-		</rect>
-	</svg>
+    <svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="0" width="100" height="50" fill="skyblue">
+        <!-- value 属性的使用 -->
+        <animate attributeName="x" values="0; 170; 200" dur="3s" repeatCount="indefinite"></animate>
+      </rect>
+      <rect x="0" y="100" width="100" height="50" fill="skyblue">
+        <!-- value 属性的使用 -->
+        <animate
+          attributeName="fill"
+          values="pink; skyblue"
+          dur="3s"
+          repeatCount="indefinite"
+        ></animate>
+      </rect>
+    </svg>
 
-	<svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
-		<rect x="0" y="0" width="100" height="50" fill="skyblue">
-			<!-- value 属性的使用 -->
-			<animate
-				attributeName="x"
-				values="0; 170; 200"
-				dur="3s"
-				repeatCount="indefinite"
-			></animate>
-		</rect>
-		<rect x="0" y="100" width="100" height="50" fill="skyblue">
-			<!-- value 属性的使用 -->
-			<animate
-				attributeName="fill"
-				values="pink; skyblue"
-				dur="3s"
-				repeatCount="indefinite"
-			></animate>
-		</rect>
-	</svg>
-
-
-	<svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
-		<rect x="0" y="0" width="100" height="50" fill="skyblue">
-			<!-- 动画的衔接 -->
-			<animate
-				id="oneAnimate"
-				attributeName="x"
-				values="0; 200"
-				dur="3s"
-				fill="freeze"
-			></animate>
-			<animate
-				attributeName="y"
-				values="0; 100"
-				dur="3s"
-				fill="freeze"
-				begin="oneAnimate.end"
-			></animate>
-		</rect>
-	</svg>
-	
-</body>
+    <svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="0" width="100" height="50" fill="skyblue">
+        <!-- 动画的衔接 -->
+        <animate id="oneAnimate" attributeName="x" values="0; 200" dur="3s" fill="freeze"></animate>
+        <animate
+          attributeName="y"
+          values="0; 100"
+          dur="3s"
+          fill="freeze"
+          begin="oneAnimate.end"
+        ></animate>
+      </rect>
+    </svg>
+  </body>
 </html>

@@ -6,15 +6,15 @@ SVG 所支持的基本形状有：矩形、圆形、椭圆、线条、折线、�
 
 # 一、SVG 绘制圆形
 
-用 SVG 绘制一个圆形，使用 `<circle>` 元素，3个基本属性：
+用 SVG 绘制一个圆形，使用 `<circle>` 元素，3 个基本属性：
 
 - `r`：圆的半径；
 - `cx`：圆心的 x 轴位置；
 - `cy`：圆心的 y 轴位置；
 
-03-SVG\demo-project\05-SVG基本图形\02-绘制-圆形.html
+03-SVG\demo-project\05-SVG 基本图形\02-绘制-圆形.html
 
-```xml
+```html
 <svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
 	<circle cx="100" cy="100" r="50" fill="red"><circle>
 </svg>
@@ -26,18 +26,18 @@ SVG 所支持的基本形状有：矩形、圆形、椭圆、线条、折线、�
 
 `<ellipse>` 元素是 `<circle>` 元素更通用的形式，它可以分别缩放圆的 x 半径和 y 半径。
 
-`<ellipse>` 元素4个基本属性。
+`<ellipse>` 元素 4 个基本属性。
 
 - `cx`：椭圆中心的 x 轴位置
 - `cy`：椭圆中心的 y 轴位置
 - `rx`：椭圆的 x 轴半径
 - `ry`：椭圆的 y 轴半径
 
-03-SVG\demo-project\05-SVG基本图形\03-绘制-椭圆.html
+03-SVG\demo-project\05-SVG 基本图形\03-绘制-椭圆.html
 
-```xml
+```html
 <svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
-	<ellipse cx="100" cy="100" rx="25" ry="50" fill="red"></ellipse>
+  <ellipse cx="100" cy="100" rx="25" ry="50" fill="red"></ellipse>
 </svg>
 ```
 
@@ -48,18 +48,18 @@ SVG 所支持的基本形状有：矩形、圆形、椭圆、线条、折线、�
 - 它有两个点的位置作为属性，指定这条线的起点和终点。
 - 需描边（而不是填充）才能显示。
 
-`<line>` 元素有4个基本属：
+`<line>` 元素有 4 个基本属：
 
 - `x1`：起点的 x 轴位置；
 - `y1`：起点的 y 轴位置；
 - `x2`：终点的 x 轴位置；
 - `y2`：终点的 y 轴位置。
 
-03-SVG\demo-project\05-SVG基本图形\04-绘制-直线.html
+03-SVG\demo-project\05-SVG 基本图形\04-绘制-直线.html
 
-```xml
+```html
 <svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
-	<line x1="100" y1="100" x2="200" y2="100" stroke="red" stroke-width="5"></line>
+  <line x1="100" y1="100" x2="200" y2="100" stroke="red" stroke-width="5"></line>
 </svg>
 ```
 
@@ -76,16 +76,16 @@ SVG 所支持的基本形状有：矩形、圆形、椭圆、线条、折线、�
 - 每个点必须包含 2 个数字，即 x 坐标，y 坐标。
 - 所以点列表 (0,0), (1,1)，(2,2) 可以写成这样：“0 0, 1 1, 2 2”（推荐写法） 或 “0,0,1,1,2,2” 或 “0 0 1 1 2 2”
 
-03-SVG\demo-project\05-SVG基本图形\05-绘制-折线.html
+03-SVG\demo-project\05-SVG 基本图形\05-绘制-折线.html
 
-```xml
+```html
 <svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
-	<!-- 写法一 -->
-	<polyline points="20 0, 80 50, 20 100" fill="transparent" stroke="red"></polyline>
-	<!-- 写法二 -->
-	<polyline points="20 10 80 60 20 110" fill="transparent" stroke="green"></polyline>
-	<!-- 写法三 -->
-	<polyline points="20, 20, 80, 70, 20, 120" fill="transparent" stroke="blue"></polyline>
+  <!-- 写法一 -->
+  <polyline points="20 0, 80 50, 20 100" fill="transparent" stroke="red"></polyline>
+  <!-- 写法二 -->
+  <polyline points="20 10 80 60 20 110" fill="transparent" stroke="green"></polyline>
+  <!-- 写法三 -->
+  <polyline points="20, 20, 80, 70, 20, 120" fill="transparent" stroke="blue"></polyline>
 </svg>
 ```
 
@@ -103,11 +103,11 @@ SVG 所支持的基本形状有：矩形、圆形、椭圆、线条、折线、�
 - 所以点列表 (0,0), (1,1) 和 (2,2) 推荐写成这样：“0 0, 1 1, 2 2”。
 - 路径绘制完后闭合图形，所以最终的直线将从位置 (2,2) 连接到位置 (0,0)。
 
-03-SVG\demo-project\05-SVG基本图形\06-绘制-多边形.html
+03-SVG\demo-project\05-SVG 基本图形\06-绘制-多边形.html
 
-```xml
+```html
 <svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
-	<polygon points="20 0, 80 50, 20 100" fill="transparent" stroke="red"></polygon>
+  <polygon points="20 0, 80 50, 20 100" fill="transparent" stroke="red"></polygon>
 </svg>
 ```
 
@@ -115,60 +115,61 @@ SVG 所支持的基本形状有：矩形、圆形、椭圆、线条、折线、�
 
 用 SVG 来绘制路径，使用 `<path>` 元素。
 
-- SVG 中最常见的绘制方式。`<path>` 元素可以绘制矩形（直角矩形或圆角矩形）、圆形、椭圆、折线、多边形，以及一些其他的形状，例如贝塞尔曲线、2次曲线等曲线。
+- SVG 中最常见的绘制方式。`<path>` 元素可以绘制矩形（直角矩形或圆角矩形）、圆形、椭圆、折线、多边形，以及一些其他的形状，例如贝塞尔曲线、2 次曲线等曲线。
 - 默认会填充黑色。
 - 默认路径不会闭合。
 
-路径有1个基本属性 `d` 用来基于用户坐标系设置路径点的位置。
+路径有 1 个基本属性 `d` 用来基于用户坐标系设置路径点的位置。
 
 - `d`：一个点集数列，采用命令+参数的序列，必须以 `M` 命令开头。
 - 所以点列表 (0,0), (1,1) 和 (2,2) 推荐写成这样：`M 0 0, 1 1, 2 2`。
 - 支持格式： “`M 0 0, 1 1, 2 2`” 或 “`M 0，0, 1, 1, 2，2`” 或 “`M 0 0 1 1 2 2`”
 
-03-SVG\demo-project\05-SVG基本图形\07-绘制-路径.html
+03-SVG\demo-project\05-SVG 基本图形\07-绘制-路径.html
 
-```xml
+```html
 <svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
-	<!-- 使用 path 绘制一个三角新折线 -->
-	<path d="M 20 0, 80 50, 20 100" fill="transparent" stroke="red"></path>
-	<!-- 使用 path 绘制一个闭合的三角形 -->
-	<path d="M 70, 0, 130, 50, 70, 100 Z" fill="transparent" stroke="red"></path>
-	<!--
+  <!-- 使用 path 绘制一个三角新折线 -->
+  <path d="M 20 0, 80 50, 20 100" fill="transparent" stroke="red"></path>
+  <!-- 使用 path 绘制一个闭合的三角形 -->
+  <path d="M 70, 0, 130, 50, 70, 100 Z" fill="transparent" stroke="red"></path>
+  <!--
 		使用 path 绘制命令
 			M：MoveTo
 			Z：close path
 			L：Line To，可省略
 	-->
-	<path d="M 120 0, L 180 50, L 120 100 Z" fill="transparent" stroke="red"></path>
+  <path d="M 120 0, L 180 50, L 120 100 Z" fill="transparent" stroke="red"></path>
 </svg>
 ```
+
 ## 1.命令
 
 命令是大小写敏感的，
 
 - 大写字母，表示采用绝对定位。另一种是用小写字母，表示采用相对定位。
 
-03-SVG\demo-project\05-SVG基本图形\08-绘制-路径-命令.html
+03-SVG\demo-project\05-SVG 基本图形\08-绘制-路径-命令.html
 
-```xml
+```html
 <svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
-	<path d="M 20 0, L 80 50, l 20 50 Z" fill="transparent" stroke="red"></path>
+  <path d="M 20 0, L 80 50, l 20 50 Z" fill="transparent" stroke="red"></path>
 </svg>
 ```
 
 有哪些命令？
 
 - 直线命令：
-	- `M` / `m`：Move To
-	- `L` / `l`：Line To
-	- `Z` / `z`：Close Path
-	- `H` / `h`：horizontal
-	- `V` / `v`：vertical
+  - `M` / `m`：Move To
+  - `L` / `l`：Line To
+  - `Z` / `z`：Close Path
+  - `H` / `h`：horizontal
+  - `V` / `v`：vertical
 - 曲线命令
-	- `C`：三次贝塞尔曲线
-	- `S`：简写三次贝塞尔曲线
-	- `Q`：二次贝塞尔曲线
-	- `T`：简写二次贝塞尔曲线
+  - `C`：三次贝塞尔曲线
+  - `S`：简写三次贝塞尔曲线
+  - `Q`：二次贝塞尔曲线
+  - `T`：简写二次贝塞尔曲线
 
 # 七、SVG 绘制图片
 
@@ -178,56 +179,49 @@ SVG 所支持的基本形状有：矩形、圆形、椭圆、线条、折线、�
 - 元素的 `x`,`y` 属性，坐标定位，默认值为 0。
 - 元素的 `height`、`width` 属性，默认为图片大小。如果为 0，将不会呈现这个图像。
 
-03-SVG\demo-project\06-SVG绘制图片和文字\01-绘制-图片.html
+03-SVG\demo-project\06-SVG 绘制图片和文字\01-绘制-图片.html
 
-```xml
+```html
 <!-- svg 2.0 -->
-<svg
-	width="300"
-	height="300"
-	xmlns="http://www.w3.org/2000/svg">
-	<image
-		x="0"
-		y="0"
-		href="../images/googlelogo_color_92x30dp.png"
-		width="100"
-		height="100">
-	</image>
+<svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
+  <image x="0" y="0" href="../images/googlelogo_color_92x30dp.png" width="100" height="100"></image>
 </svg>
 
 <!-- svg 1.0 -->
 <svg
-	version="1.0"
-	baseProfile="full"
-	width="300"
-	height="300"
-	xmlns="http://www.w3.org/2000/svg"
-	xmlns:xlink="http://www.w3.org/1999/xlink">
-	<image
-		x="0"
-		y="0"
-		xlink:href="../images/googlelogo_color_92x30dp.png"
-		width="100"
-		height="100">
-	</image>
+  version="1.0"
+  baseProfile="full"
+  width="300"
+  height="300"
+  xmlns="http://www.w3.org/2000/svg"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+>
+  <image
+    x="0"
+    y="0"
+    xlink:href="../images/googlelogo_color_92x30dp.png"
+    width="100"
+    height="100"
+  ></image>
 </svg>
 
 <!-- svg 2.0 兼容 svg 1.0 -->
 <svg
-	version="1.0"
-	baseProfile="full"
-	width="300"
-	height="300"
-	xmlns="http://www.w3.org/2000/svg"
-	xmlns:xlink="http://www.w3.org/1999/xlink">
-	<image
-		x="0"
-		y="0"
-		xlink:href="../images/googlelogo_color_92x30dp.png"
-		href="../images/googlelogo_color_92x30dp.png"
-		width="100"
-		height="100">
-	</image>
+  version="1.0"
+  baseProfile="full"
+  width="300"
+  height="300"
+  xmlns="http://www.w3.org/2000/svg"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+>
+  <image
+    x="0"
+    y="0"
+    xlink:href="../images/googlelogo_color_92x30dp.png"
+    href="../images/googlelogo_color_92x30dp.png"
+    width="100"
+    height="100"
+  ></image>
 </svg>
 ```
 
@@ -235,7 +229,7 @@ SVG 所支持的基本形状有：矩形、圆形、椭圆、线条、折线、�
 
 用 SVG 来绘制文字，使用 `<text>` 元素。
 
-``<text>`` 元素的基本属性：
+`<text>` 元素的基本属性：
 
 - `x` 和 `y` 属性决定了文本在用户坐标系中显示的位置。
 
@@ -245,16 +239,16 @@ SVG 所支持的基本形状有：矩形、圆形、椭圆、线条、折线、�
 
   <img src="NodeAssets/text元素text-anchor和dominant-baseline属性.jpg" style="zoom:80%;" />
 
-03-SVG\demo-project\06-SVG绘制图片和文字\02-绘制-文字.html
+03-SVG\demo-project\06-SVG 绘制图片和文字\02-绘制-文字.html
 
-```xml
+```html
 <svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
-	<!-- 绘制一个文字 -->
-	<text x="50" y="50" font-size="50" fill="red">Ay</text>
-	<!-- 文字的对齐方式 -->
-	<text x="100" y="100" text-anchor="middle" font-size="50" fill="red">Ay</text>
-	<!-- 基线的对齐方式 -->
-	<text x="200" y="200" dominant-baseline="middle" font-size="50" fill="red">Ay</text>
+  <!-- 绘制一个文字 -->
+  <text x="50" y="50" font-size="50" fill="red">Ay</text>
+  <!-- 文字的对齐方式 -->
+  <text x="100" y="100" text-anchor="middle" font-size="50" fill="red">Ay</text>
+  <!-- 基线的对齐方式 -->
+  <text x="200" y="200" dominant-baseline="middle" font-size="50" fill="red">Ay</text>
 </svg>
 ```
 
@@ -272,11 +266,11 @@ SVG 所支持的基本形状有：矩形、圆形、椭圆、线条、折线、�
 - `word-spacing`
 - `textdecoration。`
 
-03-SVG\demo-project\06-SVG绘制图片和文字\02-绘制-文字.html
+03-SVG\demo-project\06-SVG 绘制图片和文字\02-绘制-文字.html
 
 ```css
 text {
-	fill: green;
+  fill: green;
 }
 ```
 
@@ -285,14 +279,15 @@ text {
 - `x` 和 `y` 属性决定了文本在**视口坐标系**中显示的位置。
 - `alignment-baseline` 基线对齐属性：`auto`、`baseline`、`middle`、`hanging`、`top`、`bottom` ...，默认是 `auto`。
 
-03-SVG\demo-project\06-SVG绘制图片和文字\03-绘制-文字-tspan.html
+03-SVG\demo-project\06-SVG 绘制图片和文字\03-绘制-文字-tspan.html
 
-```xml
+```html
 <svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
-	<!-- 绘制一个文字 -->
-	<text x="50" y="50" font-size="30">
-		iPhone14 <tspan x="100" y="50" fill="yellow" alignment-baseline="middle">￥100</tspan>
-	</text>
+  <!-- 绘制一个文字 -->
+  <text x="50" y="50" font-size="30">
+    iPhone14
+    <tspan x="100" y="50" fill="yellow" alignment-baseline="middle">￥100</tspan>
+  </text>
 </svg>
 ```
 
@@ -303,26 +298,25 @@ text {
 - g 元素上的属性大部分会应用到其所有的子元素上。
 - g 元素也可以用来定义复杂的对象，之后可以通过 `<use>` 元素来引用它们。
 
-03-SVG\demo-project\07-SVG的组合和复用\01-图形的组合-g元素.html
+03-SVG\demo-project\07-SVG 的组合和复用\01-图形的组合-g 元素.html
 
-```xml
+```html
 <svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
   <!-- 不使用 g 元素时 -->
-	<circle cx="50" cy="50" r="25" fill="transparent" stroke="red"></circle>
-	<circle cx="80" cy="50" r="25" fill="transparent" stroke="red"></circle>
-	<circle cx="110" cy="50" r="25" fill="transparent" stroke="red"></circle>
-	<circle cx="140" cy="50" r="25" fill="transparent" stroke="red"></circle>
+  <circle cx="50" cy="50" r="25" fill="transparent" stroke="red"></circle>
+  <circle cx="80" cy="50" r="25" fill="transparent" stroke="red"></circle>
+  <circle cx="110" cy="50" r="25" fill="transparent" stroke="red"></circle>
+  <circle cx="140" cy="50" r="25" fill="transparent" stroke="red"></circle>
 
-	<!-- g 元素没有专属的属性，只有全局的属性，如 id、class、style、fill、onclick ... -->
-	<g fill="transparent" stroke="red" r="25">
-		<circle cx="50" cy="100"></circle>
-		<circle cx="80" cy="100"></circle>
-		<circle cx="110" cy="100"></circle>
-		<circle cx="140" cy="100"></circle>
-	</g>
+  <!-- g 元素没有专属的属性，只有全局的属性，如 id、class、style、fill、onclick ... -->
+  <g fill="transparent" stroke="red" r="25">
+    <circle cx="50" cy="100"></circle>
+    <circle cx="80" cy="100"></circle>
+    <circle cx="110" cy="100"></circle>
+    <circle cx="140" cy="100"></circle>
+  </g>
 </svg>
 ```
-
 
 # 十、SVG 中复用元素
 
@@ -341,27 +335,27 @@ SVG 中定义可复用元素，使用 `<defs>` 元素，
 - 在视口任意地方用 `<use>` 来呈现在 `<defs>` 中定义的元素。
 - `<defs>` 元素没有专有属性。
 
-03-SVG\demo-project\07-SVG的组合和复用\02-图形的组合-defs.html
+03-SVG\demo-project\07-SVG 的组合和复用\02-图形的组合-defs.html
 
-```xml
+```html
 <svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
-	<defs>
-		<!-- 定义样式 -->
-		<style>
-			rect {
-				fill: green;
-			}
-		</style>
-		<!-- 定义一个矩形 -->
-		<rect id="rectangle" x="0" y="0" width="100" height="50"></rect>
-		<!-- 定义一个组合图形 -->
-		<g fill="transparent" stroke="red">
-			<circle cx="50" cy="100" r="25"></circle>
-			<circle cx="80" cy="100" r="25"></circle>
-			<circle cx="110" cy="100" r="25"></circle>
-			<circle cx="140" cy="100" r="25"></circle>
-		</g>
-	</defs>
+  <defs>
+    <!-- 定义样式 -->
+    <style>
+      rect {
+        fill: green;
+      }
+    </style>
+    <!-- 定义一个矩形 -->
+    <rect id="rectangle" x="0" y="0" width="100" height="50"></rect>
+    <!-- 定义一个组合图形 -->
+    <g fill="transparent" stroke="red">
+      <circle cx="50" cy="100" r="25"></circle>
+      <circle cx="80" cy="100" r="25"></circle>
+      <circle cx="110" cy="100" r="25"></circle>
+      <circle cx="140" cy="100" r="25"></circle>
+    </g>
+  </defs>
 </svg>
 ```
 
@@ -378,44 +372,44 @@ SVG 中使用 `<use>` 元素，获取定义的节点，复制到指定的地方�
 - `href`：需要复制元素（或片段）的 `url` 或 `id`。
 - ~~`xlink:href`~~：（SVG2.0 已弃用）需要复制的元素/片段的 URL 或 ID 。
 - `x`、`y` ：元素的坐标（相对复制元素的位置），默认值：0。
-- `width`、`height`：元素的宽和高（在引入有 `viewBox` 属性的元素时，即 `<svg>` 或 ``<symbol>`` 元素才起作用）, 默认值：0。
+- `width`、`height`：元素的宽和高（在引入有 `viewBox` 属性的元素时，即 `<svg>` 或 `<symbol>` 元素才起作用）, 默认值：0。
 
-03-SVG\demo-project\07-SVG的组合和复用\03-图形的复用-use.html
+03-SVG\demo-project\07-SVG 的组合和复用\03-图形的复用-use.html
 
-```xml
+```html
 <svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
-	<defs>
-		<!-- 定义样式 -->
-		<style>
-			rect {
-				fill: green;
-			}
-		</style>
-		<!-- 定义一个矩形 -->
-		<rect id="rectangle" x="0" y="0" width="100" height="50"></rect>
-		<!-- 定义一个组合图形 -->
-		<g id="logo" fill="transparent" stroke="red">
-			<circle cx="50" cy="100" r="25"></circle>
-			<circle cx="80" cy="100" r="25"></circle>
-			<circle cx="110" cy="100" r="25"></circle>
-			<circle cx="140" cy="100" r="25"></circle>
-		</g>
-	</defs>
+  <defs>
+    <!-- 定义样式 -->
+    <style>
+      rect {
+        fill: green;
+      }
+    </style>
+    <!-- 定义一个矩形 -->
+    <rect id="rectangle" x="0" y="0" width="100" height="50"></rect>
+    <!-- 定义一个组合图形 -->
+    <g id="logo" fill="transparent" stroke="red">
+      <circle cx="50" cy="100" r="25"></circle>
+      <circle cx="80" cy="100" r="25"></circle>
+      <circle cx="110" cy="100" r="25"></circle>
+      <circle cx="140" cy="100" r="25"></circle>
+    </g>
+  </defs>
 
-	<!-- 在 svg 内部进行图片的复用 -->
-	<use href="#rectangle"></use>
-	<use x="100" y="100" href="#rectangle"></use>
-	<use href="#logo"></use>
-	<use x="150" y="150" href="#logo"></use>
+  <!-- 在 svg 内部进行图片的复用 -->
+  <use href="#rectangle"></use>
+  <use x="100" y="100" href="#rectangle"></use>
+  <use href="#logo"></use>
+  <use x="150" y="150" href="#logo"></use>
 </svg>
 
 <!-- 在另一个 svg 中进行图片的复用 -->
 <svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
-	<!-- widht 和 height 没有生效，因为只有当 use 引用 <svg> 或 <symbol> 时才会生效。 -->
-	<use href="#rectangle" width="200" height="100"></use>
+  <!-- widht 和 height 没有生效，因为只有当 use 引用 <svg> 或 <symbol> 时才会生效。 -->
+  <use href="#rectangle" width="200" height="100"></use>
 </svg>
 <svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
-	<use href="#logo"></use>
+  <use href="#logo"></use>
 </svg>
 ```
 
@@ -434,48 +428,49 @@ SVG 中使用 `<use>` 元素，获取定义的节点，复制到指定的地方�
 
 制作 ICON 图标，不使用 `<symbol>`
 
-03-SVG\demo-project\07-SVG的组合和复用\04-制作ICON图标.html
+03-SVG\demo-project\07-SVG 的组合和复用\04-制作 ICON 图标.html
 
-```xml
+```html
 <svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
-	<path d="M 80 0, L 20 50, L 80 100 Z"></path>
+  <path d="M 80 0, L 20 50, L 80 100 Z"></path>
 </svg>
 
 <svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
-	<polygon points="20 0, 80 50, 20 100"></polygon>
+  <polygon points="20 0, 80 50, 20 100"></polygon>
 </svg>
 ```
+
 制作 ICON 图标，使用 `<symbol>` 定义，使用 `<use>` 复用
 
-03-SVG\demo-project\07-SVG的组合和复用\05-制作ICON图标-使用symbol.html
+03-SVG\demo-project\07-SVG 的组合和复用\05-制作 ICON 图标-使用 symbol.html
 
-```xml
+```html
 <svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
-	<!-- ICON 1 -->
-	<symbol id="previous" viewBox="0 0 100 100">
-		<path d="M 80 0, L 20 50, L 80 100 Z" fill="currentColor"></path>
-	</symbol>
-	<!-- ICON 2 -->
-	<symbol id="next" viewBox="0 0 100 100">
-		<polygon points="20 0, 80 50, 20 100"></polygon>
-	</symbol>
-	<!-- 复用 -->
-	<use href="#previous" width="100" height="100"></use>
+  <!-- ICON 1 -->
+  <symbol id="previous" viewBox="0 0 100 100">
+    <path d="M 80 0, L 20 50, L 80 100 Z" fill="currentColor"></path>
+  </symbol>
+  <!-- ICON 2 -->
+  <symbol id="next" viewBox="0 0 100 100">
+    <polygon points="20 0, 80 50, 20 100"></polygon>
+  </symbol>
+  <!-- 复用 -->
+  <use href="#previous" width="100" height="100"></use>
 </svg>
 
 <!-- 在另一个 svg 中复用 -->
 <svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
-	<use href="#previous" width="50" height="50"></use>
+  <use href="#previous" width="50" height="50"></use>
 </svg>
 
 <!-- 在另一个 svg 中复用 -->
 <svg width="30" height="30" xmlns="http://www.w3.org/2000/svg">
-	<use href="#previous"></use>
+  <use href="#previous"></use>
 </svg>
 
 <!-- 在另一个 svg 中复用 -->
 <svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
-	<use href="#previous"></use>
+  <use href="#previous"></use>
 </svg>
 ```
 
@@ -489,7 +484,7 @@ SVG 中使用 `<use>` 元素，获取定义的节点，复制到指定的地方�
 
 # 十一、SVG 制作精灵图
 
-03-SVG\demo-project\07-SVG的组合和复用\06-制作SVG精灵图.html
+03-SVG\demo-project\07-SVG 的组合和复用\06-制作 SVG 精灵图.html
 
 # 十二、SVG 进行填充和描边
 
@@ -508,28 +503,23 @@ SVG 中使用 `<use>` 元素，获取定义的节点，复制到指定的地方�
 
 - 该属性专门用来控制填充色的不透明，值为 0 到 1。
 
-03-SVG\demo-project\08-SVG的填充和描边\01-填充-fill.html
+03-SVG\demo-project\08-SVG 的填充和描边\01-填充-fill.html
 
-```xml
-<svg width="300" height="300" xmlns="http://www.w3.org/2000/svg" >
-	<defs>
-		<style>
-			rect{
-				color: green;
-			}
-		</style>
-	</defs>
+```html
+<svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      rect {
+        color: green;
+      }
+    </style>
+  </defs>
 
-	<!-- 基本的使用 -->
-	<rect x="10" y="10" width="100" height="100"
-		fill="blue"
-		fill-opacity="0.4"
-	></rect>
+  <!-- 基本的使用 -->
+  <rect x="10" y="10" width="100" height="100" fill="blue" fill-opacity="0.4"></rect>
 
-	<!-- 颜色为 green -->
-	<rect x="50" y="50" width="100" height="100"
-		fill="currentColor"
-	></rect>
+  <!-- 颜色为 green -->
+  <rect x="50" y="50" width="100" height="100" fill="currentColor"></rect>
 </svg>
 ```
 
@@ -541,12 +531,12 @@ SVG 中使用 `<use>` 元素，获取定义的节点，复制到指定的地方�
 - `stroke-linecap =“butt | square | round”`：控制边框端点的样式。
 - `stroke-linejoin = “miter | round | bevel”`：控制两条线段连接处样式。
 - `stroke-dasharray =“number [, number , ….]”`: 将虚线类型应用在边框上（**可用于做动画效果**）。
-	- 该值必须是**用逗号分割**的数字组成的数列，空格会被忽略。比如 `3，5`:
-	- 第一个表示填色区域长度为 3
-	- 第二个表示非填色区域长度为 5
+  - 该值必须是**用逗号分割**的数字组成的数列，空格会被忽略。比如 `3，5`:
+  - 第一个表示填色区域长度为 3
+  - 第二个表示非填色区域长度为 5
 - `stroke-dashoffset = "number"`：指定在 dasharray 模式下路径的偏移量。除了可以正值，也可以取负值。
 
-03-SVG\demo-project\08-SVG的填充和描边
+03-SVG\demo-project\08-SVG 的填充和描边
 
 ## 2.CSS 实现
 
@@ -566,8 +556,7 @@ CSS 样式可写在 `<defs>` 中，也可写在 HTML 中作为内联样式或外
 > - [Presentation Attributes](https://developer.> mozilla.org/en-US/docs/Web/SVG/Attribute/Presentation)，支持在 CSS 和元素用。
 > - [Attributes ](https://developer.mozilla.org/> en-US/docs/Web/SVG/Attribute)，只能在元素用。
 
-
-CSS 支持如下4种编写方式：
+CSS 支持如下 4 种编写方式：
 
 - 方式一：行内 CSS 样式，写在元素的 `style` 属性上
 - 方式二：内嵌（内部）CSS 样式，写在 `<defs>` 中的 `<style>` 标签中

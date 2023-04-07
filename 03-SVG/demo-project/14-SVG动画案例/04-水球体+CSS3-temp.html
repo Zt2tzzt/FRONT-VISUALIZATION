@@ -14,7 +14,7 @@
       }
       body {
         background: #020438;
-        font: 14px/1 "Open Sans", helvetica, sans-serif;
+        font: 14px/1 'Open Sans', helvetica, sans-serif;
       }
       .box {
         height: 280px;
@@ -70,19 +70,19 @@
         margin-bottom: -1px;
         animation: moveWaveFront 0.7s linear infinite;
       }
-      @keyframes moveWaveBack{
-        0%{
+      @keyframes moveWaveBack {
+        0% {
           transform: translateX(0);
         }
-        100%{
+        100% {
           transform: translateX(50%);
         }
       }
-      @keyframes moveWaveFront{
-        0%{
+      @keyframes moveWaveFront {
+        0% {
           transform: translateX(0);
         }
-        100%{
+        100% {
           transform: translateX(-50%);
         }
       }
@@ -90,7 +90,6 @@
   </head>
   <body>
     <div class="water-ball">
-
       <svg
         version="1.1"
         xmlns="https://www.w3.org/2000/svg"
@@ -133,26 +132,24 @@
     </div>
 
     <script>
-      window.onload = function() {
+      window.onload = function () {
         const countEL = document.getElementById('count')
         const waterEl = document.getElementById('water')
-        let currentPercentage = 0;
-        const targetPercentage = 95;
+        let currentPercentage = 0
+        const targetPercentage = 95
 
         let timeId = null
-        timeId = setInterval(function(){
-          
-          currentPercentage++; // 170
-          if(currentPercentage >= targetPercentage){
+        timeId = setInterval(function () {
+          currentPercentage++ // 170
+          if (currentPercentage >= targetPercentage) {
             clearInterval(timeId)
           }
           countEL.textContent = currentPercentage
 
-          if(currentPercentage <= 100){
+          if (currentPercentage <= 100) {
             waterEl.style.transform = `translateY(${100 - currentPercentage}%)`
           }
         }, 60)
-
       }
     </script>
   </body>

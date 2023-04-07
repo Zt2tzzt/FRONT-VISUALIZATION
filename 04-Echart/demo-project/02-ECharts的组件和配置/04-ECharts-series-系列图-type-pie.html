@@ -1,70 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  
-  <div id="main" style="height: 400px"></div>
-  <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.1/dist/echarts.min.js"></script>
-  <script>
-    window.onload = function() {
-      const myChart = echarts.init(document.getElementById('main'));
-      const option = {
-        backgroundColor: 'rgba(255, 0, 0, 0.1)',
-        grid: {
-          show: true,
-          backgroundColor: 'rgba(0, 255, 0, 0.1)',
-        },
-        xAxis: {
-          show: false, // 饼图无需展示 x 轴坐标系
-          data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
-        },
-        yAxis: {},
-        series: [
-          {
-            type: 'pie', // line bar scatter pie
-            label: { 
-              show: true
-            },
-            
-            center: ["50%", "50%"], // 饼图的中心（圆心）坐标，数组的第一项是横坐标，第二项是纵坐标。设置成百分比时第一项是相对于容器宽度，第二项是相对于容器高度。
-            radius: ["20%", "80%"], // 饼图的内半径和外半径，数组的第一项是内半径，第二项是外半径。百分比参照直径
-            roseType: "area", //area 玫瑰图(南丁格尔图)。 圆心角一样，通过半径展现数据大小 (默认 false)
-            data: [
-              {
-                value: 5,
-                name: "衬衫", // 数据项名称, 比如pie系列 tooltip 需要用到
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="main" style="height: 400px"></div>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.1/dist/echarts.min.js"></script>
+    <script>
+      window.onload = function () {
+        const myChart = echarts.init(document.getElementById('main'))
+        const option = {
+          backgroundColor: 'rgba(255, 0, 0, 0.1)',
+          grid: {
+            show: true,
+            backgroundColor: 'rgba(0, 255, 0, 0.1)'
+          },
+          xAxis: {
+            show: false, // 饼图无需展示 x 轴坐标系
+            data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
+          },
+          yAxis: {},
+          series: [
+            {
+              type: 'pie', // line bar scatter pie
+              label: {
+                show: true
               },
-              {
-                value: 20,
-                name: "羊毛衫",
-              },
-              {
-                value: 36,
-                name: "雪纺衫",
-              },
-              {
-                value: 10,
-                name: "裤子",
-              },
-              {
-                value: 10,
-                name: "高跟鞋",
-              },
-              {
-                value: 20,
-                name: "袜子",
-              },
-            ],
-          }
-        ]
-      };
-      myChart.setOption(option);
-    }
-  </script>
-</body>
+
+              center: ['50%', '50%'], // 饼图的中心（圆心）坐标，数组的第一项是横坐标，第二项是纵坐标。设置成百分比时第一项是相对于容器宽度，第二项是相对于容器高度。
+              radius: ['20%', '80%'], // 饼图的内半径和外半径，数组的第一项是内半径，第二项是外半径。百分比参照直径
+              roseType: 'area', //area 玫瑰图(南丁格尔图)。 圆心角一样，通过半径展现数据大小 (默认 false)
+              data: [
+                {
+                  value: 5,
+                  name: '衬衫' // 数据项名称, 比如pie系列 tooltip 需要用到
+                },
+                {
+                  value: 20,
+                  name: '羊毛衫'
+                },
+                {
+                  value: 36,
+                  name: '雪纺衫'
+                },
+                {
+                  value: 10,
+                  name: '裤子'
+                },
+                {
+                  value: 10,
+                  name: '高跟鞋'
+                },
+                {
+                  value: 20,
+                  name: '袜子'
+                }
+              ]
+            }
+          ]
+        }
+        myChart.setOption(option)
+      }
+    </script>
+  </body>
 </html>
