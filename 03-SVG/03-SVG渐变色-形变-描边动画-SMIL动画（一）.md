@@ -1,6 +1,6 @@
 # 一、SVG 中的渐变
 
-SVG 支持在填充和描边上应用渐变色，使用 `<linearGradient>`。
+SVG 支持在填充和描边上，应用渐变色，使用 `<linearGradient>`。
 
 - 建议渐变内容定义在 `<defs>` 标签内部，因为渐变通常是可复用的。
 - 编写渐变时，必须给渐变内容指定一个 `id` 属性，用于 `<use>` 引用。
@@ -11,14 +11,24 @@ SVG 支持在填充和描边上应用渐变色，使用 `<linearGradient>`。
 
 线性渐变，是沿着直线改变颜色。使用步骤：
 
-1. `<defs>` 元素内部，创建一个 `<linearGradient>` 节点，并添加 `id` 属性。
-2. `<linearGradient>` 内编写几个 `<stop>` 元素。
-   - 给 `<stop>` 元素指定 `offset`（位置）属性和 `stop-color`（颜色）属性，用来指定渐变在特定的位置上应用什么颜色（这两个属性值，也可以通过 CSS 来指定）。
-   - 给 `<stop>` 元素指定 `stop-opacity`（透明度）属性。
-3. 在一个元素的 `fill` 属性或 `stroke` 属性中通过 id 选择器来引用 `<linearGradient>` 节点。如 `fill=url(#Gradient2)`。
-4. `<linearGradient>` 控制渐变方向：
-   - 通过 `x1, y1` 和 `x2, y2` 属性控制，`(0, 0) (0, 1)` 从上到下；`(0, 0) (1, 0)` 从左到右。
-   - 也可通过 `gradientTransform` 属性设置形变。比如：`gradientTransform=“rotate(90)` 表示从上到下。
+1.`<defs>` 元素内部，创建一个 `<linearGradient>` 节点，并添加 `id` 属性。
+
+2.`<linearGradient>` 内编写几个 `<stop>` 元素。
+
+- 给 `<stop>` 元素指定 `offset`（位置）属性和 `stop-color`（颜色）属性，
+  - 用来指定渐变在特定的位置上应用什么颜色（这两个属性值，也可以通过 CSS 来指定）。
+- 给 `<stop>` 元素指定 `stop-opacity`（透明度）属性。
+
+3.在一个元素的 `fill` 属性或 `stroke` 属性中通过 id 选择器来引用 `<linearGradient>` 节点。
+
+- 如 `<rect fill=url(#Gradient2)></rect>`。
+
+4.`<linearGradient>` 控制渐变方向：
+
+- 通过 `x1, y1` 和 `x2, y2` 属性控制。
+  - 比如：`(0, 0) (0, 1)` 从上到下；`(0, 0) (1, 0)` 从左到右。
+- 也可通过 `gradientTransform` 属性设置形变；
+  - 比如：`gradientTransform=“rotate(90)` 表示从上到下。
 
 03-SVG\demo-project\10-渐变色和滤镜效果\01-渐变色.html
 
@@ -59,8 +69,12 @@ SVG 支持在填充和描边上应用渐变色，使用 `<linearGradient>`。
 
 使用 CSS 的 `backdrop-filter` 或 `filter` 属性：
 
-- `backdrop-filter`：可以给一个元素后面区域添加模糊效果。适用于元素背后的所有元素。为了看到效果，必须使元素或其背景至少部分透明。
-- `filter`：直接将模糊效果应用于指定的元素。
+`backdrop-filter`：可以给一个元素后面区域，添加模糊效果。
+
+- 适用于元素背后的所有元素。
+- 为了看到效果，必须使元素或其背景至少部分透明。
+
+`filter`：直接将模糊效果应用于指定的元素。
 
 03-SVG\demo-project\10-渐变色和滤镜效果\02-CSS 实现毛玻璃效果.html
 
@@ -118,8 +132,9 @@ SVG 支持在填充和描边上应用渐变色，使用 `<linearGradient>`。
 
 `<filter>` 元素定义滤镜效果，`x`，`y`，`width`，`height` 属性定义在画布上应用此过滤器的矩形区域；
 
-- `x`，`y` 默认值为 `-10%`（相对自身）；`width` ，`height` 默认 值为 `120%` （相对自身）。
-- 通过 SVG 元素上的 `filter` 属性引用。
+- `x`，`y` 默认值为 `-10%`（相对自身）；
+- `width` ，`height` 默认 值为 `120%` （相对自身）。
+- 通过元素上的 `filter` 属性引用。
 
 `<feGaussianBlur>`：对图像进行高斯模糊，`stdDeviation` 属性指定模糊的程度；
 
@@ -147,8 +162,8 @@ SVG 支持在填充和描边上应用渐变色，使用 `<linearGradient>`。
 - 可以与任何一个 SVG 中的元素一起使用。会**在该元素内部建立一个新的坐标系统**。
 - 从 SVG2.0 开始，`transform` 它是一个 **Presentation Attribute**，意味着它也可以用作 CSS 属性。
 - `transform` 同时作为 CSS 属性和元素属性（attribute），语法上会存在一些差异。
-  - 比如作为元素属性（attribute）时：仅支持 2D 变换，不需单位；
-  - 比如作为元素属性（attribute）时 `rotate()` 可指定旋转原点。
+  - 比如：作为元素属性（attribute）时：仅支持 2D 变换，不需单位；
+  - 比如：作为元素属性（attribute）时 `rotate()` 可指定旋转原点。
 
 `transform` 属性支持的函数：
 
@@ -164,13 +179,16 @@ SVG 支持在填充和描边上应用渐变色，使用 `<linearGradient>`。
 
 ```html
 <svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
+  
   <!-- 平移一个元素 -->
   <rect transform="translate(200, 200)" x="0" y="0" width="100" height="50"></rect>
+  
   <!--  平移一个元素，在元素内部创建一个新的坐标系-->
   <rect transform="translate(100, 100)" x="10" y="10" width="100" height="50"></rect>
   <g transform="translate(100, 0)">
     <rect x="10" y="10" width="100" height="50"></rect>
   </g>
+  
 </svg>
 ```
 
@@ -218,12 +236,13 @@ SVG 支持在填充和描边上应用渐变色，使用 `<linearGradient>`。
 
 想给各种描边添加动画效果，需用到下面两个属性：
 
-- `stroke-dasharray = “number [, number , …]”`：将虚线类型应用在描边上，值必须是用**逗号**分割的数，其中空格会被忽略。比如 `3，5` :
+`stroke-dasharray = “number [, number , …]”`：将虚线类型应用在描边上，值必须是用**逗号**分割的数，比如 `3，5`，其中空格会被忽略。
 
-  - 第一个表示填色区域的长度为 3；
-  - 第二个表示非填色区域的长度为 5。
+- 第一个表示填色区域的长度为 3；
+- 第二个表示非填色区域的长度为 5。
 
-- `stroke-dashoffset`：指定在 **dasharray 模式**下路径的偏移量。
+`stroke-dashoffset`：指定在 **dasharray 模式**下路径的偏移量。
+
 - 值为 number 类型，除了可以正值，也可以取负值。
 
 描边动画实现步骤：
@@ -281,7 +300,7 @@ SVG 支持在填充和描边上应用渐变色，使用 `<linearGradient>`。
 </html>
 ```
 
-# 五、SVG 实现雪糕描边案例
+# 五、SVG 雪糕描边案例
 
 实现步骤：
 
@@ -292,7 +311,7 @@ SVG 支持在填充和描边上应用渐变色，使用 `<linearGradient>`。
 
 03-SVG\demo-project\12-SVG 描边动画\05-雪糕动画案例.html
 
-# 六、SVG 动画实现方式总结
+# 六、SVG 动画实现方式有哪些？
 
 方式一：用 JS 脚本实现：给 SVG 创建动画和开发交互式的用户界面。
 
@@ -322,11 +341,15 @@ SMIL 的应用
 
 编写简单，只需在页面放几个元素，如 `<animate>` ，就可以实现强大的动画效果，无需任何 CSS 和 JS 代码。
 
-支持声明式动画。不需指定如何做某事，而是指定最终结果应该是什么，将实现细节留给客户端软件.
+支持声明式动画。无需指定如何做某事，而是指定最终结果应该是什么，将实现细节留给客户端软件.
 
-- 在 JavaScript 中，动画通常使用 `setTimeout()` 或 `setInterval()` 等方法实现，这些方法需要手动管理动画的时间。
-- 而 SMIL 声明式动画可以让浏览器自动处理。
-  - 比如：动画轨迹直接与动画对象相关联、物体和运动路径方向、管理动画时间等等。
+在 JavaScript 中，动画通常使用 `setTimeout()` 或 `setInterval()` 等方法实现，这些方法需要手动管理动画的时间。
+
+而 SMIL 声明式动画，可以让浏览器自动处理。
+
+- 比如：动画轨迹，直接与动画对象、物体和运动路径方向相关联
+- 比如：管理动画时间
+- 等等。
 
 阅读性好，SMIL 动画与对象本身是紧密集成的。
 
@@ -338,7 +361,7 @@ SMIL 的应用
 
 `<set>` 是最简单的 SVG 动画元素。它是在经过特定时间间隔后，将属性设置为某个值。
 
-- 不是连续动画，而是改变一次属性值。
+不是连续动画，而是改变一次属性值。
 
 它支持所有属性类型，包括那些无法合理插值的属性类型：，
 
@@ -348,8 +371,8 @@ SMIL 的应用
 
 - `attributeName`：动画期间更改的目标元素的 CSS 属性或元素属性（attribute）的名称。
 - ~~`attributeType`~~：（已过期，不推荐）指定目标属性的类型（值为：CSS | XML | auto）。
-- `to`：定义在特定时间设置目标属性的值。该值必须与目标属性的要求相匹配。 值类型：anything；默认值：无
-- `begin`：定义何时开始动画或何时丢弃元素，默认是 0s (begin 支持多种类型的值)。
+- `to`：定义在特定时间，设置目标属性的值。该值必须与目标属性的要求相匹配。 值类型：anything；默认值：无
+- `begin`：定义何时开始动画，或何时丢弃元素；默认是 0s (begin 支持多种类型的值)。
 
 03-SVG\demo-project\13-SVG 的 SMIL 动画\01-set 元素-动画.html
 
