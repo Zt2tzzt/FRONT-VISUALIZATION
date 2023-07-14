@@ -7,7 +7,7 @@
     <title>Document</title>
   </head>
   <body>
-    <div id="main" style="height: 400px"></div>
+    <div id="main" style="width: 830px; height: 480px"></div>
     <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.1/dist/echarts.min.js"></script>
     <!-- 
     1.导入了一个中国的 geo json
@@ -99,6 +99,8 @@
             // 注册一个地理坐标系组件( 给散点图用 )
             map: mapName,
             roam: false,
+            layoutCenter: ['50%', '50%'],
+            layoutSize: 600,
             label: { show: false },
             aspectScale: 0.75, // 缩放地图
             itemStyle: {
@@ -116,6 +118,7 @@
               type: 'map',
               map: mapName,
               data, // 给地图填充数据
+              geoIndex: 0,
 
               // 地图样式
               itemStyle: {
