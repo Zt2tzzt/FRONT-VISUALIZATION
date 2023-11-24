@@ -1,10 +1,12 @@
-# 一、series 配置项（二）
+# 02-配置项（二）-EChart地图-响应式
 
-## 1.legend 图例配置
+## 一、series 配置项（二）
 
-[legend：图例](https://echarts.apache.org/zh/option.html#legend)，展现了不同系列的标记、颜色和名字（从 `data` 中获取）。object 类型。
+### 1.legend 图例配置
 
-- `show`、`icon`、`formatter`、`textStyle`、`itemWidth`、`itemGap` ...
+[legend：图例](https://echarts.apache.org/zh/option.html#legend)，object 类型，展现了不同图形系列的标记、颜色和名字（从 `data` 中获取）。
+
+有这些配置项：`show`、`icon`、`formatter`、`textStyle`、`itemWidth`、`itemGap` ...
 
 04-Echart\demo-project\02-ECharts 的组件和配置\09-ECharts-legend-图例组件.html
 
@@ -83,11 +85,11 @@ window.onload = function () {
 }
 ```
 
-## 2.tooltip 提示框配置
+### 2.tooltip 提示框配置
 
 [tooltip：提示框组件](https://echarts.apache.org/zh/option.html#legend.tooltip)，object 类型。
 
-- `show`、`trigger`、`axisPointer` ……
+有这些配置选项 `show`、`trigger`、`axisPointer` ……
 
 04-Echart\demo-project\02-ECharts 的组件和配置\10-ECharts-tooltip-提示框组件.html
 
@@ -124,7 +126,7 @@ window.onload = function () {
 }
 ```
 
-# 二、ECharts 配置渐变色
+## 二、ECharts 配置渐变色
 
 ECharts 中 Color 支持的格式：RGB、RGBA、关键字、十六进制格式：
 
@@ -232,29 +234,29 @@ window.onload = function () {
 }
 ```
 
-# 三、读懂案例中的配置
+## 三、读懂案例中的配置
 
-## 1.读懂柱形图案例的配置项
+### 1.读懂柱形图案例的配置项
 
 04-Echart\demo-project\03-ECharts 图表实战\01-柱形图.html
 
-## 2.读懂折线图案例的配置项
+### 2.读懂折线图案例的配置项
 
 04-Echart\demo-project\03-ECharts 图表实战\02-折线图-.html
 
-## 3.读懂饼图案例的配置项
+### 3.读懂饼图案例的配置项
 
 04-Echart\demo-project\03-ECharts 图表实战\03-饼图-.html
 
-# 四、ECharts 地图绘制
+## 四、ECharts 地图绘制
 
 ECharts 需要使用 GeoJSON 格式的数据作为地图的轮廓，获取第三方的 GeoJSON 数据注册到 ECharts 中：[获取方式一](https://github.com/echarts-maps/echarts-china-cities-js/tree/master/js/shape-with-internal-borders)；[获取方式二](https://datav.aliyun.com/portal/school/atlas/area_selector)
 
-## 1.ECharts 地图引入并展示
+### 1.ECharts 地图引入并展示
 
-### 1.引入地图配置方式：
+#### 1.引入地图配置方式
 
-#### 1.引入 json 文件
+##### 1.引入 json 文件
 
 引入 json 格式的地图数据，并手动注册。
 
@@ -262,13 +264,13 @@ ECharts 需要使用 GeoJSON 格式的数据作为地图的轮廓，获取第三
 echarts.registerMap('china', { geoJSON: china_geojson })
 ```
 
-#### 2.引入 js 文件
+##### 2.引入 js 文件
 
 引入 js 文件，该文件中已经将 json 数据注册好。
 
-### 2.展示地图的两种方式：
+#### 2.展示地图的两种方式
 
-#### 1.配置 geo 选项。
+##### 1.配置 geo 选项
 
 04-Echart\demo-project\04-Echarts 地图\01-方式一-初体验中国地图-json.html
 
@@ -287,7 +289,7 @@ window.onload = function () {
 }
 ```
 
-#### 2.配置 series 选项
+##### 2.配置 series 选项
 
 配置 `series` 选项，`series: {type: "map", map: "china"}`。
 
@@ -312,7 +314,7 @@ window.onload = function () {
 }
 ```
 
-#### 1.两种方式有何区别？
+##### 1.两种方式有何区别？
 
 方式一：`geo` 组件配置：
 
@@ -354,7 +356,7 @@ window.onload = function () {
 }
 ```
 
-## 2.ECharts 地图着色
+### 2.ECharts 地图着色
 
 地图着色，通过 `itemStyle` 属性中的 `areaColor` 和 `borderColor` 属性。
 
@@ -412,7 +414,7 @@ window.onload = function () {
 }
 ```
 
-## 3.ECharts 地图数据可视化
+### 3.ECharts 地图数据可视化
 
 主要步骤：
 
@@ -447,10 +449,10 @@ const option = {
       map: '中国',
       data,
       /* data: [
-				{ name: "北京", value: 199 },
-				{ name: "天津", value: 42 },
-				// ……
-			], */
+        { name: "北京", value: 199 },
+        { name: "天津", value: 42 },
+        // ……
+      ], */
       itemStyle: {
         areaColor: '#023677',
         borderColor: '#1180c7'
@@ -468,7 +470,7 @@ const option = {
 }
 ```
 
-## 4.ECharts 地图散点图设置
+### 4.ECharts 地图散点图设置
 
 基本步骤：
 
@@ -524,11 +526,11 @@ const option = {
 }
 ```
 
-## 5.ECharts 地图综合案例
+### 5.ECharts 地图综合案例
 
 04-Echart\demo-project\04-Echarts 地图\07-中国地图+散点图-最终案例.html
 
-# 五、ECharts 常见 API 总结
+## 五、ECharts 常见 API 总结
 
 [全局 echarts 对象](https://echarts.apache.org/zh/api.html#echarts)，在 `<script>` 标签引入 echarts.js 文件后获得。
 
@@ -546,9 +548,9 @@ const option = {
 - `dispose()`：销毁实例，销毁后实例无法再被使用。
 - `on()`：添加事件处理函数，该文档描述了所有 ECharts 的事件列表。
 
-# 六、ECharts 响应式图表实现
+## 六、ECharts 响应式图表实现
 
-## 1.根据窗口大小，改变图表宽度
+### 1.根据窗口大小，改变图表宽度
 
 基本步骤：
 
@@ -589,7 +591,7 @@ window.onload = function () {
 }
 ```
 
-## 2.轮播显示 tooltip
+### 2.轮播显示 tooltip
 
 04-Echart\demo-project\05-ECharts 的补充 API\02-自动触发 Action 实现提示框轮播.html
 
@@ -640,7 +642,7 @@ window.onload = function () {
 }
 ```
 
-## 3.动态注册地图，点击展示
+### 3.动态注册地图，点击展示
 
 04-Echart\demo-project\05-ECharts 的补充 API\03-地图-下钻.html
 
