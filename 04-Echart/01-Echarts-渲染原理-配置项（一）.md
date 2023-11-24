@@ -215,7 +215,7 @@ const option = {
 
 `xAxis`、`yAxis` 选项：用于配置直角坐标系 grid 中的 x、y 轴，有如下属性：
 
-- `show`：是否显示 x 轴。boolean 类型。
+- `show`：boolean 类型，是否显示 x 轴。
 - `name`：坐标轴名称。
 - `type`：坐标轴类型。string 类型。
   - `value`: 数值轴，适用于连续数据。
