@@ -1,55 +1,61 @@
-# 一、ECharts 是什么
+# Echarts-渲染原理-配置项（一）
+
+## 一、ECharts 是什么
 
 ECharts（全称 Enterprise Charts）企业级数据图表。官方的解释：一个基于 JavaScript 的开源可视化图表库。
 
 ECharts 可以流畅的运行在 PC 和移动设备上，兼容当前绝大部分浏览器（IE6/7/8/9/10/11，chrome，firefox，Safari 等）。
 
-ECharts 底层依赖轻量级的 ZRender 图形库，可提供直观，生动，可交互，可高度个性化定制的数据可视化图表。
+ECharts 底层，依赖轻量级的 ZRender 图形库，可提供直观，生动，可交互，可高度个性化定制的数据可视化图表。
 
-# 二、Echarts 的发展历史
+## 二、Echarts 的发展历史
 
-1. ECharts 由百度团队开源。
-2. 2018 年初，捐赠给 Apache 基金会，成为 Apache 软件基金会孵化级项目。
-3. 2021 年 1 月 26 日晚，Apache 基金会官方宣布 ECharts 项目正式毕业，成为 Apache 顶级项目。
-4. 2021 年 1 月 28 日，ECharts5 线上发布会举行。
+ECharts 由百度团队开源。
 
-# 三、ECharts 的应用场景
+2018 年初，捐赠给 Apache 基金会，成为 Apache 软件基金会孵化级项目。
+
+2021 年 1 月 26 日晚，Apache 基金会官方宣布 ECharts 项目正式毕业，成为 Apache 顶级项目。
+
+2021 年 1 月 28 日，ECharts5 线上发布会举行。
+
+## 三、ECharts 的应用场景
 
 智慧城市、园区、航运、公安、机房、监所、电力、物业、应急管理等多个领域的数据可视化展示。
 
-<img src="NodeAssets/EChart的应用场景1.jpg" style="zoom:100%;" />
+![EChart的应用场景](NodeAssets/EChart的应用场景1.jpg)
 
-<img src="NodeAssets/EChart的应用场景2.jpg" alt="s" style="zoom:100%;" />
+![/EChart的应用场景2](NodeAssets/EChart的应用场景2.jpg)
 
-# 四、ECharts 的特点
+## 四、ECharts 的特点
 
-丰富的图表类型
+丰富的图表类型：
 
 - 提供开箱即用的二十多种图表和十几种组件，
 - 支持各种图表以及组件的任意组合；
 
-强劲的渲染引擎
+强劲的渲染引擎：
 
 - Canvas、SVG 双引擎灵活切换，增量渲染等技术实现千万级数据的流畅交互；
 
-简单易懂，上手容易
+简单易懂，上手容易：
 
 - 通过编写配置，生成各种图表，且支持多种集成方式；
 
-活跃的社区
+活跃的社区：
 
 - 活跃的社区用户保证了项目的健康发展，贡献了丰富的第三方插件，满足不同场景的需求；
 
-# 五、ECharts 初体验
+## 五、ECharts 初体验
 
 引入（集成） Echarts 的常见方式：
 
-- 通过 jsDelivr 等 CDN 引入。
-- `npm install echarts`
+方式一：通过 jsDelivr 等 CDN 引入。
 
-ECharts 的容器必须设高度。
+方式二：`npm install echarts`
 
-## 1.普通配置项实现
+> ECharts 的容器必须设高度。
+
+### 1.普通配置项实现
 
 04-Echart\demo-project\01-ECharts 初体验\01-ECharts 初体验.html
 
@@ -91,7 +97,7 @@ ECharts 的容器必须设高度。
 </body>
 ```
 
-## 2.精简（必填）配置项实现
+### 2.精简（必填）配置项实现
 
 精简版的配置选项，仅包含必填项：
 
@@ -110,16 +116,16 @@ let option = {
 }
 ```
 
-# 六、ECharts 渲染原理
+## 六、ECharts 渲染原理
 
-浏览器端的图表库大多会选择 SVG 或者 Canvas 进行渲染。
+浏览器端的图表库，大多会选择 SVG 或者 Canvas 进行渲染。
 
 - ECharts 最初使用 Canvas 绘制图表。ECharts v4.0 版本后，支持 SVG 渲染器。
-- SVG 和 Canvas 渲染在技术上有很大的差异，ECharts 底层使用 ZRender 库进行抽象和实现。
+- SVG 和 Canvas 渲染，在技术上有很大的差异，ECharts 底层，使用 ZRender 库进行抽象和实现。
 - ZRender 是二维轻量级的绘图引擎，它提供 Canvas、SVG、VML 等多种渲染方式。
-- Echarts 切换渲染器，需要在初始化图表时设置 `{renderer: "canvas"}` 或 `{renderer: "svg"}` 即可。
+- Echarts 切换渲染器，需要在初始化图表时设置 `{ renderer: "canvas" }` 或 `{ renderer: "svg" }` 即可。默认是 canvas。
 
-## 1.切换渲染模式：
+### 1.切换渲染模式
 
 04-Echart\demo-project\01-ECharts 初体验\03-ECharts-切换渲染器.html
 
@@ -145,7 +151,7 @@ window.onload = function () {
 }
 ```
 
-## 2.渲染模式的选择
+### 2.渲染模式的选择
 
 在软硬件环境较好，数据量不大的场景下，两种渲染器都适用（推荐 SVG，扩展性好，缩放不会失真）；
 
@@ -156,7 +162,7 @@ window.onload = function () {
 - Canvas 更适用的场景：数据量较大、较多交互时，建议选择 Canvas 渲染器。
   - Canvas 更适合绘制图形元素数量较多的图表。如，热力图、炫光尾迹特效、地理坐标系、平行坐标系上的大规模线图等。
 
-# 七、ECharts 配置项（组件）
+## 七、ECharts 配置项（组件）
 
 ECharts 配置项（options）有哪些？或者说组成 ECharts 的组件有哪些？
 
@@ -169,24 +175,24 @@ ECharts 配置项（options）有哪些？或者说组成 ECharts 的组件有�
 - `tooltip`: 提示框。
 - `toolbox`: 工具栏，提供操作图表的工具。
 - `series`: （必填）系列图，配置系列图表的类型和图形信息数据。
-- `visualMap`: 视觉映射，可以将数据值映射到图形的形状、大小、颜色等。
+- `visualMap`: 视觉映射，可以将数据值，映射到图形的形状、大小、颜色等。
 - `geo`：地理坐标系组件。用于地图的绘制，支持在地理坐标系上绘制散点图，线集。
 
 一个完整的 ECharts：
 
-<img src="NodeAssets/一个完整的ECharts.jpg" style="zoom:80%;" />
+![一个完整的ECharts](NodeAssets/一个完整的ECharts.jpg)
 
 图形种类
 
-<img src="NodeAssets/图形种类.jpg" style="zoom:80%;" />
+![图形种类](NodeAssets/图形种类.jpg)
 
-# 八、grid 网格配置
+## 八、grid 网格配置
 
 `grid` 选项（组件）：直角坐标系内绘图区域，有如下属性：
 
-- `show`: 是否显示直角坐标系网格。 boolean 类型。
-- `left`、`right`、`top`、`bottom`：组件离容器左右上下的距离。 string | number 类型。
-- `containLabel`：组件区域是否包含坐标轴的刻度标签。 boolean 类型。
+- `show`:  boolean 类型，是否显示直角坐标系网格。。
+- `left`、`right`、`top`、`bottom`：string | number 类型，组件离容器左右上下的距离。
+- `containLabel`： boolean 类型，组件区域是否包含坐标轴的刻度标签。
 - `backgroundColor`：网格背景色，默认透明。
 
 04-Echart\demo-project\02-ECharts 的组件和配置\01-Grid-组件-配置.html
@@ -205,9 +211,9 @@ const option = {
 }
 ```
 
-# 九、xAsis，yAsis 坐标系配置
+## 九、xAsis，yAsis 坐标系配置
 
-`xAxis`、`yAxis` 选项：直角坐标系 grid 中的 x、y 轴，有如下属性：
+`xAxis`、`yAxis` 选项：用于配置直角坐标系 grid 中的 x、y 轴，有如下属性：
 
 - `show`：是否显示 x 轴。boolean 类型。
 - `name`：坐标轴名称。
@@ -267,13 +273,15 @@ const option = {
 }
 ```
 
-# 十、series 系列图配置
+## 十、series 系列图配置
 
-`series`：配置图表的类型和图形相关数据。object[] 类型，每个 object 具体配置信息如下；[参考文档](https://echarts.apache.org/zh/option.html#series)
+`series`：选项，用于配置图表的类型和图形相关数据。object[] 类型，每个 object 具体配置信息如下；[参考文档](https://echarts.apache.org/zh/option.html#series)
 
 - `name`：系列名称，用于 `tooltip` 的显示，`legend` 的图例筛选等。
 
-- `type`：指定系列图表的类型，比如：柱状图（`bar`）、折线图（`line`）、饼图（`pie`）、散点图（`scatter`）等等
+- `type`：指定系列图表的类型，
+
+  - 比如：柱状图（`bar`）、折线图（`line`）、饼图（`pie`）、散点图（`scatter`）等等
 
 - `data`：数值内容数组。数组中的每一项称为数据项。
 
@@ -293,7 +301,7 @@ const option = {
 
 - `coordinateSystem`：该系列使用的坐标系，默认值为二维的直角坐标系（笛卡尔坐标系，y 轴向上，x 轴向右）
 
-## 1.data 属性的使用
+### 1.data 属性的使用
 
 方式一：一维数组。
 
@@ -430,7 +438,7 @@ const option = {
 
 ```js
 const option = {
-	series: [
+  series: [
     {
       type: 'bar',
       label: {
@@ -467,7 +475,7 @@ const option = {
 }
 ```
 
-## 2.type 属性的使用
+### 2.type 属性的使用
 
 改变 `type` 属性，实现柱状图，折线图，散点图，
 
@@ -525,7 +533,7 @@ window.onload = function () {
 }
 ```
 
-`{type: pie}` 时，改变 `center`，`radius`，`roseType` 等属性，实现饼图，圆环图，玫瑰图：
+当实现饼图时，设置 `{type: pie}`，改变 `center`，`radius`，`roseType` 等属性，实现饼图，圆环图，玫瑰图：
 
 04-Echart\demo-project\02-ECharts 的组件和配置\04-ECharts-series-系列图-type-pie.html
 
@@ -585,7 +593,7 @@ window.onload = function () {
 }
 ```
 
-## 3.label 属性的使用
+### 3.label 属性的使用
 
 图形上的文本标签（优先级采用就近原则，`series` -> `data` -> `labbel` 大于 `series` -> `label`）
 
@@ -623,7 +631,7 @@ window.onload = function () {
 }
 ```
 
-## 4.itemStyle 属性的使用
+### 4.itemStyle 属性的使用
 
 图形样式（优先级采用就近原则，`series` -> `data` -> `labbel` 大于 `series` -> `label`）
 
@@ -698,11 +706,11 @@ window.onload = function () {
 }
 ```
 
-## 5.emphasis 属性的使用
+### 5.emphasis 属性的使用
 
 鼠标悬浮到图形元素上时，高亮的样式：
 
-- 默认情况高亮的样式是根据普通样式自动生成。但是也可自己定义；
+- 默认情况高亮的样式，是根据普通样式自动生成。但是也可自己定义；
 - `emphsis` 的结构和普通样式结构相同。
 
 04-Echart\demo-project\02-ECharts 的组件和配置\07-ECharts-series-系列图-emphasis.html
@@ -811,7 +819,7 @@ const obj = {
 }
 ```
 
-# 十一、title 标题配置
+## 十一、title 标题配置
 
 图表的标题。object 类型。
 
